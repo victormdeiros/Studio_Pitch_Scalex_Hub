@@ -690,7 +690,8 @@ body.peeking .workspace{right:0}
 .edit-badge{position:absolute;top:14px;left:20px;z-index:26;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#e9dcff;background:#190f38e0;border:1px solid #c084fc4d;box-shadow:0 10px 30px #0007;opacity:0;transform:translateY(-6px);transition:opacity .3s var(--ease-soft),transform .3s var(--ease-soft);pointer-events:none;cursor:pointer}
 body.editing .edit-badge{pointer-events:auto}
 body.peeking .edit-badge{opacity:0;transform:translateY(-6px);pointer-events:none}
-#studio-return{background:#c084fc1f!important;border-color:#c084fc55!important;color:#e9dcff!important}
+#studio-return{display:inline-flex;align-items:center;gap:5px;background:#c084fc1f!important;border-color:#c084fc55!important;color:#e9dcff!important}
+#studio-return .ico{width:12px;height:12px}
 .edit-badge:hover{background:#2a1a55e0;border-color:#c084fc99;transform:none;color:#fff}
 .edit-badge .ico{width:12px;height:12px;color:#c084fc}
 body.editing .edit-badge{opacity:1;transform:none}
@@ -729,6 +730,8 @@ body.editing #stage{cursor:text}
   .edit-badge{left:12px;top:10px}
 }
 @media(max-width:620px){
+  #studio-return{width:30px;padding:0;justify-content:center}
+  #studio-return span{display:none}
   .studio{top:46px;bottom:0;width:100%;border-left:0}
   .studio-top{padding-top:15px}
   .studio-actions{padding-bottom:4px}
@@ -788,7 +791,7 @@ body.editing #stage{cursor:text}
   <header class="app-header" aria-label="Ferramentas da apresentação">
     <div class="app-brand"><strong>ScaleX Hub</strong><span>Apresentação para investidores</span></div>
     <div class="tools">
-      <button id="studio-return" title="Voltar ao estúdio" hidden>Estúdio</button>
+      <button id="studio-return" title="Voltar ao estúdio" aria-label="Voltar ao estúdio" hidden><svg class="ico" aria-hidden="true"><use href="#i-edit"></use></svg><span>Estúdio</span></button>
       <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
