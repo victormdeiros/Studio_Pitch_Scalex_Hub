@@ -114,7 +114,7 @@ body.editing #stage{cursor:text}
   .edit-badge{left:12px;top:10px}
 }
 @media(max-width:620px){
-  #studio-return{width:30px;padding:0;justify-content:center}
+  #studio-return{width:30px;height:30px;padding:0;justify-content:center}
   #studio-return span{display:none}
   .studio{top:46px;bottom:0;width:100%;border-left:0}
   .studio-top{padding-top:15px}
