@@ -1,6 +1,6 @@
 // Slide 7 · projeções.
 export default {
-  id: 'slide-7',
+  id: 'slide-8',
   title: 'Crescimento projetado em bootstrap',
   theme: 'dark',
   number: '06',
@@ -22,31 +22,29 @@ export default {
     'Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a'
   ],
   html: `
-    <header class="head">
-      <p class="eyebrow rv" style="--d:0">Projeções</p>
-      <h2 class="title rv" style="--d:1">Crescimento projetado em bootstrap</h2>
+    <header class="s7-head">
+      <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg>Projeções</p>
+      <h2 class="h2 rv" style="--d:1">Crescimento projetado em bootstrap</h2>
     </header>
-    <div class="body">
-      <div class="chart rv" style="--d:2">
-        <h3>Faturamento trimestral · R$ mil</h3>
-        <div class="plot">
-          <div class="bar" style="--b:0"><i style="--h:2.89"><b>20,8</b></i><em>Q4/26</em></div>
-          <div class="bar" style="--b:1"><i style="--h:11.88"><b>85,6</b></i><em>Q1/27</em></div>
-          <div class="bar" style="--b:2"><i style="--h:28.13"><b>202,5</b></i><em>Q2/27</em></div>
-          <div class="bar" style="--b:3"><i style="--h:57.24"><b>412,1</b></i><em>Q3/27</em></div>
-          <div class="bar" style="--b:4"><i style="--h:86.13"><b>620,2</b></i><em>Q4/27</em></div>
-        </div>
-      </div>
-      <div class="kpis">
-        <div class="kpi rv" style="--d:3"><p class="v">R$ 1,32 milhão</p><p>Faturamento em 2027</p></div>
-        <div class="kpi alt rv" style="--d:4"><p class="v">R$ 380,3 mil</p><p>Resultado líquido acumulado de Q4/26 a Q4/27</p></div>
-        <div class="kpi rv" style="--d:5"><p class="v">35%</p><p>Margem líquida no Q4/27</p></div>
+    <div class="s7-chart">
+      <p class="chart-label rv" style="--d:2">Faturamento trimestral · R$ mil</p>
+      <div class="plot rv-soft" style="--d:2">
+        <div class="bar" style="--b:0"><i style="--h:2.89"><b class="count" data-to="20.8" data-decimals="1">20,8</b></i><em>Q4/26</em></div>
+        <div class="bar" style="--b:1"><i style="--h:11.88"><b class="count" data-to="85.6" data-decimals="1">85,6</b></i><em>Q1/27</em></div>
+        <div class="bar" style="--b:2"><i style="--h:28.13"><b class="count" data-to="202.5" data-decimals="1">202,5</b></i><em>Q2/27</em></div>
+        <div class="bar" style="--b:3"><i style="--h:57.24"><b class="count" data-to="412.1" data-decimals="1">412,1</b></i><em>Q3/27</em></div>
+        <div class="bar" style="--b:4"><i style="--h:86.13"><b class="count" data-to="620.2" data-decimals="1">620,2</b></i><em>Q4/27</em></div>
       </div>
     </div>
-    <div class="maxis">
+    <div class="s7-kpis">
+      <div class="kpi rv" style="--d:3"><p class="v">R$ <span class="count" data-to="1.32" data-decimals="2">1,32</span> milhão</p><p class="l">Faturamento em 2027</p></div>
+      <div class="kpi alt rv" style="--d:4"><p class="v">R$ <span class="count" data-to="380.3" data-decimals="1">380,3</span> mil</p><p class="l">Resultado líquido acumulado de Q4/26 a Q4/27</p></div>
+      <div class="kpi rv" style="--d:5"><p class="v"><span class="count" data-to="35" data-decimals="0">35</span>%</p><p class="l">Margem líquida no Q4/27</p></div>
+    </div>
+    <div class="s7-maxis">
       <div class="maxi rv" style="--d:6"><p class="k">Ticket médio (R$)</p><p class="v">1.050 a 3.450</p></div>
       <div class="maxi rv" style="--d:7"><p class="k">Churn</p><p class="v">15% a 3,75%</p></div>
       <div class="maxi rv" style="--d:8"><p class="k">Margem bruta</p><p class="v">62,5% a 82,5%</p></div>
     </div>
-    <p class="foot rv" style="--d:9">Q4/26 a Q4/27. Projeções. Resultado líquido = faturamento × margem líquida.</p>`
+    <p class="s7-foot rv" style="--d:9">Q4/26 a Q4/27. Projeções. Resultado líquido = faturamento × margem líquida.</p>`
 };

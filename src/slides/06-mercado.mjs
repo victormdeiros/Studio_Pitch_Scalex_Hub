@@ -1,38 +1,49 @@
-// Slide 6 · mercado e posicionamento.
+// Slide 7 · mercado direto e mercado indireto (upsell da base).
 export default {
   id: 'slide-6',
-  title: 'Mercado e posicionamento',
+  title: 'O mercado direto abre a porta. A base multiplica o upsell.',
   theme: 'light',
-  number: '05',
+  number: '04',
   notes: [
-    'TEMPO ALVO: 40 segundos',
+    'TEMPO ALVO: 35 segundos',
     'ROTEIRO FALADO',
-    'O mercado se divide entre CRM, automação, omnichannel e plataformas de agentes de IA. A ScaleX atua na convergência dessas categorias para quem distribui tecnologia a múltiplos clientes. O GoHighLevel é referência internacional para agências. Zaia concentra sua oferta em IA e agentes, e Toolzz apresenta outra composição tecnológica. Estimamos no Brasil um TAM superior a cem mil empresas e um SAM inicial de vinte e seis mil. A captura inicial de 0,5% a 1% corresponde a 130 a 260 clientes ScaleX, cada um podendo representar várias operações finais.',
+    'O mercado direto é quem compra a ScaleX: estimamos um TAM superior a cem mil empresas, um SAM de vinte e seis mil e uma captura inicial de 0,5% a 1%, ou 130 a 260 revendedores. A expansão vem do mercado indireto, pelo upsell da base: cada revendedor ativa várias empresas finais e cada empresa final tem seus próprios clientes. Com uma premissa ilustrativa de dez empresas finais por revendedor e dez clientes por empresa final, a base de 130 a 260 revendedores chega a 1,3–2,6 mil empresas finais e 13–26 mil clientes dessas empresas. É uma camada de upsell a validar com a base, não um TAM auditado.',
     'APOIO PARA PERGUNTAS',
     'TAM, SAM e SOM são estimativas internas fornecidas no pitch, sem estudo externo ou memória de cálculo detalhada anexados.',
-    'Cálculo do SOM: 26.000 × 0,5% = 130; 26.000 × 1% = 260. A referência anterior de 1.314 clientes não corresponde ao intervalo de 0,5%–1%.',
-    'Mapeamento competitivo fornecido: GoHighLevel (EUA), plataforma própria e forte modelo para agências. Zaia (Brasil), tecnologia própria com maior concentração em IA/agentes. Toolzz, composição de tecnologias e ferramentas/open source. O slide não atribui ausência de funcionalidades a nenhum concorrente.',
+    'Cálculo do SOM inicial: 26.000 × 0,5% = 130; 26.000 × 1% = 260.',
+    'Mercado indireto ilustrativo: 130–260 revendedores × 10 empresas finais = 1.300–2.600; × 10 clientes por empresa final = 13.000–26.000. A premissa de 10× em cada camada é uma modelagem para conversa, não um dado auditado.',
+    'O upside inclui o cliente do cliente: a base do parceiro pode ser ativada com novos módulos e a base das empresas finais pode ser trabalhada em uma camada adicional.',
     'Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a'
   ],
   html: `
-    <header class="head">
-      <p class="eyebrow rv" style="--d:0">Mercado</p>
-      <h2 class="title rv" style="--d:1">Mercado e posicionamento</h2>
-    </header>
-    <div class="body">
-      <div class="comp">
-        <p class="sub rv" style="--d:2">Referências competitivas</p>
-        <div class="row rv" style="--d:3"><h3>GoHighLevel</h3><p>Referência internacional para agências</p><p class="metrics">US$ 4,2 bi em vendas movimentadas · 2,2 mi negócios atendidos (2025)<br>+721% de receita em três anos · General Atlantic desde 2021</p></div>
-        <div class="row rv" style="--d:4"><h3>Zaia</h3><p>Referência brasileira em agentes de IA</p><p class="metrics">+100 mil agentes de IA criados · white-label e operação centralizada</p></div>
-        <div class="row rv" style="--d:5"><h3>Toolzz</h3><p>Composição de tecnologias</p></div>
-        <div class="row self hx rv" style="--d:6"><h3>ScaleX Hub</h3><p>CRM, operação, omnichannel e IA com white-label e multiworkspace</p></div>
+    <div class="market">
+      <header class="market-head">
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-globe"></use></svg>Mercado</p>
+        <h2 class="h2 rv" style="--d:1">O mercado direto abre a porta. <span class="grad-text">A base multiplica o upsell.</span></h2>
+        <p class="lead rv" style="--d:2">Vendemos para quem revende. Cada parceiro ativa empresas finais — e os clientes delas.</p>
+      </header>
+      <div class="market-body">
+        <section class="market-direct">
+          <p class="micro rv" style="--d:2"><svg class="ico" aria-hidden="true"><use href="#i-globe"></use></svg>Mercado direto · quem compra a ScaleX</p>
+          <div class="mk-funnel">
+            <div class="mk-row tam rv" style="--d:3;--i:0"><span class="k">TAM</span><span class="v">+100 mil</span><span class="d">empresas no mercado potencial</span></div>
+            <div class="mk-row sam rv" style="--d:4;--i:1"><span class="k">SAM</span><span class="v">~26 mil</span><span class="d">empresas atendíveis hoje</span></div>
+            <div class="mk-row som rv" style="--d:5;--i:2"><span class="k">SOM inicial</span><span class="v">130–260</span><span class="d">revendedores · 0,5%–1% do SAM</span></div>
+          </div>
+          <p class="mk-bridge rv" style="--d:6"><svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg>O revendedor é a porta de entrada para uma base maior.</p>
+        </section>
+        <section class="market-indirect">
+          <p class="micro rv" style="--d:2"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>Mercado indireto · upsell da base</p>
+          <div class="mk-cascade">
+            <div class="mk-stage base rv" style="--d:3"><span class="v">130–260</span><span class="l">revendedores</span></div>
+            <div class="mk-arrow rv" style="--d:4">↓ <b>×10</b></div>
+            <div class="mk-stage rv" style="--d:5"><span class="v">1,3–2,6 mil</span><span class="l">empresas finais atendidas</span></div>
+            <div class="mk-arrow rv" style="--d:6">↓ <b>×10</b></div>
+            <div class="mk-stage accent rv" style="--d:7"><span class="v">13–26 mil</span><span class="l">clientes das empresas finais</span></div>
+          </div>
+          <p class="mk-note rv" style="--d:7">Premissa ilustrativa de 10 empresas finais por revendedor e 10 clientes por empresa final. Validar com a base.</p>
+        </section>
       </div>
-      <div class="funnel">
-        <div class="frow w1 rv" style="--d:3"><span class="k">TAM</span><span class="v">+100 mil</span><span class="d">Empresas no mercado potencial</span></div>
-        <div class="frow w2 rv" style="--d:4"><span class="k">SAM</span><span class="v">~26 mil</span><span class="d">Empresas atendíveis hoje</span></div>
-        <div class="frow w3 som rv" style="--d:5"><span class="k">SOM</span><span class="v">~2.080</span><span class="d">Clientes ScaleX, 0,5%–1% do SAM</span></div>
-      </div>
-    </div>
-    <p class="takeaway rv" style="--d:7">O valor não está apenas em vender software. <span>Está em potencializar quem o revende.</span></p>
-    <p class="foot rv" style="--d:8">Fontes: HighLevel, General Atlantic e Inc. 5000 (2021–2026); Zaia — dados públicos de 2026. Estimativas internas para o Brasil.</p>`
+      <p class="market-foot rv" style="--d:8">TAM, SAM e SOM são estimativas internas. O mercado indireto é uma expansão de upsell a partir da base, não um TAM auditado.</p>
+    </div>`
 };

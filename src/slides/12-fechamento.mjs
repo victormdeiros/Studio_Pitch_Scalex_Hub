@@ -1,6 +1,6 @@
 // Slide 11 · fechamento.
 export default {
-  id: 'slide-11',
+  id: 'slide-12',
   title: 'A infraestrutura das agências de IA vai ter dono. A questão é quem entra antes.',
   theme: 'dark',
   number: '',
@@ -11,11 +11,12 @@ export default {
     'Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a'
   ],
   html: `
-    <div class="hero">
-      <p class="eyebrow rv" style="--d:0">Rodada aberta</p>
-      <h1 class="display rv" style="--d:1">A infraestrutura das agências de IA vai ter dono. <span class="hl">A questão é quem entra antes.</span></h1>
-      <p class="lede rv" style="--d:2">Rodada aberta com pre-money abaixo do valuation indicativo de R$ 2,88 mi.</p>
+    <div class="s11-content">
+      <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg>Rodada aberta</p>
+      <h1 class="display rv" style="--d:1">A infraestrutura das agências de IA vai ter dono. <span class="grad-text">A questão é quem entra antes.</span></h1>
+      <p class="lead rv" style="--d:2">Rodada aberta: 10% da ScaleX Hub, com pre-money abaixo do valuation indicativo.</p>
       <span class="cta rv" style="--d:3">Vamos juntos?</span>
     </div>
-    <figure class="hero-art rv" style="--d:4"><img src="assets/brand/simbolo-colorido-1024.png" alt="Símbolo ScaleX Hub"></figure>`
+    <div class="s11-ring" aria-hidden="true"></div>
+    <figure class="s11-mark rv-soft" style="--d:4" aria-hidden="true"><img src="assets/brand/simbolo-colorido-1024.png" alt=""></figure>`
 };

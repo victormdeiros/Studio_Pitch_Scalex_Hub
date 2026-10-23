@@ -25,4 +25,4 @@ export async function build(){
  html=html.replace('<!-- STYLES -->',()=>'<style id="presentation-styles">\n'+css+'\n</style>').replace('<!-- SCRIPT -->',()=>'<script id="presentation-runtime">\n'+js+'\n</script>');
  await fs.writeFile(path.join(root,'index.html'),html);return html;
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){await build();console.log('Pronto: index.html • 11 slides • fontes e imagens incorporadas.');}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){await build();console.log(`Pronto: index.html • ${slides.length} slides • fontes e imagens incorporadas.`);}
