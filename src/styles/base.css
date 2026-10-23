@@ -144,6 +144,7 @@ dialog h2{margin:0;font-size:19px;letter-spacing:-.01em}
 dialog p{color:#a9b8d1;font-size:13px;line-height:1.7}
 .dialog-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
 .dialog-top button{width:32px;height:32px;padding:0;display:grid;place-items:center;border-radius:50%}
+.dialog-top .ico{width:14px;height:14px}
 .overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .overview-tile{text-align:left;min-height:92px;display:flex;gap:13px;align-items:flex-start;padding:15px;border-radius:14px;background:#ffffff05;border-color:#ffffff0e}
 .overview-tile:hover{background:#ffffff0b;transform:none}

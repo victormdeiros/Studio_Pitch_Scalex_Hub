@@ -41,10 +41,23 @@
   <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.6-6 9.5-6 9.5 6 9.5 6-3.6 6-9.5 6S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></symbol>
+  <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.2"/><circle cx="15" cy="6" r="1.2"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><circle cx="9" cy="18" r="1.2"/><circle cx="15" cy="18" r="1.2"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h9a4 4 0 0 0 .8-7.9A6 6 0 0 0 5.4 9.2 4.4 4.4 0 0 0 7 18Z"/><path d="M12 16v-5"/><path d="m9.5 13 2.5-2.5L14.5 13"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5Z"/><path d="M8 4v6h7V4"/><path d="M8 20v-5h8v5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10"/><path d="m7 11 5 5 5-5"/><path d="M5 19h14"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="m7 13 5-5 5 5"/><path d="M5 5h14"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10h-3"/><path d="m8 5-4 4 4 4"/></symbol>
 </svg>
   <header class="app-header" aria-label="Ferramentas da apresentação">
     <div class="app-brand"><strong>ScaleX Hub</strong><span>Apresentação para investidores</span></div>
     <div class="tools">
+      <button id="studio-return" title="Voltar ao estúdio" hidden>Estúdio</button>
+      <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
       <button id="fullscreen-btn" title="Tela cheia (F)">Tela cheia</button>
@@ -83,6 +96,7 @@
         <div class="merge-flash"></div>
       </div>
     </div>
+    <button type="button" id="edit-badge" class="edit-badge" title="Abrir o estúdio"><svg class="ico" aria-hidden="true"><use href="#i-edit"></use></svg>Modo edição</button>
   </main>
 
   <footer class="app-footer" aria-label="Navegação entre slides">
@@ -93,11 +107,56 @@
     <div id="progress" class="progress" aria-hidden="true"></div>
   </footer>
 
-  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os 12 slides</h2><button data-close aria-label="Fechar">✕</button></div><div id="overview-grid" class="overview-grid"></div></dialog>
-  <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar">✕</button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar">✕</button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>Imprimir / PDF</dt><dd>Gera os 12 slides, um por página, em proporção 16:9. Ative os gráficos de fundo nas opções do navegador.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd></dl></dialog>
+  <aside id="studio" class="studio" aria-label="Estúdio de edição" aria-hidden="true">
+    <header class="studio-top">
+      <div><p class="studio-kicker">Estúdio</p><h2>Editar apresentação</h2></div>
+      <div class="studio-top-actions">
+        <button id="studio-peek" class="studio-icon-btn" title="Ver o slide inteiro" aria-label="Ver o slide inteiro" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-eye"></use></svg></button>
+        <button id="settings-btn" class="studio-icon-btn" title="Configuração de publicação" aria-label="Configuração de publicação"><svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg></button>
+        <button id="studio-close" class="studio-icon-btn" title="Sair da edição" aria-label="Sair da edição"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+    </header>
+    <div class="studio-scroll">
+      <p class="studio-hint"><b>Textos:</b> clique em qualquer texto do slide e escreva. A edição mantém os destaques visuais.</p>
+      <div class="studio-sec"><span>Ordem dos slides</span><em>arraste ou use ↑ ↓</em></div>
+      <ol id="studio-list" class="studio-list"></ol>
+      <p class="studio-hint">A numeração acompanha a nova ordem. Tudo fica salvo neste navegador até você publicar no site.</p>
+    </div>
+    <div class="studio-actions">
+      <button id="publish-btn" class="wide" type="button"><svg class="ico" aria-hidden="true"><use href="#i-cloud"></use></svg>Publicar no site</button>
+      <button id="save-draft" type="button"><svg class="ico" aria-hidden="true"><use href="#i-save"></use></svg>Salvar rascunho</button>
+      <button id="download-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg>Baixar JSON</button>
+      <button id="import-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-upload"></use></svg>Importar</button>
+      <button id="reset-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-undo"></use></svg>Restaurar original</button>
+      <input id="import-file" type="file" accept="application/json,.json" hidden>
+    </div>
+    <p id="studio-status" class="studio-status" data-state="original" role="status"></p>
+  </aside>
+
+  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os 12 slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
+  <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>Imprimir / PDF</dt><dd>Gera os 12 slides, um por página, em proporção 16:9. Ative os gráficos de fundo nas opções do navegador.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt>E · Editar</dt><dd>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages.</dd></dl></dialog>
+  <dialog id="publish-dialog" aria-labelledby="publish-title">
+    <div class="dialog-top"><h2 id="publish-title">Publicar no GitHub Pages</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+    <p class="publish-note">A ordem e os textos são gravados em <b>content.json</b> no repositório. O GitHub Pages republica o link em cerca de um minuto. O token fica salvo apenas neste navegador e nunca é enviado para outro lugar.</p>
+    <div class="field"><label for="pub-repo">Repositório</label><input id="pub-repo" placeholder="usuario/repositorio" autocomplete="off" spellcheck="false"></div>
+    <div class="field-row">
+      <div class="field"><label for="pub-branch">Branch</label><input id="pub-branch" placeholder="main" autocomplete="off" spellcheck="false"></div>
+      <div class="field"><label for="pub-path">Arquivo</label><input id="pub-path" placeholder="content.json" autocomplete="off" spellcheck="false"></div>
+    </div>
+    <div class="field"><label for="pub-token">Token do GitHub</label><input id="pub-token" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false"></div>
+    <p class="publish-note">Crie um token <b>fine-grained</b> em <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens</a>, dê acesso apenas a este repositório e marque <b>Contents: Read and write</b>. <button type="button" id="forget-token" class="link-btn">Esquecer token salvo</button></p>
+    <p id="publish-status" class="publish-status" role="status"></p>
+    <div class="publish-actions">
+      <button type="button" id="discard-draft" class="link-btn">Descartar rascunho local</button>
+      <button type="button" data-close>Cancelar</button>
+      <button type="button" id="publish-confirm" class="primary">Publicar agora</button>
+    </div>
+  </dialog>
   <div id="toast" role="status" hidden></div>
 
+  <!-- CONTENT -->
   <!-- SCRIPT -->
+  <!-- EDITOR -->
 </body>
 </html>

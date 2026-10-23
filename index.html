@@ -154,6 +154,7 @@ dialog h2{margin:0;font-size:19px;letter-spacing:-.01em}
 dialog p{color:#a9b8d1;font-size:13px;line-height:1.7}
 .dialog-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
 .dialog-top button{width:32px;height:32px;padding:0;display:grid;place-items:center;border-radius:50%}
+.dialog-top .ico{width:14px;height:14px}
 .overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .overview-tile{text-align:left;min-height:92px;display:flex;gap:13px;align-items:flex-start;padding:15px;border-radius:14px;background:#ffffff05;border-color:#ffffff0e}
 .overview-tile:hover{background:#ffffff0b;transform:none}
@@ -297,7 +298,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .s-top{position:absolute;top:34px;left:56px;z-index:8;opacity:.58}
 .s-logo{height:20px;width:auto;display:block}
 .s-num{position:absolute;top:36px;right:56px;z-index:8;font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--muted);opacity:.6}
-.scene-1 .s-top,.scene-12 .s-top,.scene-1 .s-num,.scene-12 .s-num{display:none}
+#slide-1 .s-top,#slide-12 .s-top,#slide-1 .s-num,#slide-12 .s-num{display:none}
 
 /* Revelação */
 .slide.active .rv{animation:reveal .92s var(--ease) backwards;animation-delay:calc(.14s + var(--d,0)*82ms)}
@@ -613,6 +614,131 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .s11-mark img{width:100%;filter:drop-shadow(0 40px 100px #4b5cff66);translate:calc(var(--mx,0)*18px) calc(var(--my,0)*12px);transition:translate .4s ease-out}
 .s11-ring{position:absolute;right:60px;top:60px;width:380px;height:380px;border:1px solid #ffffff10;border-radius:50%;animation:spin 60s linear infinite}
 
+/* Estúdio: edição de ordem, textos e publicação no GitHub Pages. */
+.app-header #edit-btn{display:inline-flex;align-items:center;gap:6px}
+.app-header .tools #edit-btn[aria-pressed=true]{background:linear-gradient(100deg,#3b5bff,#8b5cf6);border-color:#a78bfa80;color:#fff;box-shadow:0 6px 20px #7c3aed33}
+
+/* Painel lateral */
+.studio{
+  position:fixed;top:52px;right:0;bottom:68px;width:344px;z-index:45;
+  display:flex;flex-direction:column;min-height:0;
+  background:linear-gradient(180deg,#0a1324fa,#060c18fa);
+  border-left:1px solid #ffffff14;
+  box-shadow:-30px 0 80px #0007;
+  transform:translateX(102%);visibility:hidden;pointer-events:none;
+  transition:transform .45s var(--ease),visibility .45s;
+  backdrop-filter:blur(18px);
+}
+body.studio-open .studio{transform:none;visibility:visible;pointer-events:auto}
+body.studio-open .workspace{right:344px}
+body.peeking .studio{transform:translateX(102%);visibility:hidden;pointer-events:none}
+body.peeking .workspace{right:0}
+.studio-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:17px 18px 10px}
+.studio-kicker{margin:0 0 4px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#c084fc}
+.studio-top h2{margin:0;font-size:16px;letter-spacing:-.01em}
+.studio-top-actions{display:flex;align-items:center;gap:3px;flex:none}
+.studio-icon-btn{width:28px;height:28px;padding:0;display:grid;place-items:center;border-radius:50%;font-size:12px;flex:none;color:#a9b8d1}
+.studio-icon-btn .ico{width:13px;height:13px}
+.studio-scroll{flex:1;min-height:0;overflow:auto;padding:0 18px 14px;scrollbar-width:thin;scrollbar-color:#ffffff1f transparent;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 16px),transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 16px),transparent 100%)}
+.studio-scroll::-webkit-scrollbar{width:6px}
+.studio-scroll::-webkit-scrollbar-thumb{background:#ffffff1a;border-radius:999px}
+.studio-hint{margin:8px 0 0;font-size:10px;line-height:1.55;color:#7c8cad}
+.studio-hint b{color:#c4d1e7;font-weight:700}
+.studio-sec{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 -18px 8px;padding:14px 18px 7px;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#7c8cad;background:linear-gradient(180deg,#0a1324fa 68%,#0a132400)}
+.studio-sec em{font-style:normal;letter-spacing:.05em;color:#57657f;font-weight:600;text-transform:none;font-size:9px}
+
+.studio-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.studio-item{display:grid;grid-template-columns:14px 20px 1fr auto;align-items:center;gap:7px;padding:6px 7px;border-radius:10px;border:1px solid transparent;background:#ffffff04;transition:background-color .2s,border-color .2s}
+.studio-item:hover{background:#ffffff0a}
+.studio-item.is-current{border-color:#c084fc40;background:linear-gradient(100deg,#3b5bff14,#c084fc10)}
+.studio-item.dragging{opacity:.4}
+.studio-grip{color:#4f5d78;cursor:grab;display:grid;place-items:center}
+.studio-grip:active{cursor:grabbing}
+.studio-grip .ico{width:12px;height:12px}
+.studio-num{font-size:9px;font-weight:700;color:#7c8cad;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.studio-item.is-current .studio-num{color:#c084fc}
+.studio-title{all:unset;cursor:pointer;font-size:11.5px;line-height:1.35;color:#cdd9ef;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;border-radius:4px}
+.studio-title:hover{color:#fff}
+.studio-title:focus-visible{outline:2px solid #9db0ff;outline-offset:2px}
+.studio-acts{display:flex;gap:1px;opacity:.45;transition:opacity .2s}
+.studio-item:hover .studio-acts,.studio-item.is-current .studio-acts,.studio-acts:focus-within{opacity:1}
+.studio-move{width:21px;height:21px;padding:0;display:grid;place-items:center;border:0;border-radius:6px;background:transparent;color:#93a4c4}
+.studio-move:hover{background:#ffffff14;color:#fff;transform:none}
+.studio-move .ico{width:11px;height:11px}
+
+.studio-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:12px 18px 2px;border-top:1px solid #ffffff0e}
+.studio-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border-radius:10px;font-size:10.5px}
+.studio-actions .ico{width:13px;height:13px}
+.studio-actions .wide{grid-column:1/-1}
+#publish-btn{background:linear-gradient(100deg,#3b5bff,#8b5cf6);border-color:#a78bfa66;color:#fff;font-weight:700;padding:10px}
+#publish-btn:hover{filter:brightness(1.1)}
+#publish-btn.attention{animation:publishPulse 2.6s var(--ease-soft) infinite}
+@keyframes publishPulse{0%,100%{box-shadow:0 0 0 1px #c084fc33,0 8px 24px #7c3aed1f}50%{box-shadow:0 0 0 1px #c084fc88,0 10px 34px #7c3aed55}}
+.studio-status{display:flex;flex-direction:column;gap:2px;margin:0;padding:11px 18px 15px;font-size:9.5px;line-height:1.5;color:#7c8cad}
+.studio-status b{display:flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.01em;color:#dbe5f6}
+.studio-status b::before{content:'';width:6px;height:6px;border-radius:50%;background:#57657f;flex:none}
+.studio-status[data-state=dirty] b::before{background:#c084fc;box-shadow:0 0 10px #c084fc}
+.studio-status[data-state=published] b::before{background:#34d399;box-shadow:0 0 10px #34d39988}
+.studio-status[data-state=busy] b::before{background:#8ea2ff;animation:statusPulse 1.1s ease-in-out infinite}
+.studio-status[data-state=error] b{color:#fca5a5}
+.studio-status[data-state=error] b::before{background:#f87171}
+@keyframes statusPulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* Modo edição no palco */
+.edit-badge{position:absolute;top:14px;left:20px;z-index:26;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#e9dcff;background:#190f38e0;border:1px solid #c084fc4d;box-shadow:0 10px 30px #0007;opacity:0;transform:translateY(-6px);transition:opacity .3s var(--ease-soft),transform .3s var(--ease-soft);pointer-events:none;cursor:pointer}
+body.editing .edit-badge{pointer-events:auto}
+body.peeking .edit-badge{opacity:0;transform:translateY(-6px);pointer-events:none}
+#studio-return{background:#c084fc1f!important;border-color:#c084fc55!important;color:#e9dcff!important}
+.edit-badge:hover{background:#2a1a55e0;border-color:#c084fc99;transform:none;color:#fff}
+.edit-badge .ico{width:12px;height:12px;color:#c084fc}
+body.editing .edit-badge{opacity:1;transform:none}
+body.editing .slide [contenteditable=true]{outline:1px dashed #c084fc4d;outline-offset:3px;border-radius:3px;cursor:text;transition:outline-color .18s,background-color .18s}
+body.editing .slide [contenteditable=true]:hover{outline-color:#c084fc99;background-color:#c084fc0d}
+body.editing .slide.active [contenteditable=true]:focus{outline:2px solid #c084fc;background-color:#c084fc14}
+body.editing .slide [contenteditable=true]:empty::after{content:'Escreva…';color:#8c9bb8}
+body.editing .slide.light [contenteditable=true]{outline-color:#7c3aed4d}
+body.editing .slide.light [contenteditable=true]:hover{outline-color:#7c3aed99;background-color:#7c3aed0a}
+body.editing .slide.light [contenteditable=true]:focus{outline-color:#7c3aed;background-color:#7c3aed10}
+body.editing #stage{cursor:text}
+
+/* Publicação */
+#publish-dialog{width:min(560px,calc(100% - 28px))}
+.publish-note{margin:0 0 14px;font-size:11px;line-height:1.6;color:#8c9bb8}
+.publish-note b{color:#dbe5f6;font-weight:700}
+.publish-note a{color:#c084fc;text-decoration:none;border-bottom:1px solid #c084fc55}
+.field{display:flex;flex-direction:column;gap:5px;margin:0 0 11px;min-width:0}
+.field label{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#7c8cad}
+.field input{border-radius:10px;padding:9px 12px;font-size:12px;background:#ffffff06;color:#e6eefc;border-color:#ffffff14}
+.field input:focus{border-color:#c084fc66}
+.field-row{display:grid;grid-template-columns:1.6fr 1fr;gap:8px}
+.publish-status{min-height:16px;margin:2px 0 0;font-size:10.5px;line-height:1.5;color:#8c9bb8}
+.publish-status[data-state=error]{color:#fca5a5}
+.publish-status[data-state=ok]{color:#6ee7b7}
+.publish-actions{display:flex;align-items:center;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.publish-actions .primary{background:linear-gradient(100deg,#3b5bff,#8b5cf6);border-color:#a78bfa66;color:#fff;font-weight:700}
+.publish-actions .primary:hover{filter:brightness(1.1)}
+.link-btn{all:unset;cursor:pointer;font-size:10px;color:#8c9bb8;text-decoration:underline;text-decoration-color:#ffffff33;text-underline-offset:3px;padding:2px 0}
+.link-btn:hover{color:#c084fc}
+.publish-actions .link-btn{margin-right:auto}
+
+@media(max-width:980px){
+  body.studio-open .workspace{right:0}
+  .studio{top:46px;bottom:0;width:min(360px,94vw)}
+  .edit-badge{left:12px;top:10px}
+}
+@media(max-width:620px){
+  .studio{top:46px;bottom:0;width:100%;border-left:0}
+  .studio-top{padding-top:15px}
+  .studio-actions{padding-bottom:4px}
+}
+
+@media print{
+  .studio,.edit-badge{display:none!important}
+  body.editing .slide [contenteditable=true]{outline:0!important;background:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -647,10 +773,23 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
   <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.6-6 9.5-6 9.5 6 9.5 6-3.6 6-9.5 6S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></symbol>
+  <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.2"/><circle cx="15" cy="6" r="1.2"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><circle cx="9" cy="18" r="1.2"/><circle cx="15" cy="18" r="1.2"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h9a4 4 0 0 0 .8-7.9A6 6 0 0 0 5.4 9.2 4.4 4.4 0 0 0 7 18Z"/><path d="M12 16v-5"/><path d="m9.5 13 2.5-2.5L14.5 13"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5Z"/><path d="M8 4v6h7V4"/><path d="M8 20v-5h8v5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10"/><path d="m7 11 5 5 5-5"/><path d="M5 19h14"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="m7 13 5-5 5 5"/><path d="M5 5h14"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10h-3"/><path d="m8 5-4 4 4 4"/></symbol>
 </svg>
   <header class="app-header" aria-label="Ferramentas da apresentação">
     <div class="app-brand"><strong>ScaleX Hub</strong><span>Apresentação para investidores</span></div>
     <div class="tools">
+      <button id="studio-return" title="Voltar ao estúdio" hidden>Estúdio</button>
+      <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
       <button id="fullscreen-btn" title="Tela cheia (F)">Tela cheia</button>
@@ -1053,6 +1192,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
         <div class="merge-flash"></div>
       </div>
     </div>
+    <button type="button" id="edit-badge" class="edit-badge" title="Abrir o estúdio"><svg class="ico" aria-hidden="true"><use href="#i-edit"></use></svg>Modo edição</button>
   </main>
 
   <footer class="app-footer" aria-label="Navegação entre slides">
@@ -1063,11 +1203,55 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
     <div id="progress" class="progress" aria-hidden="true"></div>
   </footer>
 
-  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os 12 slides</h2><button data-close aria-label="Fechar">✕</button></div><div id="overview-grid" class="overview-grid"></div></dialog>
-  <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar">✕</button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar">✕</button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>Imprimir / PDF</dt><dd>Gera os 12 slides, um por página, em proporção 16:9. Ative os gráficos de fundo nas opções do navegador.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd></dl></dialog>
+  <aside id="studio" class="studio" aria-label="Estúdio de edição" aria-hidden="true">
+    <header class="studio-top">
+      <div><p class="studio-kicker">Estúdio</p><h2>Editar apresentação</h2></div>
+      <div class="studio-top-actions">
+        <button id="studio-peek" class="studio-icon-btn" title="Ver o slide inteiro" aria-label="Ver o slide inteiro" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-eye"></use></svg></button>
+        <button id="settings-btn" class="studio-icon-btn" title="Configuração de publicação" aria-label="Configuração de publicação"><svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg></button>
+        <button id="studio-close" class="studio-icon-btn" title="Sair da edição" aria-label="Sair da edição"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+    </header>
+    <div class="studio-scroll">
+      <p class="studio-hint"><b>Textos:</b> clique em qualquer texto do slide e escreva. A edição mantém os destaques visuais.</p>
+      <div class="studio-sec"><span>Ordem dos slides</span><em>arraste ou use ↑ ↓</em></div>
+      <ol id="studio-list" class="studio-list"></ol>
+      <p class="studio-hint">A numeração acompanha a nova ordem. Tudo fica salvo neste navegador até você publicar no site.</p>
+    </div>
+    <div class="studio-actions">
+      <button id="publish-btn" class="wide" type="button"><svg class="ico" aria-hidden="true"><use href="#i-cloud"></use></svg>Publicar no site</button>
+      <button id="save-draft" type="button"><svg class="ico" aria-hidden="true"><use href="#i-save"></use></svg>Salvar rascunho</button>
+      <button id="download-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg>Baixar JSON</button>
+      <button id="import-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-upload"></use></svg>Importar</button>
+      <button id="reset-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-undo"></use></svg>Restaurar original</button>
+      <input id="import-file" type="file" accept="application/json,.json" hidden>
+    </div>
+    <p id="studio-status" class="studio-status" data-state="original" role="status"></p>
+  </aside>
+
+  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os 12 slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
+  <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>Imprimir / PDF</dt><dd>Gera os 12 slides, um por página, em proporção 16:9. Ative os gráficos de fundo nas opções do navegador.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt>E · Editar</dt><dd>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages.</dd></dl></dialog>
+  <dialog id="publish-dialog" aria-labelledby="publish-title">
+    <div class="dialog-top"><h2 id="publish-title">Publicar no GitHub Pages</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+    <p class="publish-note">A ordem e os textos são gravados em <b>content.json</b> no repositório. O GitHub Pages republica o link em cerca de um minuto. O token fica salvo apenas neste navegador e nunca é enviado para outro lugar.</p>
+    <div class="field"><label for="pub-repo">Repositório</label><input id="pub-repo" placeholder="usuario/repositorio" autocomplete="off" spellcheck="false"></div>
+    <div class="field-row">
+      <div class="field"><label for="pub-branch">Branch</label><input id="pub-branch" placeholder="main" autocomplete="off" spellcheck="false"></div>
+      <div class="field"><label for="pub-path">Arquivo</label><input id="pub-path" placeholder="content.json" autocomplete="off" spellcheck="false"></div>
+    </div>
+    <div class="field"><label for="pub-token">Token do GitHub</label><input id="pub-token" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false"></div>
+    <p class="publish-note">Crie um token <b>fine-grained</b> em <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens</a>, dê acesso apenas a este repositório e marque <b>Contents: Read and write</b>. <button type="button" id="forget-token" class="link-btn">Esquecer token salvo</button></p>
+    <p id="publish-status" class="publish-status" role="status"></p>
+    <div class="publish-actions">
+      <button type="button" id="discard-draft" class="link-btn">Descartar rascunho local</button>
+      <button type="button" data-close>Cancelar</button>
+      <button type="button" id="publish-confirm" class="primary">Publicar agora</button>
+    </div>
+  </dialog>
   <div id="toast" role="status" hidden></div>
 
+  <script id="embedded-content" type="application/json">{"version":1,"updatedAt":null,"order":["slide-1","slide-2","slide-3","slide-4","slide-5","slide-6","slide-7","slide-8","slide-9","slide-10","slide-11","slide-12"],"text":{}}</script>
   <script id="presentation-runtime">
 /* Navegação e apresentação locais. Sem bibliotecas, rede ou serviço externo. */
 (function presentationRuntime(){
@@ -1077,6 +1261,10 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
   let slides=$$('.slide'), current=0, scale=1, toastTimer, touchStart=null, countToken=0;
   let transitioning=false, sweepTimer=null, mergeTimers=[], impactTimers=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Conteúdo publicado: ordem dos slides e textos, em content.json. */
+  let content={version:1,order:[],text:{}}, publishedContent={version:1,order:[],text:{}}, originals={}, stale=0;
+  let readyResolve; const ready=new Promise(resolve=>{readyResolve=resolve;});
 
   function fit(){
     const r=workspace.getBoundingClientRect(), pad=innerWidth<600?8:26;
@@ -1128,6 +1316,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
     document.body.dataset.slide=String(current+1);
     fit();
     countUp(slides[current]);
+    document.dispatchEvent(new CustomEvent('scalex:slide',{detail:{index:current,id:slides[current]?slides[current].id:null}}));
   }
 
   function playSweep(dir){
@@ -1216,8 +1405,9 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
     const target=Math.max(0,Math.min(slides.length-1,Number(i)||0));
     if(transitioning)return;
     if(target===current){applySlide(target,writeHash);return;}
-    if(!reduced.matches&&current===0&&target===1){coverTransition(target,writeHash);return;}
-    if(!reduced.matches&&current===3&&target===4){mergeTransition(target,writeHash);return;}
+    const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
+    if(!reduced.matches&&from==='slide-1'&&to==='slide-2'){coverTransition(target,writeHash);return;}
+    if(!reduced.matches&&from==='slide-4'&&to==='slide-5'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
     playSweep(stage.dataset.dir);
     applySlide(target,writeHash);
@@ -1262,7 +1452,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
   $$('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target.closest('[data-close]'))d.close();});});
 
   document.addEventListener('keydown',e=>{
-    if(e.target.matches('input,textarea,select'))return;
+    if(e.target.matches('input,textarea,select,[contenteditable="true"]')||e.target.closest('[contenteditable="true"]'))return;
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(current+1);}
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(current-1);}
     else if(e.key==='Home'){e.preventDefault();go(0);}
@@ -1293,7 +1483,533 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
   },{passive:true});
 
   addEventListener('hashchange',()=>{const match=location.hash.match(/^#slide-(\d+)$/);if(match)go(Number(match[1])-1,false);});
-  buildNavigation();const initial=location.hash.match(/^#slide-(\d+)$/);go(initial?Number(initial[1])-1:0,false);fit();
+  /* ---- Edição: ordem e textos ---- */
+  const BLOCK_TAGS='div,p,ul,ol,li,header,footer,section,article,figure,figcaption,table,blockquote,main,nav,h1,h2,h3,h4,h5,h6';
+  const TEXT_TAGS='h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,small,span,div,b,strong,em,label';
+  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten';
+
+  function editableOf(slide){
+    const canvas=slide.querySelector('.slide-canvas');
+    if(!canvas)return [];
+    const found=[];
+    canvas.querySelectorAll(TEXT_TAGS).forEach(el=>{
+      if(el.closest(SKIP_EDIT))return;
+      if(![...el.childNodes].some(node=>node.nodeType===3&&node.textContent.trim()))return;
+      if(el.querySelector(BLOCK_TAGS))return;
+      found.push(el);
+    });
+    return found.filter(el=>!found.some(other=>other!==el&&other.contains(el)));
+  }
+  function snapshotOriginals(){
+    $$('.slide').forEach(slide=>{
+      originals[slide.id]=editableOf(slide).map(el=>({html:el.innerHTML,text:el.textContent.replace(/\s+/g,' ').trim()}));
+    });
+  }
+  function applyOrderToDOM(order){
+    const ids=Array.isArray(order)?order:[];
+    const byId=new Map($$('.slide').map(slide=>[slide.id,slide]));
+    const next=[];
+    ids.forEach(id=>{const slide=byId.get(id);if(slide&&!next.includes(slide)){next.push(slide);byId.delete(id);}});
+    byId.forEach(slide=>next.push(slide));
+    const anchor=$('#sweep');
+    next.forEach(slide=>stage.insertBefore(slide,anchor));
+    slides=next;
+  }
+  function renumber(){
+    slides.filter(slide=>slide.querySelector('.s-num')).forEach((slide,index)=>{
+      const node=slide.querySelector('.s-num');
+      node.textContent=String(index+1).padStart(2,'0');
+    });
+  }
+  function applyTextToDOM(map){
+    stale=0;
+    Object.keys(map||{}).forEach(id=>{
+      const slide=document.getElementById(id);
+      if(!slide)return;
+      Object.keys(map[id]||{}).forEach(key=>{
+        const index=Number(String(key).replace(/^e/,''));
+        const el=editableOf(slide)[index], original=(originals[id]||[])[index], item=map[id][key];
+        const value=typeof item==='string'?item:(item&&typeof item.v==='string'?item.v:null);
+        if(!el||!value)return;
+        const marker=item&&item.o;
+        if(marker&&original&&!original.text.startsWith(marker)){stale++;return;}
+        el.innerHTML=value;
+      });
+    });
+  }
+  function cancelTransition(){
+    mergeTimers.forEach(clearTimeout);impactTimers.forEach(clearTimeout);
+    mergeTimers=[];impactTimers=[];
+    const merge=$('#merge-layer');
+    if(merge){
+      merge.classList.remove('open','close','core-on');
+      merge.querySelectorAll('.merge-chip').forEach(chip=>{chip.getAnimations().forEach(animation=>animation.cancel());chip.style.transform='';chip.style.opacity='';});
+    }
+    const impact=$('#impact-layer');
+    if(impact){
+      impact.classList.remove('open','close');
+      const mark=impact.querySelector('.impact-mark');
+      if(mark){mark.getAnimations().forEach(animation=>animation.cancel());mark.style.transform='';}
+    }
+    transitioning=false;
+  }
+  function setOrder(order){
+    cancelTransition();
+    applyOrderToDOM(order);
+    renumber();
+    buildNavigation();
+    applySlide(current,false);
+  }
+  function readDraft(){try{const raw=localStorage.getItem('scalex.content.draft');return raw?JSON.parse(raw):null;}catch(_){return null;}}
+  function embeddedContent(){try{const node=document.getElementById('embedded-content');return node?JSON.parse(node.textContent):null;}catch(_){return null;}}
+  async function loadContent(){
+    let remote=null;
+    if(location.protocol!=='file:'){
+      try{
+        const response=await fetch('content.json?v='+Date.now(),{cache:'no-store'});
+        if(response.ok){const data=await response.json();if(data&&typeof data==='object')remote=data;}
+      }catch(_){}
+    }
+    const embedded=embeddedContent();
+    const published=remote||embedded||{version:1,order:[],text:{}};
+    const draft=readDraft();
+    if(draft&&typeof draft==='object')return {data:draft,published,source:'draft'};
+    return {data:published,published,source:remote?'remote':'embedded'};
+  }
+  function start(){
+    buildNavigation();
+    const initial=location.hash.match(/^#slide-(\d+)$/);
+    go(initial?Number(initial[1])-1:0,false);
+    fit();
+  }
+
+  window.ScalexDeck={
+    slides:()=>slides,
+    current:()=>current,
+    go,
+    applySlide,
+    setOrder,
+    applyText:applyTextToDOM,
+    editableOf,
+    originals:()=>originals,
+    content:()=>content,
+    published:()=>publishedContent,
+    stale:()=>stale,
+    whenReady(callback){ready.then(callback);}
+  };
+
+  (async function boot(){
+    snapshotOriginals();
+    const loaded=await loadContent();
+    const data=loaded&&loaded.data?loaded.data:{};
+    publishedContent=loaded&&loaded.published?loaded.published:{version:1,order:[],text:{}};
+    content={
+      version:1,
+      source:loaded&&loaded.source?loaded.source:'embedded',
+      updatedAt:data&&data.updatedAt?data.updatedAt:null,
+      order:data&&Array.isArray(data.order)?data.order:[],
+      text:data&&data.text&&typeof data.text==='object'?data.text:{}
+    };
+    applyOrderToDOM(content.order);
+    renumber();
+    applyTextToDOM(content.text);
+    start();
+    readyResolve(content);
+  })();
+})();
+
+</script>
+  <script id="presentation-editor">
+/* Estúdio de edição: ordem dos slides, textos e publicação no GitHub Pages.
+   O conteúdo publicado vive em content.json, no próprio repositório. */
+(function studio(){
+  'use strict';
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const deck=window.ScalexDeck;
+  if(!deck)return;
+  const DRAFT_KEY='scalex.content.draft';
+  const SNAPSHOT_KEY='scalex.published.snapshot';
+  const SETTINGS_KEY='scalex.publish.settings';
+  const INLINE='B,STRONG,EM,I,BR,SMALL,SPAN,SUP,SUB,U';
+  const list=$('#studio-list'), status=$('#studio-status'), studio=$('#studio'), publishBtn=$('#publish-btn'), editBtn=$('#edit-btn');
+
+  let model={version:1,updatedAt:null,order:[],text:{}};
+  let originals={}, defaultOrder=[], editing=false, dirty=false, busy=false, dragId=null, draftTimer=null, toastTimer=null;
+
+  const clone=value=>JSON.parse(JSON.stringify(value||{}));
+  const readJSON=key=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch(_){return null;}};
+  function canonical(value){
+    if(Array.isArray(value))return value.map(canonical);
+    if(value&&typeof value==='object')return Object.keys(value).sort().reduce((acc,key)=>{acc[key]=canonical(value[key]);return acc;},{});
+    return value;
+  }
+  function sameContent(a,b){
+    if(!a||!b)return false;
+    const orderA=Array.isArray(a.order)?a.order:[],orderB=Array.isArray(b.order)?b.order:[];
+    if(orderA.length!==orderB.length||orderA.some((id,index)=>id!==orderB[index]))return false;
+    return JSON.stringify(canonical(a.text||{}))===JSON.stringify(canonical(b.text||{}));
+  }
+
+  function toast(message){
+    const node=$('#toast'); if(!node)return;
+    clearTimeout(toastTimer); node.textContent=message; node.hidden=false;
+    toastTimer=setTimeout(()=>{node.hidden=true;},3800);
+  }
+
+  /* ---------- Configuração de publicação ---------- */
+  function defaultSettings(){
+    const host=location.hostname, parts=location.pathname.split('/').filter(Boolean);
+    const repo=host.endsWith('.github.io')&&parts[0]?`${host.split('.')[0]}/${parts[0]}`:'victormdeiros/Studio_Pitch_Scalex_Hub';
+    return {repo,branch:'main',path:'content.json',token:''};
+  }
+  function readSettings(){
+    let saved=null; try{saved=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'null');}catch(_){saved=null;}
+    return Object.assign(defaultSettings(),saved&&typeof saved==='object'?saved:{});
+  }
+  function writeSettings(settings){try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));}catch(_){}}
+
+  /* ---------- Modelo e status ---------- */
+  function payload(){return {version:1,updatedAt:model.updatedAt||null,order:model.order.slice(),text:clone(model.text)};}
+  function saveDraft(silent){
+    try{
+      localStorage.setItem(DRAFT_KEY,JSON.stringify(payload()));
+      if(!silent)toast('Rascunho salvo neste navegador.');
+    }catch(_){if(!silent)toast('Não foi possível salvar o rascunho neste navegador.');}
+  }
+  function scheduleDraft(){clearTimeout(draftTimer);draftTimer=setTimeout(()=>saveDraft(true),700);}
+  function refreshDirty(){
+    const snapshot=readJSON(SNAPSHOT_KEY), published=deck.published?deck.published():{};
+    dirty=!sameContent(payload(),published)&&!sameContent(payload(),snapshot);
+    updateStatus();
+  }
+  function markDirty(){scheduleDraft();refreshDirty();}
+
+  function updateStatus(){
+    const stamp=model.updatedAt?new Date(model.updatedAt):null;
+    const when=stamp&&!Number.isNaN(stamp.getTime())
+      ?stamp.toLocaleString('pt-BR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})
+      :'';
+    if(busy){status.dataset.state='busy';status.innerHTML='<b>Publicando…</b><span>Enviando content.json para o repositório.</span>';}
+    else if(dirty){status.dataset.state='dirty';status.innerHTML='<b>Alterações não publicadas</b><span>Salvas neste navegador. Publique para atualizar o link.</span>';}
+    else if(model.updatedAt){status.dataset.state='published';status.innerHTML='<b>Publicado</b><span>Última publicação: '+when+'.</span>';}
+    else{status.dataset.state='original';status.innerHTML='<b>Versão original</b><span>Nenhuma alteração publicada.</span>';}
+    publishBtn.classList.toggle('attention',dirty&&!busy);
+  }
+
+  /* ---------- Modo edição ---------- */
+  function syncEditables(){
+    $$('.slide').forEach(slide=>{
+      deck.editableOf(slide).forEach(el=>{
+        if(editing){el.setAttribute('contenteditable','true');el.setAttribute('spellcheck','false');el.setAttribute('role','textbox');}
+        else{el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');el.removeAttribute('role');}
+      });
+    });
+  }
+  function openStudio(open){
+    document.body.classList.toggle('studio-open',!!open);
+    studio.setAttribute('aria-hidden',String(!open));
+    if(open){renderList();updateStatus();}
+  }
+  function setPeek(on){
+    if(on&&!editing)return;
+    document.body.classList.toggle('peeking',on);
+    const button=$('#studio-peek'), back=$('#studio-return');
+    if(button)button.setAttribute('aria-pressed',String(on));
+    if(back)back.hidden=!on;
+    if(on)closeDialogs();
+  }
+  function setEditing(on){
+    if(editing===on)return;
+    editing=on;
+    document.body.classList.toggle('editing',on);
+    editBtn.setAttribute('aria-pressed',String(on));
+    openStudio(on);
+    setPeek(false);
+    if(on)closeDialogs();
+    syncEditables();
+    if(on){
+      const row=list.querySelector('.is-current'); if(row)row.scrollIntoView({block:'nearest'});
+      toast('Modo edição: clique em um texto do slide para alterar.');
+    }
+  }
+  function editableNode(target){return target&&target.closest?target.closest('[contenteditable="true"]'):null;}
+  function closeDialogs(){$$('dialog[open]').forEach(dialog=>dialog.close());}
+
+  function sanitize(el){
+    [...el.querySelectorAll('*')].forEach(node=>{
+      if(!INLINE.split(',').includes(node.tagName)){node.replaceWith(...node.childNodes);return;}
+      [...node.attributes].forEach(attribute=>{
+        if(attribute.name==='class'&&/^[\w -]{1,80}$/.test(attribute.value))return;
+        node.removeAttribute(attribute.name);
+      });
+    });
+  }
+
+  function remember(el){
+    const slide=el.closest('.slide'); if(!slide)return;
+    const index=deck.editableOf(slide).indexOf(el); if(index<0)return;
+    const key='e'+index;
+    const original=(originals[slide.id]||[])[index];
+    const html=el.innerHTML;
+    const bucket=model.text[slide.id]||(model.text[slide.id]={});
+    if(original&&html===original.html)delete bucket[key];
+    else bucket[key]={v:html,o:original?original.text.slice(0,60):''};
+    if(!Object.keys(bucket).length)delete model.text[slide.id];
+    markDirty();
+  }
+
+  document.addEventListener('input',event=>{const el=editableNode(event.target);if(el)remember(el);});
+  document.addEventListener('focusout',event=>{
+    const el=editableNode(event.target);
+    if(!el)return;
+    sanitize(el);remember(el);
+  });
+  document.addEventListener('paste',event=>{
+    const el=editableNode(event.target); if(!el)return;
+    event.preventDefault();
+    const text=(event.clipboardData||window.clipboardData).getData('text/plain').replace(/\r/g,'');
+    document.execCommand('insertText',false,text);
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&editableNode(event.target)){event.preventDefault();event.target.blur();return;}
+    if(event.key!=='e'&&event.key!=='E')return;
+    if(event.metaKey||event.ctrlKey||event.altKey)return;
+    if(event.target.closest&&event.target.closest('input,textarea,select,[contenteditable="true"]'))return;
+    event.preventDefault();setEditing(!editing);
+  });
+
+  /* ---------- Lista de ordem ---------- */
+  function markCurrent(){
+    const slide=deck.slides()[deck.current()];
+    const id=slide?slide.id:null;
+    [...list.children].forEach(row=>row.classList.toggle('is-current',row.dataset.id===id));
+  }
+  function renderList(){
+    list.replaceChildren(...deck.slides().map((slide,index)=>{
+      const row=document.createElement('li');
+      row.className='studio-item';row.draggable=true;row.dataset.id=slide.id;
+
+      const grip=document.createElement('span');
+      grip.className='studio-grip';grip.setAttribute('aria-hidden','true');
+      grip.innerHTML='<svg class="ico"><use href="#i-grip"></use></svg>';
+
+      const num=document.createElement('span');
+      num.className='studio-num';num.textContent=String(index+1).padStart(2,'0');
+
+      const title=document.createElement('button');
+      title.type='button';title.className='studio-title';title.textContent=slide.dataset.title||slide.id;
+      title.title='Ir para este slide';
+      title.addEventListener('click',()=>{const target=deck.slides().indexOf(slide);if(target>=0)deck.go(target);});
+
+      const acts=document.createElement('span');
+      acts.className='studio-acts';
+      [['-1','up','Mover para cima'],['1','down','Mover para baixo']].forEach(([dir,icon,label])=>{
+        const button=document.createElement('button');
+        button.type='button';button.className='studio-move';button.dataset.dir=dir;
+        button.setAttribute('aria-label',label);button.title=label;
+        button.innerHTML=`<svg class="ico" aria-hidden="true"><use href="#i-${icon}"></use></svg>`;
+        acts.append(button);
+      });
+
+      row.append(grip,num,title,acts);
+      return row;
+    }));
+    markCurrent();
+  }
+  function commitOrder(ids){
+    const active=deck.slides()[deck.current()], activeId=active?active.id:null;
+    model.order=ids.slice();
+    deck.setOrder(ids);
+    if(activeId){const index=deck.slides().findIndex(slide=>slide.id===activeId);if(index>=0)deck.applySlide(index,false);}
+    renderList();markDirty();saveDraft(true);
+  }
+
+  list.addEventListener('click',event=>{
+    const button=event.target.closest('.studio-move'); if(!button)return;
+    const row=button.closest('.studio-item'), ids=deck.slides().map(slide=>slide.id);
+    const from=ids.indexOf(row.dataset.id), to=from+Number(button.dataset.dir);
+    if(from<0||to<0||to>=ids.length)return;
+    ids.splice(to,0,ids.splice(from,1)[0]);
+    commitOrder(ids);
+  });
+  list.addEventListener('dragstart',event=>{
+    const row=event.target.closest('.studio-item'); if(!row)return;
+    dragId=row.dataset.id;row.classList.add('dragging');
+    event.dataTransfer.effectAllowed='move';
+    try{event.dataTransfer.setData('text/plain',dragId);}catch(_){}
+  });
+  list.addEventListener('dragover',event=>{
+    if(!dragId)return;
+    event.preventDefault();
+    const row=event.target.closest('.studio-item'), dragged=list.querySelector('.dragging');
+    if(!row||!dragged||row===dragged)return;
+    const rect=row.getBoundingClientRect();
+    list.insertBefore(dragged,event.clientY>rect.top+rect.height/2?row.nextSibling:row);
+  });
+  list.addEventListener('drop',event=>{
+    if(!dragId)return;
+    event.preventDefault();
+    const ids=[...list.children].map(row=>row.dataset.id);
+    dragId=null;
+    commitOrder(ids);
+  });
+  list.addEventListener('dragend',()=>{
+    dragId=null;
+    const dragged=list.querySelector('.dragging'); if(dragged)dragged.classList.remove('dragging');
+  });
+
+  document.addEventListener('scalex:slide',markCurrent);
+
+  /* ---------- Aplicar conteúdo externo ---------- */
+  function restoreOriginals(){
+    Object.keys(originals).forEach(id=>{
+      const slide=document.getElementById(id); if(!slide)return;
+      originals[id].forEach((original,index)=>{
+        const el=deck.editableOf(slide)[index];
+        if(el)el.innerHTML=original.html;
+      });
+    });
+  }
+  function applyModel(next){
+    restoreOriginals();
+    const ids=Array.isArray(next.order)?next.order.filter(id=>typeof id==='string'):[];
+    deck.setOrder(ids.length?ids:defaultOrder.slice());
+    model={version:1,updatedAt:next.updatedAt||null,order:deck.slides().map(slide=>slide.id),text:clone(next.text||{})};
+    deck.applyText(model.text);
+    renderList();refreshDirty();saveDraft(true);
+  }
+
+  /* ---------- Publicação ---------- */
+  function toBase64(text){
+    const bytes=new TextEncoder().encode(text);let binary='';
+    for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode.apply(null,bytes.subarray(i,i+0x8000));
+    return btoa(binary);
+  }
+  async function ghError(response){
+    try{const data=await response.json();if(data&&data.message)return data.message;}catch(_){}
+    return 'HTTP '+response.status;
+  }
+  function openPublish(){
+    const settings=readSettings();
+    $('#pub-repo').value=settings.repo;
+    $('#pub-branch').value=settings.branch;
+    $('#pub-path').value=settings.path;
+    $('#pub-token').value=settings.token||'';
+    const target=$('#publish-status');
+    target.textContent='';target.dataset.state='';
+    const dialog=$('#publish-dialog');
+    if(!dialog.open)dialog.showModal();
+  }
+  async function publish(){
+    const settings=readSettings();
+    if(!settings.token){toast('Informe um token do GitHub para publicar.');openPublish();return;}
+    if(busy)return;
+    busy=true;updateStatus();
+    const label=publishBtn.textContent;
+    publishBtn.textContent='Publicando…';publishBtn.disabled=true;
+    try{
+      const data=payload();data.updatedAt=new Date().toISOString();
+      const json=JSON.stringify(data,null,2)+'\n';
+      const branch=settings.branch||'main';
+      const path=String(settings.path||'content.json').split('/').map(encodeURIComponent).join('/');
+      const base=`https://api.github.com/repos/${settings.repo}/contents/${path}`;
+      const headers={Authorization:'Bearer '+settings.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
+      let sha=null;
+      const head=await fetch(`${base}?ref=${encodeURIComponent(branch)}`,{headers,cache:'no-store'});
+      if(head.ok){const meta=await head.json();sha=meta&&meta.sha?meta.sha:null;}
+      else if(head.status!==404)throw new Error(await ghError(head));
+      const body={message:'Atualiza o conteúdo da apresentação',content:toBase64(json),branch};
+      if(sha)body.sha=sha;
+      const response=await fetch(base,{method:'PUT',headers:Object.assign({},headers,{'Content-Type':'application/json'}),body:JSON.stringify(body)});
+      if(!response.ok)throw new Error(await ghError(response));
+      await response.json();
+      model.updatedAt=data.updatedAt;dirty=false;
+      try{localStorage.setItem(SNAPSHOT_KEY,JSON.stringify(payload()));}catch(_){}
+      saveDraft(true);updateStatus();renderList();
+      const dialog=$('#publish-dialog'); if(dialog.open)dialog.close();
+      toast('Publicado. O GitHub Pages atualiza em cerca de 1 minuto.');
+    }catch(error){
+      const message=error&&error.message?error.message:'falha de rede';
+      openPublish();
+      const target=$('#publish-status');
+      target.dataset.state='error';target.textContent='Não foi possível publicar: '+message;
+      toast('Falha ao publicar.');
+    }finally{
+      busy=false;publishBtn.disabled=false;publishBtn.textContent=label;updateStatus();
+    }
+  }
+
+  /* ---------- Ações ---------- */
+  editBtn.addEventListener('click',()=>setEditing(!editing));
+  $('#studio-close').addEventListener('click',()=>setEditing(false));
+  $('#studio-peek').addEventListener('click',()=>setPeek(!document.body.classList.contains('peeking')));
+  $('#studio-return').addEventListener('click',()=>setPeek(false));
+  $('#edit-badge').addEventListener('click',()=>setPeek(false));
+  $('#save-draft').addEventListener('click',()=>saveDraft());
+  publishBtn.addEventListener('click',publish);
+  $('#settings-btn').addEventListener('click',openPublish);
+  $('#publish-confirm').addEventListener('click',()=>{
+    const settings={
+      repo:$('#pub-repo').value.trim(),
+      branch:$('#pub-branch').value.trim()||'main',
+      path:$('#pub-path').value.trim()||'content.json',
+      token:$('#pub-token').value.trim()
+    };
+    const target=$('#publish-status');
+    if(!/^[\w.-]+\/[\w.-]+$/.test(settings.repo)){target.dataset.state='error';target.textContent='Informe o repositório no formato usuario/repositorio.';return;}
+    if(!settings.token){target.dataset.state='error';target.textContent='Informe o token do GitHub.';return;}
+    writeSettings(settings);
+    $('#publish-dialog').close();
+    publish();
+  });
+  $('#forget-token').addEventListener('click',()=>{
+    const settings=readSettings();settings.token='';writeSettings(settings);
+    $('#pub-token').value='';
+    toast('Token esquecido neste navegador.');
+  });
+  $('#discard-draft').addEventListener('click',()=>{
+    if(!confirm('Descartar o rascunho local e recarregar o conteúdo publicado?'))return;
+    localStorage.removeItem(DRAFT_KEY);
+    location.reload();
+  });
+  $('#download-btn').addEventListener('click',()=>{
+    const data=payload();data.updatedAt=data.updatedAt||new Date().toISOString();
+    const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'});
+    const url=URL.createObjectURL(blob), link=document.createElement('a');
+    link.href=url;link.download='scalex-conteudo.json';document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+    toast('Conteúdo exportado em JSON.');
+  });
+  $('#import-btn').addEventListener('click',()=>$('#import-file').click());
+  $('#import-file').addEventListener('change',async event=>{
+    const file=event.target.files&&event.target.files[0]; if(!file)return;
+    try{
+      const data=JSON.parse(await file.text());
+      if(!data||typeof data!=='object'||(!Array.isArray(data.order)&&!data.text))throw new Error('formato');
+      applyModel(data);
+      toast('Conteúdo importado. Publique para atualizar o site.');
+    }catch(_){toast('Arquivo inválido. Use um JSON exportado pelo Estúdio.');}
+    event.target.value='';
+  });
+  $('#reset-btn').addEventListener('click',()=>{
+    if(!confirm('Restaurar todos os textos e a ordem original? As alterações não publicadas serão descartadas.'))return;
+    restoreOriginals();
+    model.text={};model.updatedAt=null;
+    commitOrder(defaultOrder.slice());
+    saveDraft(true);
+    toast('Conteúdo original restaurado.');
+  });
+
+  /* ---------- Inicialização ---------- */
+  deck.whenReady(content=>{
+    originals=deck.originals();
+    defaultOrder=deck.slides().map(slide=>slide.id);
+    model={version:1,updatedAt:content.updatedAt||null,order:defaultOrder.slice(),text:clone(content.text||{})};
+    if(Array.isArray(content.order)&&content.order.length)model.order=content.order.slice();
+    renderList();refreshDirty();syncEditables();
+    if(/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar'))setEditing(true);
+    if(deck.stale&&deck.stale())toast(deck.stale()+' texto(s) salvo(s) não correspondem mais ao slide atual.');
+  });
 })();
 
 </script>

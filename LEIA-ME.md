@@ -1,6 +1,6 @@
 # ScaleX Pitch Studio
 
-Apresentação em código, com 12 slides, identidade ScaleX Hub e direção de arte autoral. Sem editor embutido: a composição é feita nos módulos de conteúdo e no sistema visual.
+Apresentação em código, com 12 slides, identidade ScaleX Hub e direção de arte autoral. Reordene slides e edite os textos direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza o link.
 
 ## Abrir agora
 
@@ -17,6 +17,26 @@ Use as setas para navegar, **F** para tela cheia e **G** para ver todos os slide
 - **Imprimir** gera um slide por página em 16:9, para PDF.
 
 A interface desaparece durante a apresentação em tela cheia e reaparece ao passar o mouse na parte inferior. Os slides têm entrada em camadas, contadores, gráficos animados, redes desenhadas e parallax sutil de acordo com o movimento do mouse. A abertura usa uma transição de impacto: o símbolo da capa atravessa a tela, cresce e abre o resumo no slide 2. As demais trocas usam foco, profundidade e uma varredura de luz; na passagem da fragmentação para a concorrência, as dez ferramentas convergem para o símbolo ScaleX antes de a leitura competitiva aparecer.
+
+## Editar no navegador
+
+Abra a apresentação e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
+
+- **Textos** — clique em qualquer texto do slide e escreva. Os destaques visuais (gradientes, negritos, ícones) são preservados.
+- **Ordem** — arraste as linhas da lista ou use **↑ ↓**. A numeração dos slides e o índice acompanham a nova ordem.
+- **Ver o slide inteiro** — o ícone de olho recolhe o estúdio sem sair da edição. O botão **Estúdio** traz o painel de volta.
+- **Rascunho** — cada alteração fica salva automaticamente neste navegador (`localStorage`), mesmo sem internet. Nada é publicado até você clicar em **Publicar no site**.
+- **Restaurar original** — volta todos os textos e a ordem ao conteúdo de `content.json`/código.
+
+O botão **Publicar no site** grava `content.json` na raiz do repositório pelo GitHub. O GitHub Pages republica o link em cerca de um minuto. É necessário um **token fine-grained** do GitHub, criado em [github.com/settings/personal-access-tokens](https://github.com/settings/personal-access-tokens/new), com acesso somente a este repositório e permissão **Contents: Read and write**. O token fica salvo apenas neste navegador e nunca é gravado no repositório.
+
+Sem token, use **Baixar JSON** para exportar as alterações e **Importar** para carregá-las em outro navegador. O arquivo pode ser commitado como `content.json` manualmente.
+
+### Como o conteúdo é aplicado
+
+- O site busca `content.json` ao abrir. Se o arquivo não existir (ou o arquivo for aberto direto por `file://`), usa o conteúdo embutido no `index.html` na hora do `npm run build`.
+- A ordem guarda os ids dos slides (`slide-1` a `slide-12`). Os textos são guardados por slide, no elemento editável, junto da marcação original — se um slide mudar no código, o texto antigo não é aplicado no lugar errado.
+- Para conferir o site publicado, abra [victormdeiros.github.io/Studio_Pitch_Scalex_Hub](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/). Se o navegador tiver um rascunho local, use **Descartar rascunho local** (na configuração de publicação) para ver a versão publicada.
 
 ## Editar o projeto como código
 
@@ -41,17 +61,20 @@ Abra **http://localhost:4173**. Depois de alterar o código, execute `npm run bu
 | Arquivo | O que controla |
 | --- | --- |
 | `src/slides/01-capa.mjs` até `12-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
-| `src/deck.mjs` | Sequência dos slides |
+| `src/deck.mjs` | Sequência padrão dos slides (usada quando `content.json` não define outra) |
 | `src/styles/theme.css` | Direção de arte: paleta, tipografia, atmosfera, layouts e animações de cada cena |
 | `src/styles/base.css` | Palco, chrome, navegação, leitura, responsividade e impressão |
-| `src/runtime.js` | Navegação, transições, contadores, parallax, leitura e atalhos |
+| `src/runtime.js` | Navegação, transições, contadores, parallax, leitura, atalhos e aplicação do `content.json` |
+| `src/editor.js` | Estúdio: edição de textos, reordenação, rascunho e publicação no GitHub |
+| `src/styles/editor.css` | Painel do estúdio, realce dos textos editáveis e diálogo de publicação |
+| `content.json` | Ordem dos slides e textos publicados pelo estúdio |
 | `src/shell.html` | Estrutura da interface |
 | `src/components.mjs` | Utilitário compartilhado de escape de HTML |
 | `assets/brand/` | Os quatro arquivos originais do kit de identidade visual |
 | `assets/fonts/` | Manrope regular e negrito extraídas da apresentação original |
 | `original-reference.json` | Conteúdo original para conferência, incluindo todas as notas |
 
-Cada módulo exporta `id`, `title`, `theme`, `number`, `notes` e `html`. O palco é **1280 × 720** e se ajusta à tela. As classes de animação são `rv` (entrada em camadas) e `rv-soft` (fade); a ordem é controlada por `style="--d:n"`.
+Cada módulo exporta `id`, `title`, `theme`, `number`, `notes` e `html`. O palco é **1280 × 720** e se ajusta à tela. As classes de animação são `rv` (entrada em camadas) e `rv-soft` (fade); a ordem é controlada por `style="--d:n"`. Ao regerar o `index.html`, o conteúdo publicado é embutido como reserva para uso offline; o site continua lendo o `content.json` mais recente.
 
 Exemplo de ajuste em um slide:
 

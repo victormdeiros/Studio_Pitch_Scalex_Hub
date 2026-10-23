@@ -70,7 +70,7 @@
 .s-top{position:absolute;top:34px;left:56px;z-index:8;opacity:.58}
 .s-logo{height:20px;width:auto;display:block}
 .s-num{position:absolute;top:36px;right:56px;z-index:8;font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--muted);opacity:.6}
-.scene-1 .s-top,.scene-12 .s-top,.scene-1 .s-num,.scene-12 .s-num{display:none}
+#slide-1 .s-top,#slide-12 .s-top,#slide-1 .s-num,#slide-12 .s-num{display:none}
 
 /* Revelação */
 .slide.active .rv{animation:reveal .92s var(--ease) backwards;animation-delay:calc(.14s + var(--d,0)*82ms)}

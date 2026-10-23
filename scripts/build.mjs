@@ -7,8 +7,10 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 async function files(dir){let out=[];for(const e of await fs.readdir(dir,{withFileTypes:true})){const p=path.join(dir,e.name);out.push(...(e.isDirectory()?await files(p):[p]));}return out;}
 export async function build(){
  const read=p=>fs.readFile(path.join(root,p),'utf8');
- let [shell,base,theme,js]=await Promise.all(['src/shell.html','src/styles/base.css','src/styles/theme.css','src/runtime.js'].map(read));
- let css=base+'\n'+theme;
+ let [shell,base,theme,editor,js,editorJs]=await Promise.all(['src/shell.html','src/styles/base.css','src/styles/theme.css','src/styles/editor.css','src/runtime.js','src/editor.js'].map(read));
+ let css=base+'\n'+theme+'\n'+editor;
+ let content={version:1,order:[],text:{}};
+ try{content=JSON.parse(await read('content.json'));}catch(_){}
  const sections=slides.map((s,i)=>{
   const logo=s.theme==='light'?'assets/image4.png':'assets/image1.png';
   const chrome=`<header class="s-top"><img class="s-logo" src="${logo}" alt="ScaleX Hub"></header>${s.number?`<span class="s-num" aria-hidden="true">${esc(s.number)}</span>`:''}`;
@@ -22,7 +24,9 @@ export async function build(){
   if(!type)continue;const data=`data:${type};base64,${(await fs.readFile(file)).toString('base64')}`;
   html=html.replaceAll(relative,data);css=css.replaceAll(relative,data);
  }
- html=html.replace('<!-- STYLES -->',()=>'<style id="presentation-styles">\n'+css+'\n</style>').replace('<!-- SCRIPT -->',()=>'<script id="presentation-runtime">\n'+js+'\n</script>');
+ html=html.replace('<!-- STYLES -->',()=>'<style id="presentation-styles">\n'+css+'\n</style>');
+ html=html.replace('<!-- CONTENT -->',()=>'<script id="embedded-content" type="application/json">'+JSON.stringify(content).replace(/</g,'\\u003c')+'</script>');
+ html=html.replace('<!-- SCRIPT -->',()=>'<script id="presentation-runtime">\n'+js+'\n</script>').replace('<!-- EDITOR -->',()=>'<script id="presentation-editor">\n'+editorJs+'\n</script>');
  await fs.writeFile(path.join(root,'index.html'),html);return html;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){await build();console.log(`Pronto: index.html • ${slides.length} slides • fontes e imagens incorporadas.`);}
