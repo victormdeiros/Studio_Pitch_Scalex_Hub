@@ -1,0 +1,1343 @@
+[
+  {
+    "slide": 1,
+    "title": "Todo mundo está vendendo IA. Nós vendemos a infraestrutura de quem vende.",
+    "background": "#091C44",
+    "objectCount": 4,
+    "texts": [
+      {
+        "id": "s01-o25",
+        "name": "text-1",
+        "paragraphs": [
+          "Todo mundo está vendendo IA. Nós vendemos a infraestrutura de quem vende."
+        ]
+      },
+      {
+        "id": "s01-o4",
+        "name": "text-3",
+        "paragraphs": [
+          "Enquanto as agências disputam clientes, a ScaleX Hub fatura com todas elas."
+        ]
+      },
+      {
+        "id": "s01-o24",
+        "name": "text-22",
+        "paragraphs": [
+          "Apresentação para investidores  |  2026"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 40 segundos",
+      "ROTEIRO FALADO",
+      "Nós começamos como a Hub ConverseIA, uma agência de automação com IA para escritórios de advocacia, clínicas e imobiliárias. Vivemos na prática a dificuldade de implantar, operar e escalar soluções para vários clientes. Construímos uma infraestrutura centralizada, replicável, fácil de implantar e vender para resolver nossa própria operação e validamos o MVP com clientes reais. Depois percebemos que outras agências tinham a mesma dor. Dessa transformação nasceu a ScaleX Hub, fornecedora da tecnologia que permite a outras empresas escalarem suas operações. Antes de construir a solução, nós éramos o cliente.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 2,
+    "title": "De agência a plataforma",
+    "background": "#091C44",
+    "objectCount": 24,
+    "texts": [
+      {
+        "id": "s02-o25",
+        "name": "text-1",
+        "paragraphs": [
+          "De agência a plataforma"
+        ]
+      },
+      {
+        "id": "s02-o3",
+        "name": "text-2",
+        "paragraphs": [
+          "01"
+        ]
+      },
+      {
+        "id": "s02-o4",
+        "name": "text-3",
+        "paragraphs": [
+          "Infraestrutura criada na operação e validada com clientes reais"
+        ]
+      },
+      {
+        "id": "s02-o14",
+        "name": "text-13",
+        "paragraphs": [
+          "Hub ConverseIA"
+        ]
+      },
+      {
+        "id": "s02-o15",
+        "name": "text-14",
+        "paragraphs": [
+          "Agência de IA",
+          "Advocacia, clínicas",
+          "e imobiliárias"
+        ]
+      },
+      {
+        "id": "s02-o16",
+        "name": "text-15",
+        "paragraphs": [
+          "Vivemos a dor"
+        ]
+      },
+      {
+        "id": "s02-o17",
+        "name": "text-16",
+        "paragraphs": [
+          "Implantar, operar",
+          "e escalar para",
+          "vários clientes"
+        ]
+      },
+      {
+        "id": "s02-o18",
+        "name": "text-17",
+        "paragraphs": [
+          "Construímos",
+          "para nós"
+        ]
+      },
+      {
+        "id": "s02-o19",
+        "name": "text-18",
+        "paragraphs": [
+          "Infraestrutura",
+          "centralizada",
+          "e replicável"
+        ]
+      },
+      {
+        "id": "s02-o20",
+        "name": "text-19",
+        "paragraphs": [
+          "Validamos",
+          "o MVP"
+        ]
+      },
+      {
+        "id": "s02-o21",
+        "name": "text-20",
+        "paragraphs": [
+          "Nossa própria",
+          "base de clientes",
+          "finais"
+        ]
+      },
+      {
+        "id": "s02-o23",
+        "name": "text-21",
+        "paragraphs": [
+          "Tecnologia para",
+          "quem opera IA",
+          "para terceiros"
+        ]
+      },
+      {
+        "id": "s02-o24",
+        "name": "text-22",
+        "paragraphs": [
+          "“Antes de construir a solução, nós éramos o cliente.”"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 40 segundos",
+      "ROTEIRO FALADO",
+      "Nós começamos como a Hub ConverseIA, uma agência de automação com IA para escritórios de advocacia, clínicas e imobiliárias. Vivemos na prática a dificuldade de implantar, operar e escalar soluções para vários clientes. Construímos uma infraestrutura centralizada, replicável, fácil de implantar e vender para resolver nossa própria operação e validamos o MVP com clientes reais. Depois percebemos que outras agências tinham a mesma dor. Dessa transformação nasceu a ScaleX Hub, fornecedora da tecnologia que permite a outras empresas escalarem suas operações. Antes de construir a solução, nós éramos o cliente.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 3,
+    "title": "Revender IA pode exigir até 10 ferramentas desconectadas",
+    "background": "#F5F8FF",
+    "objectCount": 47,
+    "texts": [
+      {
+        "id": "s03-o48",
+        "name": "text-23",
+        "paragraphs": [
+          "Revender IA pode exigir até 10 ferramentas desconectadas"
+        ]
+      },
+      {
+        "id": "s03-o3",
+        "name": "text-24",
+        "paragraphs": [
+          "02"
+        ]
+      },
+      {
+        "id": "s03-o5",
+        "name": "text-26",
+        "paragraphs": [
+          "REVENDEDOR"
+        ]
+      },
+      {
+        "id": "s03-o8",
+        "name": "text-28",
+        "paragraphs": [
+          "CRM"
+        ]
+      },
+      {
+        "id": "s03-o9",
+        "name": "text-29",
+        "paragraphs": [
+          "Pipedrive, HubSpot, RD CRM"
+        ]
+      },
+      {
+        "id": "s03-o12",
+        "name": "text-31",
+        "paragraphs": [
+          "Automação"
+        ]
+      },
+      {
+        "id": "s03-o13",
+        "name": "text-32",
+        "paragraphs": [
+          "Make, Zapier, Pluga"
+        ]
+      },
+      {
+        "id": "s03-o16",
+        "name": "text-34",
+        "paragraphs": [
+          "Dashboards"
+        ]
+      },
+      {
+        "id": "s03-o17",
+        "name": "text-35",
+        "paragraphs": [
+          "Power BI, Databox"
+        ]
+      },
+      {
+        "id": "s03-o20",
+        "name": "text-37",
+        "paragraphs": [
+          "Prospecção"
+        ]
+      },
+      {
+        "id": "s03-o21",
+        "name": "text-38",
+        "paragraphs": [
+          "Apollo, Lusha, Hunter"
+        ]
+      },
+      {
+        "id": "s03-o24",
+        "name": "text-40",
+        "paragraphs": [
+          "Páginas"
+        ]
+      },
+      {
+        "id": "s03-o25",
+        "name": "text-41",
+        "paragraphs": [
+          "Wix, WordPress, Webflow"
+        ]
+      },
+      {
+        "id": "s03-o28",
+        "name": "text-43",
+        "paragraphs": [
+          "Omnichannel"
+        ]
+      },
+      {
+        "id": "s03-o29",
+        "name": "text-44",
+        "paragraphs": [
+          "Zenvia, Kommo, ChatGuru"
+        ]
+      },
+      {
+        "id": "s03-o32",
+        "name": "text-46",
+        "paragraphs": [
+          "Gestão de grupos"
+        ]
+      },
+      {
+        "id": "s03-o33",
+        "name": "text-47",
+        "paragraphs": [
+          "Periskope, TimelinesAI"
+        ]
+      },
+      {
+        "id": "s03-o36",
+        "name": "text-49",
+        "paragraphs": [
+          "Agentes de IA"
+        ]
+      },
+      {
+        "id": "s03-o37",
+        "name": "text-50",
+        "paragraphs": [
+          "Chatbase, Blip"
+        ]
+      },
+      {
+        "id": "s03-o40",
+        "name": "text-52",
+        "paragraphs": [
+          "Assistentes de IA"
+        ]
+      },
+      {
+        "id": "s03-o41",
+        "name": "text-53",
+        "paragraphs": [
+          "Adapta.org, Abacus"
+        ]
+      },
+      {
+        "id": "s03-o44",
+        "name": "text-55",
+        "paragraphs": [
+          "Tracking"
+        ]
+      },
+      {
+        "id": "s03-o45",
+        "name": "text-56",
+        "paragraphs": [
+          "timtim.app"
+        ]
+      },
+      {
+        "id": "s03-o46",
+        "name": "text-57",
+        "paragraphs": [
+          "Mais clientes = mais integrações = mais complexidade"
+        ]
+      },
+      {
+        "id": "s03-o47",
+        "name": "text-58",
+        "paragraphs": [
+          "Custo alto   ·   Implantação e manutenção difíceis   ·   Replicação lenta"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 25 segundos",
+      "ROTEIRO FALADO",
+      "Para entregar uma operação completa, a agência precisa contratar, integrar e gerenciar ferramentas de CRM, automação, dashboards, prospecção, páginas, omnichannel, grupos, agentes e assistentes de IA e tracking. Isso fragmenta a operação, aumenta o custo e dificulta implantação, manutenção e replicação. Quanto mais clientes a agência conquista, mais complexa fica essa estrutura.",
+      "APOIO PARA PERGUNTAS",
+      "Os nomes no diagrama são exemplos de ferramentas em cada categoria, fornecidos no pitch. Eles ilustram a fragmentação e não representam uma comparação técnica de equivalência integral entre produtos.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 4,
+    "title": "Uma plataforma no lugar de 10 ferramentas",
+    "background": "#091C44",
+    "objectCount": 19,
+    "texts": [
+      {
+        "id": "s04-o27",
+        "name": "text-59",
+        "paragraphs": [
+          "Uma plataforma no lugar de 10 ferramentas"
+        ]
+      },
+      {
+        "id": "s04-o3",
+        "name": "text-60",
+        "paragraphs": [
+          "03"
+        ]
+      },
+      {
+        "id": "s04-o200",
+        "name": "Subtitle",
+        "paragraphs": [
+          "Contexto comercial, atendimento e IA no mesmo ambiente, gerenciados de um só lugar"
+        ]
+      },
+      {
+        "id": "s04-o202",
+        "name": "Platform header",
+        "paragraphs": [
+          "PLATAFORMA SCALEX HUB"
+        ]
+      },
+      {
+        "id": "s04-o203",
+        "name": "Module 1",
+        "paragraphs": [
+          "CRM 360",
+          "Automação, dashboards e prospecção"
+        ]
+      },
+      {
+        "id": "s04-o204",
+        "name": "Module 2",
+        "paragraphs": [
+          "Páginas",
+          "Sites e landing pages"
+        ]
+      },
+      {
+        "id": "s04-o205",
+        "name": "Module 3",
+        "paragraphs": [
+          "Chat Omnichannel",
+          "Atendimento e grupos"
+        ]
+      },
+      {
+        "id": "s04-o206",
+        "name": "Module 4",
+        "paragraphs": [
+          "Agentes de IA",
+          "Conversação humanizada, sem fluxos por nós"
+        ]
+      },
+      {
+        "id": "s04-o207",
+        "name": "Module 5",
+        "paragraphs": [
+          "Assistentes de IA",
+          "Conhecimento e operação"
+        ]
+      },
+      {
+        "id": "s04-o208",
+        "name": "Module 6",
+        "paragraphs": [
+          "Tracking ponta a ponta",
+          "Leads e conversões"
+        ]
+      },
+      {
+        "id": "s04-o209",
+        "name": "Extras header",
+        "paragraphs": [
+          "O que nenhuma dessas ferramentas entrega junto"
+        ]
+      },
+      {
+        "id": "s04-o210",
+        "name": "Extra card 1",
+        "paragraphs": [
+          "Studio de IA",
+          "Gera documentos, briefing e peças com o layout da empresa, no mesmo contexto da operação."
+        ]
+      },
+      {
+        "id": "s04-o212",
+        "name": "Extra card 2",
+        "paragraphs": [
+          "White-label até o domínio",
+          "Marca, cores e endereço próprios. Recurso do gerenciador de workspaces: o cliente final vê a sua operação."
+        ]
+      },
+      {
+        "id": "s04-o214",
+        "name": "Extra card 3",
+        "paragraphs": [
+          "Um workspace por cliente",
+          "Módulos, permissões e cobrança isolados por cliente, dentro da mesma estrutura do gerenciador."
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 40 segundos",
+      "ROTEIRO FALADO",
+      "A ScaleX reúne essa estrutura em uma única plataforma: CRM 360 com automação, dashboards e prospecção, páginas, chat omnichannel e grupos, agentes de IA, assistentes e tracking ponta a ponta. Ela foi construída para quem precisa revender, operar e escalar tecnologia para terceiros. Entregamos white-label até o domínio, um workspace independente por cliente e gestão centralizada. Os agentes funcionam sem fluxos complexos de nós. Assim, contexto comercial, atendimento e IA ficam no mesmo ambiente, com uma infraestrutura que a agência consegue replicar.",
+      "APOIO PARA PERGUNTAS",
+      "CRM 360: CRM, automação, dashboards e prospecção no mesmo contexto comercial.",
+      "Páginas: sites, landing pages e páginas comerciais.",
+      "Omnichannel: histórico, filas, continuidade entre canais e gestão de grupos.",
+      "Agente de IA humanizado: contexto longo, áudio, follow-up, fallback e handoff, sem construção de fluxos complexos por nós.",
+      "Assistentes de IA: produtividade interna, conhecimento, documentos e operação.",
+      "Tracking de IA ponta a ponta: leads inbound, listas outbound e acompanhamento no contexto da oportunidade comercial.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 5,
+    "title": "Um cliente ScaleX distribui para muitos",
+    "background": "#F5F8FF",
+    "objectCount": 37,
+    "texts": [
+      {
+        "id": "s05-o34",
+        "name": "text-84",
+        "paragraphs": [
+          "Um cliente ScaleX distribui para muitos"
+        ]
+      },
+      {
+        "id": "s05-o3",
+        "name": "text-85",
+        "paragraphs": [
+          "04"
+        ]
+      },
+      {
+        "id": "s05-o10",
+        "name": "text-89",
+        "paragraphs": [
+          "ICP PRINCIPAL"
+        ]
+      },
+      {
+        "id": "s05-o11",
+        "name": "text-90",
+        "paragraphs": [
+          "Agências de",
+          "Automação e IA"
+        ]
+      },
+      {
+        "id": "s05-o12",
+        "name": "text-91",
+        "paragraphs": [
+          "ICP SECUNDÁRIO"
+        ]
+      },
+      {
+        "id": "s05-o13",
+        "name": "text-92",
+        "paragraphs": [
+          "Consultorias comerciais",
+          "e agências de marketing"
+        ]
+      },
+      {
+        "id": "s05-o15",
+        "name": "text-94",
+        "paragraphs": [
+          "Cliente final 1"
+        ]
+      },
+      {
+        "id": "s05-o18",
+        "name": "text-96",
+        "paragraphs": [
+          "Cliente final 2"
+        ]
+      },
+      {
+        "id": "s05-o21",
+        "name": "text-98",
+        "paragraphs": [
+          "Cliente final 3"
+        ]
+      },
+      {
+        "id": "s05-o24",
+        "name": "text-100",
+        "paragraphs": [
+          "Cliente final 1"
+        ]
+      },
+      {
+        "id": "s05-o27",
+        "name": "text-102",
+        "paragraphs": [
+          "Cliente final 2"
+        ]
+      },
+      {
+        "id": "s05-o30",
+        "name": "text-104",
+        "paragraphs": [
+          "Cliente final 3"
+        ]
+      },
+      {
+        "id": "s05-o32",
+        "name": "text-105",
+        "paragraphs": [
+          "Cada cliente final tem seu workspace independente"
+        ]
+      },
+      {
+        "id": "s05-o200",
+        "name": "Card 201",
+        "paragraphs": [
+          "A ScaleX Hub cria",
+          "Novos agentes, integrações e recursos de IA a cada ciclo"
+        ]
+      },
+      {
+        "id": "s05-o202",
+        "name": "Card 203",
+        "paragraphs": [
+          "A agência vende",
+          "Foca em trazer clientes finais, a partir da carteira que já tem"
+        ]
+      },
+      {
+        "id": "s05-o204",
+        "name": "Card 205",
+        "paragraphs": [
+          "Revendedor mais dependente",
+          "Cada cliente final na plataforma torna mais caro sair da ScaleX Hub"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 30 segundos",
+      "ROTEIRO FALADO",
+      "Nosso cliente principal é a agência de automação e IA que já atende múltiplas empresas e precisa de infraestrutura white-label e replicável. O segundo perfil são consultorias comerciais e agências de marketing que têm carteira e querem incorporar CRM, automação e IA à oferta. Nós conquistamos quem já possui clientes. Cada cliente ScaleX pode trazer várias empresas finais, cada uma com seu workspace independente.",
+      "APOIO PARA PERGUNTAS",
+      "ICP principal: escalar a operação sem reconstruí-la a cada contrato.",
+      "ICP secundário: ampliar recorrência, ticket e participação na operação do cliente por meio de CRM, automação e IA. O desenho ilustra o modelo de distribuição, sem pressupor quantidade real de clientes por agência.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 6,
+    "title": "Mercado e posicionamento",
+    "background": "#F5F8FF",
+    "objectCount": 25,
+    "texts": [
+      {
+        "id": "s06-o26",
+        "name": "text-107",
+        "paragraphs": [
+          "Mercado e posicionamento"
+        ]
+      },
+      {
+        "id": "s06-o3",
+        "name": "text-108",
+        "paragraphs": [
+          "05"
+        ]
+      },
+      {
+        "id": "s06-o4",
+        "name": "text-109",
+        "paragraphs": [
+          "REFERÊNCIAS COMPETITIVAS"
+        ]
+      },
+      {
+        "id": "s06-o5",
+        "name": "text-110",
+        "paragraphs": [
+          "GoHighLevel"
+        ]
+      },
+      {
+        "id": "s06-o6",
+        "name": "text-111",
+        "paragraphs": [
+          "Referência internacional para agências"
+        ]
+      },
+      {
+        "id": "s06-o7",
+        "name": "text-112",
+        "paragraphs": [
+          "Zaia"
+        ]
+      },
+      {
+        "id": "s06-o8",
+        "name": "text-113",
+        "paragraphs": [
+          "Concentração em IA e agentes"
+        ]
+      },
+      {
+        "id": "s06-o9",
+        "name": "text-114",
+        "paragraphs": [
+          "Toolzz"
+        ]
+      },
+      {
+        "id": "s06-o10",
+        "name": "text-115",
+        "paragraphs": [
+          "Composição de tecnologias"
+        ]
+      },
+      {
+        "id": "s06-o11",
+        "name": "text-116",
+        "paragraphs": [
+          "ScaleX Hub"
+        ]
+      },
+      {
+        "id": "s06-o12",
+        "name": "text-117",
+        "paragraphs": [
+          "CRM, operação, omnichannel e IA",
+          "com white-label e multiworkspace"
+        ]
+      },
+      {
+        "id": "s06-o14",
+        "name": "text-119",
+        "paragraphs": [
+          "TAM"
+        ]
+      },
+      {
+        "id": "s06-o15",
+        "name": "text-120",
+        "paragraphs": [
+          "+100 mil"
+        ]
+      },
+      {
+        "id": "s06-o16",
+        "name": "text-121",
+        "paragraphs": [
+          "Empresas no mercado potencial"
+        ]
+      },
+      {
+        "id": "s06-o18",
+        "name": "text-123",
+        "paragraphs": [
+          "SAM"
+        ]
+      },
+      {
+        "id": "s06-o19",
+        "name": "text-124",
+        "paragraphs": [
+          "~26 mil"
+        ]
+      },
+      {
+        "id": "s06-o20",
+        "name": "text-125",
+        "paragraphs": [
+          "Empresas atendíveis hoje"
+        ]
+      },
+      {
+        "id": "s06-o22",
+        "name": "text-127",
+        "paragraphs": [
+          "SOM"
+        ]
+      },
+      {
+        "id": "s06-o23",
+        "name": "text-128",
+        "paragraphs": [
+          "~2.080"
+        ]
+      },
+      {
+        "id": "s06-o24",
+        "name": "text-129",
+        "paragraphs": [
+          "Clientes ScaleX, 0,5%–1% do SAM"
+        ]
+      },
+      {
+        "id": "s06-o25",
+        "name": "text-130",
+        "paragraphs": [
+          "Estimativas internas para o Brasil. SOM inicial de médio prazo."
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 40 segundos",
+      "ROTEIRO FALADO",
+      "O mercado se divide entre CRM, automação, omnichannel e plataformas de agentes de IA. A ScaleX atua na convergência dessas categorias para quem distribui tecnologia a múltiplos clientes. O GoHighLevel é referência internacional para agências. Zaia concentra sua oferta em IA e agentes, e Toolzz apresenta outra composição tecnológica. Estimamos no Brasil um TAM superior a cem mil empresas e um SAM inicial de vinte e seis mil. A captura inicial de 0,5% a 1% corresponde a 130 a 260 clientes ScaleX, cada um podendo representar várias operações finais.",
+      "APOIO PARA PERGUNTAS",
+      "TAM, SAM e SOM são estimativas internas fornecidas no pitch, sem estudo externo ou memória de cálculo detalhada anexados.",
+      "Cálculo do SOM: 26.000 × 0,5% = 130; 26.000 × 1% = 260. A referência anterior de 1.314 clientes não corresponde ao intervalo de 0,5%–1%.",
+      "Mapeamento competitivo fornecido: GoHighLevel (EUA), plataforma própria e forte modelo para agências. Zaia (Brasil), tecnologia própria com maior concentração em IA/agentes. Toolzz, composição de tecnologias e ferramentas/open source. O slide não atribui ausência de funcionalidades a nenhum concorrente.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 7,
+    "title": "Crescimento projetado em bootstrap",
+    "background": "#F5F8FF",
+    "objectCount": 18,
+    "texts": [
+      {
+        "id": "s07-o21",
+        "name": "text-131",
+        "paragraphs": [
+          "Crescimento projetado em bootstrap"
+        ]
+      },
+      {
+        "id": "s07-o3",
+        "name": "text-132",
+        "paragraphs": [
+          "06"
+        ]
+      },
+      {
+        "id": "s07-o4",
+        "name": "text-133",
+        "paragraphs": [
+          "Faturamento trimestral (R$ mil)"
+        ]
+      },
+      {
+        "id": "s07-o6",
+        "name": "text-134",
+        "paragraphs": [
+          "R$ 1,32 milhão"
+        ]
+      },
+      {
+        "id": "s07-o7",
+        "name": "text-135",
+        "paragraphs": [
+          "Faturamento em 2027"
+        ]
+      },
+      {
+        "id": "s07-o8",
+        "name": "text-136",
+        "paragraphs": [
+          "R$ 380,3 mil"
+        ]
+      },
+      {
+        "id": "s07-o9",
+        "name": "text-137",
+        "paragraphs": [
+          "Resultado líquido acumulado",
+          "de Q4/26 a Q4/27"
+        ]
+      },
+      {
+        "id": "s07-o10",
+        "name": "text-138",
+        "paragraphs": [
+          "35%"
+        ]
+      },
+      {
+        "id": "s07-o11",
+        "name": "text-139",
+        "paragraphs": [
+          "Margem líquida",
+          "no Q4/27"
+        ]
+      },
+      {
+        "id": "s07-o12",
+        "name": "text-140",
+        "paragraphs": [
+          "Ticket médio (R$)"
+        ]
+      },
+      {
+        "id": "s07-o13",
+        "name": "text-141",
+        "paragraphs": [
+          "1.050 a 3.450"
+        ]
+      },
+      {
+        "id": "s07-o14",
+        "name": "text-142",
+        "paragraphs": [
+          "Churn"
+        ]
+      },
+      {
+        "id": "s07-o15",
+        "name": "text-143",
+        "paragraphs": [
+          "15% a 3,75%"
+        ]
+      },
+      {
+        "id": "s07-o16",
+        "name": "text-144",
+        "paragraphs": [
+          "Margem bruta"
+        ]
+      },
+      {
+        "id": "s07-o17",
+        "name": "text-145",
+        "paragraphs": [
+          "62,5% a 82,5%"
+        ]
+      },
+      {
+        "id": "s07-o20",
+        "name": "text-148",
+        "paragraphs": [
+          "Q4/26 a Q4/27. Projeções. Resultado líquido = faturamento × margem líquida."
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 40 segundos",
+      "ROTEIRO FALADO",
+      "Nosso cenário bootstrap projeta crescimento mesmo sem aporte. O ticket médio passa de R$ 1.050 no Q4 de 2026 para R$ 3.450 no Q4 de 2027. O faturamento trimestral chega a R$ 620 mil, e a soma de 2027 é R$ 1,32 milhão. A margem líquida prevista no último trimestre é de 35%. Aplicando as margens informadas ao faturamento, o resultado líquido acumulado de Q4 de 2026 a Q4 de 2027 é R$ 380,3 mil. A projeção também prevê redução do churn e melhora de margem bruta e EBITDA.",
+      "APOIO PARA PERGUNTAS",
+      "Período / Ticket médio / Faturamento / Churn / Margem bruta / EBITDA / Margem líquida / Resultado líquido recalculado",
+      "Q4/26 / R$ 1.050 / R$ 20.840 / 15,0% / 62,5% / −5,0% / −7,0% / −R$ 1.458,80",
+      "Q1/27 / R$ 1.800 / R$ 85.569 / 9,75% / 70,0% / 16,0% / 11,5% / R$ 9.840,44",
+      "Q2/27 / R$ 2.450 / R$ 202.534 / 6,0% / 73,5% / 28,5% / 21,5% / R$ 43.544,81",
+      "Q3/27 / R$ 3.100 / R$ 412.108 / 3,75% / 76,5% / 35,0% / 27,0% / R$ 111.269,16",
+      "Q4/27 / R$ 3.450 / R$ 620.163 / 3,75% / 82,5% / 43,0% / 35,0% / R$ 217.057,05",
+      "Faturamento de 2027: R$ 1.320.374.",
+      "Resultado líquido acumulado Q4/26 a Q4/27: R$ 380.252,66, calculado antes do arredondamento de cada trimestre.",
+      "Resultado líquido de 2027: R$ 381.711,46.",
+      "Os resultados líquidos foram recalculados a pedido do apresentador, usando as margens da projeção fornecida. O acumulado anterior de R$ 532,6 mil não corresponde a essas margens e foi substituído. Churn e margens são indicadores do cenário informado, sem definição adicional de periodicidade do churn. Todos os números são projeções, não resultados realizados.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 8,
+    "title": "O aporte antecipa o plano",
+    "background": "#091C44",
+    "objectCount": 23,
+    "texts": [
+      {
+        "id": "s08-o24",
+        "name": "text-149",
+        "paragraphs": [
+          "O aporte antecipa o plano"
+        ]
+      },
+      {
+        "id": "s08-o3",
+        "name": "text-150",
+        "paragraphs": [
+          "07"
+        ]
+      },
+      {
+        "id": "s08-o4",
+        "name": "text-151",
+        "paragraphs": [
+          "6–9"
+        ]
+      },
+      {
+        "id": "s08-o5",
+        "name": "text-152",
+        "paragraphs": [
+          "meses"
+        ]
+      },
+      {
+        "id": "s08-o6",
+        "name": "text-153",
+        "paragraphs": [
+          "de antecipação estimada"
+        ]
+      },
+      {
+        "id": "s08-o7",
+        "name": "text-154",
+        "paragraphs": [
+          "Q4/26"
+        ]
+      },
+      {
+        "id": "s08-o8",
+        "name": "text-155",
+        "paragraphs": [
+          "Q1/27"
+        ]
+      },
+      {
+        "id": "s08-o9",
+        "name": "text-156",
+        "paragraphs": [
+          "Q2/27"
+        ]
+      },
+      {
+        "id": "s08-o10",
+        "name": "text-157",
+        "paragraphs": [
+          "Q3/27"
+        ]
+      },
+      {
+        "id": "s08-o11",
+        "name": "text-158",
+        "paragraphs": [
+          "Bootstrap"
+        ]
+      },
+      {
+        "id": "s08-o15",
+        "name": "text-162",
+        "paragraphs": [
+          "Founder full-time",
+          "Estrutura comercial"
+        ]
+      },
+      {
+        "id": "s08-o16",
+        "name": "text-163",
+        "paragraphs": [
+          "Enterprise",
+          "readiness"
+        ]
+      },
+      {
+        "id": "s08-o17",
+        "name": "text-164",
+        "paragraphs": [
+          "Com aporte"
+        ]
+      },
+      {
+        "id": "s08-o22",
+        "name": "text-169",
+        "paragraphs": [
+          "Founder full-time, comercial e enterprise readiness"
+        ]
+      },
+      {
+        "id": "s08-o23",
+        "name": "text-170",
+        "paragraphs": [
+          "Janela proposta: Q4/26 e Q1/27"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 25 segundos",
+      "ROTEIRO FALADO",
+      "O aporte comprime o tempo de execução do plano. Em bootstrap, a estrutura comercial mais relevante e minha dedicação integral ficam para Q2 de 2027. As adequações de enterprise readiness ficam para Q3. Com capital, a proposta é iniciar esses movimentos entre Q4 de 2026 e Q1 de 2027, antecipando a execução em aproximadamente seis a nove meses.",
+      "APOIO PARA PERGUNTAS",
+      "A antecipação de 6–9 meses é a estimativa de execução fornecida no pitch. As datas com aporte representam uma janela proposta, condicionada à rodada e à execução, e não compromissos já contratados.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 9,
+    "title": "Três frentes de investimento",
+    "background": "#F5F8FF",
+    "objectCount": 22,
+    "texts": [
+      {
+        "id": "s09-o23",
+        "name": "text-171",
+        "paragraphs": [
+          "Três frentes de investimento"
+        ]
+      },
+      {
+        "id": "s09-o3",
+        "name": "text-172",
+        "paragraphs": [
+          "08"
+        ]
+      },
+      {
+        "id": "s09-o5",
+        "name": "text-174",
+        "paragraphs": [
+          "Capital"
+        ]
+      },
+      {
+        "id": "s09-o12",
+        "name": "text-178",
+        "paragraphs": [
+          "01"
+        ]
+      },
+      {
+        "id": "s09-o13",
+        "name": "text-179",
+        "paragraphs": [
+          "Comercial"
+        ]
+      },
+      {
+        "id": "s09-o14",
+        "name": "text-180",
+        "paragraphs": [
+          "Equipe SDR e closers",
+          "Outbound e aquisição",
+          "Canais e parcerias"
+        ]
+      },
+      {
+        "id": "s09-o15",
+        "name": "text-181",
+        "paragraphs": [
+          "02"
+        ]
+      },
+      {
+        "id": "s09-o16",
+        "name": "text-182",
+        "paragraphs": [
+          "Enterprise readiness"
+        ]
+      },
+      {
+        "id": "s09-o17",
+        "name": "text-183",
+        "paragraphs": [
+          "Segurança e LGPD",
+          "Infraestrutura e disponibilidade",
+          "Observabilidade",
+          "Governança e governança de IA"
+        ]
+      },
+      {
+        "id": "s09-o18",
+        "name": "text-184",
+        "paragraphs": [
+          "03"
+        ]
+      },
+      {
+        "id": "s09-o19",
+        "name": "text-185",
+        "paragraphs": [
+          "Founder full-time"
+        ]
+      },
+      {
+        "id": "s09-o20",
+        "name": "text-186",
+        "paragraphs": [
+          "Hoje: part-time",
+          "Bootstrap: Q2/27",
+          "Com aporte: antecipação"
+        ]
+      },
+      {
+        "id": "s09-o21",
+        "name": "text-187",
+        "paragraphs": [
+          "Roadmap da diligência",
+          "técnica que César fez na pré-aceleração"
+        ]
+      },
+      {
+        "id": "s09-o22",
+        "name": "text-188",
+        "paragraphs": [
+          "Produto, estratégia",
+          "e execução comercial"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 30 segundos",
+      "ROTEIRO FALADO",
+      "O capital vai para três frentes. Primeiro, estrutura comercial com equipe dedicada, outbound, aquisição dos nossos perfis de cliente, canais e parcerias. Segundo, enterprise readiness: segurança, LGPD, infraestrutura, disponibilidade, observabilidade e governança, incluindo IA. O roadmap vem da diligência técnica independente e reduz barreiras para grandes contas. Terceiro, minha dedicação integral. Hoje estou part-time. Sem aporte, a transição está prevista para Q2 de 2027. A rodada antecipa esse foco em produto, estratégia e execução comercial.",
+      "APOIO PARA PERGUNTAS",
+      "A diligência técnica independente mencionada e seu roadmap fazem parte do conteúdo fornecido pelo fundador. Não foram definidos neste material valores de aporte, percentuais de alocação, instrumento ou participação oferecida.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 10,
+    "title": "Proposta de investimento",
+    "background": "#091C44",
+    "objectCount": 20,
+    "texts": [
+      {
+        "id": "s10-o21",
+        "name": "text-189",
+        "paragraphs": [
+          "Proposta de investimento"
+        ]
+      },
+      {
+        "id": "s10-o3",
+        "name": "text-190",
+        "paragraphs": [
+          "09"
+        ]
+      },
+      {
+        "id": "s10-o4",
+        "name": "text-191",
+        "paragraphs": [
+          "VALUATION INDICATIVO"
+        ]
+      },
+      {
+        "id": "s10-o5",
+        "name": "text-192",
+        "paragraphs": [
+          "R$ 2,88 mi"
+        ]
+      },
+      {
+        "id": "s10-o6",
+        "name": "text-193",
+        "paragraphs": [
+          "Metodologia financeira atual"
+        ]
+      },
+      {
+        "id": "s10-o7",
+        "name": "text-194",
+        "paragraphs": [
+          "Pre-money da rodada"
+        ]
+      },
+      {
+        "id": "s10-o8",
+        "name": "text-195",
+        "paragraphs": [
+          "Abaixo do indicativo"
+        ]
+      },
+      {
+        "id": "s10-o9",
+        "name": "text-196",
+        "paragraphs": [
+          "Entrada antes da aceleração comercial e tecnológica"
+        ]
+      },
+      {
+        "id": "s10-o10",
+        "name": "text-197",
+        "paragraphs": [
+          "Smart money esperado"
+        ]
+      },
+      {
+        "id": "s10-o11",
+        "name": "text-198",
+        "paragraphs": [
+          "Enterprise"
+        ]
+      },
+      {
+        "id": "s10-o12",
+        "name": "text-199",
+        "paragraphs": [
+          "Acesso e abertura de portas"
+        ]
+      },
+      {
+        "id": "s10-o13",
+        "name": "text-200",
+        "paragraphs": [
+          "SaaS B2B"
+        ]
+      },
+      {
+        "id": "s10-o14",
+        "name": "text-201",
+        "paragraphs": [
+          "Experiência em vendas complexas"
+        ]
+      },
+      {
+        "id": "s10-o15",
+        "name": "text-202",
+        "paragraphs": [
+          "Canais e parcerias"
+        ]
+      },
+      {
+        "id": "s10-o16",
+        "name": "text-203",
+        "paragraphs": [
+          "Distribuição e relações estratégicas"
+        ]
+      },
+      {
+        "id": "s10-o17",
+        "name": "text-204",
+        "paragraphs": [
+          "Máquina comercial"
+        ]
+      },
+      {
+        "id": "s10-o18",
+        "name": "text-205",
+        "paragraphs": [
+          "Estruturação e crescimento"
+        ]
+      },
+      {
+        "id": "s10-o19",
+        "name": "text-206",
+        "paragraphs": [
+          "Governança"
+        ]
+      },
+      {
+        "id": "s10-o20",
+        "name": "text-207",
+        "paragraphs": [
+          "Preparação para futuras rodadas"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 30 segundos",
+      "ROTEIRO FALADO",
+      "Nosso valuation indicativo, pela metodologia financeira atual, é de R$ 2,88 milhões. Para a rodada, propomos um pre-money abaixo desse valor, com entrada antes da aceleração comercial e tecnológica. Buscamos smart money com acesso ao enterprise, experiência em SaaS B2B e vendas complexas, canais, apoio à máquina comercial e governança. O investimento antecipa dedicação integral, escala comercial e maturidade tecnológica para avançar mais rápido no mercado enterprise.",
+      "APOIO PARA PERGUNTAS",
+      "O valuation de R$ 2,88 milhões é o indicativo fornecido pelo fundador. A memória de cálculo e as premissas da metodologia não foram anexadas a este material. A proposta de pre-money inferior ainda não especifica um valor negociado. O recalculo dos resultados líquidos não reestima o valuation.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  },
+  {
+    "slide": 11,
+    "title": "A infraestrutura das agências de IA vai ter dono. A questão é quem entra antes.",
+    "background": "#091C44",
+    "objectCount": 4,
+    "texts": [
+      {
+        "id": "s11-o25",
+        "name": "text-1",
+        "paragraphs": [
+          "A infraestrutura das agências de IA vai ter dono.",
+          "A questão é quem entra antes."
+        ]
+      },
+      {
+        "id": "s11-o4",
+        "name": "text-3",
+        "paragraphs": [
+          "Rodada aberta com pre-money abaixo do valuation indicativo de R$ 2,88 mi."
+        ]
+      },
+      {
+        "id": "s11-o24",
+        "name": "text-22",
+        "paragraphs": [
+          "Vamos juntos?"
+        ]
+      }
+    ],
+    "speakerNotes": [
+      "TEMPO ALVO: 40 segundos",
+      "ROTEIRO FALADO",
+      "Nós começamos como a Hub ConverseIA, uma agência de automação com IA para escritórios de advocacia, clínicas e imobiliárias. Vivemos na prática a dificuldade de implantar, operar e escalar soluções para vários clientes. Construímos uma infraestrutura centralizada, replicável, fácil de implantar e vender para resolver nossa própria operação e validamos o MVP com clientes reais. Depois percebemos que outras agências tinham a mesma dor. Dessa transformação nasceu a ScaleX Hub, fornecedora da tecnologia que permite a outras empresas escalarem suas operações. Antes de construir a solução, nós éramos o cliente.",
+      "Fonte: conteúdo e roteiro fornecidos na conversa “Informações para investidores”, 30/09/2026. https://chatgpt.com/c/6abd1706-583c-83e9-bc91-7f70a6104b7a"
+    ]
+  }
+]

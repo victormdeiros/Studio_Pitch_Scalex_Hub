@@ -1,0 +1,14 @@
+{
+  "name": "scalex-pitch-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pitch edit\u00e1vel ScaleX Hub. Projeto sem depend\u00eancias.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

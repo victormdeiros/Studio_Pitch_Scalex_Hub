@@ -1,0 +1,12 @@
+import slide1 from './slides/01-abertura.mjs';
+import slide2 from './slides/02-origem.mjs';
+import slide3 from './slides/03-fragmentacao.mjs';
+import slide4 from './slides/04-plataforma.mjs';
+import slide5 from './slides/05-distribuicao.mjs';
+import slide6 from './slides/06-mercado.mjs';
+import slide7 from './slides/07-projecoes.mjs';
+import slide8 from './slides/08-antecipacao.mjs';
+import slide9 from './slides/09-investimento.mjs';
+import slide10 from './slides/10-rodada.mjs';
+import slide11 from './slides/11-fechamento.mjs';
+export const slides=[slide1,slide2,slide3,slide4,slide5,slide6,slide7,slide8,slide9,slide10,slide11];

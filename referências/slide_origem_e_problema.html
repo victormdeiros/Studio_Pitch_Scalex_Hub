@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ScaleX Hub — Origem e Problema</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root {
+  --bg: #0B1020;
+  --card: #171F35;
+  --blue: #2B52FF;
+  --purple: #7023EC;
+  --muted: #B9C5DD;
+  --accent: #A2B2FF;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #050816;
+  color: white;
+  font-family: Inter, Arial, sans-serif;
+}
+.slide {
+  width: min(100%,1280px);
+  aspect-ratio: 16/9;
+  padding: 40px 54px 28px;
+  border: 1px solid #303D5D;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 95% 0%,
+      rgba(112,35,236,.18),transparent 45%),
+    var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.top, .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top {
+  color: #98AAFF;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+h1 {
+  font-size: clamp(30px,3.6vw,46px);
+  letter-spacing: -.055em;
+  line-height: 1.15;
+  margin: 25px 0 12px;
+}
+.gradient {
+  background: linear-gradient(100deg,#7FA4FF,#B79AFF);
+  background-clip: text;
+  color: transparent;
+}
+.intro {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 900px;
+  margin: 0 0 22px;
+}
+.problems {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid #29344F;
+  border-radius: 13px;
+  padding: 17px;
+}
+.card svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+  stroke-width: 1.8;
+}
+.card h2 {
+  margin: 13px 0 8px;
+  font-size: 15px;
+  letter-spacing: -.03em;
+}
+.card p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #B4BED2;
+}
+.featured {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 17px 21px;
+  margin-top: 12px;
+  border: 1px solid #5158C3;
+  border-radius: 13px;
+  background: linear-gradient(110deg,
+    rgba(43,82,255,.28),
+    rgba(112,35,236,.20));
+}
+.featured svg {
+  width: 28px;
+  height: 28px;
+  color: #BBC5FF;
+  flex-shrink: 0;
+}
+.featured h2 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.featured p {
+  margin: 0;
+  color: #D2D7FF;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.conclusion {
+  margin-top: auto;
+  padding-top: 15px;
+  text-align: center;
+}
+.conclusion::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #39415C;
+  margin-bottom: 15px;
+}
+.eyebrow {
+  font-size: 10px;
+  color: #AAB8FF;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+.quote {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+  margin: 8px 0;
+}
+.result {
+  color: #D2D7FF;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+.footer {
+  margin-top: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #818DA8;
+  letter-spacing: .1em;
+}
+.footer .brand { color: #A2B2FF; }
+@media (max-width:900px) {
+  .slide {
+    aspect-ratio: auto;
+    padding: 30px 24px;
+  }
+  .problems {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .conclusion { margin-top: 24px; }
+}
+@media (max-width:500px) {
+  .problems { grid-template-columns: 1fr; }
+  .featured { align-items: flex-start; }
+  h1 { font-size: 30px; }
+}
+@media print {
+  @page { size: 16in 9in; margin: 0; }
+  body { padding: 0; }
+  .slide {
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<main class="slide">
+
+<header class="top">
+  <span>SCALEX HUB / ORIGEM & PROBLEMA</span>
+  <i data-lucide="layers-3"></i>
+</header>
+
+<h1>
+  Não nascemos de uma ideia.<br>
+  <span class="gradient">
+    Nascemos de uma dor real.
+  </span>
+</h1>
+
+<p class="intro">
+  Descobrimos que o maior desafio não era desenvolver IA,
+  mas implementá-la, gerenciá-la e escalá-la
+  de forma sustentável.
+</p>
+
+<section class="problems">
+  <article class="card">
+    <i data-lucide="blocks"></i>
+    <h2>Ferramentas dispersas</h2>
+    <p>Várias plataformas para uma única entrega.</p>
+  </article>
+
+  <article class="card">
+    <i data-lucide="workflow"></i>
+    <h2>Workflows complexos</h2>
+    <p>Fluxos difíceis de construir, ensinar e manter.</p>
+  </article>
+
+  <article class="card">
+    <i data-lucide="clock-4"></i>
+    <h2>Implantação lenta</h2>
+    <p>Configurações e retrabalho a cada cliente.</p>
+  </article>
+
+  <article class="card">
+    <i data-lucide="trending-down"></i>
+    <h2>Margens pressionadas</h2>
+    <p>Custos elevados e limitações à revenda.</p>
+  </article>
+</section>
+
+<section class="featured">
+  <i data-lucide="copy-plus"></i>
+  <div>
+    <h2>Escala manual, não SaaS</h2>
+    <p>
+      Cada cliente exigia criar e configurar
+      um workspace individualmente.
+    </p>
+  </div>
+</section>
+
+<section class="conclusion">
+  <div class="eyebrow">A VIRADA</div>
+  <div class="quote">
+    “Estávamos escalando trabalho, não tecnologia.”
+  </div>
+  <p class="result">
+    Transformamos esses gargalos em uma infraestrutura
+    para todo um mercado.
+  </p>
+</section>
+
+<footer class="footer">
+  <span class="brand">SCALEX HUB</span>
+  <span>SCALE • EXECUTE • CENTRALIZE</span>
+</footer>
+
+</main>
+<script>lucide.createIcons();</script>
+</body>
+</html>
