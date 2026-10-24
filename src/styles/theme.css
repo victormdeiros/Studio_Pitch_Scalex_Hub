@@ -184,34 +184,49 @@
 .sales-body{position:absolute;left:80px;right:80px;top:266px;display:grid;grid-template-columns:1.02fr .98fr;gap:62px;height:300px}
 .sales-ticket{display:flex;flex-direction:column}
 .sales-ticket .micro{margin:0 0 10px}
-.ticket-row{padding:11px 0;border-top:1px solid #0a193614;transition:background-color .2s}
+.ticket-row{padding:14px 0;border-top:1px solid #0a193614;transition:background-color .2s}
 .ticket-row:hover .bar{filter:brightness(1.06)}
 .ticket-row.focus{border-bottom:1px solid #0a193614}
 .ticket-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .ticket-head .who{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#5b6d92}
 .ticket-head .who .ico{width:16px;height:16px;color:#7c8cad}
 .ticket-head .who em{font-style:normal;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:#7c3aed;border:1px solid #7c3aed33;border-radius:999px;padding:3px 7px;margin-left:3px}
-.ticket-head .v{font-size:26px;font-weight:700;letter-spacing:-.04em;color:#0a1936;font-variant-numeric:tabular-nums}
-.ticket-row.focus .v{font-size:30px;color:#0a1936}
+.ticket-head .v{font-size:27px;font-weight:700;letter-spacing:-.04em;color:#0a1936;font-variant-numeric:tabular-nums}
+.ticket-row.focus .v{font-size:33px;color:#0a1936}
 .ticket-head .v span{font-size:9.5px;font-weight:400;color:#7c8cad;letter-spacing:0;margin-left:2px}
 .ticket-row .bar{display:block;height:8px;margin-top:8px;border-radius:999px;background:linear-gradient(90deg,#b9c9ea,#dbe4f4);width:var(--w);transform-origin:left center}
 .ticket-row.focus .bar{background:linear-gradient(90deg,#2f4bff,#7c3aed,#0891b2);box-shadow:0 6px 18px #4f46e52e}
 .slide.active .ticket-row .bar{animation:growX 1.05s var(--ease) both;animation-delay:.35s}
 .slide.active .ticket-row.focus .bar{animation-delay:.5s}
-.sales-mult{display:flex;align-items:center;gap:10px;margin-top:14px}
+.sales-mult{display:flex;align-items:center;gap:10px;margin-top:17px}
 .sales-mult b{font-size:24px;font-weight:700;letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sales-mult span{font-size:8.5px;line-height:1.3;color:#6d7ea3;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
-.sales-engine{display:flex;flex-direction:column}
-.sales-engine .micro{margin:0 0 18px}
-.sales-steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin:0;padding:0;list-style:none}
-.sales-steps::before{content:'';position:absolute;left:12%;right:12%;top:21px;height:1px;background:linear-gradient(90deg,#2f4bff33,#7c3aed55,#0891b233)}
-.sales-steps li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.sales-steps .ico-wrap{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #0a19361a;color:#3b5bff;box-shadow:0 8px 22px #4f46e50f;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
-.sales-steps li:hover .ico-wrap{transform:translateY(-3px);border-color:#7c3aed44;box-shadow:0 12px 28px #4f46e51f}
-.sales-steps .ico{width:18px;height:18px}
-.sales-steps b{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#44557a}
-.sales-note{margin:auto 0 0;padding-top:14px;border-top:1px solid #0a193614;font-size:11.5px;line-height:1.5;color:#5b6d92;max-width:470px}
-.sales-note b{color:#0a1936}
+.ticket-note{margin:10px 0 0;max-width:360px;font-size:8.5px;line-height:1.4;color:#7c8cad}
+.sales-shift{display:flex;flex-direction:column;min-width:0}
+.sales-shift>.micro{margin:0 0 12px}
+.strategy-track{display:grid;grid-template-columns:1fr 24px 1fr;align-items:stretch;gap:8px}
+.strategy-node{display:flex;flex-direction:column;justify-content:center;min-height:96px;padding:14px 15px;border:1px solid #0a193614;border-radius:12px;background:#fff;transition:transform .25s var(--ease),box-shadow .25s}
+.strategy-node:hover{transform:translateY(-2px);box-shadow:0 12px 30px #4f46e512}
+.strategy-node .strategy-state{align-self:flex-start;padding:3px 7px;border-radius:999px;border:1px solid #0a193612;background:#0a193608;font-size:7px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#6d7ea3}
+.strategy-node b{margin-top:4px;font-size:16.5px;line-height:1.1;letter-spacing:-.025em;color:#0a1936}
+.strategy-node em{margin-top:4px;font-style:normal;font-size:9.5px;line-height:1.35;color:#6d7ea3}
+.strategy-node.now{background:linear-gradient(125deg,#0c1734,#221145);border-color:#41318a;box-shadow:0 16px 40px #4f46e51f}
+.strategy-node.now .strategy-state{border-color:#c084fc40;background:#c084fc1a;color:#c4b5fd}
+.strategy-node.now b{color:#fff}
+.strategy-node.now em{color:#c4cdfa}
+.strategy-arrow{display:grid;place-items:center;color:#7c3aed}
+.strategy-arrow .ico{width:15px;height:15px}
+.sales-delivered{margin-top:21px;padding-top:14px;border-top:1px solid #0a193614}
+.sales-delivered .micro{margin:0 0 9px}
+.delivered-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.delivered-list li{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:flex-start}
+.delivered-list .ico-wrap{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:linear-gradient(130deg,#eef2ff,#f4edff);border:1px solid #dbe3ff;color:#4f46e5}
+.delivered-list .ico{width:12px;height:12px}
+.delivered-list b{display:block;font-size:11px;line-height:1.2;letter-spacing:-.01em;color:#0a1936}
+.delivered-list div>span{display:block;margin-top:2px;font-size:8.8px;line-height:1.35;color:#6d7ea3}
+.delivered-note{margin:11px 0 0;padding-top:9px;border-top:1px dashed #0a193614;font-size:8.8px;line-height:1.4;color:#7c8cad}
+.sales-takeaway{position:absolute;left:80px;right:80px;bottom:64px;margin:0;font-size:15px;line-height:1.3;letter-spacing:-.02em;font-weight:700;color:#0a1936}
+.sales-takeaway span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sales-foot{position:absolute;left:80px;right:80px;bottom:30px;margin:0;padding-top:13px;border-top:1px solid #0a193614;font-size:9.5px;line-height:1.5;color:#6d7ea3}
 
 /* ============ 06 · CONCORRÊNCIA ============ */
