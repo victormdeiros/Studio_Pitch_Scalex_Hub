@@ -29,11 +29,17 @@
     const commonB=orderB.filter(id=>setA.has(id));
     return commonA.length===commonB.length&&commonA.every((id,index)=>id===commonB[index]);
   }
+  function relevantMap(map,ids){
+    const out={};
+    Object.keys(map||{}).forEach(key=>{if(ids.has(key))out[key]=map[key];});
+    return out;
+  }
   function sameContent(a,b){
     if(!a||!b)return false;
     if(!orderCompatible(a.order,b.order))return false;
-    if(JSON.stringify(canonical(a.text||{}))!==JSON.stringify(canonical(b.text||{})))return false;
-    return JSON.stringify(canonical(a.styles||{}))===JSON.stringify(canonical(b.styles||{}));
+    const ids=new Set(a.order||[]);
+    if(JSON.stringify(canonical(relevantMap(a.text,ids)))!==JSON.stringify(canonical(relevantMap(b.text,ids))))return false;
+    return JSON.stringify(canonical(relevantMap(a.styles,ids)))===JSON.stringify(canonical(relevantMap(b.styles,ids)));
   }
 
   function toast(message){
@@ -610,6 +616,9 @@
     originals=deck.originals();
     defaultOrder=deck.slides().map(slide=>slide.id);
     model={version:1,updatedAt:content.updatedAt||null,order:deck.slides().map(slide=>slide.id),text:clone(content.text||{}),styles:clone(content.styles||{})};
+    const validIds=new Set(model.order);
+    Object.keys(model.text).forEach(id=>{if(!validIds.has(id))delete model.text[id];});
+    Object.keys(model.styles).forEach(id=>{if(!validIds.has(id))delete model.styles[id];});
     renderList();refreshDirty();syncEditables();updateConnection();hydrateConnection();
     const styleSection=$('#studio-style'); if(styleSection)styleSection.hidden=true;
     if(/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar'))setEditing(true);

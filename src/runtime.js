@@ -152,7 +152,7 @@
     if(target===current){applySlide(target,writeHash);return;}
     const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
     if(!reduced.matches&&from==='slide-1'&&to==='slide-publico'){coverTransition(target,writeHash);return;}
-    if(!reduced.matches&&from==='slide-infra'&&to==='slide-5'){mergeTransition(target,writeHash);return;}
+    if(!reduced.matches&&from==='slide-infra'&&to==='slide-concorrencia'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
     playSweep(stage.dataset.dir);
     applySlide(target,writeHash);

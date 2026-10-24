@@ -9,7 +9,7 @@
     "slide-3",
     "slide-4",
     "slide-infra",
-    "slide-5",
+    "slide-concorrencia",
     "slide-6",
     "slide-7",
     "slide-8",
@@ -67,20 +67,6 @@
       "e3": {
         "v": "10% - 3<span>00mil</span>",
         "o": "10%"
-      }
-    },
-    "slide-5": {
-      "e1": {
-        "v": "Os concorrentes direto validam o mercado",
-        "o": "Eles resolvem partes. A ScaleX integra a operação."
-      },
-      "e2": {
-        "v": "Estamos no inicio da onda e no Brasil ainda é pouquissímo explorado.",
-        "o": "Diretos disputam a camada de plataforma. Indiretos resolvem "
-      },
-      "e3": {
-        "v": "Concorrentes diretos",
-        "o": "Concorrentes diretos"
       }
     }
   },
