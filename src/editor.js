@@ -458,6 +458,17 @@
     const dialog=$('#publish-dialog');
     if(!dialog.open)dialog.showModal();
   }
+  async function hydrateConnection(){
+    const settings=readSettings();
+    if(!settings.token||settings.login)return;
+    try{
+      const response=await fetch('https://api.github.com/user',{headers:{Authorization:'Bearer '+settings.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},cache:'no-store'});
+      if(!response.ok)return;
+      const login=(await response.json()).login;
+      if(!login)return;
+      settings.login=login;writeSettings(settings);updateConnection();
+    }catch(_){}
+  }
   async function connect(){
     const settings=readPublishForm();
     const target=$('#publish-status');
@@ -594,7 +605,7 @@
     defaultOrder=deck.slides().map(slide=>slide.id);
     model={version:1,updatedAt:content.updatedAt||null,order:defaultOrder.slice(),text:clone(content.text||{}),styles:clone(content.styles||{})};
     if(Array.isArray(content.order)&&content.order.length)model.order=content.order.slice();
-    renderList();refreshDirty();syncEditables();updateConnection();
+    renderList();refreshDirty();syncEditables();updateConnection();hydrateConnection();
     const styleSection=$('#studio-style'); if(styleSection)styleSection.hidden=true;
     if(/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar'))setEditing(true);
     if(deck.stale&&deck.stale())toast(deck.stale()+' texto(s) salvo(s) não correspondem mais ao slide atual.');
