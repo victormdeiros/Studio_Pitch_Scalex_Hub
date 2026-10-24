@@ -1,6 +1,6 @@
 # ScaleX Pitch Studio
 
-Apresentação em código, com 13 slides, identidade ScaleX Hub e direção de arte autoral. Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza o link.
+Apresentação em código, com 15 slides, identidade ScaleX Hub e direção de arte autoral. Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza o link.
 
 ## Abrir agora
 
@@ -64,7 +64,7 @@ Abra **http://localhost:4173**. Depois de alterar o código, execute `npm run bu
 
 | Arquivo | O que controla |
 | --- | --- |
-| `src/slides/01-capa.mjs` até `13-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
+| `src/slides/01-capa.mjs` até `15-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
 | `src/deck.mjs` | Sequência padrão dos slides (usada quando `content.json` não define outra) |
 | `src/styles/theme.css` | Direção de arte: paleta, tipografia, atmosfera, layouts e animações de cada cena |
 | `src/styles/base.css` | Palco, chrome, navegação, leitura, responsividade e impressão |
@@ -92,4 +92,4 @@ Para vídeos ou outros recursos, use arquivos locais em `assets/`. O gerador inc
 
 O sistema combina azul profundo, violeta e ciano, tipografia grande com tracking negativo, hairlines, auroras lentas e malha técnica. Cada slide tem composição própria: jornada comercial, constelação de ferramentas, fluxo de automação, funil de mercado, gráfico de barras, cronograma comparativo, frentes de capital e fechamento cinematográfico. Os ícones são lineares, corporativos e usam um sprite SVG único; aparecem em kickers, módulos, métricas e etapas do funil, sem competir com o texto.
 
-A abertura foi desdobrada em capa e uma visão da jornada comercial, com sete etapas, o núcleo de agentes de IA, multicanais e ecossistema integrado. O posicionamento de plataforma ficou nas notas do slide; os concorrentes diretos e indiretos foram unificados em um slide, e o mercado apresenta TAM, SAM e SOM diretos e indiretos, além do upsell do cliente do cliente. O SOM inicial foi alinhado ao cálculo de 0,5%–1% do SAM, resultando em 130–260 clientes. O detalhamento de módulos ficou nas notas do resumo. A concorrência entrou logo após a fragmentação, com diretos e indiretos no mesmo slide, e o mercado direto e o upsell indireto ficaram no slide seguinte. Entre a fragmentação e a concorrência entrou um slide sobre a falta de infraestrutura como serviço e a fragilidade dos fluxos de automação por nós. O slide de vendas reúne o resultado histórico de 2025, o ticket recorrente comparativo, o que já foi entregue e a virada de agência para plataforma. A rodada passou a enfatizar a oferta de 10% da empresa, com o valuation indicativo considerando o bootstrapping. O kit não contém manual, fontes ou versões vetoriais; as fontes vieram do PowerPoint e os acabamentos adicionais são parte da direção de arte deste projeto.
+A abertura foi desdobrada em capa, um slide sobre os dois públicos (revendedores e empresas finais), um slide da oferta white-label e uma visão da jornada comercial, com sete etapas, o núcleo de agentes de IA, multicanais e ecossistema integrado. O posicionamento de plataforma ficou nas notas do slide; os concorrentes diretos e indiretos foram unificados em um slide, e o mercado apresenta TAM, SAM e SOM diretos e indiretos, além do upsell do cliente do cliente. O SOM inicial foi alinhado ao cálculo de 0,5%–1% do SAM, resultando em 130–260 clientes. O detalhamento de módulos ficou nas notas do resumo. A concorrência entrou logo após a fragmentação, com diretos e indiretos no mesmo slide, e o mercado direto e o upsell indireto ficaram no slide seguinte. Entre a fragmentação e a concorrência entrou um slide sobre a falta de infraestrutura como serviço e a fragilidade dos fluxos de automação por nós. O slide de vendas reúne o resultado histórico de 2025, o ticket recorrente comparativo, o que já foi entregue e a virada de agência para plataforma. A rodada passou a enfatizar a oferta de 10% da empresa, com o valuation indicativo considerando o bootstrapping. O kit não contém manual, fontes ou versões vetoriais; as fontes vieram do PowerPoint e os acabamentos adicionais são parte da direção de arte deste projeto.

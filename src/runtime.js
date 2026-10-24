@@ -132,7 +132,7 @@
     impactTimers.push(setTimeout(()=>{
       img.animate([
         {transform:`translate(${sx}px,${sy}px) scale(1)`},
-        {transform:'translate(610px,385px) scale(.15)'}
+        {transform:'translate(165px,356px) scale(.15)'}
       ],{duration:1000,easing:'cubic-bezier(.6,.05,.2,1)',fill:'forwards'});
     },180));
     impactTimers.push(setTimeout(()=>applySlide(target,writeHash),1180));
@@ -151,7 +151,7 @@
     if(transitioning)return;
     if(target===current){applySlide(target,writeHash);return;}
     const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
-    if(!reduced.matches&&from==='slide-1'&&to==='slide-2'){coverTransition(target,writeHash);return;}
+    if(!reduced.matches&&from==='slide-1'&&to==='slide-publico'){coverTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-infra'&&to==='slide-5'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
     playSweep(stage.dataset.dir);
