@@ -20,7 +20,7 @@ export default {
     <div class="dif">
       <header class="dif-head">
         <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>Diferenciais · ScaleX Hub</p>
-        <h2 class="h2 rv" style="--d:1">A concorrência entrega partes.<br><span class="grad-text">A ScaleX entrega a operação inteira.</span></h2>
+        <h2 class="h2 rv" style="--d:1">A concorrência entrega partes.<br> <span class="grad-text">A ScaleX entrega a operação inteira.</span></h2>
         <p class="lead rv" style="--d:2">Três diferenças estruturais — e quatro recursos proprietários com potencial de patente.</p>
       </header>
 
