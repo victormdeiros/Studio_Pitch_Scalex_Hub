@@ -8,7 +8,7 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 
   /* Conteúdo publicado: ordem dos slides e textos, em content.json. */
-  let content={version:1,order:[],text:{}}, publishedContent={version:1,order:[],text:{}}, originals={}, stale=0;
+  let content={version:1,order:[],text:{},styles:{}}, publishedContent={version:1,order:[],text:{},styles:{}}, originals={}, stale=0;
   let readyResolve; const ready=new Promise(resolve=>{readyResolve=resolve;});
 
   function fit(){
@@ -298,6 +298,47 @@
     }
     transitioning=false;
   }
+  const MANAGED_STYLE=['color','background-color','font-size','font-weight','text-align','transform','display','-webkit-text-fill-color'];
+  function clearElementStyle(el){
+    if(!el)return;
+    MANAGED_STYLE.forEach(prop=>el.style.removeProperty(prop));
+    el.querySelectorAll('.grad-text').forEach(child=>{child.style.removeProperty('color');child.style.removeProperty('-webkit-text-fill-color');});
+  }
+  function styleElement(el,style){
+    if(!el)return;
+    clearElementStyle(el);
+    if(!style||typeof style!=='object')return;
+    if(style.color){
+      el.style.setProperty('color',style.color,'important');
+      el.style.setProperty('-webkit-text-fill-color',style.color,'important');
+      el.querySelectorAll('.grad-text').forEach(child=>{
+        child.style.setProperty('color',style.color,'important');
+        child.style.setProperty('-webkit-text-fill-color',style.color,'important');
+      });
+    }
+    if(style.background)el.style.setProperty('background-color',style.background,'important');
+    if(style.fontSize)el.style.setProperty('font-size',style.fontSize+'px','important');
+    if(style.weight)el.style.setProperty('font-weight',String(style.weight),'important');
+    if(style.align)el.style.setProperty('text-align',style.align,'important');
+    const x=Number(style.x)||0, y=Number(style.y)||0;
+    if(x||y){
+      el.style.setProperty('transform','translate('+x+'px,'+y+'px)','important');
+      if(getComputedStyle(el).display==='inline')el.style.setProperty('display','inline-block','important');
+    }
+  }
+  function applyStyles(map){
+    $$('.slide').forEach(slide=>editableOf(slide).forEach(clearElementStyle));
+    if(!map||typeof map!=='object')return;
+    Object.keys(map).forEach(id=>{
+      const slide=document.getElementById(id);
+      if(!slide)return;
+      Object.keys(map[id]||{}).forEach(key=>{
+        const index=Number(String(key).replace(/^e/,''));
+        const el=editableOf(slide)[index];
+        if(el)styleElement(el,map[id][key]);
+      });
+    });
+  }
   function setOrder(order){
     cancelTransition();
     applyOrderToDOM(order);
@@ -335,6 +376,9 @@
     applySlide,
     setOrder,
     applyText:applyTextToDOM,
+    applyStyles,
+    styleElement,
+    clearElementStyle,
     editableOf,
     originals:()=>originals,
     content:()=>content,
@@ -347,17 +391,19 @@
     snapshotOriginals();
     const loaded=await loadContent();
     const data=loaded&&loaded.data?loaded.data:{};
-    publishedContent=loaded&&loaded.published?loaded.published:{version:1,order:[],text:{}};
+    publishedContent=loaded&&loaded.published?loaded.published:{version:1,order:[],text:{},styles:{}};
     content={
       version:1,
       source:loaded&&loaded.source?loaded.source:'embedded',
       updatedAt:data&&data.updatedAt?data.updatedAt:null,
       order:data&&Array.isArray(data.order)?data.order:[],
-      text:data&&data.text&&typeof data.text==='object'?data.text:{}
+      text:data&&data.text&&typeof data.text==='object'?data.text:{},
+      styles:data&&data.styles&&typeof data.styles==='object'?data.styles:{}
     };
     applyOrderToDOM(content.order);
     renumber();
     applyTextToDOM(content.text);
+    applyStyles(content.styles);
     start();
     readyResolve(content);
   })();

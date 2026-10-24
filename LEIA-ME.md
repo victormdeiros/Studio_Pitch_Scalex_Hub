@@ -1,6 +1,6 @@
 # ScaleX Pitch Studio
 
-Apresentação em código, com 12 slides, identidade ScaleX Hub e direção de arte autoral. Reordene slides e edite os textos direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza o link.
+Apresentação em código, com 12 slides, identidade ScaleX Hub e direção de arte autoral. Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza o link.
 
 ## Abrir agora
 
@@ -23,12 +23,15 @@ A interface desaparece durante a apresentação em tela cheia e reaparece ao pas
 Abra a apresentação e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
 
 - **Textos** — clique em qualquer texto do slide e escreva. Os destaques visuais (gradientes, negritos, ícones) são preservados.
+- **Aparência** — com um texto selecionado, o painel mostra cor, fundo, tamanho, peso, alinhamento e posição. Use **↑ ← ↓ →** para deslocar (Shift = 16px), **Arrastar** para mover com o mouse e **Limpar** para voltar ao estilo original. O painel pode ser minimizado pelo chevron.
 - **Ordem** — arraste as linhas da lista ou use **↑ ↓**. A numeração dos slides e o índice acompanham a nova ordem.
 - **Ver o slide inteiro** — o ícone de olho recolhe o estúdio sem sair da edição. O botão **Estúdio** traz o painel de volta.
 - **Rascunho** — cada alteração fica salva automaticamente neste navegador (`localStorage`), mesmo sem internet. Nada é publicado até você clicar em **Publicar no site**.
-- **Restaurar original** — volta todos os textos e a ordem ao conteúdo de `content.json`/código.
+- **Restaurar original** — volta todos os textos, estilos e a ordem ao conteúdo de `content.json`/código.
 
 O botão **Publicar no site** grava `content.json` na raiz do repositório pelo GitHub. O GitHub Pages republica o link em cerca de um minuto. É necessário um **token fine-grained** do GitHub, criado em [github.com/settings/personal-access-tokens](https://github.com/settings/personal-access-tokens/new), com acesso somente a este repositório e permissão **Contents: Read and write**. O token fica salvo apenas neste navegador e nunca é gravado no repositório.
+
+Na primeira vez, cole o token e clique em **Salvar e testar**. O estúdio mostra **GitHub · @seu-usuário** quando a conexão está válida. Depois disso, publicar é um clique em **Publicar no site** — o token não é pedido novamente neste navegador. Em outro dispositivo, conecte uma vez com o mesmo token.
 
 Sem token, use **Baixar JSON** para exportar as alterações e **Importar** para carregá-las em outro navegador. O arquivo pode ser commitado como `content.json` manualmente.
 
@@ -36,6 +39,7 @@ Sem token, use **Baixar JSON** para exportar as alterações e **Importar** para
 
 - O site busca `content.json` ao abrir. Se o arquivo não existir (ou o arquivo for aberto direto por `file://`), usa o conteúdo embutido no `index.html` na hora do `npm run build`.
 - A ordem guarda os ids dos slides (`slide-1` a `slide-12`). Os textos são guardados por slide, no elemento editável, junto da marcação original — se um slide mudar no código, o texto antigo não é aplicado no lugar errado.
+- Aparência fica em `styles`, por slide e por elemento: cor, fundo, tamanho, peso, alinhamento e deslocamento (x/y). São estilos aplicados por cima do CSS, sem alterar o layout original.
 - Para conferir o site publicado, abra [victormdeiros.github.io/Studio_Pitch_Scalex_Hub](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/). Se o navegador tiver um rascunho local, use **Descartar rascunho local** (na configuração de publicação) para ver a versão publicada.
 
 ## Editar o projeto como código
@@ -65,9 +69,9 @@ Abra **http://localhost:4173**. Depois de alterar o código, execute `npm run bu
 | `src/styles/theme.css` | Direção de arte: paleta, tipografia, atmosfera, layouts e animações de cada cena |
 | `src/styles/base.css` | Palco, chrome, navegação, leitura, responsividade e impressão |
 | `src/runtime.js` | Navegação, transições, contadores, parallax, leitura, atalhos e aplicação do `content.json` |
-| `src/editor.js` | Estúdio: edição de textos, reordenação, rascunho e publicação no GitHub |
-| `src/styles/editor.css` | Painel do estúdio, realce dos textos editáveis e diálogo de publicação |
-| `content.json` | Ordem dos slides e textos publicados pelo estúdio |
+| `src/editor.js` | Estúdio: textos, aparência, reordenação, rascunho e publicação no GitHub |
+| `src/styles/editor.css` | Painel do estúdio, realce dos textos editáveis, controles de aparência e diálogo de publicação |
+| `content.json` | Ordem, textos e estilos publicados pelo estúdio |
 | `src/shell.html` | Estrutura da interface |
 | `src/components.mjs` | Utilitário compartilhado de escape de HTML |
 | `assets/brand/` | Os quatro arquivos originais do kit de identidade visual |

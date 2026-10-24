@@ -11,8 +11,9 @@
   const INLINE='B,STRONG,EM,I,BR,SMALL,SPAN,SUP,SUB,U';
   const list=$('#studio-list'), status=$('#studio-status'), studio=$('#studio'), publishBtn=$('#publish-btn'), editBtn=$('#edit-btn');
 
-  let model={version:1,updatedAt:null,order:[],text:{}};
+  let model={version:1,updatedAt:null,order:[],text:{},styles:{}};
   let originals={}, defaultOrder=[], editing=false, dirty=false, busy=false, dragId=null, draftTimer=null, toastTimer=null;
+  let selected=null, selectedInfo=null, moveMode=false, dragState=null, styleCollapsed=false;
 
   const clone=value=>JSON.parse(JSON.stringify(value||{}));
   const readJSON=key=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch(_){return null;}};
@@ -25,7 +26,8 @@
     if(!a||!b)return false;
     const orderA=Array.isArray(a.order)?a.order:[],orderB=Array.isArray(b.order)?b.order:[];
     if(orderA.length!==orderB.length||orderA.some((id,index)=>id!==orderB[index]))return false;
-    return JSON.stringify(canonical(a.text||{}))===JSON.stringify(canonical(b.text||{}));
+    if(JSON.stringify(canonical(a.text||{}))!==JSON.stringify(canonical(b.text||{})))return false;
+    return JSON.stringify(canonical(a.styles||{}))===JSON.stringify(canonical(b.styles||{}));
   }
 
   function toast(message){
@@ -47,7 +49,7 @@
   function writeSettings(settings){try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));}catch(_){}}
 
   /* ---------- Modelo e status ---------- */
-  function payload(){return {version:1,updatedAt:model.updatedAt||null,order:model.order.slice(),text:clone(model.text)};}
+  function payload(){return {version:1,updatedAt:model.updatedAt||null,order:model.order.slice(),text:clone(model.text),styles:clone(model.styles)};}
   function saveDraft(silent){
     try{
       localStorage.setItem(DRAFT_KEY,JSON.stringify(payload()));
@@ -88,6 +90,161 @@
     studio.setAttribute('aria-hidden',String(!open));
     if(open){renderList();updateStatus();}
   }
+  /* ---------- Seleção e aparência ---------- */
+  function keyFor(el){
+    const slide=el&&el.closest?el.closest('.slide'):null;
+    if(!slide)return null;
+    const index=deck.editableOf(slide).indexOf(el);
+    if(index<0)return null;
+    return {slideId:slide.id,key:'e'+index,index};
+  }
+  function styleEntry(){
+    if(!selectedInfo)return {};
+    const bucket=model.styles[selectedInfo.slideId]||{};
+    return bucket[selectedInfo.key]||{};
+  }
+  function toHex(color){
+    if(!color)return '';
+    if(color.startsWith('#'))return color.slice(0,7);
+    const match=color.match(/rgba?\(([^)]+)\)/);
+    if(!match)return '';
+    const parts=match[1].split(',').map(Number);
+    if(parts.length>3&&parts[3]===0)return '';
+    return '#'+parts.slice(0,3).map(value=>Math.max(0,Math.min(255,Math.round(value))).toString(16).padStart(2,'0')).join('');
+  }
+  function syncStyleControls(){
+    if(!selected)return;
+    const entry=styleEntry(), computed=getComputedStyle(selected);
+    $('#style-target').textContent=selected.tagName.toLowerCase()+' · '+String(selected.textContent||'').replace(/\s+/g,' ').trim().slice(0,22);
+    $('#style-color').value=toHex(entry.color||computed.color)||'#ffffff';
+    $('#style-bg').value=toHex(entry.background)||'#0a1936';
+    paintSwatches();
+    $('#style-size').value=entry.fontSize||Math.round(parseFloat(computed.fontSize))||'';
+    $('#style-weight').value=entry.weight?String(entry.weight):'';
+    $('#style-pos').textContent='x '+(Number(entry.x)||0)+' · y '+(Number(entry.y)||0);
+    $$('#style-controls [data-align]').forEach(button=>button.setAttribute('aria-pressed',String((entry.align||'')===button.dataset.align)));
+    $('#style-move').setAttribute('aria-pressed',String(moveMode));
+  }
+  function paintSwatches(){
+    const color=$('#style-color-view'), background=$('#style-bg-view');
+    if(color)color.style.background=$('#style-color').value;
+    if(background)background.style.background=$('#style-bg').value;
+  }
+  function selectElement(el){
+    if(selected===el){if(el)syncStyleControls();return;}
+    if(selected)selected.classList.remove('is-style-target');
+    selected=el||null;
+    selectedInfo=el?keyFor(el):null;
+    if(!el){moveMode=false;document.body.classList.remove('moving-element');}
+    const section=$('#studio-style'), controls=$('#style-controls'), empty=$('#style-empty');
+    if(section)section.hidden=!editing;
+    if(!el){if(controls)controls.hidden=true;if(empty)empty.hidden=styleCollapsed;return;}
+    el.classList.add('is-style-target');
+    if(controls)controls.hidden=styleCollapsed;
+    if(empty)empty.hidden=true;
+    syncStyleControls();
+    if(section&&section.getBoundingClientRect().top<$('#studio').getBoundingClientRect().top+70)section.scrollIntoView({block:'nearest'});
+  }
+  function setStyle(patch){
+    if(!selectedInfo||!selected)return;
+    const entry=Object.assign({},styleEntry(),patch);
+    ['color','background','fontSize','weight','align'].forEach(prop=>{if(entry[prop]==null||entry[prop]==='')delete entry[prop];});
+    if(!entry.x)delete entry.x;
+    if(!entry.y)delete entry.y;
+    const bucket=model.styles[selectedInfo.slideId]||(model.styles[selectedInfo.slideId]={});
+    if(Object.keys(entry).length)bucket[selectedInfo.key]=entry;
+    else delete bucket[selectedInfo.key];
+    if(!Object.keys(bucket).length)delete model.styles[selectedInfo.slideId];
+    deck.styleElement(selected,entry);
+    markDirty();
+  }
+
+  document.addEventListener('focusin',event=>{
+    if(!editing)return;
+    const el=editableNode(event.target);
+    if(el)selectElement(el);
+  });
+  document.addEventListener('pointerdown',event=>{
+    if(!editing||moveMode)return;
+    if(event.target.closest&&event.target.closest('.studio,.app-header,.app-footer,dialog'))return;
+    const el=editableNode(event.target);
+    selectElement(el||null);
+  },true);
+  document.addEventListener('pointerdown',event=>{
+    if(!editing||!moveMode||!selected)return;
+    if(!selected.contains(event.target))return;
+    event.preventDefault();
+    const stage=$('#stage');
+    const scale=Number(getComputedStyle(stage).getPropertyValue('--scale'))||1;
+    const entry=styleEntry();
+    dragState={startX:event.clientX,startY:event.clientY,baseX:Number(entry.x)||0,baseY:Number(entry.y)||0,x:Number(entry.x)||0,y:Number(entry.y)||0,scale};
+    document.body.classList.add('dragging-element');
+  });
+  document.addEventListener('pointermove',event=>{
+    if(!dragState||!selected)return;
+    const x=dragState.baseX+Math.round((event.clientX-dragState.startX)/dragState.scale);
+    const y=dragState.baseY+Math.round((event.clientY-dragState.startY)/dragState.scale);
+    dragState.x=x;dragState.y=y;
+    deck.styleElement(selected,Object.assign({},styleEntry(),{x,y}));
+    $('#style-pos').textContent='x '+x+' · y '+y;
+    if(x||y)$('#style-pos').dataset.moved='on';
+  });
+  function endDrag(){
+    if(!dragState)return;
+    const x=dragState.x,y=dragState.y;
+    dragState=null;
+    document.body.classList.remove('dragging-element');
+    setStyle({x,y});
+    $('#style-pos').textContent='x '+(x||0)+' · y '+(y||0);
+  }
+  document.addEventListener('pointerup',endDrag);
+  document.addEventListener('pointercancel',endDrag);
+
+  $('#style-collapse').addEventListener('click',()=>{
+    styleCollapsed=!styleCollapsed;
+    const button=$('#style-collapse');
+    button.setAttribute('aria-expanded',String(!styleCollapsed));
+    button.setAttribute('aria-label',styleCollapsed?'Expandir aparência':'Minimizar aparência');
+    button.title=styleCollapsed?'Expandir aparência':'Minimizar aparência';
+    const controls=$('#style-controls'), empty=$('#style-empty');
+    if(controls)controls.hidden=styleCollapsed||!selected;
+    if(empty)empty.hidden=styleCollapsed||!!selected;
+  });
+  $('#style-color').addEventListener('input',event=>{setStyle({color:event.target.value});paintSwatches();});
+  $('#style-bg').addEventListener('input',event=>{setStyle({background:event.target.value});paintSwatches();});
+  $('#style-color-clear').addEventListener('click',()=>{setStyle({color:null,background:null});syncStyleControls();});
+  $('#style-size').addEventListener('change',event=>{
+    const value=Math.max(8,Math.min(200,Number(event.target.value)||0));
+    setStyle({fontSize:value||null});
+    if(!value)$('#style-size').value=Math.round(parseFloat(getComputedStyle(selected).fontSize))||'';
+  });
+  $('#style-weight').addEventListener('change',event=>setStyle({weight:event.target.value||null}));
+  $$('#style-controls [data-align]').forEach(button=>button.addEventListener('click',()=>{
+    setStyle({align:styleEntry().align===button.dataset.align?null:button.dataset.align});
+    syncStyleControls();
+  }));
+  $$('.style-nudge [data-move]').forEach(button=>button.addEventListener('click',event=>{
+    const step=event.shiftKey?16:4, entry=styleEntry();
+    const x=(Number(entry.x)||0)+({left:-step,right:step}[button.dataset.move]||0);
+    const y=(Number(entry.y)||0)+({up:-step,down:step}[button.dataset.move]||0);
+    setStyle({x,y});
+    $('#style-pos').textContent='x '+x+' · y '+y;
+  }));
+  $('#style-move').addEventListener('click',()=>{
+    if(!selected)return;
+    moveMode=!moveMode;
+    document.body.classList.toggle('moving-element',moveMode);
+    $('#style-move').setAttribute('aria-pressed',String(moveMode));
+    if(moveMode)toast('Arraste o texto selecionado no slide para mover. Shift move 16px nos botões.');
+  });
+  $('#style-reset').addEventListener('click',()=>{
+    if(!selectedInfo)return;
+    const bucket=model.styles[selectedInfo.slideId];
+    if(bucket){delete bucket[selectedInfo.key];if(!Object.keys(bucket).length)delete model.styles[selectedInfo.slideId];}
+    deck.styleElement(selected,{});
+    markDirty();syncStyleControls();
+  });
+
   function setPeek(on){
     if(on&&!editing)return;
     document.body.classList.toggle('peeking',on);
@@ -105,6 +262,9 @@
     setPeek(false);
     if(on)closeDialogs();
     syncEditables();
+    const styleSection=$('#studio-style');
+    if(styleSection)styleSection.hidden=!on;
+    if(!on)selectElement(null);
     if(on){
       const row=list.querySelector('.is-current'); if(row)row.scrollIntoView({block:'nearest'});
       toast('Modo edição: clique em um texto do slide para alterar.');
@@ -133,6 +293,8 @@
     if(original&&html===original.html)delete bucket[key];
     else bucket[key]={v:html,o:original?original.text.slice(0,60):''};
     if(!Object.keys(bucket).length)delete model.text[slide.id];
+    const style=(model.styles[slide.id]||{})[key];
+    if(style)deck.styleElement(el,style);
     markDirty();
   }
 
@@ -249,11 +411,13 @@
     });
   }
   function applyModel(next){
+    selectElement(null);
     restoreOriginals();
     const ids=Array.isArray(next.order)?next.order.filter(id=>typeof id==='string'):[];
     deck.setOrder(ids.length?ids:defaultOrder.slice());
-    model={version:1,updatedAt:next.updatedAt||null,order:deck.slides().map(slide=>slide.id),text:clone(next.text||{})};
+    model={version:1,updatedAt:next.updatedAt||null,order:deck.slides().map(slide=>slide.id),text:clone(next.text||{}),styles:clone(next.styles||{})};
     deck.applyText(model.text);
+    deck.applyStyles(model.styles);
     renderList();refreshDirty();saveDraft(true);
   }
 
@@ -267,6 +431,21 @@
     try{const data=await response.json();if(data&&data.message)return data.message;}catch(_){}
     return 'HTTP '+response.status;
   }
+  function readPublishForm(){
+    return {
+      repo:$('#pub-repo').value.trim(),
+      branch:$('#pub-branch').value.trim()||'main',
+      path:$('#pub-path').value.trim()||'content.json',
+      token:$('#pub-token').value.trim()
+    };
+  }
+  function updateConnection(){
+    const settings=readSettings();
+    const button=$('#studio-connection'), label=$('#studio-connection-label');
+    if(!button||!label)return;
+    button.classList.toggle('is-connected',!!settings.token);
+    label.textContent=settings.token?('GitHub · '+(settings.login?'@'+settings.login:'conectado')):'GitHub · conectar';
+  }
   function openPublish(){
     const settings=readSettings();
     $('#pub-repo').value=settings.repo;
@@ -274,9 +453,37 @@
     $('#pub-path').value=settings.path;
     $('#pub-token').value=settings.token||'';
     const target=$('#publish-status');
-    target.textContent='';target.dataset.state='';
+    target.dataset.state=settings.token?'ok':'';
+    target.textContent=settings.token?('Token salvo'+(settings.login?' · @'+settings.login:'')+'. Você pode publicar sem colar novamente.'):'';
     const dialog=$('#publish-dialog');
     if(!dialog.open)dialog.showModal();
+  }
+  async function connect(){
+    const settings=readPublishForm();
+    const target=$('#publish-status');
+    if(!/^[\w.-]+\/[\w.-]+$/.test(settings.repo)){target.dataset.state='error';target.textContent='Informe o repositório no formato usuario/repositorio.';return false;}
+    if(!settings.token){target.dataset.state='error';target.textContent='Informe o token do GitHub.';return false;}
+    target.dataset.state='';target.textContent='Testando conexão…';
+    try{
+      const headers={Authorization:'Bearer '+settings.token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
+      const user=await fetch('https://api.github.com/user',{headers,cache:'no-store'});
+      if(!user.ok)throw new Error(user.status===401?'token inválido ou expirado':await ghError(user));
+      const login=(await user.json()).login;
+      const repo=await fetch('https://api.github.com/repos/'+settings.repo,{headers,cache:'no-store'});
+      if(!repo.ok)throw new Error(repo.status===404?'o token não tem acesso a este repositório':await ghError(repo));
+      const meta=await repo.json();
+      if(!meta.permissions||!meta.permissions.push)throw new Error('o token não tem permissão de escrita (Contents: Read and write)');
+      settings.login=login;
+      writeSettings(settings);
+      updateConnection();
+      target.dataset.state='ok';target.textContent='Conectado como @'+login+'. O token ficou salvo neste navegador e não será pedido novamente.';
+      toast('GitHub conectado como @'+login+'.');
+      return true;
+    }catch(error){
+      const message=error&&error.message?error.message:'falha de rede';
+      target.dataset.state='error';target.textContent='Não foi possível conectar: '+message;
+      return false;
+    }
   }
   async function publish(){
     const settings=readSettings();
@@ -327,22 +534,23 @@
   publishBtn.addEventListener('click',publish);
   $('#settings-btn').addEventListener('click',openPublish);
   $('#publish-confirm').addEventListener('click',()=>{
-    const settings={
-      repo:$('#pub-repo').value.trim(),
-      branch:$('#pub-branch').value.trim()||'main',
-      path:$('#pub-path').value.trim()||'content.json',
-      token:$('#pub-token').value.trim()
-    };
+    const form=readPublishForm(), previous=readSettings();
     const target=$('#publish-status');
-    if(!/^[\w.-]+\/[\w.-]+$/.test(settings.repo)){target.dataset.state='error';target.textContent='Informe o repositório no formato usuario/repositorio.';return;}
-    if(!settings.token){target.dataset.state='error';target.textContent='Informe o token do GitHub.';return;}
-    writeSettings(settings);
+    if(!/^[\w.-]+\/[\w.-]+$/.test(form.repo)){target.dataset.state='error';target.textContent='Informe o repositório no formato usuario/repositorio.';return;}
+    if(!form.token){target.dataset.state='error';target.textContent='Informe o token do GitHub.';return;}
+    if(form.token!==previous.token)delete previous.login;
+    writeSettings(Object.assign({},previous,form));
+    updateConnection();
     $('#publish-dialog').close();
     publish();
   });
+  $('#publish-connect').addEventListener('click',()=>connect());
+  $('#studio-connection').addEventListener('click',openPublish);
   $('#forget-token').addEventListener('click',()=>{
-    const settings=readSettings();settings.token='';writeSettings(settings);
+    const settings=readSettings();
+    settings.token='';delete settings.login;writeSettings(settings);
     $('#pub-token').value='';
+    updateConnection();
     toast('Token esquecido neste navegador.');
   });
   $('#discard-draft').addEventListener('click',()=>{
@@ -371,8 +579,10 @@
   });
   $('#reset-btn').addEventListener('click',()=>{
     if(!confirm('Restaurar todos os textos e a ordem original? As alterações não publicadas serão descartadas.'))return;
+    selectElement(null);
     restoreOriginals();
-    model.text={};model.updatedAt=null;
+    model.text={};model.styles={};model.updatedAt=null;
+    deck.applyStyles({});
     commitOrder(defaultOrder.slice());
     saveDraft(true);
     toast('Conteúdo original restaurado.');
@@ -382,9 +592,10 @@
   deck.whenReady(content=>{
     originals=deck.originals();
     defaultOrder=deck.slides().map(slide=>slide.id);
-    model={version:1,updatedAt:content.updatedAt||null,order:defaultOrder.slice(),text:clone(content.text||{})};
+    model={version:1,updatedAt:content.updatedAt||null,order:defaultOrder.slice(),text:clone(content.text||{}),styles:clone(content.styles||{})};
     if(Array.isArray(content.order)&&content.order.length)model.order=content.order.slice();
-    renderList();refreshDirty();syncEditables();
+    renderList();refreshDirty();syncEditables();updateConnection();
+    const styleSection=$('#studio-style'); if(styleSection)styleSection.hidden=true;
     if(/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar'))setEditing(true);
     if(deck.stale&&deck.stale())toast(deck.stale()+' texto(s) salvo(s) não correspondem mais ao slide atual.');
   });

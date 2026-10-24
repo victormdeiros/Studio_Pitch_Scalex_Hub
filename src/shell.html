@@ -41,6 +41,11 @@
   <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-align-left" viewBox="0 0 24 24"><path d="M4 6h16M4 10h10M4 14h16M4 18h7"/></symbol>
+  <symbol id="i-align-center" viewBox="0 0 24 24"><path d="M4 6h16M7 10h10M4 14h16M8.5 18h7"/></symbol>
+  <symbol id="i-align-right" viewBox="0 0 24 24"><path d="M4 6h16M10 10h10M4 14h16M13 18h7"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.6-6 9.5-6 9.5 6 9.5 6-3.6 6-9.5 6S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
   <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3Z"/><path d="m14.5 6.5 3 3"/></symbol>
@@ -118,10 +123,57 @@
     </header>
     <div class="studio-scroll">
       <p class="studio-hint"><b>Textos:</b> clique em qualquer texto do slide e escreva. A edição mantém os destaques visuais.</p>
+      <section id="studio-style" class="studio-style" hidden>
+        <div class="studio-sec"><span>Aparência</span><em id="style-target">—</em><button type="button" id="style-collapse" class="style-collapse" aria-label="Minimizar aparência" aria-expanded="true" title="Minimizar aparência"><svg class="ico" aria-hidden="true"><use href="#i-up"></use></svg></button></div>
+        <p id="style-empty" class="style-empty">Selecione um texto no slide para ajustar cor, tamanho e posição.</p>
+        <div id="style-controls" class="style-controls" hidden>
+          <div class="style-row">
+            <label class="style-field" title="Cor do texto"><span>Texto</span><span class="style-swatch"><input type="color" id="style-color" value="#ffffff"><i id="style-color-view" aria-hidden="true"></i></span></label>
+            <label class="style-field" title="Cor de fundo"><span>Fundo</span><span class="style-swatch"><input type="color" id="style-bg" value="#0a1936"><i id="style-bg-view" aria-hidden="true"></i></span></label>
+            <button type="button" id="style-color-clear" class="style-mini" title="Remover cor e fundo">auto</button>
+          </div>
+          <div class="style-row">
+            <label class="style-field style-field-num" title="Tamanho da fonte"><span>Tam.</span><input type="number" id="style-size" min="8" max="200" step="1" inputmode="numeric"></label>
+            <label class="style-field" title="Peso da fonte"><span>Peso</span>
+              <select id="style-weight">
+                <option value="">auto</option>
+                <option value="400">Regular</option>
+                <option value="600">Semibold</option>
+                <option value="700">Bold</option>
+                <option value="800">Black</option>
+              </select>
+            </label>
+          </div>
+          <div class="style-row">
+            <span class="style-label">Alinhar</span>
+            <div class="style-seg" role="group" aria-label="Alinhamento do texto">
+              <button type="button" data-align="left" title="Esquerda" aria-label="Alinhar à esquerda"><svg class="ico" aria-hidden="true"><use href="#i-align-left"></use></svg></button>
+              <button type="button" data-align="center" title="Centro" aria-label="Centralizar"><svg class="ico" aria-hidden="true"><use href="#i-align-center"></use></svg></button>
+              <button type="button" data-align="right" title="Direita" aria-label="Alinhar à direita"><svg class="ico" aria-hidden="true"><use href="#i-align-right"></use></svg></button>
+            </div>
+            <button type="button" id="style-align-clear" class="style-mini" title="Voltar ao alinhamento original">auto</button>
+          </div>
+          <div class="style-row">
+            <span class="style-label">Posição</span>
+            <div class="style-nudge" role="group" aria-label="Mover o elemento">
+              <button type="button" data-move="up" title="Subir 4px (Shift = 16px)" aria-label="Subir"><svg class="ico" aria-hidden="true"><use href="#i-up"></use></svg></button>
+              <button type="button" data-move="left" title="Esquerda 4px (Shift = 16px)" aria-label="Mover para a esquerda"><svg class="ico" aria-hidden="true"><use href="#i-left"></use></svg></button>
+              <button type="button" data-move="down" title="Descer 4px (Shift = 16px)" aria-label="Descer"><svg class="ico" aria-hidden="true"><use href="#i-down"></use></svg></button>
+              <button type="button" data-move="right" title="Direita 4px (Shift = 16px)" aria-label="Mover para a direita"><svg class="ico" aria-hidden="true"><use href="#i-right"></use></svg></button>
+            </div>
+            <button type="button" id="style-move" class="style-mini" aria-pressed="false" title="Arraste o elemento no slide">Arrastar</button>
+          </div>
+          <div class="style-row style-row-end">
+            <span class="style-pos" id="style-pos">x 0 · y 0</span>
+            <button type="button" id="style-reset" class="style-mini" title="Limpar cor, tamanho e posição deste texto">Limpar</button>
+          </div>
+        </div>
+      </section>
       <div class="studio-sec"><span>Ordem dos slides</span><em>arraste ou use ↑ ↓</em></div>
       <ol id="studio-list" class="studio-list"></ol>
       <p class="studio-hint">A numeração acompanha a nova ordem. Tudo fica salvo neste navegador até você publicar no site.</p>
     </div>
+    <button type="button" id="studio-connection" class="studio-connection"><svg class="ico" aria-hidden="true"><use href="#i-cloud"></use></svg><span id="studio-connection-label">GitHub · conectar</span><i id="studio-connection-dot" aria-hidden="true"></i></button>
     <div class="studio-actions">
       <button id="publish-btn" class="wide" type="button"><svg class="ico" aria-hidden="true"><use href="#i-cloud"></use></svg>Publicar no site</button>
       <button id="save-draft" type="button"><svg class="ico" aria-hidden="true"><use href="#i-save"></use></svg>Salvar rascunho</button>
@@ -145,11 +197,12 @@
       <div class="field"><label for="pub-path">Arquivo</label><input id="pub-path" placeholder="content.json" autocomplete="off" spellcheck="false"></div>
     </div>
     <div class="field"><label for="pub-token">Token do GitHub</label><input id="pub-token" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false"></div>
-    <p class="publish-note">Crie um token <b>fine-grained</b> em <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens</a>, dê acesso apenas a este repositório e marque <b>Contents: Read and write</b>. <button type="button" id="forget-token" class="link-btn">Esquecer token salvo</button></p>
+    <p class="publish-note">Crie um token <b>fine-grained</b> em <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens</a>, dê acesso apenas a este repositório e marque <b>Contents: Read and write</b>. O token fica salvo e você não precisa colá-lo novamente. <button type="button" id="forget-token" class="link-btn">Esquecer token salvo</button></p>
     <p id="publish-status" class="publish-status" role="status"></p>
     <div class="publish-actions">
       <button type="button" id="discard-draft" class="link-btn">Descartar rascunho local</button>
       <button type="button" data-close>Cancelar</button>
+      <button type="button" id="publish-connect">Salvar e testar</button>
       <button type="button" id="publish-confirm" class="primary">Publicar agora</button>
     </div>
   </dialog>
