@@ -231,7 +231,7 @@
   /* ---- Edição: ordem e textos ---- */
   const BLOCK_TAGS='div,p,ul,ol,li,header,footer,section,article,figure,figcaption,table,blockquote,main,nav,h1,h2,h3,h4,h5,h6';
   const TEXT_TAGS='h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,small,span,div,b,strong,em,label';
-  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten';
+  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten,.s3-noise';
 
   function editableOf(slide){
     const canvas=slide.querySelector('.slide-canvas');
