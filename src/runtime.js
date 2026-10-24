@@ -152,7 +152,7 @@
     if(target===current){applySlide(target,writeHash);return;}
     const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
     if(!reduced.matches&&from==='slide-1'&&to==='slide-2'){coverTransition(target,writeHash);return;}
-    if(!reduced.matches&&from==='slide-4'&&to==='slide-5'){mergeTransition(target,writeHash);return;}
+    if(!reduced.matches&&from==='slide-infra'&&to==='slide-5'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
     playSweep(stage.dataset.dir);
     applySlide(target,writeHash);
@@ -231,7 +231,7 @@
   /* ---- Edição: ordem e textos ---- */
   const BLOCK_TAGS='div,p,ul,ol,li,header,footer,section,article,figure,figcaption,table,blockquote,main,nav,h1,h2,h3,h4,h5,h6';
   const TEXT_TAGS='h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,small,span,div,b,strong,em,label';
-  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten,.s3-noise';
+  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten,.s3-noise,.infra-noise';
 
   function editableOf(slide){
     const canvas=slide.querySelector('.slide-canvas');
@@ -251,13 +251,26 @@
     });
   }
   function applyOrderToDOM(order){
-    const ids=Array.isArray(order)?order:[];
-    const byId=new Map($$('.slide').map(slide=>[slide.id,slide]));
+    const all=$$('.slide');
+    const byId=new Map(all.map(slide=>[slide.id,slide]));
     const next=[];
-    ids.forEach(id=>{const slide=byId.get(id);if(slide&&!next.includes(slide)){next.push(slide);byId.delete(id);}});
-    byId.forEach(slide=>next.push(slide));
-    const anchor=$('#sweep');
-    next.forEach(slide=>stage.insertBefore(slide,anchor));
+    (Array.isArray(order)?order:[]).forEach(id=>{
+      const slide=byId.get(id);
+      if(slide&&!next.includes(slide)){next.push(slide);byId.delete(id);}
+    });
+    // Slides novos, que ainda não existiam na ordem salva, entram na posição padrão.
+    all.forEach((slide,index)=>{
+      if(next.includes(slide))return;
+      let anchor=null;
+      for(let i=index-1;i>=0;i--){if(next.includes(all[i])){anchor=all[i];break;}}
+      if(anchor){next.splice(next.indexOf(anchor)+1,0,slide);return;}
+      let before=null;
+      for(let i=index+1;i<all.length;i++){if(next.includes(all[i])){before=all[i];break;}}
+      if(before)next.splice(next.indexOf(before),0,slide);
+      else next.push(slide);
+    });
+    const target=$('#sweep');
+    next.forEach(slide=>stage.insertBefore(slide,target));
     slides=next;
   }
   function renumber(){

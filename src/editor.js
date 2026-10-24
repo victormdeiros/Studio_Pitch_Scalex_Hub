@@ -22,10 +22,16 @@
     if(value&&typeof value==='object')return Object.keys(value).sort().reduce((acc,key)=>{acc[key]=canonical(value[key]);return acc;},{});
     return value;
   }
+  function orderCompatible(a,b){
+    const orderA=Array.isArray(a)?a:[],orderB=Array.isArray(b)?b:[];
+    const setA=new Set(orderA),setB=new Set(orderB);
+    const commonA=orderA.filter(id=>setB.has(id));
+    const commonB=orderB.filter(id=>setA.has(id));
+    return commonA.length===commonB.length&&commonA.every((id,index)=>id===commonB[index]);
+  }
   function sameContent(a,b){
     if(!a||!b)return false;
-    const orderA=Array.isArray(a.order)?a.order:[],orderB=Array.isArray(b.order)?b.order:[];
-    if(orderA.length!==orderB.length||orderA.some((id,index)=>id!==orderB[index]))return false;
+    if(!orderCompatible(a.order,b.order))return false;
     if(JSON.stringify(canonical(a.text||{}))!==JSON.stringify(canonical(b.text||{})))return false;
     return JSON.stringify(canonical(a.styles||{}))===JSON.stringify(canonical(b.styles||{}));
   }
@@ -603,8 +609,7 @@
   deck.whenReady(content=>{
     originals=deck.originals();
     defaultOrder=deck.slides().map(slide=>slide.id);
-    model={version:1,updatedAt:content.updatedAt||null,order:defaultOrder.slice(),text:clone(content.text||{}),styles:clone(content.styles||{})};
-    if(Array.isArray(content.order)&&content.order.length)model.order=content.order.slice();
+    model={version:1,updatedAt:content.updatedAt||null,order:deck.slides().map(slide=>slide.id),text:clone(content.text||{}),styles:clone(content.styles||{})};
     renderList();refreshDirty();syncEditables();updateConnection();hydrateConnection();
     const styleSection=$('#studio-style'); if(styleSection)styleSection.hidden=true;
     if(/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar'))setEditing(true);
