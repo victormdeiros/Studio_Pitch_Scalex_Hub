@@ -14,6 +14,8 @@
   let model={version:1,updatedAt:null,order:[],text:{},styles:{}};
   let originals={}, defaultOrder=[], editing=false, dirty=false, busy=false, dragId=null, draftTimer=null, toastTimer=null;
   let selected=null, selectedInfo=null, moveMode=false, dragState=null, styleCollapsed=false;
+  let editorUnlocked=window.ScalexGate?window.ScalexGate.editorUnlocked():true;
+  let pendingEditor=false;
 
   const clone=value=>JSON.parse(JSON.stringify(value||{}));
   const readJSON=key=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch(_){return null;}};
@@ -284,6 +286,20 @@
   }
   function editableNode(target){return target&&target.closest?target.closest('[contenteditable="true"]'):null;}
   function closeDialogs(){$$('dialog[open]').forEach(dialog=>dialog.close());}
+  function openEditorGate(){
+    pendingEditor=true;
+    const dialog=$('#editor-lock-dialog'), error=$('#editor-lock-error');
+    if(!dialog)return;
+    $('#editor-lock-pass').value='';
+    if(error){error.textContent='';error.dataset.state='';}
+    if(!dialog.open)dialog.showModal();
+    setTimeout(()=>{try{$('#editor-lock-pass').focus();}catch(_){}},60);
+  }
+  function requestEditor(){
+    if(editing){setEditing(false);return;}
+    if(editorUnlocked){setEditing(true);return;}
+    openEditorGate();
+  }
 
   function sanitize(el){
     [...el.querySelectorAll('*')].forEach(node=>{
@@ -327,7 +343,10 @@
     if(event.key!=='e'&&event.key!=='E')return;
     if(event.metaKey||event.ctrlKey||event.altKey)return;
     if(event.target.closest&&event.target.closest('input,textarea,select,[contenteditable="true"]'))return;
-    event.preventDefault();setEditing(!editing);
+    event.preventDefault();
+    if(editing){setEditing(false);return;}
+    if(!editorUnlocked){pendingEditor=true;openEditorGate();return;}
+    setEditing(true);
   });
 
   /* ---------- Lista de ordem ---------- */
@@ -548,11 +567,31 @@
   }
 
   /* ---------- Ações ---------- */
-  editBtn.addEventListener('click',()=>setEditing(!editing));
+  editBtn.addEventListener('click',()=>{
+    if(!editing&&!editorUnlocked){pendingEditor=true;openEditorGate();return;}
+    setEditing(!editing);
+  });
   $('#studio-close').addEventListener('click',()=>setEditing(false));
   $('#studio-peek').addEventListener('click',()=>setPeek(!document.body.classList.contains('peeking')));
   $('#studio-return').addEventListener('click',()=>setPeek(false));
   $('#edit-badge').addEventListener('click',()=>setPeek(false));
+  $('#editor-lock-form').addEventListener('submit',async event=>{
+    event.preventDefault();
+    const value=$('#editor-lock-pass').value;
+    const ok=window.ScalexGate?await window.ScalexGate.checkEditor(value):true;
+    const error=$('#editor-lock-error');
+    if(!ok){
+      if(error){error.dataset.state='error';error.textContent='Senha incorreta. Tente novamente.';}
+      $('#editor-lock-pass').select();
+      return;
+    }
+    editorUnlocked=true;
+    if(window.ScalexGate)window.ScalexGate.unlockEditor();
+    if(error){error.textContent='';error.dataset.state='';}
+    $('#editor-lock-dialog').close();
+    if(pendingEditor){pendingEditor=false;setEditing(true);}
+  });
+  $('#editor-lock-dialog').addEventListener('close',()=>{pendingEditor=false;});
   $('#save-draft').addEventListener('click',()=>saveDraft());
   publishBtn.addEventListener('click',publish);
   $('#settings-btn').addEventListener('click',openPublish);
@@ -621,7 +660,12 @@
     Object.keys(model.styles).forEach(id=>{if(!validIds.has(id))delete model.styles[id];});
     renderList();refreshDirty();syncEditables();updateConnection();hydrateConnection();
     const styleSection=$('#studio-style'); if(styleSection)styleSection.hidden=true;
-    if(/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar'))setEditing(true);
+    const wantsEdit=/(^|#|&)editar\b/.test(location.hash)||new URLSearchParams(location.search).has('editar');
+    if(wantsEdit){
+      const startEdit=()=>setTimeout(()=>{if(!editing)requestEditor();},120);
+      if(!window.ScalexGate||window.ScalexGate.viewerUnlocked())startEdit();
+      else window.addEventListener('scalex:gate',startEdit,{once:true});
+    }
     if(deck.stale&&deck.stale())toast(deck.stale()+' texto(s) salvo(s) não correspondem mais ao slide atual.');
   });
 })();

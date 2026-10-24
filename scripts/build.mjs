@@ -7,8 +7,8 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 async function files(dir){let out=[];for(const e of await fs.readdir(dir,{withFileTypes:true})){const p=path.join(dir,e.name);out.push(...(e.isDirectory()?await files(p):[p]));}return out;}
 export async function build(){
  const read=p=>fs.readFile(path.join(root,p),'utf8');
- let [shell,base,theme,editor,js,editorJs]=await Promise.all(['src/shell.html','src/styles/base.css','src/styles/theme.css','src/styles/editor.css','src/runtime.js','src/editor.js'].map(read));
- let css=base+'\n'+theme+'\n'+editor;
+ let [shell,base,theme,editor,gateCss,js,gateJs,editorJs]=await Promise.all(['src/shell.html','src/styles/base.css','src/styles/theme.css','src/styles/editor.css','src/styles/gate.css','src/runtime.js','src/gate.js','src/editor.js'].map(read));
+ let css=base+'\n'+theme+'\n'+editor+'\n'+gateCss;
  let content={version:1,order:[],text:{}};
  try{content=JSON.parse(await read('content.json'));}catch(_){}
  const sections=slides.map((s,i)=>{
@@ -26,6 +26,7 @@ export async function build(){
  }
  html=html.replace('<!-- STYLES -->',()=>'<style id="presentation-styles">\n'+css+'\n</style>');
  html=html.replace('<!-- CONTENT -->',()=>'<script id="embedded-content" type="application/json">'+JSON.stringify(content).replace(/</g,'\\u003c')+'</script>');
+ html=html.replace('<!-- GATE -->',()=>'<script id="presentation-gate">\n'+gateJs+'\n</script>');
  html=html.replace('<!-- SCRIPT -->',()=>'<script id="presentation-runtime">\n'+js+'\n</script>').replace('<!-- EDITOR -->',()=>'<script id="presentation-editor">\n'+editorJs+'\n</script>');
  await fs.writeFile(path.join(root,'index.html'),html);return html;
 }

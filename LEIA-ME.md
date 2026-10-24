@@ -8,6 +8,17 @@ Extraia o ZIP e abra **index.html** no Chrome, Edge, Firefox ou Safari. A aprese
 
 Use as setas para navegar, **F** para tela cheia e **G** para ver todos os slides. No celular, deslize entre slides ou abra **Leitura**. O índice **Slides** permite saltar para qualquer página e a ajuda **?** explica os controles.
 
+## Acesso e senhas
+
+O link público abre em uma tela de senha, com duas credenciais independentes:
+
+- **Acesso à apresentação** — para investidores e parceiros.
+- **Acesso ao estúdio** — para editar; sem ela, o botão **Editar** apenas abre o pedido de senha.
+
+A liberação da apresentação fica salva no navegador. A liberação do estúdio vale para a sessão da aba. Use **?lock** no fim da URL ou **Bloquear apresentação** (na ajuda) para voltar à tela de senha.
+
+As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma senha, gere o novo hash e substitua a constante correspondente. Como o GitHub Pages é estático, isso é uma **trava de interface**, não criptografia: o conteúdo continua no HTML e no repositório público. Para sigilo real, use um host com autenticação.
+
 ## Apresentar
 
 - **← → / Page Up / Page Down / Espaço** navegam.
