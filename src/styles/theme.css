@@ -454,6 +454,33 @@
 .comp-gap span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .comp-foot{position:absolute;left:80px;right:80px;bottom:18px;margin:0;font-size:8px;line-height:1.4;color:var(--muted);opacity:.62}
 
+/* ============ 09 · DIFERENCIAIS ============ */
+.dif-head{position:absolute;left:70px;top:44px;width:1080px}
+.dif-head .h2{margin-top:13px;font-size:42px;max-width:1080px}
+.dif-head .lead{margin-top:10px;max-width:980px;font-size:13.5px;line-height:1.5}
+.dif-list{position:absolute;left:70px;top:215px;width:500px;margin:0;padding:0;list-style:none}
+.dif-list li{display:grid;grid-template-columns:24px 42px 1fr;gap:12px;align-items:start;padding:24px 0;border-top:1px solid var(--line)}
+.dif-num{padding-top:7px;font-size:8px;letter-spacing:.1em;font-weight:700;color:var(--violet)}
+.dif-ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(130deg,#eef2ff,#f4edff);border:1px solid #dbe3ff;color:#5b4bff}
+.dif-ico .ico{width:19px;height:19px}
+.dif-list h3{margin:0;font-size:20px;line-height:1.15;letter-spacing:-.025em;color:var(--ink)}
+.dif-list p{margin:4px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.dif-note{position:absolute;left:70px;top:590px;margin:0;padding-left:10px;border-left:2px solid #7c3aed66;max-width:480px;font-size:10px;line-height:1.5;font-weight:700;color:#5b6d92}
+.dif-pat{position:absolute;left:620px;right:70px;top:215px;padding:17px 20px 14px;border-radius:16px;background:linear-gradient(135deg,#0c1734,#221145 62%,#0c1734);border:1px solid #41318a;box-shadow:0 30px 70px #4f46e51f;color:#fff}
+.dif-pat-head{display:flex;align-items:center;gap:8px}
+.dif-pat-head p{display:flex;align-items:center;gap:7px;margin:0;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#c4b5fd}
+.dif-pat-head p .ico{width:13px;height:13px}
+.dif-pat-head span{margin-left:auto;padding:3px 8px;border:1px solid #c084fc40;border-radius:999px;background:#c084fc14;font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#d8b4fe}
+.dif-pat-sub{margin:6px 0 10px;font-size:7.5px;line-height:1.4;color:#8c9bb8}
+.dif-pat-row{display:grid;grid-template-columns:18px 30px 1fr;gap:8px;align-items:start;padding:19px 0;border-top:1px solid #ffffff12}
+.p-n{padding-top:4px;font-size:7px;letter-spacing:.08em;font-weight:700;color:#c4b5fd}
+.p-ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:#ffffff0a;border:1px solid #ffffff17;color:#c4b5fd}
+.p-ico .ico{width:14px;height:14px}
+.dif-pat-row b{display:block;font-size:11.5px;line-height:1.25;letter-spacing:-.01em;color:#fff}
+.dif-pat-row p{margin:3px 0 0;font-size:9px;line-height:1.4;color:#c4cdfa}
+.dif-takeaway{position:absolute;left:70px;right:70px;bottom:28px;margin:0;padding-top:13px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.35;letter-spacing:-.015em;font-weight:700;color:var(--ink)}
+.dif-takeaway span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
 /* ============ 06 · MERCADO DIRETO + INDIRETO ============ */
 .market-head{position:absolute;left:80px;top:52px;width:1000px}
 .market-head .h2{margin-top:13px;font-size:44px;max-width:1000px}
