@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-24T20:29:01.271Z",
+  "updatedAt": "2026-10-24T21:05:53.071Z",
   "order": [
     "slide-1",
     "slide-publico",
@@ -68,6 +68,32 @@
       "e3": {
         "v": "10% - 3<span>00mil</span>",
         "o": "10%"
+      }
+    },
+    "slide-publico": {
+      "e7": {
+        "v": "Empresas que implantam automação no atendimento",
+        "o": "Agências e consultorias"
+      },
+      "e8": {
+        "v": "Compram a plataforma,<b> podem aplicar</b> a própria marca e revendem com seus planos.",
+        "o": "Compram a plataforma, aplicam a própria marca e revendem com"
+      },
+      "e10": {
+        "v": "Incluem sua expertise e promove com a própriia&nbsp; marca",
+        "o": "Definem marca, planos e preços"
+      },
+      "e11": {
+        "v": "Definem planos e limites e vendem como SaaS",
+        "o": "Atendem muitos clientes finais"
+      },
+      "e9": {
+        "v": "Compram a infraestrutura da ScaleX",
+        "o": "Compram a infraestrutura da ScaleX"
+      },
+      "e20": {
+        "v": "Não compram direto da ScaleX",
+        "o": "Não compram direto da ScaleX"
       }
     }
   },
