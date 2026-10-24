@@ -132,7 +132,7 @@
     impactTimers.push(setTimeout(()=>{
       img.animate([
         {transform:`translate(${sx}px,${sy}px) scale(1)`},
-        {transform:'translate(320px,40px) scale(1.6)'}
+        {transform:'translate(610px,385px) scale(.15)'}
       ],{duration:1000,easing:'cubic-bezier(.6,.05,.2,1)',fill:'forwards'});
     },180));
     impactTimers.push(setTimeout(()=>applySlide(target,writeHash),1180));
