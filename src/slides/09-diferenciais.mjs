@@ -14,6 +14,7 @@ export default {
     'Modo SaaS com layout de expertise integrado: white-label com marca, domínio e layout próprios da agência.',
     'Potencial de patente: acompanhamento de parceiros comerciais; orquestração inteligente de agentes de IA em múltiplos workspaces; provisionamento e isolamento automatizado de ambientes multi-tenant; gerenciamento dinâmico de recursos e modelos de IA.',
     'Importante: os quatro recursos têm potencial de patente, mas não são patentes concedidas. A proteção está em estruturação.',
+    'Potencial PaaS: a plataforma já é multi-tenant e white-label; faltam o SDK público JavaScript/TypeScript e os componentes de interface para extensões. É um upside, não uma entrega concluída.',
     'Referência de conteúdo: diferenciais fornecidos pelo fundador em 24/10/2026.'
   ],
   html: `
@@ -21,7 +22,7 @@ export default {
       <header class="dif-head">
         <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>Diferenciais · ScaleX Hub</p>
         <h2 class="h2 rv" style="--d:1">A concorrência entrega partes.<br> <span class="grad-text">A ScaleX entrega a operação inteira.</span></h2>
-        <p class="lead rv" style="--d:2">Três diferenças estruturais — e quatro recursos proprietários com potencial de patente.</p>
+        <p class="lead rv" style="--d:2">Três diferenças estruturais, o próximo salto para PaaS — e quatro recursos com potencial de patente.</p>
       </header>
 
       <ul class="dif-list">
@@ -40,8 +41,17 @@ export default {
           <span class="dif-ico"><svg class="ico" aria-hidden="true"><use href="#i-layout"></use></svg></span>
           <div><h3>Modo SaaS com layout de expertise integrado</h3><p>A experiência da agência dentro do produto: marca, domínio e layout próprios.</p></div>
         </li>
+        <li class="dif-next rv" style="--d:6">
+          <span class="dif-num">04</span>
+          <span class="dif-ico"><svg class="ico" aria-hidden="true"><use href="#i-code"></use></svg></span>
+          <div>
+            <span class="dif-badge">Próximo salto</span>
+            <h3>Potencial PaaS</h3>
+            <p>A base multi-tenant e white-label já está pronta. Faltam o SDK público JavaScript/TypeScript e os componentes de interface para extensões.</p>
+            <div class="dif-chips"><span><b>Falta:</b> SDK JS/TS público</span><span>Componentes de interface</span></div>
+          </div>
+        </li>
       </ul>
-      <p class="dif-note rv" style="--d:5">Menos tempo de implantação. Mais margem por cliente. Escala sem inchar o time.</p>
 
       <aside class="dif-pat rv" style="--d:5">
         <div class="dif-pat-head"><p><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>Potencial de patente</p><span>4 recursos</span></div>
