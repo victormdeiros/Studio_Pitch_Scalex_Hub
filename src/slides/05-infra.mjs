@@ -62,7 +62,7 @@ export default {
 
           <div class="infra-gap">
             <span class="ig-left"><svg class="ico"><use href="#i-lock"></use></svg>Infraestrutura como serviço</span>
-            <span class="ig-right">não existe pronta no mercado</span>
+            <span class="ig-right">não existe pronta para revenda</span>
           </div>
         </div>
       </div>
