@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-24T14:31:44.498Z",
+  "updatedAt": "2026-10-24T14:34:33.724Z",
   "order": [
     "slide-1",
     "slide-2",
@@ -60,6 +60,10 @@
       "e8": {
         "v": "Smart money esperado",
         "o": "Smart money esperado"
+      },
+      "e3": {
+        "v": "10% - 3<span>00mil</span>",
+        "o": "10%"
       }
     }
   },
@@ -68,6 +72,11 @@
       "e8": {
         "x": -2,
         "y": -6
+      },
+      "e3": {
+        "x": -7,
+        "y": 1,
+        "fontSize": 57
       }
     }
   }
