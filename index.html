@@ -311,6 +311,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 @keyframes growY{from{transform:scaleY(.03);opacity:.2}}
 @keyframes growX{from{transform:scaleX(.02);opacity:.2;transform-origin:left center}}
 @keyframes dash{to{stroke-dashoffset:0}}
+@keyframes flowDot{0%{offset-distance:0%;opacity:0}12%{opacity:.9}88%{opacity:.9}100%{offset-distance:100%;opacity:0}}
 
 /* ============ 01 · CAPA ============ */
 .cover-main{position:absolute;left:80px;top:104px;width:680px}
@@ -424,6 +425,8 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .s2j-sub{margin:8px 0 0;max-width:1140px;font-size:12.5px;line-height:1.5;color:var(--muted)}
 .s2j-journey{position:absolute;left:70px;right:70px;top:160px;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;height:140px}
 .s2j-journey::before{content:'';position:absolute;left:5.5%;right:5.5%;top:13px;height:1px;background:linear-gradient(90deg,#8ea2ff00,#8ea2ff55 6%,#b06cff66 50%,#2dd4f555 94%,#2dd4f500)}
+.s2j-journey::after{content:'';position:absolute;top:10px;left:5.5%;width:7%;height:5px;border-radius:999px;background:linear-gradient(90deg,transparent,#c084fc,#22d3ee,transparent);filter:blur(1px);opacity:0;pointer-events:none;animation:railSweep 11s linear infinite}
+@keyframes railSweep{0%{left:5.5%;opacity:0}10%{opacity:.55}82%{opacity:.55}100%{left:92%;opacity:0}}
 .s2j-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
 .s2j-node{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:700;letter-spacing:0;color:#08122b;background:linear-gradient(130deg,#8ea2ff,#c084fc);box-shadow:0 0 0 4px #060c1a,0 0 18px #8b5cf655}
 .s2j-ico{margin-top:12px;display:grid;place-items:center;color:#b7c5ff}
@@ -520,6 +523,8 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .tool-chip h3{display:flex;align-items:center;gap:7px;margin:0 0 3px;font-size:13.5px;letter-spacing:-.01em;color:#0a1936}
 .tool-chip h3 .ico{width:15px;height:15px;color:#3b5bff}
 .tool-chip p{margin:0;font-size:10.5px;line-height:1.35;color:#61739a}
+.s3-dot{position:absolute;z-index:1;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#7c3aed;box-shadow:0 0 7px #7c3aed99;opacity:0;pointer-events:none;offset-rotate:0deg;animation:flowDot 7s linear infinite}
+.s3-dot.alt{background:#0891b2;box-shadow:0 0 7px #0891b299}
 .s3-flag{position:absolute;z-index:5;padding:3px 7px 2px;border-radius:6px;background:#be123c;color:#fff;font-size:7.5px;line-height:1.2;letter-spacing:.03em;font-weight:700;white-space:nowrap;box-shadow:0 8px 18px #be123c33;transform:rotate(var(--rot,0deg));pointer-events:none}
 .s3-knot{position:absolute;left:570px;top:128px;z-index:7;transform:translate(-50%,-50%) rotate(-1.4deg);display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;background:#0a1936;color:#fff;font-size:8px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;white-space:nowrap;box-shadow:0 16px 36px #0a19362b;pointer-events:none}
 .s3-knot i{width:6px;height:6px;border-radius:50%;background:#fb7185;box-shadow:0 0 0 3px #fb71852e;animation:knotPulse 2.4s var(--ease-soft) infinite}
@@ -580,6 +585,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .flow-node.down{opacity:.48;border-style:dashed;border-color:#fb718540;background:#0b1730c4}
 .flow-node.down .fn-ico{color:#fb7185}
 .flow-node.down::after{content:'parou';position:absolute;top:-8px;right:8px;padding:2px 6px;border-radius:999px;background:#2a0f1b;border:1px solid #fb718566;color:#fda4af;font-size:6px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.infra-dot{position:absolute;z-index:1;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3eecc;opacity:0;pointer-events:none;offset-rotate:0deg;animation:flowDot 2.6s linear infinite}
 .infra-gap{position:absolute;left:0;right:0;top:345px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 15px;border:1px dashed #fb718566;border-radius:11px;background:#fb718508;box-shadow:inset 0 0 40px #fb718506;z-index:3}
 .ig-left{display:flex;align-items:center;gap:8px;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#fecdd3}
 .ig-left .ico{width:13px;height:13px;color:#fb7185}
@@ -703,7 +709,8 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 
 .dif-stack{position:relative;width:380px;height:136px;justify-self:end}
 .dif-layer{position:absolute;height:28px;border-radius:8px;display:flex;align-items:center;gap:5px;padding:0 12px;font-size:8px;letter-spacing:.02em;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px #0a19360d}
-.dif-layer.new{top:0;left:36px;width:300px;background:linear-gradient(100deg,#3b5bff,#8b5cf6);color:#fff;box-shadow:0 10px 26px #5b4bff33}
+.dif-layer.new{top:0;left:36px;width:300px;background:linear-gradient(100deg,#3b5bff,#8b5cf6);background-size:200% 100%;animation:layerShimmer 9s ease-in-out infinite;color:#fff;box-shadow:0 10px 26px #5b4bff33}
+@keyframes layerShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .dif-layer.new i{width:12px;height:12px;border-radius:50%;background:#ffffff26;display:grid;place-items:center;font-style:normal;font-size:9px;line-height:1}
 .dif-layer.plug{top:36px;left:24px;width:324px;background:#f1e9ff;border:1px solid #c084fc40;color:#6d28d9}
 .dif-layer.org{top:72px;left:12px;width:348px;background:#fff;border:1px solid #dbe3ff;color:#5b6d92}
@@ -915,6 +922,11 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .s11-mark{position:absolute;right:-60px;bottom:-90px;width:520px;pointer-events:none;opacity:.92}
 .s11-mark img{width:100%;filter:drop-shadow(0 40px 100px #4b5cff66);translate:calc(var(--mx,0)*18px) calc(var(--my,0)*12px);transition:translate .4s ease-out}
 .s11-ring{position:absolute;right:60px;top:60px;width:380px;height:380px;border:1px solid #ffffff10;border-radius:50%;animation:spin 60s linear infinite}
+
+@media(prefers-reduced-motion: reduce){
+  .s3-dot,.infra-dot{display:none}
+  .s2j-journey::after,.dif-layer.new{animation:none!important}
+}
 
 /* Estúdio: edição de ordem, textos e publicação no GitHub Pages. */
 .app-header #edit-btn{display:inline-flex;align-items:center;gap:6px}
@@ -1554,6 +1566,10 @@ html.gate-locked .edit-badge{visibility:hidden!important}
         <circle cx="196" cy="36" r="2.4"/><circle cx="654" cy="70" r="2.4"/><circle cx="936" cy="74" r="2.4"/>
         <circle cx="476" cy="188" r="2.4"/><circle cx="766" cy="208" r="2.4"/><circle cx="1012" cy="196" r="2.4"/>
       </svg>
+      <span class="s3-dot" style="offset-path:path('M196 36C262 78 302 62 406 82');animation-duration:7s;animation-delay:0s"></span>
+      <span class="s3-dot alt" style="offset-path:path('M408 32C502 48 566 28 654 70');animation-duration:8.5s;animation-delay:2.2s"></span>
+      <span class="s3-dot" style="offset-path:path('M524 110C566 158 628 178 706 170');animation-duration:6.5s;animation-delay:1.1s"></span>
+      <span class="s3-dot alt" style="offset-path:path('M300 96C360 120 404 138 452 152');animation-duration:7.5s;animation-delay:3.6s"></span>
       <div class="tool-chip rv" style="--d:2;left:0;top:14px;--rot:-3.2deg;width:198px"><span class="s3-flag s3-noise" style="top:-10px;right:-9px;--rot:4deg">dado duplicado</span><h3><svg class="ico" aria-hidden="true"><use href="#i-database"></use></svg>CRM</h3><p>Pipedrive, HubSpot, RD CRM</p></div>
       <div class="tool-chip rv" style="--d:3;left:210px;top:-2px;--rot:2.6deg;width:200px"><span class="s3-flag s3-noise" style="top:-10px;right:-9px;--rot:-3deg">integração manual</span><h3><svg class="ico" aria-hidden="true"><use href="#i-workflow"></use></svg>Automação</h3><p>Make, Zapier, Pluga</p></div>
       <div class="tool-chip rv" style="--d:4;left:432px;top:20px;--rot:-1.6deg;width:190px"><span class="s3-flag s3-noise" style="bottom:-10px;left:14px;--rot:-2deg">planilha no meio</span><h3><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg>Dashboards</h3><p>Power BI, Databox</p></div>
@@ -1622,6 +1638,9 @@ html.gate-locked .edit-badge{visibility:hidden!important}
             <path class="cross" d="m264 167 10 12m0-12-10 12"/>
             <text class="cut-label" x="228" y="153">API mudou</text>
           </svg>
+
+          <span class="infra-dot" style="offset-path:path('M112 173H142');animation-duration:2.6s;animation-delay:0s"></span>
+          <span class="infra-dot" style="offset-path:path('M112 173H142');animation-duration:2.6s;animation-delay:1.3s"></span>
 
           <div class="flow-node rv" style="--d:5;left:0;top:150px"><span class="fn-ico"><svg class="ico"><use href="#i-arrow"></use></svg></span><b>Entrada</b><em>trigger</em></div>
           <div class="flow-node rv" style="--d:6;left:142px;top:150px"><span class="fn-ico"><svg class="ico"><use href="#i-database"></use></svg></span><b>CRM</b><em>dados</em></div>

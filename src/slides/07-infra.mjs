@@ -53,6 +53,9 @@ export default {
             <text class="cut-label" x="228" y="153">API mudou</text>
           </svg>
 
+          <span class="infra-dot" style="offset-path:path('M112 173H142');animation-duration:2.6s;animation-delay:0s"></span>
+          <span class="infra-dot" style="offset-path:path('M112 173H142');animation-duration:2.6s;animation-delay:1.3s"></span>
+
           <div class="flow-node rv" style="--d:5;left:0;top:150px"><span class="fn-ico"><svg class="ico"><use href="#i-arrow"></use></svg></span><b>Entrada</b><em>trigger</em></div>
           <div class="flow-node rv" style="--d:6;left:142px;top:150px"><span class="fn-ico"><svg class="ico"><use href="#i-database"></use></svg></span><b>CRM</b><em>dados</em></div>
           <div class="flow-node down rv" style="--d:7;left:288px;top:150px"><span class="fn-ico"><svg class="ico"><use href="#i-bot"></use></svg></span><b>IA</b><em>modelo</em></div>

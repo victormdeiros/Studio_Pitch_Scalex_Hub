@@ -57,6 +57,10 @@ export default {
         <circle cx="196" cy="36" r="2.4"/><circle cx="654" cy="70" r="2.4"/><circle cx="936" cy="74" r="2.4"/>
         <circle cx="476" cy="188" r="2.4"/><circle cx="766" cy="208" r="2.4"/><circle cx="1012" cy="196" r="2.4"/>
       </svg>
+      <span class="s3-dot" style="offset-path:path('M196 36C262 78 302 62 406 82');animation-duration:7s;animation-delay:0s"></span>
+      <span class="s3-dot alt" style="offset-path:path('M408 32C502 48 566 28 654 70');animation-duration:8.5s;animation-delay:2.2s"></span>
+      <span class="s3-dot" style="offset-path:path('M524 110C566 158 628 178 706 170');animation-duration:6.5s;animation-delay:1.1s"></span>
+      <span class="s3-dot alt" style="offset-path:path('M300 96C360 120 404 138 452 152');animation-duration:7.5s;animation-delay:3.6s"></span>
       <div class="tool-chip rv" style="--d:2;left:0;top:14px;--rot:-3.2deg;width:198px"><span class="s3-flag s3-noise" style="top:-10px;right:-9px;--rot:4deg">dado duplicado</span><h3><svg class="ico" aria-hidden="true"><use href="#i-database"></use></svg>CRM</h3><p>Pipedrive, HubSpot, RD CRM</p></div>
       <div class="tool-chip rv" style="--d:3;left:210px;top:-2px;--rot:2.6deg;width:200px"><span class="s3-flag s3-noise" style="top:-10px;right:-9px;--rot:-3deg">integração manual</span><h3><svg class="ico" aria-hidden="true"><use href="#i-workflow"></use></svg>Automação</h3><p>Make, Zapier, Pluga</p></div>
       <div class="tool-chip rv" style="--d:4;left:432px;top:20px;--rot:-1.6deg;width:190px"><span class="s3-flag s3-noise" style="bottom:-10px;left:14px;--rot:-2deg">planilha no meio</span><h3><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg>Dashboards</h3><p>Power BI, Databox</p></div>
