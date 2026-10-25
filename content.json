@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-24T21:05:53.071Z",
+  "updatedAt": "2026-10-25T11:46:05.141Z",
   "order": [
     "slide-1",
     "slide-publico",
@@ -29,6 +29,10 @@
       "e4": {
         "v": "Automação",
         "o": "Automação"
+      },
+      "e8": {
+        "v": "Prospecção",
+        "o": "Prospecção"
       }
     },
     "slide-8": {
@@ -95,6 +99,16 @@
       "e20": {
         "v": "Não compram direto da ScaleX",
         "o": "Não compram direto da ScaleX"
+      }
+    },
+    "slide-concorrencia": {
+      "e15": {
+        "v": "~ R$ 5,2 mi",
+        "o": "~US$ 1,0 mi"
+      },
+      "e7": {
+        "v": "~ R$ 21,2 bi",
+        "o": "R$ 21,2 bi"
       }
     }
   },
