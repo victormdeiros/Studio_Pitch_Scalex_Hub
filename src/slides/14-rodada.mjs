@@ -40,6 +40,6 @@ export default {
           </ul>
         </div>
       </div>
-      <p class="round-foot rv" style="--d:6">Oferta de 10% da empresa. Valuation indicativo com o bootstrapping considerado; pre-money da rodada a negociar abaixo do indicativo.</p>
+      <p class="round-foot rv" style="--d:6">Oferta de 10% da empresa. Valuation indicativo com o bootstrapping considerado; pre-money da rodada a negociar abaixo do indicativo. Indicativo interno; não é auditoria.</p>
     </div>`
 };

@@ -67,6 +67,6 @@ export default {
         </div>
       </div>
       <p class="sales-takeaway rv" style="--d:7">O produto é o mesmo. <span>O canal é que escala.</span></p>
-      <p class="sales-foot rv" style="--d:8">Novo ICP: agências de automação/IA e consultorias de marketing. Cada parceiro atende muitos clientes finais — e cada cliente aumenta a dependência da plataforma.</p>
+      <p class="sales-foot rv" style="--d:8">Novo ICP: agências de automação/IA e consultorias de marketing. Cada parceiro atende muitos clientes finais — e cada cliente aumenta a dependência da plataforma. <b>Fonte:</b> dados internos de vendas e tickets da ScaleX Hub (2025).</p>
     </div>`
 };

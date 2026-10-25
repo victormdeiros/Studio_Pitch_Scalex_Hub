@@ -48,9 +48,9 @@ export default {
       </div>
 
       <div class="mkt-side">
-        <div class="mkt-ind dark rv" style="--d:3">
-          <p class="big">84%</p>
-          <div><b>das empresas do Nordeste sem IA declarada</b><span>16% usam IA · Cetic.br 2025</span></div>
+        <div class="mkt-ind-pair rv" style="--d:3">
+          <div><p class="big">83%</p><b>Brasil</b><span>empresas pesquisadas sem IA · Cetic.br 2025</span></div>
+          <div><p class="big">80%</p><b>Mundo (UE)</b><span>empresas ainda sem IA · Eurostat 2025</span></div>
         </div>
         <div class="mkt-ind-grid rv" style="--d:4">
           <div class="mkt-ind"><p class="big">22,7%</p><div><b>ao ano</b><span>crescimento da receita de IA conversacional no Brasil · 2026–2033</span></div></div>

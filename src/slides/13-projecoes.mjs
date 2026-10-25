@@ -46,5 +46,5 @@ export default {
       <div class="maxi rv" style="--d:7"><p class="k">Churn</p><p class="v">15% a 3,75%</p></div>
       <div class="maxi rv" style="--d:8"><p class="k">Margem bruta</p><p class="v">62,5% a 82,5%</p></div>
     </div>
-    <p class="s7-foot rv" style="--d:9">Q4/26 a Q4/27. Projeções. Resultado líquido = faturamento × margem líquida.</p>`
+    <p class="s7-foot rv" style="--d:9">Q4/26 a Q4/27. Projeções. Resultado líquido = faturamento × margem líquida. Projeção interna; não é guidance.</p>`
 };
