@@ -423,9 +423,16 @@
 .comp-direct{position:absolute;left:80px;right:80px;top:232px}
 .comp-direct .micro{margin:0 0 10px}
 .comp-grid{display:grid;grid-template-columns:1fr 1fr 1.12fr;border-top:1px solid var(--line)}
-.comp-item{min-height:206px;padding:14px 24px 0 22px;border-left:1px solid var(--line)}
+.comp-item{display:flex;flex-direction:column;min-height:206px;padding:14px 24px 12px 22px;border-left:1px solid var(--line)}
 .comp-item:first-child{border-left:0;padding-left:0}
+.comp-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.comp-region{flex:none;padding:3px 7px;border:1px solid #ffffff1f;border-radius:999px;background:#ffffff06;font-size:6px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#c4cdfa}
 .comp-name{margin:0;font-size:24px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.comp-note{margin:6px 0 0;font-size:7.2px;line-height:1.4;color:#7c8cad}
+.comp-verify{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:9px}
+.comp-verify span{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:999px;font-size:5.8px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.comp-verify .ok{color:#34d399;background:#34d39912;border:1px solid #34d39933}
+.comp-verify .warn{color:#fbbf24;background:#fbbf2410;border:1px solid #fbbf2433}
 .comp-desc{margin:3px 0 0;font-size:10.5px;line-height:1.35;color:var(--muted)}
 .comp-metric{margin:15px 0 0;font-size:32px;font-weight:700;letter-spacing:-.045em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .comp-sub{margin:7px 0 0;font-size:9.5px;line-height:1.5;color:var(--muted)}
