@@ -7,7 +7,7 @@ export default {
   notes: [
     'TEMPO ALVO: 50 segundos',
     'ROTEIRO FALADO',
-    'Nosso diferencial absoluto é a capacidade de personalizar e adicionar novas features rápido, porque o código é 100% nosso e a base foi construída do zero, organizada e otimizada. Mesmo com pouco investimento, isso nos dá produção acelerada e sem retrabalho. Além disso, temos três diferenças estruturais: trilha comercial completa, intuitividade que encurta a implantação e modo SaaS com layout de expertise integrado. Existe ainda o próximo salto para PaaS: a base multi-tenant e white-label já está pronta; faltam o SDK público JavaScript/TypeScript e os componentes de interface para extensões. Temos três recursos proprietários com potencial de patente: acompanhamento de parceiros comerciais; orquestração inteligente de agentes de IA em múltiplos workspaces; e gerenciamento dinâmico de recursos e modelos de IA. Como somos 100% proprietários do código, queremos explorar com o investidor outros potenciais de propriedade intelectual. Para dar dimensão: a Ploomers CRM investiu cerca de R$ 25 milhões em IA em 2026 para construir capacidades que a ScaleX Hub já entrega nativamente.',
+    'Nosso diferencial absoluto é a capacidade de personalizar e adicionar novas features rápido, porque o código é 100% nosso e a base foi construída do zero, organizada, estruturada e otimizada. Mesmo com pouco investimento, isso nos dá produção acelerada e sem retrabalho: a feature nova entra em cima da base, sem refazer a fundação. Além disso, temos três diferenças estruturais: trilha comercial completa, implantação fácil sem desenvolvimento e modo SaaS com layout de expertise integrado. Existe ainda o próximo salto para PaaS: a base multi-tenant e white-label já está pronta; faltam o SDK público JavaScript/TypeScript e os componentes de interface para extensões. Temos três recursos proprietários com potencial de patente: acompanhamento de parceiros comerciais; orquestração inteligente de agentes de IA em múltiplos workspaces; e gerenciamento dinâmico de recursos e modelos de IA. Como somos 100% proprietários do código, queremos explorar com o investidor outros potenciais de propriedade intelectual. Para dar dimensão: a Ploomers CRM investiu cerca de R$ 25 milhões em IA em 2026 para construir capacidades que a ScaleX Hub já entrega nativamente.',
     'APOIO PARA PERGUNTAS',
     'Diferencial absoluto: personalização e adição de features sobre uma infraestrutura organizada, construída do zero com pouco investimento, sem retrabalho.',
     'Trilha comercial completa: lead, atendimento, follow-up, proposta e fechamento no mesmo ambiente, com agentes e canais integrados.',
@@ -24,49 +24,77 @@ export default {
       <header class="dif-head">
         <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>Diferenciais · ScaleX Hub</p>
         <h2 class="h2 rv" style="--d:1">A concorrência entrega partes.<br> <span class="grad-text">A ScaleX entrega a operação inteira.</span></h2>
-        <p class="lead rv" style="--d:2">Três diferenças estruturais, um diferencial absoluto de personalização — e três recursos com potencial de patente.</p>
+        <p class="lead rv" style="--d:2">Código próprio, base organizada e velocidade para transformar necessidade em feature.</p>
       </header>
 
       <section class="dif-hero rv" style="--d:3">
         <div class="dif-hero-main">
           <span class="dif-badge-solid">Diferencial absoluto</span>
-          <h3>Personalização e novas features <span>sem retrabalho.</span></h3>
-          <p>Código 100% nosso e uma base organizada, estruturada e otimizada — feita do zero com pouco investimento. Produzimos rápido e adicionamos features sem refazer a fundação.</p>
+          <h3>Personalização <span>sem retrabalho.</span></h3>
+          <p>Código 100% nosso e uma base organizada, estruturada e otimizada — feita do zero com pouco investimento. A nova feature entra em cima, sem refazer a fundação.</p>
         </div>
-        <ul class="dif-hero-list">
-          <li><i class="dot"></i><div><b>Código próprio</b><span>sem dependência de terceiros</span></div></li>
-          <li><i class="dot"></i><div><b>Base organizada</b><span>menos retrabalho, mais velocidade</span></div></li>
-          <li><i class="dot"></i><div><b>Produção acelerada</b><span>feature nova sem refazer a fundação</span></div></li>
-        </ul>
+        <div class="dif-stack" aria-hidden="true">
+          <span class="dif-layer new"><i>+</i>nova feature</span>
+          <span class="dif-layer plug">features plugáveis</span>
+          <span class="dif-layer org">base organizada</span>
+          <span class="dif-layer core">código 100% nosso</span>
+        </div>
       </section>
 
-      <div class="dif-left">
-        <p class="micro">Na operação</p>
-        <ul class="dif-mini">
-          <li><span class="m-num">01</span><div><b>Trilha comercial completa</b><p>Do lead ao fechamento, no mesmo fluxo.</p></div></li>
-          <li><span class="m-num">02</span><div><b>Intuitividade que encurta a implantação</b><p>Implantação fácil, sem desenvolvimento.</p></div></li>
-          <li><span class="m-num">03</span><div><b>Modo SaaS com layout de expertise integrado</b><p>Marca, domínio e layout próprios.</p></div></li>
-          <li class="next"><span class="m-num">04</span><div><b>Potencial PaaS <em>próximo salto</em></b><p>Base multi-tenant pronta. Faltam SDK público JS/TS e componentes de interface.</p></div></li>
-        </ul>
+      <div class="dif-cards">
+        <article class="dif-card rv" style="--d:4">
+          <span class="dc-num">01</span>
+          <span class="dc-ico"><svg class="ico" aria-hidden="true"><use href="#i-route"></use></svg></span>
+          <h3>Trilha comercial completa</h3>
+          <p>do lead ao fechamento</p>
+        </article>
+        <article class="dif-card rv" style="--d:5">
+          <span class="dc-num">02</span>
+          <span class="dc-ico"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+          <h3>Implantação fácil</h3>
+          <p>sem desenvolvimento</p>
+        </article>
+        <article class="dif-card rv" style="--d:6">
+          <span class="dc-num">03</span>
+          <span class="dc-ico"><svg class="ico" aria-hidden="true"><use href="#i-layout"></use></svg></span>
+          <h3>SaaS com sua expertise</h3>
+          <p>marca, domínio e layout</p>
+        </article>
+        <article class="dif-card next rv" style="--d:6">
+          <span class="dc-num">04</span>
+          <span class="dc-ico"><svg class="ico" aria-hidden="true"><use href="#i-code"></use></svg></span>
+          <span class="dc-badge">próximo salto</span>
+          <h3>PaaS</h3>
+          <p>SDK JS/TS + UI components</p>
+        </article>
       </div>
 
-      <aside class="dif-ip rv" style="--d:5">
-        <div class="dif-ip-head">
-          <span class="dif-ip-title"><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>Potencial de patente</span>
-          <span class="dif-ip-note">proteção a estruturar</span>
-        </div>
-        <div class="dif-ip-row"><span>P1</span><div><b>Acompanhamento de parceiros comerciais</b><p>Gestão e performance da rede de revendedores.</p></div></div>
-        <div class="dif-ip-row"><span>P2</span><div><b>Orquestração inteligente de agentes de IA em múltiplos workspaces</b><p>Agentes coordenados entre clientes, canais e contextos.</p></div></div>
-        <div class="dif-ip-row"><span>P3</span><div><b>Gerenciamento dinâmico de recursos e modelos de IA</b><p>Modelos e recursos alocados conforme demanda, custo e contexto.</p></div></div>
-        <div class="dif-ip-explore"><b>100% do código é nosso.</b> Queremos explorar com o investidor outros potenciais de propriedade intelectual.</div>
-      </aside>
+      <div class="dif-bottom">
+        <aside class="dif-ip rv" style="--d:6">
+          <div class="dif-ip-head">
+            <span class="dif-ip-title"><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>Potencial de patente</span>
+            <span class="dif-ip-note">proteção a estruturar</span>
+          </div>
+          <div class="dif-ip-chips">
+            <div><span>P1</span><b>Parceiros comerciais</b></div>
+            <div><span>P2</span><b>Agentes em múltiplos workspaces</b></div>
+            <div><span>P3</span><b>Recursos e modelos de IA</b></div>
+          </div>
+          <p class="dif-ip-note-line"><b>100% do código é nosso.</b> Outros potenciais de PI a explorar com o investidor.</p>
+        </aside>
 
-      <div class="dif-news rv" style="--d:6">
-        <span class="dif-news-tag">Mercado</span>
-        <p class="dif-news-text">Ploomers CRM investiu <b>~R$ 25 mi em IA</b> em 2026 para construir capacidades que a ScaleX Hub já entrega nativamente.</p>
-        <a class="dif-news-link" href="https://exame.com/negocios/startup-de-crm-investe-r-25-milhoes-em-ia-para-crescer-vendas/" target="_blank" rel="noopener">Exame ↗</a>
+        <aside class="dif-news rv" style="--d:7">
+          <span class="dif-news-tag">Mercado</span>
+          <div class="dif-news-body">
+            <p class="dif-news-brand">Ploomers CRM</p>
+            <p class="dif-news-big">R$ 25 mi</p>
+            <p class="dif-news-sub">em IA · 2026</p>
+            <p class="dif-news-vs"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>A ScaleX já entrega</p>
+          </div>
+          <a class="dif-news-link" href="https://exame.com/negocios/startup-de-crm-investe-r-25-milhoes-em-ia-para-crescer-vendas/" target="_blank" rel="noopener">Exame ↗</a>
+        </aside>
       </div>
 
-      <p class="dif-takeaway rv" style="--d:7">A defesa não está em uma feature. <span>Está na soma: produto, operação e tecnologia proprietária.</span></p>
+      <p class="dif-takeaway rv" style="--d:8">A defesa não está em uma feature. <span>Está na soma: produto, operação e tecnologia proprietária.</span></p>
     </div>`
 };
