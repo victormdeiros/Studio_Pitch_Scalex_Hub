@@ -474,6 +474,10 @@
 
 .dif-hero{position:absolute;left:70px;right:70px;top:184px;height:172px;display:grid;grid-template-columns:1fr 390px;gap:30px;align-items:center;padding:16px 22px;border:1px solid #c084fc38;border-radius:16px;background:linear-gradient(120deg,#f7f2ff,#eef4ff);box-shadow:0 20px 48px #7c3aed0d}
 .dif-badge-solid{display:inline-block;padding:3px 8px;border-radius:999px;background:#0a1730;color:#fff;font-size:6.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+.dif-claims{display:flex;align-items:center;gap:6px}
+.dif-badge-unique{display:inline-block;padding:3px 8px;border:1px solid #c084fc66;border-radius:999px;background:#fff;color:#7c3aed;font-size:6.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.dif-unique{display:flex;align-items:center;gap:6px;margin:7px 0 0;max-width:620px;font-size:9.5px;line-height:1.35;font-weight:700;color:#5b4b8a}
+.dif-unique::before{content:'✓';display:grid;place-items:center;width:12px;height:12px;border-radius:50%;background:#7c3aed;color:#fff;font-size:7px;flex:none}
 .dif-hero-main h3{margin:7px 0 0;font-size:26px;line-height:1.05;letter-spacing:-.035em;color:#0a1936}
 .dif-hero-main h3 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .dif-hero-main p{margin:7px 0 0;max-width:560px;font-size:10.8px;line-height:1.5;color:#5b6d92}
@@ -520,7 +524,7 @@
 .dif-news-sub{margin:2px 0 0;font-size:7.5px;color:#8c9bb8}
 .dif-news-vs{display:flex;align-items:center;gap:5px;margin:6px 0 0;font-size:8px;font-weight:700;color:#fff}
 .dif-news-vs .ico{width:11px;height:11px;color:#34d399}
-.dif-news-link{position:absolute;right:14px;bottom:12px;font-size:6.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#c4b5fd;text-decoration:none;border-bottom:1px solid #c4b5fd55;padding-bottom:1px}
+.dif-news-link{position:absolute;right:14px;top:12px;font-size:6.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#c4b5fd;text-decoration:none;border-bottom:1px solid #c4b5fd55;padding-bottom:1px}
 .dif-news-link:hover{color:#fff;border-color:#fff}
 
 .dif-takeaway{position:absolute;left:70px;right:70px;bottom:26px;margin:0;padding-top:12px;border-top:1px solid var(--line);font-size:15px;line-height:1.35;letter-spacing:-.015em;font-weight:700;color:var(--ink)}
