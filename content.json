@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-05T22:36:46.880Z",
+  "updatedAt": "2026-11-05T22:52:21.481Z",
   "order": [
     "slide-1",
     "slide-3",
+    "slide-4",
+    "slide-infra",
     "slide-publico",
     "slide-oferta",
     "slide-2",
-    "slide-4",
-    "slide-infra",
     "slide-concorrencia",
     "slide-6",
     "slide-mercado-indireto",
