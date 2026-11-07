@@ -3,7 +3,7 @@
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
 - **`/`** — apresentação completa, com 17 slides, para o investidor ver com calma.
-- **`/resumo/`** — pitch resumido de 7 minutos, com 15 slides, na mesma identidade visual e com os números do PPTX de referência.
+- **`/resumo/`** — pitch resumido de 7 minutos, com os 15 slides do PPTX de referência.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
@@ -22,6 +22,8 @@ O link público abre em uma tela de senha, com duas credenciais independentes:
 
 As duas rotas usam a mesma senha de apresentação. A liberação fica salva no navegador e vale para as duas. A liberação do estúdio vale para a sessão da aba. Use **?lock** no fim da URL ou **Bloquear apresentação** (na ajuda) para voltar à tela de senha.
 
+Os QR Codes em `qr/` usam links com `?acesso=...` que abrem a apresentação sem pedir senha. Os links são estáticos e não expiram; o token fica em `src/gate.js` (`ACCESS_KEY`). Para revogar, troque o token e gere novos QR Codes.
+
 As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma senha, gere o novo hash e substitua a constante correspondente. Como o GitHub Pages é estático, isso é uma **trava de interface**, não criptografia: o conteúdo continua no HTML e no repositório público. Para sigilo real, use um host com autenticação.
 
 ## Apresentar
@@ -36,7 +38,7 @@ A interface desaparece durante a apresentação em tela cheia e reaparece ao pas
 
 ## Editar no navegador
 
-A edição fica disponível na rota completa. A rota **/resumo/** é somente leitura e reaproveita slides da completa: textos publicados em `content.json` aparecem nas duas, mas a ordem do resumo é fixa.
+A edição fica disponível na rota completa. A rota **/resumo/** é somente leitura e reproduz os 15 slides do PPTX de referência como imagens 16:9; ela não compartilha textos com a apresentação completa.
 
 Abra a apresentação completa e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
 
@@ -93,6 +95,8 @@ O arquivo sai em **dist/ScaleX-Hub-Apresentacao.pdf**, com os 17 slides em 16:9 
 | `src/slides/01-capa.mjs` até `17-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
 | `src/deck.mjs` | Sequência padrão da apresentação completa (usada quando `content.json` não define outra) |
 | `src/decks.mjs` | Rotas, títulos e sequência do pitch resumido |
+| `src/slides-resumo.mjs` | Slides do pitch resumido e transcrições para leitura |
+| `assets/resumo/` | Imagens 16:9 dos 15 slides do PPTX |
 | `src/styles/theme.css` | Direção de arte: paleta, tipografia, atmosfera, layouts e animações de cada cena |
 | `src/styles/base.css` | Palco, chrome, navegação, leitura, responsividade e impressão |
 | `src/runtime.js` | Navegação, transições, contadores, parallax, leitura, atalhos e aplicação do `content.json` |
