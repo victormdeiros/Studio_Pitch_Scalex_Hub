@@ -28,7 +28,7 @@ export async function build(){
   for(const deck of decks){
     const sections=deck.slides.map((s,i)=>{
       const logo=s.theme==='light'?'assets/image4.png':'assets/image1.png';
-      const chrome=`<header class="s-top"><img class="s-logo" src="${logo}" alt="ScaleX Hub"></header>${s.number?`<span class="s-num" aria-hidden="true">${esc(s.number)}</span>`:''}`;
+      const chrome=s.plain?'':`<header class="s-top"><img class="s-logo" src="${logo}" alt="ScaleX Hub"></header>${s.number?`<span class="s-num" aria-hidden="true">${esc(s.number)}</span>`:''}`;
       return `<!-- SLIDE ${i+1}: ${esc(s.title)} -->\n<section id="${s.id}" class="slide ${s.theme} scene-${i+1}${i===0?' active':''}" data-title="${esc(s.title)}" aria-label="Slide ${i+1} de ${deck.slides.length}: ${esc(s.title)}" aria-hidden="${i!==0}"><div class="slide-canvas">${chrome}${s.html}</div><template class="speaker-notes">${s.notes.map(p=>'<p>'+esc(p)+'</p>').join('')}</template></section>`;
     }).join('\n');
     let html=shell
