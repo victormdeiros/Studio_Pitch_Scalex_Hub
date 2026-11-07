@@ -1,12 +1,17 @@
 # ScaleX Pitch Studio
 
-Apresentação em código, com 17 slides, identidade ScaleX Hub e direção de arte autoral. Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza o link.
+Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
+
+- **`/`** — apresentação completa, com 17 slides, para o investidor ver com calma.
+- **`/resumo/`** — pitch resumido de 7 minutos, com 15 slides, na mesma identidade visual e com os números do PPTX de referência.
+
+Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
 ## Abrir agora
 
-Extraia o ZIP e abra **index.html** no Chrome, Edge, Firefox ou Safari. A apresentação está pronta, com imagens e fontes incorporadas. Funciona sem internet, sem instalação e sem servidor.
+Extraia o ZIP e abra **index.html** no Chrome, Edge, Firefox ou Safari. A versão resumida fica em **resumo/index.html**. As apresentações estão prontas, com imagens e fontes incorporadas. Funcionam sem internet, sem instalação e sem servidor.
 
-Use as setas para navegar, **F** para tela cheia e **G** para ver todos os slides. No celular, deslize entre slides ou abra **Leitura**. O índice **Slides** permite saltar para qualquer página e a ajuda **?** explica os controles.
+Use as setas para navegar, **F** para tela cheia e **G** para ver todos os slides. No celular, deslize entre slides ou abra **Leitura**. O índice **Slides** permite saltar para qualquer página e a ajuda **?** explica os controles. O botão no topo alterna entre **Resumo · 7 min** e **Completa**.
 
 ## Acesso e senhas
 
@@ -15,7 +20,7 @@ O link público abre em uma tela de senha, com duas credenciais independentes:
 - **Acesso à apresentação** — para investidores e parceiros.
 - **Acesso ao estúdio** — para editar; sem ela, o botão **Editar** apenas abre o pedido de senha.
 
-A liberação da apresentação fica salva no navegador. A liberação do estúdio vale para a sessão da aba. Use **?lock** no fim da URL ou **Bloquear apresentação** (na ajuda) para voltar à tela de senha.
+As duas rotas usam a mesma senha de apresentação. A liberação fica salva no navegador e vale para as duas. A liberação do estúdio vale para a sessão da aba. Use **?lock** no fim da URL ou **Bloquear apresentação** (na ajuda) para voltar à tela de senha.
 
 As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma senha, gere o novo hash e substitua a constante correspondente. Como o GitHub Pages é estático, isso é uma **trava de interface**, não criptografia: o conteúdo continua no HTML e no repositório público. Para sigilo real, use um host com autenticação.
 
@@ -25,13 +30,15 @@ As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma s
 - **Home / End** vão ao primeiro ou ao último slide.
 - **F** alterna tela cheia; **G** abre a visão geral; **?** abre a ajuda.
 - **Leitura** mostra o conteúdo do slide em formato de artigo, com as notas do apresentador.
-- **Imprimir** gera um slide por página em 16:9, para PDF.
+- **PDF** (ou **P**) abre a exportação: um slide por página em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha **Salvar como PDF**.
 
 A interface desaparece durante a apresentação em tela cheia e reaparece ao passar o mouse na parte inferior. Os slides têm entrada em camadas, contadores, gráficos animados, redes desenhadas e parallax sutil de acordo com o movimento do mouse. A abertura usa uma transição de impacto: o símbolo da capa atravessa a tela, cresce e abre o resumo no slide 2. As demais trocas usam foco, profundidade e uma varredura de luz; na passagem da fragmentação para a concorrência, as dez ferramentas convergem para o símbolo ScaleX antes de a leitura competitiva aparecer.
 
 ## Editar no navegador
 
-Abra a apresentação e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
+A edição fica disponível na rota completa. A rota **/resumo/** é somente leitura e reaproveita slides da completa: textos publicados em `content.json` aparecem nas duas, mas a ordem do resumo é fixa.
+
+Abra a apresentação completa e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
 
 - **Textos** — clique em qualquer texto do slide e escreva. Os destaques visuais (gradientes, negritos, ícones) são preservados.
 - **Aparência** — com um texto selecionado, o painel mostra cor, fundo, tamanho, peso, alinhamento e posição. Use **↑ ← ↓ →** para deslocar (Shift = 16px), **Arrastar** para mover com o mouse e **Limpar** para voltar ao estilo original. O painel pode ser minimizado pelo chevron.
@@ -51,7 +58,7 @@ Sem token, use **Baixar JSON** para exportar as alterações e **Importar** para
 - O site busca `content.json` ao abrir. Se o arquivo não existir (ou o arquivo for aberto direto por `file://`), usa o conteúdo embutido no `index.html` na hora do `npm run build`.
 - A ordem guarda os ids dos slides (`slide-1` a `slide-12`). Os textos são guardados por slide, no elemento editável, junto da marcação original — se um slide mudar no código, o texto antigo não é aplicado no lugar errado.
 - Aparência fica em `styles`, por slide e por elemento: cor, fundo, tamanho, peso, alinhamento e deslocamento (x/y). São estilos aplicados por cima do CSS, sem alterar o layout original.
-- Para conferir o site publicado, abra [victormdeiros.github.io/Studio_Pitch_Scalex_Hub](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/). Se o navegador tiver um rascunho local, use **Descartar rascunho local** (na configuração de publicação) para ver a versão publicada.
+- Para conferir o site publicado, abra [victormdeiros.github.io/Studio_Pitch_Scalex_Hub](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/). A versão resumida fica em [/resumo/](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/resumo/). Se o navegador tiver um rascunho local, use **Descartar rascunho local** (na configuração de publicação) para ver a versão publicada.
 
 ## Editar o projeto como código
 
@@ -61,7 +68,7 @@ A base é **JavaScript modular + CSS**, com HTML/SVG nos elementos visuais. Não
 npm run build
 ```
 
-Isso gera novamente **index.html**, com todos os recursos locais incorporados. Não é necessário executar `npm install`.
+Isso gera novamente **index.html** e **resumo/index.html**, com todos os recursos locais incorporados. Não é necessário executar `npm install`.
 
 Para apresentar por um servidor local:
 
@@ -71,12 +78,21 @@ npm run dev
 
 Abra **http://localhost:4173**. Depois de alterar o código, execute `npm run build` e recarregue a página. O comando de desenvolvimento não inclui atualização automática.
 
+Para gerar o PDF sem abrir o navegador:
+
+```sh
+npm run pdf
+```
+
+O arquivo sai em **dist/ScaleX-Hub-Apresentacao.pdf**, com os 17 slides em 16:9 e os fundos preservados. Use `npm run pdf -- --deck=resumo` para gerar o pitch resumido, `npm run pdf -- --all` para os dois, `npm run pdf -- --notes` para acrescentar as notas do apresentador ou `npm run pdf -- --out=caminho/arquivo.pdf` para escolher o destino. O comando usa um Chrome/Chromium instalado; se necessário, aponte o executável em `CHROME_PATH`.
+
 ## Onde mexer
 
 | Arquivo | O que controla |
 | --- | --- |
 | `src/slides/01-capa.mjs` até `17-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
-| `src/deck.mjs` | Sequência padrão dos slides (usada quando `content.json` não define outra) |
+| `src/deck.mjs` | Sequência padrão da apresentação completa (usada quando `content.json` não define outra) |
+| `src/decks.mjs` | Rotas, títulos e sequência do pitch resumido |
 | `src/styles/theme.css` | Direção de arte: paleta, tipografia, atmosfera, layouts e animações de cada cena |
 | `src/styles/base.css` | Palco, chrome, navegação, leitura, responsividade e impressão |
 | `src/runtime.js` | Navegação, transições, contadores, parallax, leitura, atalhos e aplicação do `content.json` |
@@ -84,6 +100,7 @@ Abra **http://localhost:4173**. Depois de alterar o código, execute `npm run bu
 | `src/styles/editor.css` | Painel do estúdio, realce dos textos editáveis, controles de aparência e diálogo de publicação |
 | `content.json` | Ordem, textos e estilos publicados pelo estúdio |
 | `src/shell.html` | Estrutura da interface |
+| `scripts/export-pdf.mjs` | Exportação automatizada em PDF (`npm run pdf`) |
 | `src/components.mjs` | Utilitário compartilhado de escape de HTML |
 | `assets/brand/` | Os quatro arquivos originais do kit de identidade visual |
 | `assets/fonts/` | Manrope regular e negrito extraídas da apresentação original |

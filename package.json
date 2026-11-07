@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Pitch edit\u00e1vel ScaleX Hub. Projeto sem depend\u00eancias.",
+  "description": "Apresenta\u00e7\u00f5es edit\u00e1veis ScaleX Hub, completa e resumida. Projeto sem depend\u00eancias.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "dev": "node scripts/serve.mjs"
+    "dev": "node scripts/serve.mjs",
+    "pdf": "node scripts/export-pdf.mjs"
   },
   "engines": {
     "node": ">=18"
