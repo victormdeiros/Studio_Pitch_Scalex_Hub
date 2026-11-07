@@ -960,3 +960,78 @@
 .rm-bridge b{font-size:13px;letter-spacing:-.02em;color:#0a1936}
 .rm-bridge i{font-style:normal;color:#7c3aed;font-size:18px;line-height:1}
 .rm-bridge em{margin-left:auto;font-style:normal;font-size:8px;color:#6d7ea3}
+
+/* ============ RESUMO · CONCORRÊNCIA (PPTX 9) ============ */
+#resumo-concorrencia .comp-head{width:1100px}
+#resumo-concorrencia .comp-head .h2{font-size:40px}
+#resumo-concorrencia .comp-metric{font-size:30px}
+#resumo-concorrencia .comp-open{min-height:206px}
+#resumo-concorrencia .comp-open-note + .comp-open-note{margin-top:8px}
+
+/* ============ RESUMO · DIFERENCIAIS (PPTX 10) ============ */
+.sum-dif{position:absolute;left:70px;right:70px;top:56px;bottom:0}
+.sum-dif-head .h2{margin-top:12px;font-size:38px;max-width:1140px}
+.sum-dif-head .lead{margin-top:10px;max-width:1100px;font-size:12.5px;line-height:1.5}
+.sum-dif-table-wrap{margin-top:22px;border:1px solid #0a193614;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 16px 40px #4f46e50a}
+.sum-dif-table{width:100%;border-collapse:collapse;font-size:13px}
+.sum-dif-table th{padding:10px 14px;background:#0a193608;border-bottom:1px solid #0a193614;color:#5b6d92;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;text-align:left}
+.sum-dif-table th:not(:first-child),.sum-dif-table td:not(:first-child){text-align:center}
+.sum-dif-table td{padding:10px 14px;border-top:1px solid #0a19360d;color:#0a1936}
+.sum-dif-table td:first-child{font-weight:600}
+.sum-dif-table td:last-child{background:#f4f0ff;color:#7c3aed;font-weight:700}
+.sum-dif-table tbody tr:first-child td{border-top:0}
+.sum-dif-panels{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.sum-dif-panel{padding:16px 18px;border:1px solid #0a193614;border-radius:14px;background:#fff}
+.sum-dif-panel h3{margin:0 0 8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7c3aed}
+.sum-dif-panel p{margin:0;font-size:12.5px;line-height:1.5;color:#5b6d92}
+.sum-dif-panel p + p{margin-top:6px}
+.sum-dif-panel b{color:#0a1936}
+.sum-dif-foot{position:absolute;left:0;right:0;bottom:22px;margin:0;padding-top:12px;border-top:1px solid #0a193614;font-size:9px;line-height:1.5;color:#6d7ea3}
+
+/* ============ RESUMO · TRAÇÃO (PPTX 11) ============ */
+.sum-sales{position:absolute;left:80px;right:80px;top:56px;bottom:0}
+.sum-sales-head h2{margin-top:12px;font-size:40px;max-width:1080px}
+.sum-sales-head .lead{margin-top:10px;max-width:920px;font-size:13px;line-height:1.5}
+.sum-sales-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.sum-sales-card{padding:18px 20px;border:1px solid #0a193614;border-radius:16px;background:#fff;box-shadow:0 20px 50px #4f46e510}
+.sum-sales-card .v{margin:0;font-size:30px;line-height:1;font-weight:700;letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sum-sales-card .l{margin:9px 0 0;font-size:11px;line-height:1.4;color:#33415f}
+.sum-sales-card .s{margin:8px 0 0;font-size:8.5px;line-height:1.4;color:#7c8cad}
+.sum-sales-body{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:28px}
+.sum-sales-ticket .micro,.sum-sales-delivered .micro{margin:0 0 10px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#7c3aed}
+.sum-sales-row{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;margin-top:12px}
+.sum-sales-row span{font-size:10px;font-weight:600;color:#33415f}
+.sum-sales-row span em{font-style:normal;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:#8c9bb8;margin-left:4px}
+.sum-sales-row b{font-size:13px;color:#0a1936;letter-spacing:-.02em}
+.sum-sales-row i{grid-column:1/-1;display:block;height:8px;border-radius:999px;background:linear-gradient(90deg,#6d7cff,#c084fc);width:var(--w);opacity:.9}
+.sum-sales-row.focus i{background:linear-gradient(90deg,#3b5bff,#8b5cf6);box-shadow:0 0 18px #6d7cff55}
+.sum-sales-note{margin:12px 0 0;font-size:8.5px;line-height:1.45;color:#6d7ea3}
+.sum-sales-delivered ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.sum-sales-delivered li{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border:1px solid #0a193614;border-radius:10px;background:#fff}
+.sum-sales-delivered li b{font-size:10.5px;color:#0a1936}
+.sum-sales-delivered li span{font-size:8.5px;line-height:1.4;color:#6d7ea3}
+.sum-sales-foot{position:absolute;left:0;right:0;bottom:22px;margin:0;padding-top:12px;border-top:1px solid #0a193614;font-size:8.5px;line-height:1.5;color:#6d7ea3}
+
+/* ============ RESUMO · INVESTIDOR (PPTX 14) ============ */
+#resumo-investidor .s8-head{width:1100px}
+#resumo-investidor .s8-head .h2{font-size:40px}
+#resumo-investidor .rs-smart{top:158px;gap:6px}
+#resumo-investidor .rs-smart .rs-item{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:6px 10px;border:1px solid #ffffff14;border-radius:10px;background:#ffffff05;font-size:8px;color:#c4d1e7}
+#resumo-investidor .rs-smart .rs-item b{font-size:8.4px;line-height:1.2;color:#fff;font-weight:700}
+#resumo-investidor .rs-smart .rs-item em{font-style:normal;font-size:7px;line-height:1.3;color:#8c9bb8}
+#resumo-investidor .s8-big{top:214px}
+
+/* ============ RESUMO · FECHAMENTO (PPTX 15) ============ */
+#resumo-fechamento .s11-contact{position:absolute;left:80px;bottom:56px;display:flex;align-items:center;gap:12px;z-index:2}
+#resumo-fechamento .s11-contact img{width:62px;height:62px;border-radius:9px;background:#fff;padding:4px;box-shadow:0 12px 30px #0006}
+#resumo-fechamento .s11-contact b{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+#resumo-fechamento .s11-contact span{display:block;margin-top:4px;font-size:9px;color:#8c9bb8}
+
+/* Refino final do smart money no resumo */
+#resumo-investidor .rs-smart{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch;top:158px}
+#resumo-investidor .rs-smart .rs-label{grid-column:1/-1;font-size:7.6px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#8c9bb8;margin-bottom:2px}
+#resumo-investidor .rs-smart .rs-item{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:10px 12px;border:1px solid #ffffff14;border-radius:12px;background:#ffffff05;font-size:9px;color:#c4d1e7;line-height:1.35}
+#resumo-investidor .rs-smart .rs-item b{font-size:9.5px;line-height:1.2;color:#fff;font-weight:700}
+#resumo-investidor .rs-smart .rs-item em{font-style:normal;font-size:8px;line-height:1.3;color:#8c9bb8}
+#resumo-investidor .s8-big{top:260px}
+#resumo-investidor .tl{top:260px}
