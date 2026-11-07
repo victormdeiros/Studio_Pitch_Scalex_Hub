@@ -2198,6 +2198,9 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   const EDIT_FNV='f3de2dfa';
   const VIEW_KEY='scalex.gate.v1';
   const EDIT_KEY='scalex.editor.v1';
+  /* Link de acesso impresso nos QR Codes. Abre a apresentação sem senha.
+     É uma conveniência de interface; o conteúdo continua no HTML público. */
+  const ACCESS_KEY='scalex-pitch-2026-7f3c9a1e6b2d4f80';
   const root=document.documentElement;
   const gate=document.getElementById('gate');
   const form=document.getElementById('gate-form');
@@ -2235,27 +2238,45 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     gate.classList.remove('gate-out');
     setTimeout(()=>{try{input.focus();}catch(_){}},80);
   }
-  function unlockViewer(){
+  function accessToken(){
+    try{return new URLSearchParams(location.search).get('acesso')||'';}catch(_){return '';}
+  }
+  function clearAccessToken(){
+    try{
+      const url=new URL(location.href);
+      if(!url.searchParams.has('acesso'))return;
+      url.searchParams.delete('acesso');
+      history.replaceState(null,'',url.pathname+url.search+url.hash);
+    }catch(_){}
+  }
+  function unlockViewer(instant){
     try{localStorage.setItem(VIEW_KEY,'open');}catch(_){}
     error.textContent='';
     input.value='';
     gate.classList.add('gate-out');
     root.classList.remove('gate-locked');
-    setTimeout(()=>{gate.hidden=true;},460);
+    setTimeout(()=>{gate.hidden=true;},instant?0:460);
     window.dispatchEvent(new CustomEvent('scalex:gate'));
   }
 
+  let lockedByUrl=false;
   try{
-    if(new URLSearchParams(location.search).has('lock')){
+    const params=new URLSearchParams(location.search);
+    lockedByUrl=params.has('lock');
+    if(lockedByUrl){
       localStorage.removeItem(VIEW_KEY);
       sessionStorage.removeItem(EDIT_KEY);
       const url=new URL(location.href);
       url.searchParams.delete('lock');
+      url.searchParams.delete('acesso');
       history.replaceState(null,'',url.pathname+url.search+url.hash);
     }
   }catch(_){}
 
-  if(viewerUnlocked()){
+  if(!lockedByUrl&&accessToken()===ACCESS_KEY){
+    unlockViewer(true);
+    clearAccessToken();
+  }else if(viewerUnlocked()){
     root.classList.remove('gate-locked');
     gate.hidden=true;
     window.dispatchEvent(new CustomEvent('scalex:gate'));

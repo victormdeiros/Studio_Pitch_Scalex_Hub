@@ -1,0 +1,18 @@
+QR CODES · PITCH SCALEX HUB 2026
+
+Pitch completo:
+https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/?acesso=scalex-pitch-2026-7f3c9a1e6b2d4f80
+
+Pitch resumido (7 min):
+https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/resumo/?acesso=scalex-pitch-2026-7f3c9a1e6b2d4f80
+
+Arquivos para impressão:
+- qr-pitch.pdf ......... folha A4 com os dois QR Codes
+- pitch-completo.svg ... vetor do pitch completo
+- pitch-completo.png ... PNG de alta resolução (2440 px)
+- pitch-resumo.svg ..... vetor do pitch resumido
+- pitch-resumo.png ..... PNG de alta resolução (2600 px)
+- print-sheet.html ..... fonte da folha A4, para ajustar textos e reimprimir
+
+Os dois links são permanentes, abrem sem senha e não expiram.
+O código de acesso fica em src/gate.js (ACCESS_KEY).
