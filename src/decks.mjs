@@ -1,4 +1,5 @@
 import {slides as detalhado} from './deck.mjs';
+import resumoCapa from './slides-resumo/01-capa.mjs';
 import resumoProjecao from './slides-resumo/13-projecao.mjs';
 import resumoRodada from './slides-resumo/14-rodada.mjs';
 
@@ -13,8 +14,8 @@ const pick=ids=>ids.map(id=>{
    Reaproveita o desenho da apresentação completa e usa variantes próprias
    para projeção e rodada, com os números atualizados do PPTX. */
 const resumo=[
+  resumoCapa,
   ...pick([
-    'slide-1',             // capa
     'slide-3',             // a dor e a origem
     'slide-4',             // 10 ferramentas / custo escondido
     'slide-infra',         // dispersão e workflows complexos
