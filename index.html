@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="pt-BR" class="gate-locked">
+<html lang="pt-BR" class="gate-locked" data-deck="detalhado" data-editable="true" data-content="content.json" data-apply-order="true">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Apresentação para investidores da ScaleX Hub, 2026. 17 slides com design dinâmico.">
+  <meta name="description" content="Apresentação completa para investidores da ScaleX Hub, 2026. 17 slides com design dinâmico.">
   <meta name="color-scheme" content="dark">
   <meta name="robots" content="noindex,nofollow">
   <title>ScaleX Hub — Apresentação para investidores</title>
@@ -53,6 +53,9 @@ input,select{min-width:0;border:1px solid var(--ui-border);background:#ffffff08;
 .app-header .tools button{padding:6px 12px;font-size:11px;color:#c5d2ea;background:#ffffff06}
 .app-header .tools button:hover{color:#fff}
 #help-btn{width:30px;height:30px;padding:0;display:grid;place-items:center;font-size:13px}
+.deck-switch{display:inline-flex;align-items:center;padding:6px 12px;border:1px solid #c084fc4d;border-radius:999px;background:#c084fc14;color:#e9dcff;font-size:11px;line-height:1.3;text-decoration:none;white-space:nowrap;transition:background-color .2s var(--ease-soft),border-color .2s var(--ease-soft)}
+.deck-switch:hover{background:#c084fc24;border-color:#c084fc80}
+html[data-editable=false] #edit-btn,html[data-editable=false] #studio-return,html[data-editable=false] .studio,html[data-editable=false] .edit-badge,html[data-editable=false] [data-editor-only]{display:none!important}
 
 .workspace{position:absolute;inset:52px 0 68px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #stage{
@@ -183,6 +186,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 @media(max-width:900px){
   .app-brand span,.hint,.slide-dots{display:none}
   .app-header{padding:0 12px}.app-header .tools{gap:3px}.app-header .tools button{padding:6px 9px;font-size:10px}
+  .deck-switch{padding:6px 9px;font-size:10px}
   .app-brand strong{font-size:11px}
   .app-footer{gap:9px;padding:0 12px}.slide-picker{max-width:175px}
 }
@@ -196,6 +200,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 }
 
 @page{size:13.333333in 7.5in;margin:0}
+.pdf-notes-page{display:none}
 @media print{
   html,body{overflow:visible;height:auto;width:1280px;background:#fff;print-color-adjust:exact;-webkit-print-color-adjust:exact}
   body{background:#fff!important}
@@ -207,6 +212,15 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
   .slide-canvas{transform:none!important;filter:none!important;clip-path:none!important}
   .s3-tangle path,.net-svg path,.s8-arc path{stroke-dashoffset:0!important;opacity:.55!important}
   .slide *,.slide *::before,.slide *::after{animation:none!important;transition:none!important}
+  /* Páginas de notas opcionais, inseridas depois de cada slide na exportação. */
+  .pdf-notes-page{display:block;visibility:visible!important;width:1280px;height:720px;overflow:hidden;padding:62px 72px 54px;background:#060c1a;color:#eef3ff;font-family:Manrope,Arial,sans-serif;break-after:page;page-break-after:always}
+  .pdf-notes-page:last-child{break-after:auto;page-break-after:auto}
+  .pdf-notes-kicker{margin:0 0 10px;font-size:10px;line-height:1.4;letter-spacing:.18em;text-transform:uppercase;color:#c084fc;font-weight:700}
+  .pdf-notes-page h2{margin:0 0 26px;max-width:1060px;font-size:30px;line-height:1.15;letter-spacing:-.02em;color:#fff}
+  .pdf-notes-body{column-count:2;column-gap:46px;column-rule:1px solid #ffffff12;font-size:13.5px;line-height:1.65;color:#c4d1e7}
+  .pdf-notes-body p{margin:0 0 9px;break-inside:avoid-column}
+  .pdf-notes-body p:first-child{margin-bottom:3px;color:#c084fc;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .pdf-notes-body p:nth-child(2){margin-bottom:15px;color:#8ea2c8;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -903,6 +917,7 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .round-offer{display:flex;flex-direction:column;min-width:0}
 .round-offer .micro{margin:0 0 8px}
 .round-big{margin:10px 0 0;font-size:150px;line-height:.78;font-weight:700;letter-spacing:-.075em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+#resumo-rodada .round-big{font-size:76px;line-height:.92;letter-spacing:-.05em;white-space:nowrap}
 .round-of{margin:18px 0 0;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
 .round-note{margin:12px 0 0;max-width:380px;font-size:12px;line-height:1.5;color:var(--muted)}
 .round-val{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);max-width:450px}
@@ -1031,6 +1046,13 @@ body.editing #stage{cursor:text}
 .publish-note{margin:0 0 14px;font-size:11px;line-height:1.6;color:#8c9bb8}
 .publish-note b{color:#dbe5f6;font-weight:700}
 .publish-note a{color:#c084fc;text-decoration:none;border-bottom:1px solid #c084fc55}
+.pdf-option{display:flex;align-items:flex-start;gap:11px;margin:4px 0 12px;padding:12px 14px;border:1px solid #ffffff14;border-radius:12px;background:#ffffff05;cursor:pointer}
+.pdf-option:hover{background:#ffffff0a;border-color:#ffffff24}
+.pdf-option input{width:auto;flex:none;margin:2px 0 0;padding:0;accent-color:#c084fc}
+.pdf-option span{display:grid;gap:3px}
+.pdf-option b{font-size:11.5px;color:#e9effc;font-weight:700}
+.pdf-option em{font-style:normal;font-size:10.5px;line-height:1.5;color:#8c9bb8}
+.pdf-tip{font-size:10.5px;margin-bottom:6px}
 .field{display:flex;flex-direction:column;gap:5px;margin:0 0 11px;min-width:0}
 .field label{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#7c8cad}
 .field input{border-radius:10px;padding:9px 12px;font-size:12px;background:#ffffff06;color:#e6eefc;border-color:#ffffff14}
@@ -1235,12 +1257,13 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   <header class="app-header" aria-label="Ferramentas da apresentação">
     <div class="app-brand"><strong>ScaleX Hub</strong><span>Apresentação para investidores</span></div>
     <div class="tools">
+      <a id="deck-switch" class="deck-switch" href="resumo/index.html">Resumo · 7 min</a>
       <button id="studio-return" title="Voltar ao estúdio" aria-label="Voltar ao estúdio" hidden><svg class="ico" aria-hidden="true"><use href="#i-edit"></use></svg><span>Estúdio</span></button>
       <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
       <button id="fullscreen-btn" title="Tela cheia (F)">Tela cheia</button>
-      <button id="print-btn" title="Imprimir ou salvar em PDF">Imprimir</button>
+      <button id="pdf-btn" title="Exportar a apresentação em PDF (P)">PDF</button>
       <button id="help-btn" aria-label="Ajuda e atalhos">?</button>
     </div>
   </header>
@@ -2227,9 +2250,17 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     <p id="studio-status" class="studio-status" data-state="original" role="status"></p>
   </aside>
 
-  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os 17 slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
+  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
   <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>Imprimir / PDF</dt><dd>Gera os 17 slides, um por página, em proporção 16:9. Ative os gráficos de fundo nas opções do navegador.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt>E · Editar</dt><dd>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="pdf-dialog" aria-labelledby="pdf-title">
+    <div class="dialog-top"><h2 id="pdf-title">Exportar em PDF</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+    <p class="publish-note">Os <b><span id="pdf-count">17</span> slides</b> serão preparados um por página, em <b>16:9</b>, com fundos e cores. Na janela do navegador, escolha <b>Salvar como PDF</b> como destino.</p>
+    <label class="pdf-option" for="pdf-notes"><input id="pdf-notes" type="checkbox"><span><b>Incluir notas do apresentador</b><em>Acrescenta uma página de notas após cada slide que tiver roteiro.</em></span></label>
+    <p class="publish-note pdf-tip">Mantenha a opção <b>Gráficos de plano de fundo</b> ativada e desative <b>Cabeçalhos e rodapés</b> para um resultado limpo.</p>
+    <div class="publish-actions"><button type="button" data-close>Cancelar</button><button type="button" id="pdf-run" class="primary">Gerar PDF</button></div>
+  </dialog>
+
   <dialog id="editor-lock-dialog" aria-labelledby="editor-lock-title">
     <div class="dialog-top"><h2 id="editor-lock-title">Acesso ao estúdio</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
     <p class="publish-note">A edição é restrita ao time ScaleX Hub. Digite a senha do estúdio para continuar.</p>
@@ -2260,7 +2291,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   </dialog>
   <div id="toast" role="status" hidden></div>
 
-  <script id="embedded-content" type="application/json">{"version":1,"updatedAt":"2026-10-25T15:42:26.358Z","order":["slide-1","slide-publico","slide-oferta","slide-2","slide-3","slide-4","slide-infra","slide-concorrencia","slide-6","slide-mercado-indireto","slide-diferenciais","slide-7","slide-8","slide-9","slide-10","slide-11","slide-12"],"text":{"slide-4":{"e1":{"v":"Ferramentas dispersas","o":"Revender IA pode exigir até 10 ferramentas desconectadas"},"e4":{"v":"Automação","o":"Automação"},"e8":{"v":"Prospecção","o":"Prospecção"}},"slide-8":{"e17":{"v":"\u003cspan class=\"count\">40\u003c/span>%","o":"35%"},"e18":{"v":"Margem \u003cb>estimada -&nbsp;\u003c/b>ebitda no Q4/27","o":"Margem líquida no Q4/27"},"e15":{"v":"R$ \u003cspan class=\"count\">528\u003c/span> mil","o":"R$ 380,3 mil"},"e22":{"v":"4,75% a 2,60%","o":"15% a 3,75%"},"e20":{"v":"1.050 a 4.450","o":"1.050 a 3.450"},"e13":{"v":"R$ \u003cspan class=\"count\">1.\u003c/span>320m","o":"R$ 1,32 milhão"}},"slide-9":{"e7":{"v":"\u003cb>~ R$ 3 mi\u003c/b>, com o pre-money da rodada abaixo desse indicativo.","o":"R$ 2,88 mi, com o pre-money da rodada abaixo desse indicativ"},"e8":{"v":"Smart money esperado","o":"Smart money esperado"},"e3":{"v":"10% - 3\u003cspan>00mil\u003c/span>","o":"10%"}},"slide-publico":{"e7":{"v":"Empresas que implantam automação no atendimento","o":"Agências e consultorias"},"e8":{"v":"Compram a plataforma,\u003cb> podem aplicar\u003c/b> a própria marca e revendem com seus planos.","o":"Compram a plataforma, aplicam a própria marca e revendem com"},"e10":{"v":"Incluem sua expertise e promove com a própriia&nbsp; marca","o":"Definem marca, planos e preços"},"e11":{"v":"Definem planos e limites e vendem como SaaS","o":"Atendem muitos clientes finais"},"e9":{"v":"Compram a infraestrutura da ScaleX","o":"Compram a infraestrutura da ScaleX"},"e20":{"v":"Não compram direto da ScaleX","o":"Não compram direto da ScaleX"}},"slide-concorrencia":{"e15":{"v":"~ R$ 5,2 mi","o":"~US$ 1,0 mi"},"e7":{"v":"~ R$ 21,2 bi","o":"R$ 21,2 bi"}}},"styles":{"slide-9":{"e8":{"x":-2,"y":-6},"e3":{"x":-7,"y":1,"fontSize":57}}}}</script>
+  <script id="embedded-content" type="application/json">{"version":1,"updatedAt":"2026-11-05T22:52:21.481Z","order":["slide-1","slide-3","slide-4","slide-infra","slide-publico","slide-oferta","slide-2","slide-concorrencia","slide-6","slide-mercado-indireto","slide-diferenciais","slide-7","slide-8","slide-9","slide-10","slide-11","slide-12"],"text":{"slide-4":{"e1":{"v":"Ferramentas dispersas","o":"Revender IA pode exigir até 10 ferramentas desconectadas"},"e4":{"v":"Automação","o":"Automação"},"e8":{"v":"Prospecção","o":"Prospecção"}},"slide-8":{"e17":{"v":"\u003cspan class=\"count\">40\u003c/span>%","o":"35%"},"e18":{"v":"Margem \u003cb>estimada -&nbsp;\u003c/b>ebitda no Q4/27","o":"Margem líquida no Q4/27"},"e15":{"v":"R$ \u003cspan class=\"count\">528\u003c/span> mil","o":"R$ 380,3 mil"},"e22":{"v":"4,75% a 2,60%","o":"15% a 3,75%"},"e20":{"v":"1.050 a 4.450","o":"1.050 a 3.450"},"e13":{"v":"R$ \u003cspan class=\"count\">1.\u003c/span>320m","o":"R$ 1,32 milhão"}},"slide-9":{"e7":{"v":"\u003cb>~ R$ 3 mi\u003c/b>, com o pre-money da rodada abaixo desse indicativo.","o":"R$ 2,88 mi, com o pre-money da rodada abaixo desse indicativ"},"e8":{"v":"Smart money esperado","o":"Smart money esperado"},"e3":{"v":"10% - 3\u003cspan>00mil\u003c/span>","o":"10%"}},"slide-publico":{"e7":{"v":"Empresas que implantam automação no atendimento","o":"Agências e consultorias"},"e8":{"v":"Compram a plataforma,\u003cb> podem aplicar\u003c/b> a própria marca e revendem com seus planos.","o":"Compram a plataforma, aplicam a própria marca e revendem com"},"e10":{"v":"Incluem sua expertise e promove com a própriia&nbsp; marca","o":"Definem marca, planos e preços"},"e11":{"v":"Definem planos e limites e vendem como SaaS","o":"Atendem muitos clientes finais"},"e9":{"v":"Compram a infraestrutura da ScaleX","o":"Compram a infraestrutura da ScaleX"},"e20":{"v":"Não compram direto da ScaleX","o":"Não compram direto da ScaleX"}},"slide-concorrencia":{"e15":{"v":"~ R$ 5,2 mi","o":"~US$ 1,0 mi"},"e7":{"v":"~ R$ 21,2 bi","o":"R$ 21,2 bi"}}},"styles":{"slide-9":{"e8":{"x":-2,"y":-6},"e3":{"x":-7,"y":1,"fontSize":57}}}}</script>
   <script id="presentation-gate">
 /* Acesso ao pitch: trava de interface para o link de investidores.
    Não é criptografia do conteúdo: o HTML continua no repositório. */
@@ -2376,6 +2407,9 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   'use strict';
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const stage=$('#stage'), workspace=$('.workspace');
+  const deckRoot=document.documentElement;
+  const applyOrder=deckRoot.dataset.applyOrder!=='false';
+  const contentPath=deckRoot.dataset.content||'content.json';
   let slides=$$('.slide'), current=0, scale=1, toastTimer, touchStart=null, countToken=0;
   let transitioning=false, sweepTimer=null, mergeTimers=[], impactTimers=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -2536,6 +2570,42 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   }
   addEventListener('beforeprint',finalCounts);
 
+  /* Exportação em PDF: usa a impressão do navegador com os slides em 16:9.
+     Opcionalmente insere uma página de notas depois de cada slide com roteiro. */
+  const pdfDialog=$('#pdf-dialog');
+  let pdfNotes=[];
+  function clearPdfNotes(){pdfNotes.forEach(page=>page.remove());pdfNotes=[];}
+  function buildPdfNotes(){
+    clearPdfNotes();
+    slides.forEach((slide,index)=>{
+      const notes=slide.querySelector('.speaker-notes');
+      if(!notes||!notes.content.textContent.trim())return;
+      const page=document.createElement('section');page.className='pdf-notes-page';
+      const kicker=document.createElement('p');kicker.className='pdf-notes-kicker';
+      kicker.textContent='Notas do apresentador · Slide '+String(index+1).padStart(2,'0');
+      const heading=document.createElement('h2');heading.textContent=titleOf(slide);
+      const body=document.createElement('div');body.className='pdf-notes-body';
+      body.append(...notes.content.cloneNode(true).childNodes);
+      page.append(kicker,heading,body);slide.after(page);pdfNotes.push(page);
+    });
+  }
+  function openPdf(){
+    $$('dialog[open]').forEach(d=>d.close());
+    $('#pdf-count').textContent=slides.length;
+    pdfDialog.showModal();
+  }
+  function exportPdf(){
+    const includeNotes=$('#pdf-notes').checked;
+    pdfDialog.close();
+    $$('dialog[open]').forEach(d=>d.close());
+    finalCounts();
+    if(includeNotes)buildPdfNotes();else clearPdfNotes();
+    if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+    try{getSelection().removeAllRanges();}catch(_){}
+    setTimeout(()=>window.print(),140);
+  }
+  addEventListener('afterprint',clearPdfNotes);
+
   const decorative='.s-top,.s-num,svg,img,figure,.cover-year,.s3-ten,.s10-ghost,.s11-ring,.s11-mark,.s3-tangle,.s2-sig,.fun-fade';
   function renderReading(){
     const slide=slides[current],target=$('#reading-content');target.replaceChildren();
@@ -2563,7 +2633,8 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   $('#prev-btn').addEventListener('click',()=>go(current-1));$('#next-btn').addEventListener('click',()=>go(current+1));
   $('#slide-picker').addEventListener('change',e=>go(e.target.value));
   $('#fullscreen-btn').addEventListener('click',toggleFullscreen);
-  $('#print-btn').addEventListener('click',()=>window.print());
+  $('#pdf-btn').addEventListener('click',openPdf);
+  $('#pdf-run').addEventListener('click',exportPdf);
   $('#overview-btn').addEventListener('click',()=>$('#overview-dialog').showModal());
   $('#reading-btn').addEventListener('click',()=>{renderReading();$('#reading-dialog').showModal();});
   $('#help-btn').addEventListener('click',()=>$('#help-dialog').showModal());
@@ -2578,6 +2649,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     else if(e.key==='f'||e.key==='F'){toggleFullscreen();}
     else if(e.key==='g'||e.key==='G'){$('#overview-dialog').showModal();}
     else if(e.key==='?'){$('#help-dialog').showModal();}
+    else if(e.key==='p'||e.key==='P'){openPdf();}
     else if(e.key==='Escape'){$$('dialog[open]').forEach(d=>d.close());}
   });
 
@@ -2738,7 +2810,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     let remote=null;
     if(location.protocol!=='file:'){
       try{
-        const response=await fetch('content.json?v='+Date.now(),{cache:'no-store'});
+        const response=await fetch(contentPath+'?v='+Date.now(),{cache:'no-store'});
         if(response.ok){const data=await response.json();if(data&&typeof data==='object')remote=data;}
       }catch(_){}
     }
@@ -2750,9 +2822,12 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   }
   function start(){
     buildNavigation();
+    $('#overview-title').textContent='Os '+slides.length+' slides';
     const initial=location.hash.match(/^#slide-(\d+)$/);
     go(initial?Number(initial[1])-1:0,false);
     fit();
+    // Usado pela exportação automatizada (npm run pdf -- --notes).
+    if(new URLSearchParams(location.search).has('notes'))buildPdfNotes();
   }
 
   window.ScalexDeck={
@@ -2786,7 +2861,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
       text:data&&data.text&&typeof data.text==='object'?data.text:{},
       styles:data&&data.styles&&typeof data.styles==='object'?data.styles:{}
     };
-    applyOrderToDOM(content.order);
+    if(applyOrder)applyOrderToDOM(content.order);
     renumber();
     applyTextToDOM(content.text);
     applyStyles(content.styles);

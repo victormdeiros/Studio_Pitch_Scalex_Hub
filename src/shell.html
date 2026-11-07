@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="pt-BR" class="gate-locked">
+<html lang="pt-BR" class="gate-locked" data-deck="<!-- DECK_ID -->" data-editable="<!-- DECK_EDITABLE -->" data-content="<!-- DECK_CONTENT -->" data-apply-order="<!-- DECK_ORDER -->">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Apresentação para investidores da ScaleX Hub, 2026. 17 slides com design dinâmico.">
+  <meta name="description" content="<!-- DECK_DESCRIPTION -->">
   <meta name="color-scheme" content="dark">
   <meta name="robots" content="noindex,nofollow">
-  <title>ScaleX Hub — Apresentação para investidores</title>
+  <title><!-- DECK_TITLE --></title>
   <link rel="icon" type="image/png" href="assets/brand/icone-48.png">
   <!-- STYLES -->
 </head>
@@ -76,14 +76,15 @@
   <symbol id="i-undo" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10h-3"/><path d="m8 5-4 4 4 4"/></symbol>
 </svg>
   <header class="app-header" aria-label="Ferramentas da apresentação">
-    <div class="app-brand"><strong>ScaleX Hub</strong><span>Apresentação para investidores</span></div>
+    <div class="app-brand"><strong>ScaleX Hub</strong><span><!-- DECK_LABEL --></span></div>
     <div class="tools">
+      <a id="deck-switch" class="deck-switch" href="<!-- DECK_SWITCH_HREF -->"><!-- DECK_SWITCH_LABEL --></a>
       <button id="studio-return" title="Voltar ao estúdio" aria-label="Voltar ao estúdio" hidden><svg class="ico" aria-hidden="true"><use href="#i-edit"></use></svg><span>Estúdio</span></button>
       <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
       <button id="fullscreen-btn" title="Tela cheia (F)">Tela cheia</button>
-      <button id="print-btn" title="Imprimir ou salvar em PDF">Imprimir</button>
+      <button id="pdf-btn" title="Exportar a apresentação em PDF (P)">PDF</button>
       <button id="help-btn" aria-label="Ajuda e atalhos">?</button>
     </div>
   </header>
@@ -122,7 +123,7 @@
   </main>
 
   <footer class="app-footer" aria-label="Navegação entre slides">
-    <div class="pager"><button id="prev-btn" aria-label="Slide anterior">‹</button><span id="counter" class="counter" aria-live="polite">1 / 17</span><button id="next-btn" aria-label="Próximo slide">›</button></div>
+    <div class="pager"><button id="prev-btn" aria-label="Slide anterior">‹</button><span id="counter" class="counter" aria-live="polite">1 / <!-- SLIDE_COUNT --></span><button id="next-btn" aria-label="Próximo slide">›</button></div>
     <div id="slide-dots" class="slide-dots" aria-label="Ir para um slide"></div>
     <select id="slide-picker" class="slide-picker" aria-label="Escolher slide"></select>
     <span class="hint">← → navegar &nbsp; F tela cheia &nbsp; G slides</span>
@@ -202,9 +203,17 @@
     <p id="studio-status" class="studio-status" data-state="original" role="status"></p>
   </aside>
 
-  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os 17 slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
+  <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
   <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>Imprimir / PDF</dt><dd>Gera os 17 slides, um por página, em proporção 16:9. Ative os gráficos de fundo nas opções do navegador.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt>E · Editar</dt><dd>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="pdf-dialog" aria-labelledby="pdf-title">
+    <div class="dialog-top"><h2 id="pdf-title">Exportar em PDF</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+    <p class="publish-note">Os <b><span id="pdf-count"><!-- SLIDE_COUNT --></span> slides</b> serão preparados um por página, em <b>16:9</b>, com fundos e cores. Na janela do navegador, escolha <b>Salvar como PDF</b> como destino.</p>
+    <label class="pdf-option" for="pdf-notes"><input id="pdf-notes" type="checkbox"><span><b>Incluir notas do apresentador</b><em>Acrescenta uma página de notas após cada slide que tiver roteiro.</em></span></label>
+    <p class="publish-note pdf-tip">Mantenha a opção <b>Gráficos de plano de fundo</b> ativada e desative <b>Cabeçalhos e rodapés</b> para um resultado limpo.</p>
+    <div class="publish-actions"><button type="button" data-close>Cancelar</button><button type="button" id="pdf-run" class="primary">Gerar PDF</button></div>
+  </dialog>
+
   <dialog id="editor-lock-dialog" aria-labelledby="editor-lock-title">
     <div class="dialog-top"><h2 id="editor-lock-title">Acesso ao estúdio</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
     <p class="publish-note">A edição é restrita ao time ScaleX Hub. Digite a senha do estúdio para continuar.</p>

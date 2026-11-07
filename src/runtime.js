@@ -3,6 +3,9 @@
   'use strict';
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const stage=$('#stage'), workspace=$('.workspace');
+  const deckRoot=document.documentElement;
+  const applyOrder=deckRoot.dataset.applyOrder!=='false';
+  const contentPath=deckRoot.dataset.content||'content.json';
   let slides=$$('.slide'), current=0, scale=1, toastTimer, touchStart=null, countToken=0;
   let transitioning=false, sweepTimer=null, mergeTimers=[], impactTimers=[];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -163,6 +166,42 @@
   }
   addEventListener('beforeprint',finalCounts);
 
+  /* Exportação em PDF: usa a impressão do navegador com os slides em 16:9.
+     Opcionalmente insere uma página de notas depois de cada slide com roteiro. */
+  const pdfDialog=$('#pdf-dialog');
+  let pdfNotes=[];
+  function clearPdfNotes(){pdfNotes.forEach(page=>page.remove());pdfNotes=[];}
+  function buildPdfNotes(){
+    clearPdfNotes();
+    slides.forEach((slide,index)=>{
+      const notes=slide.querySelector('.speaker-notes');
+      if(!notes||!notes.content.textContent.trim())return;
+      const page=document.createElement('section');page.className='pdf-notes-page';
+      const kicker=document.createElement('p');kicker.className='pdf-notes-kicker';
+      kicker.textContent='Notas do apresentador · Slide '+String(index+1).padStart(2,'0');
+      const heading=document.createElement('h2');heading.textContent=titleOf(slide);
+      const body=document.createElement('div');body.className='pdf-notes-body';
+      body.append(...notes.content.cloneNode(true).childNodes);
+      page.append(kicker,heading,body);slide.after(page);pdfNotes.push(page);
+    });
+  }
+  function openPdf(){
+    $$('dialog[open]').forEach(d=>d.close());
+    $('#pdf-count').textContent=slides.length;
+    pdfDialog.showModal();
+  }
+  function exportPdf(){
+    const includeNotes=$('#pdf-notes').checked;
+    pdfDialog.close();
+    $$('dialog[open]').forEach(d=>d.close());
+    finalCounts();
+    if(includeNotes)buildPdfNotes();else clearPdfNotes();
+    if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+    try{getSelection().removeAllRanges();}catch(_){}
+    setTimeout(()=>window.print(),140);
+  }
+  addEventListener('afterprint',clearPdfNotes);
+
   const decorative='.s-top,.s-num,svg,img,figure,.cover-year,.s3-ten,.s10-ghost,.s11-ring,.s11-mark,.s3-tangle,.s2-sig,.fun-fade';
   function renderReading(){
     const slide=slides[current],target=$('#reading-content');target.replaceChildren();
@@ -190,7 +229,8 @@
   $('#prev-btn').addEventListener('click',()=>go(current-1));$('#next-btn').addEventListener('click',()=>go(current+1));
   $('#slide-picker').addEventListener('change',e=>go(e.target.value));
   $('#fullscreen-btn').addEventListener('click',toggleFullscreen);
-  $('#print-btn').addEventListener('click',()=>window.print());
+  $('#pdf-btn').addEventListener('click',openPdf);
+  $('#pdf-run').addEventListener('click',exportPdf);
   $('#overview-btn').addEventListener('click',()=>$('#overview-dialog').showModal());
   $('#reading-btn').addEventListener('click',()=>{renderReading();$('#reading-dialog').showModal();});
   $('#help-btn').addEventListener('click',()=>$('#help-dialog').showModal());
@@ -205,6 +245,7 @@
     else if(e.key==='f'||e.key==='F'){toggleFullscreen();}
     else if(e.key==='g'||e.key==='G'){$('#overview-dialog').showModal();}
     else if(e.key==='?'){$('#help-dialog').showModal();}
+    else if(e.key==='p'||e.key==='P'){openPdf();}
     else if(e.key==='Escape'){$$('dialog[open]').forEach(d=>d.close());}
   });
 
@@ -365,7 +406,7 @@
     let remote=null;
     if(location.protocol!=='file:'){
       try{
-        const response=await fetch('content.json?v='+Date.now(),{cache:'no-store'});
+        const response=await fetch(contentPath+'?v='+Date.now(),{cache:'no-store'});
         if(response.ok){const data=await response.json();if(data&&typeof data==='object')remote=data;}
       }catch(_){}
     }
@@ -377,9 +418,12 @@
   }
   function start(){
     buildNavigation();
+    $('#overview-title').textContent='Os '+slides.length+' slides';
     const initial=location.hash.match(/^#slide-(\d+)$/);
     go(initial?Number(initial[1])-1:0,false);
     fit();
+    // Usado pela exportação automatizada (npm run pdf -- --notes).
+    if(new URLSearchParams(location.search).has('notes'))buildPdfNotes();
   }
 
   window.ScalexDeck={
@@ -413,7 +457,7 @@
       text:data&&data.text&&typeof data.text==='object'?data.text:{},
       styles:data&&data.styles&&typeof data.styles==='object'?data.styles:{}
     };
-    applyOrderToDOM(content.order);
+    if(applyOrder)applyOrderToDOM(content.order);
     renumber();
     applyTextToDOM(content.text);
     applyStyles(content.styles);
