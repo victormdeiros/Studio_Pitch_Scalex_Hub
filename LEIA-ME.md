@@ -3,7 +3,7 @@
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
 - **`/`** — apresentação completa, com 17 slides, para o investidor ver com calma.
-- **`/resumo/`** — pitch resumido de 7 minutos, com os 15 slides do PPTX de referência.
+- **`/resumo/`** — pitch resumido de 7 minutos, com 14 slides na direção de arte da apresentação completa.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
@@ -38,7 +38,7 @@ A interface desaparece durante a apresentação em tela cheia e reaparece ao pas
 
 ## Editar no navegador
 
-A edição fica disponível na rota completa. A rota **/resumo/** é somente leitura e reproduz os 15 slides do PPTX de referência como imagens 16:9; ela não compartilha textos com a apresentação completa.
+A edição fica disponível na rota completa. A rota **/resumo/** é somente leitura e reinterpreta o conteúdo do PPTX na direção de arte da apresentação completa; ela não compartilha textos com a versão completa.
 
 Abra a apresentação completa e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
 
@@ -95,8 +95,8 @@ O arquivo sai em **dist/ScaleX-Hub-Apresentacao.pdf**, com os 17 slides em 16:9 
 | `src/slides/01-capa.mjs` até `17-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
 | `src/deck.mjs` | Sequência padrão da apresentação completa (usada quando `content.json` não define outra) |
 | `src/decks.mjs` | Rotas, títulos e sequência do pitch resumido |
-| `src/slides-resumo.mjs` | Slides do pitch resumido e transcrições para leitura |
-| `assets/resumo/` | Imagens 16:9 dos 15 slides do PPTX |
+| `src/slides-resumo.mjs` | Sequência do pitch resumido |
+| `src/slides-resumo/` | Cenas próprias do pitch resumido |
 | `src/styles/theme.css` | Direção de arte: paleta, tipografia, atmosfera, layouts e animações de cada cena |
 | `src/styles/base.css` | Palco, chrome, navegação, leitura, responsividade e impressão |
 | `src/runtime.js` | Navegação, transições, contadores, parallax, leitura, atalhos e aplicação do `content.json` |
