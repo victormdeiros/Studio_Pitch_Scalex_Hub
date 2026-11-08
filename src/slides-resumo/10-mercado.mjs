@@ -3,7 +3,7 @@ export default {
   id:'resumo-mercado',
   title:'O mercado está mapeado: o desafio agora é distribuição.',
   theme:'light',
-  number:'05',
+  number:'10',
   notes:[
     'TEMPO ALVO: 40 segundos',
     'São 422 mil empresas no Brasil que podem revender IA sob a própria marca; 259 mil nos CNAEs prioritários. Começamos pelo Nordeste: 26,8 mil empresas. O cenário para 2029 é de 6,4 mil parceiros. Só 17% das empresas pesquisadas no Brasil usam IA, e os parceiros podem levar a operação a 254,4 mil empresas finais no Nordeste até 2029.'
@@ -11,7 +11,7 @@ export default {
   html:`
     <div class="rm">
       <header class="rm-head">
-        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>06 · Mercado</p>
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>O mercado</p>
         <h2 class="rm-title rv" style="--d:1">O mercado está mapeado. <span class="grad-text">O desafio agora é distribuição.</span></h2>
         <p class="rm-sub rv" style="--d:2">Fornecedores que podem revender IA sob a própria marca — e as empresas finais que eles alcançam.</p>
       </header>

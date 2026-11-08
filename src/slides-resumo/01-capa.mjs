@@ -4,7 +4,7 @@ import base from '../slides/01-capa.mjs';
 const html=base.html
   .replace('ScaleX Hub · 2026','ScaleX Hub · Pitch para investidores')
   .replace('Apresentação para investidores','Pitch para investidores · 7 minutos')
-  .replace('</p>\n      </div>\n      <div class="cover-mark','</p>\n        <div class="cover-badge rv" style="--d:3"><i></i>14 slides · 7 minutos</div>\n      </div>\n      <div class="cover-mark');
+  .replace('</p>\n      </div>\n      <div class="cover-mark','</p>\n        <div class="cover-badge rv" style="--d:3"><i></i>16 slides · 7 minutos</div>\n      </div>\n      <div class="cover-mark');
 
 export default {
   ...base,

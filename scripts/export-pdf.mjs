@@ -109,7 +109,8 @@ async function exportPdf(){
   if(!selected.length)throw new Error('Apresentação não encontrada. Use --deck=resumo ou --all.');
   const chrome=findChrome();
   await build();
-  const profile=await fsp.mkdtemp(path.join(os.tmpdir(),'scalex-pdf-'));
+  const tmpBase=process.platform==='linux'&&fs.existsSync('/tmp')?'/tmp':os.tmpdir();
+  const profile=await fsp.mkdtemp(path.join(tmpBase,'scalex-pdf-'));
   try{
     for(const deck of selected){
       const output=outputFor(deck);

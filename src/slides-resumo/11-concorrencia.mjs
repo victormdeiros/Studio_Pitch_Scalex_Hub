@@ -3,7 +3,7 @@ export default {
   id: 'resumo-concorrencia',
   title: 'Os concorrentes diretos validam a demanda.',
   theme: 'dark',
-  number: '04',
+  number: '11',
   notes: [
     'TEMPO ALVO: 40 segundos',
     'A concorrência direta valida a demanda. A HighLevel é global e atende 2,2 milhões de negócios, com cerca de 4 bilhões de faturamento em 2025. A Zaia é brasileira, tem MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo. Os indicadores são de natureza diferente e não devem ser comparados diretamente. Os concorrentes indiretos são peças do stack: CRM e vendas, conversas e agentes, automação.'

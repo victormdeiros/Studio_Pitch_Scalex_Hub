@@ -12,13 +12,14 @@ const smart = `</header>
     </div>`;
 
 const html = base.html
-  .replace('Cronograma', '08 · O papel do investidor')
+  .replace('Cronograma', 'O papel do investidor')
   .replace('O aporte antecipa o plano', 'Capital e rede: o aporte antecipa o plano em 6 a 9 meses')
   .replace('</header>', smart);
 
 export default {
   ...base,
   id: 'resumo-investidor',
+  number: '15',
   title: 'Capital e rede: o aporte antecipa o plano em 6 a 9 meses.',
   notes: [
     'TEMPO ALVO: 25 segundos',

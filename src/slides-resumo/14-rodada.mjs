@@ -19,6 +19,7 @@ const html = base.html
 export default {
   ...base,
   id: 'resumo-rodada',
+  number: '14',
   title: '10% da ScaleX Hub por R$ 300 mil.',
   notes: [
     'TEMPO ALVO: 30 segundos',
