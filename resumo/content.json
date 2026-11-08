@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-08T14:21:54.283Z",
+  "updatedAt": "2026-11-08T21:21:05.928Z",
   "order": [
     "resumo-capa",
     "resumo-origem",
@@ -20,26 +20,23 @@
     "resumo-fechamento"
   ],
   "text": {
-    "resumo-capa": {
-      "e2": {
-        "v": "SAAS WHITELABEL",
-        "o": "Pitch para investidores · 7 minutos"
-      }
-    },
-    "resumo-origem": {
-      "e3": {
-        "v": "Nós implantávamos Automação",
-        "o": "Agência Hub ConverseIA"
+    "resumo-rodada": {
+      "e9": {
+        "v": "R$ 2.0 mi",
+        "o": "R$ 2,70 mi"
+      },
+      "e11": {
+        "v": "R$ 4.0 mi",
+        "o": "R$ 3,00 mi"
       }
     }
   },
   "styles": {
-    "resumo-origem": {
-      "e6": {
-        "fontSize": 20
-      },
-      "e9": {
-        "fontSize": 20
+    "resumo-escala": {
+      "e16": {
+        "fontSize": 16,
+        "align": "center",
+        "y": -4
       }
     }
   }
