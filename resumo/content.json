@@ -1,7 +1,46 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "order": [],
-  "text": {},
-  "styles": {}
+  "updatedAt": "2026-11-08T14:21:54.283Z",
+  "order": [
+    "resumo-capa",
+    "resumo-origem",
+    "resumo-problema-fluxo",
+    "resumo-problema-ferramentas",
+    "resumo-impacto",
+    "resumo-solucao-fluxo",
+    "resumo-solucao-ferramentas",
+    "resumo-transformacao",
+    "resumo-plataforma",
+    "resumo-mercado",
+    "resumo-concorrencia",
+    "resumo-diferenciais",
+    "resumo-escala",
+    "resumo-rodada",
+    "resumo-investidor",
+    "resumo-fechamento"
+  ],
+  "text": {
+    "resumo-capa": {
+      "e2": {
+        "v": "SAAS WHITELABEL",
+        "o": "Pitch para investidores · 7 minutos"
+      }
+    },
+    "resumo-origem": {
+      "e3": {
+        "v": "Nós implantávamos Automação",
+        "o": "Agência Hub ConverseIA"
+      }
+    }
+  },
+  "styles": {
+    "resumo-origem": {
+      "e6": {
+        "fontSize": 20
+      },
+      "e9": {
+        "fontSize": 20
+      }
+    }
+  }
 }
