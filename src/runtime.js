@@ -272,7 +272,7 @@
   /* ---- Edição: ordem e textos ---- */
   const BLOCK_TAGS='div,p,ul,ol,li,header,footer,section,article,figure,figcaption,table,blockquote,main,nav,h1,h2,h3,h4,h5,h6';
   const TEXT_TAGS='h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,small,span,div,b,strong,em,label';
-  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten,.s3-noise,.infra-noise';
+  const SKIP_EDIT='.s-top,.s-num,svg,template,script,.cover-year,.s10-ghost,.s3-ten,.s3-noise,.infra-noise,.esc-slabel b,.esc-result b,.esc-ticks span';
 
   function editableOf(slide){
     const canvas=slide.querySelector('.slide-canvas');
@@ -315,8 +315,9 @@
     slides=next;
   }
   function renumber(){
-    slides.filter(slide=>slide.querySelector('.s-num')).forEach((slide,index)=>{
+    slides.forEach((slide,index)=>{
       const node=slide.querySelector('.s-num');
+      if(!node)return;
       node.textContent=String(index+1).padStart(2,'0');
     });
   }
@@ -426,6 +427,99 @@
     if(new URLSearchParams(location.search).has('notes'))buildPdfNotes();
   }
 
+  /* ---- Simulador 2025 → 2027: sliders, roda do mouse e clique do meio ----
+     A roda ajusta o controle ativo; o clique do meio troca de indicador.
+     Fora da tela cheia, a roda só age sobre o próprio painel do simulador. */
+  const isFullscreen=()=>!!(document.fullscreenElement||document.body.classList.contains('fullscreen'));
+  const simApis=new Map();
+  function initSimulators(){
+    $$('[data-simulator]').forEach(root=>{
+      const rev=root.querySelector('[data-sim="rev"]'),ticket=root.querySelector('[data-sim="ticket"]');
+      if(!rev||!ticket)return;
+      const somTotal=parseFloat(root.dataset.som)||6430;
+      const out={
+        rev:root.querySelector('[data-out="rev"]'),ticket:root.querySelector('[data-out="ticket"]'),
+        monthly:root.querySelector('[data-out="monthly"]'),annual:root.querySelector('[data-out="annual"]'),
+        som:root.querySelector('[data-out="som"]'),step:root.querySelector('[data-out="step"]')
+      };
+      const nr=(value,decimals=0)=>new Intl.NumberFormat('pt-BR',{minimumFractionDigits:decimals,maximumFractionDigits:decimals}).format(value);
+      const money=value=>'R$ '+nr(value);
+      const paint=input=>{
+        const min=Number(input.min),max=Number(input.max),value=Number(input.value);
+        input.style.setProperty('--p',(((value-min)/(max-min||1))*100).toFixed(2)+'%');
+      };
+      const bump=node=>{if(!node)return;node.classList.remove('is-bump');void node.offsetWidth;node.classList.add('is-bump');};
+      const sliders=[...root.querySelectorAll('.esc-slider')];
+      let active=0;
+      const setActive=index=>{
+        if(!sliders.length)return;
+        active=(index+sliders.length)%sliders.length;
+        sliders.forEach((slider,i)=>slider.classList.toggle('is-active',i===active));
+        if(out.step)out.step.textContent=(active+1)+' / '+sliders.length;
+      };
+      function render(changed){
+        const resellers=Number(rev.value),price=Number(ticket.value);
+        const monthly=resellers*price,annual=monthly*12,som=resellers/somTotal*100;
+        if(out.rev)out.rev.textContent=nr(resellers);
+        if(out.ticket)out.ticket.textContent=money(price)+'/mês';
+        if(out.monthly)out.monthly.textContent=monthly?(monthly<1000?money(monthly):money(Math.round(monthly/1000))+' mil'):'R$ 0';
+        if(out.annual)out.annual.textContent=annual>=1000000?'R$ '+nr(annual/1000000,2)+' mi':(annual?money(Math.round(annual/1000))+' mil':'R$ 0');
+        if(out.som)out.som.textContent=nr(som,1)+'%';
+        if(changed)bump(changed);
+      }
+      [rev,ticket].forEach((input,index)=>{
+        paint(input);
+        input.addEventListener('input',()=>{paint(input);render(input===rev?out.monthly:out.annual);});
+        input.addEventListener('focus',()=>setActive(index));
+      });
+      setActive(0);
+      render();
+      simApis.set(root,{
+        adjust(direction){
+          const input=active===0?rev:ticket,step=active===0?1:50;
+          const min=Number(input.min),max=Number(input.max);
+          const next=Math.min(max,Math.max(min,Number(input.value)+direction*step));
+          if(next===Number(input.value))return;
+          input.value=String(next);paint(input);render(input===rev?out.monthly:out.annual);
+        },
+        cycle(){setActive(active+1);},
+        hovered(node){return !node||root.contains(node);}
+      });
+    });
+  }
+
+  function activeSimulator(event){
+    const slide=slides[current];
+    if(!slide)return null;
+    const root=slide.querySelector('[data-simulator]');
+    const api=root&&simApis.get(root);
+    if(!api)return null;
+    if(!isFullscreen()&&!api.hovered(event.target))return null;
+    return api;
+  }
+  stage.addEventListener('wheel',event=>{
+    const api=activeSimulator(event);
+    if(!api||Math.abs(event.deltaY)<1)return;
+    event.preventDefault();
+    api.adjust(event.deltaY<0?1:-1);
+  },{passive:false});
+  stage.addEventListener('mousedown',event=>{
+    if(event.button!==1)return;
+    const api=activeSimulator(event);
+    if(!api)return;
+    event.preventDefault(); // evita o autoscroll do navegador ao arrastar o botão do meio
+  });
+  stage.addEventListener('auxclick',event=>{
+    if(event.button!==1)return;
+    const api=activeSimulator(event);
+    if(!api)return;
+    event.preventDefault();
+    api.cycle();
+  });
+  stage.addEventListener('contextmenu',event=>{
+    if(isFullscreen()&&activeSimulator(event))event.preventDefault();
+  });
+
   window.ScalexDeck={
     slides:()=>slides,
     current:()=>current,
@@ -461,6 +555,7 @@
     renumber();
     applyTextToDOM(content.text);
     applyStyles(content.styles);
+    initSimulators();
     start();
     readyResolve(content);
   })();

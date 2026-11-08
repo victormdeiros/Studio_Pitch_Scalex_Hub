@@ -3,7 +3,7 @@
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
 - **`/`** — apresentação completa, com 17 slides, para o investidor ver com calma.
-- **`/resumo/`** — pitch resumido de 7 minutos, com 14 slides na direção de arte da apresentação completa.
+- **`/resumo/`** — pitch resumido de 7 minutos, com 16 slides na direção de arte da apresentação completa.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json` (na completa) ou `resumo/content.json` (no resumo), no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
@@ -33,8 +33,9 @@ As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma s
 - **F** alterna tela cheia; **G** abre a visão geral; **?** abre a ajuda.
 - **Leitura** mostra o conteúdo do slide em formato de artigo, com as notas do apresentador.
 - **PDF** (ou **P**) abre a exportação: um slide por página em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha **Salvar como PDF**.
+- **Simulador 2025 → 2027** (no resumo): arraste os controles de revendedores e ticket. Em tela cheia, a roda do mouse ajusta o controle ativo e o clique do meio alterna entre os dois indicadores.
 
-A interface desaparece durante a apresentação em tela cheia e reaparece ao passar o mouse na parte inferior. Os slides têm entrada em camadas, contadores, gráficos animados, redes desenhadas e parallax sutil de acordo com o movimento do mouse. A abertura usa uma transição de impacto: o símbolo da capa atravessa a tela, cresce e abre o resumo no slide 2. As demais trocas usam foco, profundidade e uma varredura de luz; na passagem da fragmentação para a concorrência, as dez ferramentas convergem para o símbolo ScaleX antes de a leitura competitiva aparecer.
+A interface desaparece durante a apresentação em tela cheia e reaparece ao passar o mouse na parte inferior. Os slides têm entrada em camadas, contadores, gráficos animados, redes desenhadas e parallax sutil de acordo com o movimento do mouse. A abertura usa uma transição de impacto: o símbolo da capa atravessa a tela, cresce e abre o resumo no slide 2. No resumo, cada problema tem uma solução correspondente: os blocos do Flow Builder e as dez ferramentas convergem para o símbolo e para a interface de ativação. As demais trocas usam foco, profundidade e uma varredura de luz; na passagem da fragmentação para a concorrência, as dez ferramentas convergem para o símbolo ScaleX antes de a leitura competitiva aparecer.
 
 ## Editar no navegador
 

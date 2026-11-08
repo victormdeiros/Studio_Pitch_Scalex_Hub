@@ -3,7 +3,7 @@ export default {
   id:'resumo-transformacao',
   title:'O parceiro vende, a ScaleX sustenta.',
   theme:'dark',
-  number:'',
+  number:'08',
   notes:[
     'TEMPO ALVO: 35 segundos',
     'Vendemos para quem vende. A agência compra a nossa infraestrutura, coloca a marca dela, define seus planos e revende como SaaS. Um parceiro atende muitos clientes finais, e cada cliente aumenta a dependência da plataforma.'
@@ -11,7 +11,7 @@ export default {
   html:`
     <div class="rt">
       <header class="rt-head">
-        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>04 · A transformação</p>
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>A transformação</p>
         <h2 class="rt-title rv" style="--d:1">O parceiro vende. <span class="grad-text">A ScaleX sustenta.</span></h2>
         <p class="rt-sub rv" style="--d:2">Um produto, dois públicos: quem revende e quem usa a operação.</p>
       </header>
@@ -38,6 +38,6 @@ export default {
         </article>
       </div>
 
-      <p class="rt-impact rv" style="--d:6">1 parceiro atende muitos clientes finais. <span>Cada cliente aumenta a dependência da plataforma.</span></p>
+      <p class="rt-impact rv" style="--d:6">1 parceiro atende muitos clientes finais. <b>Cada cliente aumenta a dependência da plataforma.</b></p>
     </div>`
 };

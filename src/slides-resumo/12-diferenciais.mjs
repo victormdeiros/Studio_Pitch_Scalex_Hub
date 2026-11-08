@@ -3,7 +3,7 @@ export default {
   id: 'resumo-diferenciais',
   title: 'A concorrência entrega partes. A ScaleX entrega a operação inteira.',
   theme: 'light',
-  number: '04',
+  number: '12',
   notes: [
     'TEMPO ALVO: 50 segundos',
     'A concorrência entrega partes. A ScaleX entrega a operação inteira. A comparação por categoria mostra que HighLevel e Zaia têm forças diferentes: HighLevel cria planos e trilha comercial; Zaia tem implantação low code e IA humanizada. A ScaleX combina as três frentes: criação de planos, trilha comercial completa, implantação sem desenvolvimento e IA automatizada e humanizada. A demanda está validada: HighLevel e Zaia já vendem plataforma para agências. A vantagem técnica é o código 100% próprio, que permite adicionar features sem refazer a fundação. O próximo salto é PaaS com SDK JS/TS.'
@@ -11,7 +11,7 @@ export default {
   html: `
     <div class="sum-dif">
       <header class="sum-dif-head">
-        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>04 · Como entramos</p>
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>Como entramos</p>
         <h2 class="h2 rv" style="--d:1">A concorrência entrega partes. <span class="grad-text">A ScaleX entrega a operação inteira.</span></h2>
         <p class="lead rv" style="--d:2">Comparação por categoria, a partir do posicionamento público das ferramentas.</p>
       </header>
