@@ -1,7 +1,24 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "order": [],
+  "updatedAt": "2026-11-08T14:18:47.770Z",
+  "order": [
+    "resumo-capa",
+    "resumo-origem",
+    "resumo-problema-fluxo",
+    "resumo-problema-ferramentas",
+    "resumo-impacto",
+    "resumo-solucao-fluxo",
+    "resumo-solucao-ferramentas",
+    "resumo-transformacao",
+    "resumo-plataforma",
+    "resumo-mercado",
+    "resumo-concorrencia",
+    "resumo-diferenciais",
+    "resumo-escala",
+    "resumo-rodada",
+    "resumo-investidor",
+    "resumo-fechamento"
+  ],
   "text": {},
   "styles": {}
 }
