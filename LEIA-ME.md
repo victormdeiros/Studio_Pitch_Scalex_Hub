@@ -29,6 +29,7 @@ As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma s
 ## Apresentar
 
 - **← → / Page Up / Page Down / Espaço** navegam.
+- **Mouse em tela cheia:** botão direito ou roda para baixo avança; botão esquerdo ou roda para cima volta (os botões laterais também funcionam). Links, botões e a barra inferior continuam normais.
 - **Home / End** vão ao primeiro ou ao último slide.
 - **F** alterna tela cheia; **G** abre a visão geral; **?** abre a ajuda.
 - **Leitura** mostra o conteúdo do slide em formato de artigo, com as notas do apresentador.
