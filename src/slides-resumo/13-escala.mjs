@@ -57,15 +57,15 @@ export default {
           <div class="esc-ticks"><span style="left:0">R$ 1.050</span><span style="left:100%">R$ 4.450</span></div>
         </div>
 
-        <p class="esc-hint"><svg class="ico" aria-hidden="true"><use href="#i-repeat"></use></svg>Arraste para simular. Na tela cheia, a roda do mouse ajusta o controle ativo e o clique do meio troca de indicador.<em data-out="step">1 / 2</em></p>
+        <p class="esc-hint"><svg class="ico" aria-hidden="true"><use href="#i-repeat"></use></svg>Arraste para simular. Ticket vai de R$ 1.050 a R$ 4.450, faixa usada na projeção.<em class="esc-mouse">Tela cheia · <b>roda</b> ajusta · <b>clique do meio</b> troca</em><em data-out="step">1 / 2</em></p>
 
         <div class="esc-results">
           <div class="esc-result"><span>Receita mensal</span><b data-out="monthly">R$ 207 mil</b></div>
-          <div class="esc-result"><span>Faturamento anualizado</span><b data-out="annual">R$ 2,48 mi</b></div>
+          <div class="esc-result annual"><span>Faturamento anual</span><b data-out="annual">R$ 2,48 mi</b></div>
           <div class="esc-result som"><span>Fatia do SOM 2029</span><b data-out="som">0,9%</b></div>
         </div>
       </section>
 
-      <p class="esc-foot rv" style="--d:6">*28 clientes finais atendidos pela agência em 2025. Anualizado = receita mensal × 12 (ritmo), diferente do faturamento de 2027 no cenário base. SOM 2029 de 6,4 mil parceiros. Projeção interna; não é guidance.</p>
+      <p class="esc-foot rv" style="--d:6">*28 clientes finais atendidos pela agência em 2025. Faturamento anual = receita mensal × 12 (ritmo do mês), diferente do faturamento de 2027 no cenário base. SOM 2029 de 6,4 mil parceiros. Projeção interna; não é guidance.</p>
     </div>`
 };
