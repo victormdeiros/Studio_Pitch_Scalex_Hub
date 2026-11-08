@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-08T21:21:05.928Z",
+  "updatedAt": "2026-11-08T21:21:38.589Z",
   "order": [
     "resumo-capa",
     "resumo-origem",
@@ -37,6 +37,11 @@
         "fontSize": 16,
         "align": "center",
         "y": -4
+      }
+    },
+    "resumo-investidor": {
+      "e1": {
+        "fontSize": 39
       }
     }
   }
