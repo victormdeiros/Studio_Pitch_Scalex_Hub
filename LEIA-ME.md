@@ -5,7 +5,7 @@ Apresentações em código, com identidade ScaleX Hub e direção de arte autora
 - **`/`** — apresentação completa, com 17 slides, para o investidor ver com calma.
 - **`/resumo/`** — pitch resumido de 7 minutos, com 14 slides na direção de arte da apresentação completa.
 
-Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json`, no próprio repositório, e o GitHub Pages atualiza as duas rotas.
+Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json` (na completa) ou `resumo/content.json` (no resumo), no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
 ## Abrir agora
 
@@ -38,9 +38,9 @@ A interface desaparece durante a apresentação em tela cheia e reaparece ao pas
 
 ## Editar no navegador
 
-A edição fica disponível na rota completa. A rota **/resumo/** é somente leitura e reinterpreta o conteúdo do PPTX na direção de arte da apresentação completa; ela não compartilha textos com a versão completa.
+A edição fica disponível nas duas rotas, cada uma com o próprio conteúdo: a completa publica em `content.json` e o resumo em `resumo/content.json`. Os textos do resumo são independentes dos da apresentação completa, mesmo quando a cena nasceu de um slide dela.
 
-Abra a apresentação completa e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
+Abra a apresentação (completa ou resumo) e clique em **Editar** (ou pressione **E**). O estúdio abre ao lado do palco:
 
 - **Textos** — clique em qualquer texto do slide e escreva. Os destaques visuais (gradientes, negritos, ícones) são preservados.
 - **Aparência** — com um texto selecionado, o painel mostra cor, fundo, tamanho, peso, alinhamento e posição. Use **↑ ← ↓ →** para deslocar (Shift = 16px), **Arrastar** para mover com o mouse e **Limpar** para voltar ao estilo original. O painel pode ser minimizado pelo chevron.
@@ -49,17 +49,18 @@ Abra a apresentação completa e clique em **Editar** (ou pressione **E**). O es
 - **Rascunho** — cada alteração fica salva automaticamente neste navegador (`localStorage`), mesmo sem internet. Nada é publicado até você clicar em **Publicar no site**.
 - **Restaurar original** — volta todos os textos, estilos e a ordem ao conteúdo de `content.json`/código.
 
-O botão **Publicar no site** grava `content.json` na raiz do repositório pelo GitHub. O GitHub Pages republica o link em cerca de um minuto. É necessário um **token fine-grained** do GitHub, criado em [github.com/settings/personal-access-tokens](https://github.com/settings/personal-access-tokens/new), com acesso somente a este repositório e permissão **Contents: Read and write**. O token fica salvo apenas neste navegador e nunca é gravado no repositório.
+O botão **Publicar no site** grava o arquivo da rota aberta — `content.json` na apresentação completa e `resumo/content.json` no resumo — pelo GitHub. O GitHub Pages republica o link em cerca de um minuto. É necessário um **token fine-grained** do GitHub, criado em [github.com/settings/personal-access-tokens](https://github.com/settings/personal-access-tokens/new), com acesso somente a este repositório e permissão **Contents: Read and write**. O token fica salvo apenas neste navegador e nunca é gravado no repositório.
 
 Na primeira vez, cole o token e clique em **Salvar e testar**. O estúdio mostra **GitHub · @seu-usuário** quando a conexão está válida. Depois disso, publicar é um clique em **Publicar no site** — o token não é pedido novamente neste navegador. Em outro dispositivo, conecte uma vez com o mesmo token.
 
-Sem token, use **Baixar JSON** para exportar as alterações e **Importar** para carregá-las em outro navegador. O arquivo pode ser commitado como `content.json` manualmente.
+Sem token, use **Baixar JSON** para exportar as alterações e **Importar** para carregá-las em outro navegador. O arquivo pode ser commitado manualmente no lugar de `content.json` (completa) ou `resumo/content.json` (resumo).
 
 ### Como o conteúdo é aplicado
 
-- O site busca `content.json` ao abrir. Se o arquivo não existir (ou o arquivo for aberto direto por `file://`), usa o conteúdo embutido no `index.html` na hora do `npm run build`.
-- A ordem guarda os ids dos slides (`slide-1` a `slide-12`). Os textos são guardados por slide, no elemento editável, junto da marcação original — se um slide mudar no código, o texto antigo não é aplicado no lugar errado.
+- O site busca o `content.json` da própria rota ao abrir: `content.json` na completa e `resumo/content.json` no resumo. Se o arquivo não existir (ou a página for aberta direto por `file://`), usa o conteúdo embutido no HTML na hora do `npm run build`.
+- A ordem guarda os ids dos slides (`slide-1` a `slide-12` na completa, `resumo-*` no resumo). Os textos são guardados por slide, no elemento editável, junto da marcação original — se um slide mudar no código, o texto antigo não é aplicado no lugar errado.
 - Aparência fica em `styles`, por slide e por elemento: cor, fundo, tamanho, peso, alinhamento e deslocamento (x/y). São estilos aplicados por cima do CSS, sem alterar o layout original.
+- O rascunho local é separado por rota (`scalex.content.draft` na completa e `scalex.content.draft.resumo` no resumo), assim como a referência do que já foi publicado. Editar uma apresentação não interfere na outra.
 - Para conferir o site publicado, abra [victormdeiros.github.io/Studio_Pitch_Scalex_Hub](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/). A versão resumida fica em [/resumo/](https://victormdeiros.github.io/Studio_Pitch_Scalex_Hub/resumo/). Se o navegador tiver um rascunho local, use **Descartar rascunho local** (na configuração de publicação) para ver a versão publicada.
 
 ## Editar o projeto como código
@@ -102,7 +103,8 @@ O arquivo sai em **dist/ScaleX-Hub-Apresentacao.pdf**, com os 17 slides em 16:9 
 | `src/runtime.js` | Navegação, transições, contadores, parallax, leitura, atalhos e aplicação do `content.json` |
 | `src/editor.js` | Estúdio: textos, aparência, reordenação, rascunho e publicação no GitHub |
 | `src/styles/editor.css` | Painel do estúdio, realce dos textos editáveis, controles de aparência e diálogo de publicação |
-| `content.json` | Ordem, textos e estilos publicados pelo estúdio |
+| `content.json` | Ordem, textos e estilos publicados pelo estúdio na apresentação completa |
+| `resumo/content.json` | Ordem, textos e estilos publicados pelo estúdio no pitch resumido |
 | `src/shell.html` | Estrutura da interface |
 | `scripts/export-pdf.mjs` | Exportação automatizada em PDF (`npm run pdf`) |
 | `src/components.mjs` | Utilitário compartilhado de escape de HTML |

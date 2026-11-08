@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="gate-locked" data-deck="detalhado" data-editable="true" data-content="content.json" data-apply-order="true">
+<html lang="pt-BR" class="gate-locked" data-deck="detalhado" data-editable="true" data-content="content.json" data-publish-path="content.json" data-apply-order="true">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -3228,8 +3228,13 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const deck=window.ScalexDeck;
   if(!deck)return;
-  const DRAFT_KEY='scalex.content.draft';
-  const SNAPSHOT_KEY='scalex.published.snapshot';
+  const deckRoot=document.documentElement;
+  const deckId=deckRoot.dataset.deck||'detalhado';
+  const defaultPath=deckRoot.dataset.publishPath||'content.json';
+  const deckPaths={detalhado:'content.json',resumo:'resumo/content.json'};
+  const scopedKey=base=>base+(deckId==='detalhado'?'':'.'+deckId);
+  const DRAFT_KEY=scopedKey('scalex.content.draft');
+  const SNAPSHOT_KEY=scopedKey('scalex.published.snapshot');
   const SETTINGS_KEY='scalex.publish.settings';
   const INLINE='B,STRONG,EM,I,BR,SMALL,SPAN,SUP,SUB,U';
   const list=$('#studio-list'), status=$('#studio-status'), studio=$('#studio'), publishBtn=$('#publish-btn'), editBtn=$('#edit-btn');
@@ -3274,16 +3279,29 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   }
 
   /* ---------- Configuração de publicação ---------- */
+  function rawSettings(){try{return JSON.parse(localStorage.getItem(SETTINGS_KEY)||'null')||{};}catch(_){return {};}}
   function defaultSettings(){
     const host=location.hostname, parts=location.pathname.split('/').filter(Boolean);
     const repo=host.endsWith('.github.io')&&parts[0]?`${host.split('.')[0]}/${parts[0]}`:'victormdeiros/Studio_Pitch_Scalex_Hub';
-    return {repo,branch:'main',path:'content.json',token:''};
+    return {repo,branch:'main',paths:Object.assign({},deckPaths),token:''};
   }
   function readSettings(){
-    let saved=null; try{saved=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'null');}catch(_){saved=null;}
-    return Object.assign(defaultSettings(),saved&&typeof saved==='object'?saved:{});
+    const saved=rawSettings();
+    const settings=Object.assign(defaultSettings(),saved);
+    settings.paths=Object.assign({},deckPaths,saved.paths||{});
+    if(saved.path&&!saved.paths)settings.paths.detalhado=saved.path;
+    settings.path=settings.paths[deckId]||defaultPath;
+    return settings;
   }
-  function writeSettings(settings){try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));}catch(_){}}
+  function writeSettings(settings){
+    const saved=rawSettings();
+    const paths=Object.assign({},deckPaths,saved.paths||{});
+    if(saved.path&&!saved.paths)paths.detalhado=saved.path;
+    if(settings.path)paths[deckId]=settings.path;
+    const next=Object.assign({},saved,settings,{paths});
+    delete next.path;
+    try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(next));}catch(_){}
+  }
 
   /* ---------- Modelo e status ---------- */
   function payload(){return {version:1,updatedAt:model.updatedAt||null,order:model.order.slice(),text:clone(model.text),styles:clone(model.styles)};}
@@ -3664,12 +3682,24 @@ html.gate-locked .edit-badge{visibility:hidden!important}
       });
     });
   }
+  function scopedMap(map,ids){
+    const out={};
+    Object.keys(map||{}).forEach(id=>{if(ids.has(id))out[id]=clone(map[id]);});
+    return out;
+  }
   function applyModel(next){
     selectElement(null);
     restoreOriginals();
-    const ids=Array.isArray(next.order)?next.order.filter(id=>typeof id==='string'):[];
-    deck.setOrder(ids.length?ids:defaultOrder.slice());
-    model={version:1,updatedAt:next.updatedAt||null,order:deck.slides().map(slide=>slide.id),text:clone(next.text||{}),styles:clone(next.styles||{})};
+    const ids=new Set(deck.slides().map(slide=>slide.id));
+    const order=Array.isArray(next.order)?next.order.filter(id=>ids.has(id)):[];
+    deck.setOrder(order.length?order:defaultOrder.slice());
+    model={
+      version:1,
+      updatedAt:next.updatedAt||null,
+      order:deck.slides().map(slide=>slide.id),
+      text:scopedMap(next.text,ids),
+      styles:scopedMap(next.styles,ids)
+    };
     deck.applyText(model.text);
     deck.applyStyles(model.styles);
     renderList();refreshDirty();saveDraft(true);

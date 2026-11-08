@@ -12,8 +12,6 @@ export async function build(){
     'src/shell.html','src/styles/base.css','src/styles/theme.css','src/styles/editor.css',
     'src/styles/gate.css','src/runtime.js','src/gate.js','src/editor.js'
   ].map(readSource));
-  let content={version:1,order:[],text:{}};
-  try{content=JSON.parse(await readSource('content.json'));}catch(_){}
   const assets=await files(path.join(root,'assets'));
   const inline=async(html,css)=>{
     for(const file of assets){
@@ -26,6 +24,8 @@ export async function build(){
   };
   const written=[];
   for(const deck of decks){
+    let content={version:1,order:[],text:{}};
+    try{content=JSON.parse(await readSource(path.posix.join(deck.slug||'',deck.contentPath||'content.json')));}catch(_){}
     const sections=deck.slides.map((s,i)=>{
       const logo=s.theme==='light'?'assets/image4.png':'assets/image1.png';
       const chrome=s.plain?'':`<header class="s-top"><img class="s-logo" src="${logo}" alt="ScaleX Hub"></header>${s.number?`<span class="s-num" aria-hidden="true">${esc(s.number)}</span>`:''}`;
@@ -36,6 +36,7 @@ export async function build(){
       .replaceAll('<!-- DECK_ID -->',()=>deck.id)
       .replaceAll('<!-- DECK_EDITABLE -->',()=>String(deck.editable!==false))
       .replaceAll('<!-- DECK_CONTENT -->',()=>deck.contentPath||'content.json')
+      .replaceAll('<!-- DECK_PUBLISH_PATH -->',()=>deck.publishPath||'content.json')
       .replaceAll('<!-- DECK_ORDER -->',()=>String(deck.applyOrder!==false))
       .replaceAll('<!-- DECK_TITLE -->',()=>deck.title)
       .replaceAll('<!-- DECK_DESCRIPTION -->',()=>deck.description)

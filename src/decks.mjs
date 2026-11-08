@@ -13,6 +13,7 @@ export const decks=[
     slides:detalhado,
     editable:true,
     contentPath:'content.json',
+    publishPath:'content.json',
     applyOrder:true
   },
   {
@@ -24,9 +25,10 @@ export const decks=[
     title:'ScaleX Hub — Pitch resumido',
     description:'Pitch resumido de 7 minutos para investidores da ScaleX Hub, 2026. 14 slides na direção de arte da apresentação completa.',
     slides:resumo,
-    editable:false,
-    contentPath:'../content.json',
-    applyOrder:false
+    editable:true,
+    contentPath:'content.json',
+    publishPath:'resumo/content.json',
+    applyOrder:true
   }
 ];
 
