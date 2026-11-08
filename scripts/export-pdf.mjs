@@ -18,6 +18,10 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 import {build} from './build.mjs';
 import {decks} from '../src/decks.mjs';
 
+if(process.platform==='linux'&&fs.existsSync('/tmp')){
+  process.env.TMPDIR='/tmp';
+}
+
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const argv=process.argv.slice(2);
 const notes=argv.includes('--notes');
