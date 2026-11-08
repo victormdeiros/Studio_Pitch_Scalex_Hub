@@ -6,7 +6,7 @@ export default {
   number:'02',
   notes:[
     'TEMPO ALVO: 40 segundos',
-    'Antes de ser plataforma, fomos agência (Hub ConverseIA). Foram dois anos vendendo automação de atendimento humanizada com agentes de IA. Tentamos centralizar, executar com velocidade e escalar. Cada cliente novo exigia um workspace novo, com cerca de 10 ferramentas diferentes: 10 acessos, 10 cobranças e 10 pontos de falha. Foi aí que a conta não fechou. Antes de construir a solução, nós éramos o cliente.'
+    'Antes de ser plataforma, fomos agência (Hub ConverseIA). Foram dois anos vendendo automação de atendimento humanizada com agentes de IA. Na prática, a IA atendia onde o cliente já estava — WhatsApp, Instagram e site — com contexto, tom natural, memória da conversa e passagem para o time humano quando necessário. E executava nas ferramentas que o cliente já usava: CRM, agenda e ERP. Tentamos centralizar, executar com velocidade e escalar. Cada cliente novo exigia um workspace novo, com cerca de 10 ferramentas diferentes: 10 acessos, 10 cobranças e 10 pontos de falha. Foi aí que a conta não fechou. Antes de construir a solução, nós éramos o cliente.'
   ],
   html:`
     <div class="dor">
@@ -36,7 +36,35 @@ export default {
         </article>
       </div>
 
-      <div class="dor-turn rv" style="--d:5">
+      <section class="dor-ev rv" style="--d:5" aria-label="Como o propósito funcionava na prática">
+        <p class="dor-ev-cap"><svg class="ico" aria-hidden="true"><use href="#i-route"></use></svg>O propósito na prática</p>
+        <div class="dor-ev-row">
+          <div class="dor-ev-side">
+            <span class="dor-ev-lbl">Canais</span>
+            <div class="dor-ev-chips">
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-message"></use></svg>WhatsApp</span>
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-megaphone"></use></svg>Instagram</span>
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-globe"></use></svg>Site</span>
+            </div>
+          </div>
+          <span class="dor-ev-wire" aria-hidden="true"><i><b>conversa</b></i></span>
+          <div class="dor-ev-core">
+            <span class="dor-ev-orb"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+            <div class="dor-ev-copy"><b>IA humanizada</b><small>contexto · tom natural · memória · handoff</small></div>
+          </div>
+          <span class="dor-ev-wire" aria-hidden="true"><i><b>executa</b></i></span>
+          <div class="dor-ev-side right">
+            <span class="dor-ev-lbl">Ferramentas</span>
+            <div class="dor-ev-chips">
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-database"></use></svg>CRM</span>
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Agenda</span>
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>ERP</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="dor-turn rv" style="--d:6">
         <span class="dor-line"></span>
         <p>Foi aí que <span class="grad-text">a conta não fechou.</span></p>
         <span class="dor-line"></span>

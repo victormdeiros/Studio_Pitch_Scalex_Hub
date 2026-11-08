@@ -6,7 +6,7 @@ export default {
   number: '11',
   notes: [
     'TEMPO ALVO: 40 segundos',
-    'A concorrência direta valida a demanda. A HighLevel é global e atende 2,2 milhões de negócios, com cerca de 4 bilhões de faturamento em 2025. A Zaia é brasileira, tem MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo. Os indicadores são de natureza diferente e não devem ser comparados diretamente. Os concorrentes indiretos são peças do stack: CRM e vendas, conversas e agentes, automação.'
+    'A concorrência direta valida a demanda. A Zaia é brasileira, tem MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo. A HighLevel é global e atende 2,2 milhões de negócios, com cerca de US$ 4 bilhões de faturamento em 2025. Os indicadores são de natureza diferente e não devem ser comparados diretamente. Os concorrentes indiretos são peças do stack: CRM e vendas, conversas e agentes, automação.'
   ],
   html: `
     <div class="comp">
@@ -20,20 +20,20 @@ export default {
         <p class="micro rv" style="--d:2"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>Concorrentes diretos · demanda comprovada</p>
         <div class="comp-grid">
           <article class="comp-item rv" style="--d:3">
-            <div class="comp-top"><p class="comp-name">HighLevel</p><span class="comp-region">Global</span></div>
-            <p class="comp-desc">Plataforma para agências</p>
-            <p class="comp-metric">~4 bi</p>
-            <p class="comp-sub">faturamento em 2025 · 2,2 mi de negócios atendidos</p>
-            <p class="comp-note">Volume transacionado pelos clientes, não receita da HighLevel · site oficial.</p>
-            <div class="comp-verify"><span class="ok">✓ site oficial</span><span class="warn">◐ volume dos clientes</span></div>
-          </article>
-          <article class="comp-item rv" style="--d:4">
             <div class="comp-top"><p class="comp-name">Zaia</p><span class="comp-region">Brasil</span></div>
             <p class="comp-desc">Agentes de IA</p>
             <p class="comp-metric">~R$ 4,8 mi/ano</p>
             <p class="comp-sub">MRR autodeclarado · centenas de agências revendendo</p>
             <p class="comp-note">Autodeclarado, não auditado.</p>
             <div class="comp-verify"><span class="warn">◐ autodeclarado</span></div>
+          </article>
+          <article class="comp-item rv" style="--d:4">
+            <div class="comp-top"><p class="comp-name">HighLevel</p><span class="comp-region">Global</span></div>
+            <p class="comp-desc">Plataforma para agências</p>
+            <p class="comp-metric">~US$ 4 bi</p>
+            <p class="comp-sub">faturamento em 2025 · 2,2 mi de negócios atendidos</p>
+            <p class="comp-note">Volume transacionado pelos clientes, não receita da HighLevel · site oficial.</p>
+            <div class="comp-verify"><span class="ok">✓ site oficial</span><span class="warn">◐ volume dos clientes</span></div>
           </article>
           <aside class="comp-open rv" style="--d:5">
             <svg class="comp-globe" aria-hidden="true"><use href="#i-globe"></use></svg>
