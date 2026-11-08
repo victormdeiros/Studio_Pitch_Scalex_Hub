@@ -19,26 +19,65 @@ export default {
       <div class="sum-dif-table-wrap rv" style="--d:3">
         <table class="sum-dif-table">
           <thead>
-            <tr><th>Capacidade</th><th>HighLevel</th><th>Zaia</th><th>ScaleX Hub</th></tr>
+            <tr>
+              <th class="col-cap">Capacidade Operacional</th>
+              <th class="col-comp"><span class="th-logo">HighLevel</span><em class="th-sub">Global · Agências</em></th>
+              <th class="col-comp"><span class="th-logo">Zaia</span><em class="th-sub">Brasil · Agentes</em></th>
+              <th class="col-hub">
+                <div class="th-hub-badge">
+                  <svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>
+                  <span>ScaleX Hub</span>
+                </div>
+                <em class="th-hub-tag">Plataforma Completa</em>
+              </th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>Criação de planos para revenda</td><td>✓</td><td>—</td><td>✓</td></tr>
-            <tr><td>Trilha comercial completa</td><td>✓</td><td>—</td><td>✓</td></tr>
-            <tr><td>Implantação sem desenvolvimento - Low Code</td><td>—</td><td>✓</td><td>✓</td></tr>
-            <tr><td>IA automatizada e humanizada</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr>
+              <td>Criação de planos para revenda</td>
+              <td><span class="chk ok muted">✓ Sim</span></td>
+              <td><span class="chk no">— Não</span></td>
+              <td class="col-hub-cell"><span class="chk ok hub"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><b>Nativo</b></span></td>
+            </tr>
+            <tr>
+              <td>Trilha comercial completa (CRM + Esteira)</td>
+              <td><span class="chk ok muted">✓ Sim</span></td>
+              <td><span class="chk no">— Não</span></td>
+              <td class="col-hub-cell"><span class="chk ok hub"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><b>Nativo</b></span></td>
+            </tr>
+            <tr>
+              <td>Implantação sem desenvolvimento (Low Code)</td>
+              <td><span class="chk no">— Não</span></td>
+              <td><span class="chk ok muted">✓ Sim</span></td>
+              <td class="col-hub-cell"><span class="chk ok hub"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><b>Nativo</b></span></td>
+            </tr>
+            <tr>
+              <td>IA automatizada e humanizada integrada</td>
+              <td><span class="chk no">— Não</span></td>
+              <td><span class="chk ok muted">✓ Sim</span></td>
+              <td class="col-hub-cell"><span class="chk ok hub"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><b>Nativo</b></span></td>
+            </tr>
           </tbody>
+          <tfoot>
+            <tr class="tr-veredicto">
+              <td>Cobertura da operação</td>
+              <td><span class="ver-sub">Apenas canal</span></td>
+              <td><span class="ver-sub">Apenas agentes</span></td>
+              <td class="col-hub-cell ver-hub"><b>100% da operação integrada</b></td>
+            </tr>
+          </tfoot>
         </table>
       </div>
 
       <div class="sum-dif-panels">
         <article class="sum-dif-panel rv" style="--d:4">
-          <h3>Demanda validada</h3>
-          <p>HighLevel (global) e Zaia (Brasil) já vendem plataforma para agências. A categoria existe; no Brasil, a escala está em construção.</p>
+          <div class="panel-icon-tag"><svg class="ico" aria-hidden="true"><use href="#i-trend"></use></svg>Demanda validada</div>
+          <p>HighLevel (global) e Zaia (Brasil) já vendem plataforma para agências. A categoria existe; no Brasil, a escala comercial está aberta.</p>
         </article>
-        <article class="sum-dif-panel rv" style="--d:5">
-          <h3>Vantagem técnica</h3>
-          <p>Código 100% próprio: cada nova feature entra sobre a base, sem refazer a fundação.</p>
-          <p><b>Próximo salto:</b> PaaS (SDK JS/TS)</p>
+        <article class="sum-dif-panel hub-panel rv" style="--d:5">
+          <div class="panel-icon-tag hub"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>Diferencial técnico ScaleX Hub</div>
+          <p>Código 100% próprio: cada nova funcionalidade entra diretamente sobre a base arquitetural, sem retrabalho de fundação.</p>
+          <div class="panel-paas"><b>Próximo salto tecnológico:</b> PaaS com SDK JavaScript/TypeScript</div>
         </article>
       </div>
 
