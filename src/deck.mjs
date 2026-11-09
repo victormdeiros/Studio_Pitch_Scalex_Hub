@@ -15,4 +15,7 @@ import slide9 from './slides/14-rodada.mjs';
 import slide10 from './slides/15-investimento.mjs';
 import slide11 from './slides/16-antecipacao.mjs';
 import slide12 from './slides/17-fechamento.mjs';
-export const slides=[slide1,publico,oferta,slide2,slide3,slide4,infra,concorrencia,diferenciais,slide6,indireto,slide7,slide8,slide9,slide10,slide11,slide12];
+import aquisicao from './slides/18-aquisicao.mjs';
+import longoPrazo from './slides/19-longo-prazo.mjs';
+import retorno from './slides/20-retorno.mjs';
+export const slides=[slide1,publico,oferta,slide2,slide3,slide4,infra,concorrencia,diferenciais,slide6,indireto,slide7,aquisicao,slide8,longoPrazo,slide9,slide10,slide11,retorno,slide12];

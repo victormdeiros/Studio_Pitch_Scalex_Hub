@@ -6,8 +6,9 @@ export default {
   number: '05',
   notes: [
     'TEMPO ALVO: 40 segundos',
+    'Classificação: histórico e tickets reportados internamente no pitch anterior; o PDF corrigido não comprova esses resultados. Os R$ 3.500/mês não são a premissa do modelo atualizado: o ticket projetado passa de R$ 1.200 a R$ 3.600, com periodicidade ainda a confirmar.',
     'ROTEIRO FALADO',
-    'Em 2025, vendemos R$ 300 mil em agentes de IA na ponta final. Mais do que faturamento, isso provou entrega: a plataforma já opera com clientes pagantes. O que está de pé hoje inclui white-label com marca e domínio próprios, workspace independente por cliente, CRM 360, páginas, chat omnichannel, agentes de IA e tracking. A virada é de estratégia comercial, não de produto: saímos da venda direta ao cliente final para vender a infraestrutura para quem já atende esse cliente. O ticket médio recorrente do cliente final é R$ 900; o do revendedor é R$ 3.500, cerca de 3,9 vezes maior. O produto é o mesmo; o canal é que escala.',
+    'Em 2025, vendemos R$ 300 mil em agentes de IA na ponta final. Mais do que faturamento, isso provou entrega: a plataforma já opera com clientes pagantes. O que está de pé hoje inclui white-label com marca e domínio próprios, workspace independente por cliente, CRM 360, páginas, chat omnichannel, agentes de IA e tracking. A virada é de estratégia comercial, não de produto: saímos da venda direta ao cliente final para vender a infraestrutura para quem já atende esse cliente. Os tickets anteriormente informados eram R$ 900/mês para o cliente final e R$ 3.500/mês para o revendedor. São referências anteriores, distintas das premissas projetadas do plano revisado. O produto é o mesmo; o canal é que escala.',
     'APOIO PARA PERGUNTAS',
     'Ticket médio recorrente: cliente final R$ 900/mês; revendedor R$ 3.500/mês. O múltiplo é 3,9× (3.500 ÷ 900).',
     'R$ 300 mil em 2025: resultado histórico de vendas de agentes de IA na ponta final, usado como validação de entrega e de mercado.',
@@ -24,21 +25,21 @@ export default {
       </header>
       <aside class="sales-proof rv" style="--d:2">
         <span class="ico-wrap"><svg class="ico" aria-hidden="true"><use href="#i-banknote"></use></svg></span>
-        <div><p class="v">R$ 300 mil</p><p class="l">revendendo agentes de IA ao cliente final em 2025</p><p class="s">Resultado histórico · validação na ponta final</p></div>
+        <div><p class="v">R$ 300 mil</p><p class="l">revendendo agentes de IA ao cliente final em 2025</p><p class="s">Histórico informado · dados internos de 2025</p></div>
       </aside>
       <div class="sales-body">
         <div class="sales-ticket">
-          <p class="micro rv" style="--d:3">Ticket médio recorrente · antes e agora</p>
+          <p class="micro rv" style="--d:3">Ticket informado · operação anterior</p>
           <div class="ticket-row rv" style="--d:3">
             <div class="ticket-head"><span class="who"><svg class="ico" aria-hidden="true"><use href="#i-user"></use></svg>Cliente final <em>antes</em></span><span class="v">R$ 900<span>/mês</span></span></div>
             <span class="bar" style="--w:26%"></span>
           </div>
           <div class="ticket-row focus rv" style="--d:4">
-            <div class="ticket-head"><span class="who"><svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>Revendedor <em>agora · novo ICP</em></span><span class="v">R$ 3.500<span>/mês</span></span></div>
+            <div class="ticket-head"><span class="who"><svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>Revendedor <em>referência anterior</em></span><span class="v">R$ 3.500<span>/mês</span></span></div>
             <span class="bar" style="--w:100%"></span>
           </div>
           <div class="sales-mult rv" style="--d:5"><b>3,9×</b><span>o ticket do cliente final</span></div>
-          <p class="ticket-note rv" style="--d:6">Ticket recorrente mensal. O múltiplo compara o revendedor com o cliente final.</p>
+          <p class="ticket-note rv" style="--d:6">Tickets históricos informados. O plano revisado usa premissas próprias de ticket, apresentadas nas projeções.</p>
         </div>
         <div class="sales-shift">
           <p class="micro rv" style="--d:3">A virada · de agência para plataforma</p>

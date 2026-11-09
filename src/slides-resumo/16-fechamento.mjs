@@ -8,7 +8,6 @@ const contact = `
       </div>`;
 
 const html = base.html
-  .replace('Rodada aberta: 10% da ScaleX Hub, com pre-money abaixo do valuation indicativo.', '10% da ScaleX Hub por R$ 300 mil · janela Q4/26–Q1/27.')
   .replace('</span>\n    </div>', '</span>\n    </div>\n    ' + contact);
 
 export default {
@@ -17,7 +16,7 @@ export default {
   title: 'A infraestrutura das agências de IA vai ter dono. A questão é quem entra antes.',
   notes: [
     'TEMPO ALVO: 20 segundos',
-    'Fechamento. A infraestrutura das agências de IA vai ter dono. A questão é quem entra antes. Estamos abrindo 10% da ScaleX por R$ 300 mil, com janela Q4/26–Q1/27. Vamos juntos?'
+    'Fechamento. A infraestrutura das agências de IA vai ter dono. A questão é quem entra antes. Estamos abrindo 10% da ScaleX por R$ 300 mil, para seis meses de execução. Vamos juntos?'
   ],
   html
 };

@@ -9,7 +9,7 @@ export const decks=[
     switchLabel:'Resumo · 7 min',
     switchHref:'resumo/index.html',
     title:'ScaleX Hub — Apresentação para investidores',
-    description:'Apresentação completa para investidores da ScaleX Hub, 2026. 17 slides com design dinâmico.',
+    description:'Apresentação completa para investidores da ScaleX Hub, 2026. 20 slides com design dinâmico.',
     slides:detalhado,
     editable:true,
     contentPath:'content.json',

@@ -2,7 +2,7 @@
 
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
-- **`/`** — apresentação completa, com 17 slides, para o investidor ver com calma.
+- **`/`** — apresentação completa, com 20 slides, para o investidor ver com calma.
 - **`/resumo/`** — pitch resumido de 7 minutos, com 16 slides na direção de arte da apresentação completa.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json` (na completa) ou `resumo/content.json` (no resumo), no próprio repositório, e o GitHub Pages atualiza as duas rotas.
@@ -34,7 +34,7 @@ As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma s
 - **F** alterna tela cheia; **G** abre a visão geral; **?** abre a ajuda.
 - **Leitura** mostra o conteúdo do slide em formato de artigo, com as notas do apresentador.
 - **PDF** (ou **P**) abre a exportação: um slide por página em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha **Salvar como PDF**.
-- **Simulador 2025 → 2027** (no resumo): arraste os controles de revendedores e ticket. Em tela cheia, a roda do mouse ajusta o controle ativo e o clique do meio alterna entre os dois indicadores.
+- **Uso do aporte** (nas duas versões): passe o mouse, toque ou use Tab e Enter nas três frentes para detalhar a alocação.
 
 A interface desaparece durante a apresentação em tela cheia e reaparece ao passar o mouse na parte inferior. Os slides têm entrada em camadas, contadores, gráficos animados, redes desenhadas e parallax sutil de acordo com o movimento do mouse. A abertura usa uma transição de impacto: o símbolo da capa atravessa a tela, cresce e abre o resumo no slide 2. No resumo, cada problema tem uma solução correspondente: os blocos do Flow Builder e as dez ferramentas convergem para o símbolo e para a interface de ativação. As demais trocas usam foco, profundidade e uma varredura de luz; na passagem da fragmentação para a concorrência, as dez ferramentas convergem para o símbolo ScaleX antes de a leitura competitiva aparecer.
 
@@ -89,13 +89,13 @@ Para gerar o PDF sem abrir o navegador:
 npm run pdf
 ```
 
-O arquivo sai em **dist/ScaleX-Hub-Apresentacao.pdf**, com os 17 slides em 16:9 e os fundos preservados. Use `npm run pdf -- --deck=resumo` para gerar o pitch resumido, `npm run pdf -- --all` para os dois, `npm run pdf -- --notes` para acrescentar as notas do apresentador ou `npm run pdf -- --out=caminho/arquivo.pdf` para escolher o destino. O comando usa um Chrome/Chromium instalado; se necessário, aponte o executável em `CHROME_PATH`.
+O arquivo sai em **dist/ScaleX-Hub-Apresentacao.pdf**, com os 20 slides em 16:9 e os fundos preservados. Use `npm run pdf -- --deck=resumo` para gerar o pitch resumido, `npm run pdf -- --all` para os dois, `npm run pdf -- --notes` para acrescentar as notas do apresentador ou `npm run pdf -- --out=caminho/arquivo.pdf` para escolher o destino. O comando usa um Chrome/Chromium instalado; se necessário, aponte o executável em `CHROME_PATH`.
 
 ## Onde mexer
 
 | Arquivo | O que controla |
 | --- | --- |
-| `src/slides/01-capa.mjs` até `17-fechamento.mjs` | Conteúdo, HTML, animações de entrada e notas de cada slide |
+| `src/slides/` | Conteúdo, HTML, animações de entrada e notas de cada slide |
 | `src/deck.mjs` | Sequência padrão da apresentação completa (usada quando `content.json` não define outra) |
 | `src/decks.mjs` | Rotas, títulos e sequência do pitch resumido |
 | `src/slides-resumo.mjs` | Sequência do pitch resumido |
@@ -128,4 +128,18 @@ Para vídeos ou outros recursos, use arquivos locais em `assets/`. O gerador inc
 
 O sistema combina azul profundo, violeta e ciano, tipografia grande com tracking negativo, hairlines, auroras lentas e malha técnica. Cada slide tem composição própria: jornada comercial, constelação de ferramentas, fluxo de automação, funil de mercado, gráfico de barras, cronograma comparativo, frentes de capital e fechamento cinematográfico. Os ícones são lineares, corporativos e usam um sprite SVG único; aparecem em kickers, módulos, métricas e etapas do funil, sem competir com o texto.
 
-A abertura foi desdobrada em capa, um slide sobre os dois públicos (revendedores e empresas finais), um slide da oferta white-label e uma visão da jornada comercial, com sete etapas, o núcleo de agentes de IA, multicanais e ecossistema integrado. O posicionamento de plataforma ficou nas notas do slide; os concorrentes diretos e indiretos foram unificados em um slide, e o mercado apresenta TAM, SAM e SOM diretos e indiretos, além do upsell do cliente do cliente. O SOM inicial foi alinhado ao cálculo de 0,5%–1% do SAM, resultando em 130–260 clientes. O detalhamento de módulos ficou nas notas do resumo. A concorrência entrou depois do slide de infraestrutura, com diretos, indiretos e a oportunidade de mercado (83% no Brasil e 80% na UE ainda sem IA). Em seguida, um slide de diferenciais fecha a camada de produto e os recursos com potencial de patente. O mercado ganhou dois slides: cliente direto (TAM 422.269, SAM 259.108, SOM 6.430 parceiros no Nordeste até 2029) e cliente indireto (TAM 25.774.457, SAM 1.324.850 no Nordeste, SOM 254.371 empresas finais até 2029), com fontes e ressalvas metodológicas. Entre a fragmentação e a concorrência entrou um slide sobre a falta de infraestrutura como serviço e a fragilidade dos fluxos de automação por nós. O slide de vendas reúne o resultado histórico de 2025, o ticket recorrente comparativo, o que já foi entregue e a virada de agência para plataforma. A rodada passou a enfatizar a oferta de 10% da empresa, com o valuation indicativo considerando o bootstrapping. O kit não contém manual, fontes ou versões vetoriais; as fontes vieram do PowerPoint e os acabamentos adicionais são parte da direção de arte deste projeto.
+A abertura foi desdobrada em capa, um slide sobre os dois públicos (revendedores e empresas finais), um slide da oferta white-label e uma visão da jornada comercial, com sete etapas, o núcleo de agentes de IA, multicanais e ecossistema integrado. O posicionamento de plataforma ficou nas notas do slide; os concorrentes diretos e indiretos foram unificados em um slide, e o mercado apresenta TAM, SAM e SOM diretos e indiretos, além do upsell do cliente do cliente. O SOM inicial foi alinhado ao cálculo de 0,5%–1% do SAM, resultando em 130–260 clientes. O detalhamento de módulos ficou nas notas do resumo. A concorrência entrou depois do slide de infraestrutura, com diretos, indiretos e a oportunidade de mercado (83% no Brasil e 80% na UE ainda sem IA). Em seguida, um slide de diferenciais fecha a camada de produto e os recursos com potencial de patente. O mercado ganhou dois slides: cliente direto (TAM 422.269, SAM 259.108, SOM 6.430 parceiros no Nordeste até 2029) e cliente indireto (TAM 25.774.457, SAM 1.324.850 no Nordeste, SOM 254.371 empresas finais até 2029), com fontes e ressalvas metodológicas. Entre a fragmentação e a concorrência entrou um slide sobre a falta de infraestrutura como serviço e a fragilidade dos fluxos de automação por nós. O slide de vendas reúne o resultado histórico de 2025, o ticket recorrente comparativo, o que já foi entregue e a virada de agência para plataforma. A rodada propõe R$ 300 mil por 10%, com valuations implícitos de R$ 2,7 milhões pré-money e R$ 3 milhões pós-money. O kit não contém manual, fontes ou versões vetoriais; as fontes vieram do PowerPoint e os acabamentos adicionais são parte da direção de arte deste projeto.
+
+## Revisão financeira — PDF corrigido
+
+As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo mantém 16 e concentra as informações financeiras nos slides 13–15. O roteiro falado soma 420 segundos (7 minutos); notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
+
+- Rodada proposta: R$ 300 mil por 10% pós-investimento; valuation implícito de R$ 2,7 mi pré e R$ 3,0 mi pós. As referências diferentes da planilha estão documentadas nas notas.
+- Seis meses: R$ 243,6 mil recorrentes e R$ 56,4 mil pontuais. Operação R$ 188 mil; comercial e marketing R$ 77 mil; enterprise R$ 35 mil. Founder full-time integra operação; não é uma quarta frente. Não há contingência no orçamento.
+- Projeções bootstrap: EBITDA de 2027 de R$ 355.625,10 pela base trimestral. A série anual pré-money registra R$ 408.968,80, base distinta e pendente de conciliação; o pós-money anual é R$ 497.875,10. A série cresce cerca de 20% a.a., apesar da premissa declarada de 15%.
+- “FAT BOM” não é apresentado como receita ou MRR; periodicidades de ticket e churn permanecem pendentes. Valores do PDF foram preservados sem recalcular margens sobre bases indefinidas.
+- Aquisição: 31 vendas outbound e 26 inbound projetadas em Q4/26–Q4/27. Vendas brutas não equivalem à carteira ativa. CAC/LTV monetário pendentes; custos dos funis não são somados novamente ao aporte.
+- Prazo da meta: 15 → 6 meses, redução de 60%. A promessa de dobrar faturamento e o simulador antigo foram substituídos por projeções do PDF.
+- Dividendos: simulação-base com payback em 2033, sujeita às hipóteses do PDF. 2032–2033 são extrapolações; não há promessa de retorno ou política de payout aprovada.
+
+O histórico de 2025 já existente na completa foi mantido como informação interna reportada, sem atribuir comprovação ao novo PDF. Os números de 2026 e de carteira ativa que não constam na revisão financeira não são reutilizados como projeções. O detalhamento de orçamento, unit economics, divergências e sensibilidade de retorno fica nas notas, acessíveis em Leitura e na exportação com notas.

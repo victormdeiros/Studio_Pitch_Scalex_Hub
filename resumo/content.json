@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-08T21:21:38.589Z",
+  "updatedAt": "2026-11-09T00:00:00.000Z",
   "order": [
     "resumo-capa",
     "resumo-origem",
@@ -19,30 +19,6 @@
     "resumo-investidor",
     "resumo-fechamento"
   ],
-  "text": {
-    "resumo-rodada": {
-      "e9": {
-        "v": "R$ 2.0 mi",
-        "o": "R$ 2,70 mi"
-      },
-      "e11": {
-        "v": "R$ 4.0 mi",
-        "o": "R$ 3,00 mi"
-      }
-    }
-  },
-  "styles": {
-    "resumo-escala": {
-      "e16": {
-        "fontSize": 16,
-        "align": "center",
-        "y": -4
-      }
-    },
-    "resumo-investidor": {
-      "e1": {
-        "fontSize": 39
-      }
-    }
-  }
+  "text": {},
+  "styles": {}
 }

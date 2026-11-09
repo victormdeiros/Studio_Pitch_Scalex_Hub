@@ -457,176 +457,6 @@
     if(new URLSearchParams(location.search).has('notes'))buildPdfNotes();
   }
 
-  /* ---- Simulador 2025 → 2027: sliders, roda do mouse e clique do meio ----
-     A roda ajusta o controle ativo; o clique do meio troca de indicador.
-     Fora da tela cheia, a roda só age sobre o próprio painel do simulador. */
-  const isFullscreen=()=>!!(document.fullscreenElement||document.body.classList.contains('fullscreen'));
-  const simApis=new Map();
-  function initSimulators(){
-    $$('[data-simulator]').forEach(root=>{
-      const rev=root.querySelector('[data-sim="rev"]'),ticket=root.querySelector('[data-sim="ticket"]');
-      if(!rev||!ticket)return;
-      const slide=root.closest('.slide');
-      const card2027=slide?slide.querySelector('[data-card="2027"]'):null;
-      const cardAnnual=slide?slide.querySelector('[data-out="card-annual"]'):null;
-      const cardRev=slide?slide.querySelector('[data-out="card-rev"]'):null;
-      const badge2027=slide?slide.querySelector('[data-badge="2027"]'):null;
-      const boostBanner=slide?slide.querySelector('[data-out="boost-banner"]'):null;
-      const boostBtn=root.querySelector('[data-sim="boost"]');
-      const boostState=root.querySelector('[data-out="boost-state"]');
-
-      let isBoosted=false;
-      const somTotal=parseFloat(root.dataset.som)||6430;
-      const out={
-        rev:root.querySelector('[data-out="rev"]'),ticket:root.querySelector('[data-out="ticket"]'),
-        monthly:root.querySelector('[data-out="monthly"]'),annual:root.querySelector('[data-out="annual"]'),
-        som:root.querySelector('[data-out="som"]'),step:root.querySelector('[data-out="step"]')
-      };
-      const nr=(value,decimals=0)=>new Intl.NumberFormat('pt-BR',{minimumFractionDigits:decimals,maximumFractionDigits:decimals}).format(value);
-      const money=value=>'R$ '+nr(value);
-      const paint=input=>{
-        const min=Number(input.min),max=Number(input.max),value=Number(input.value);
-        input.style.setProperty('--p',(((value-min)/(max-min||1))*100).toFixed(2)+'%');
-      };
-      const bump=node=>{if(!node)return;node.classList.remove('is-bump');void node.offsetWidth;node.classList.add('is-bump');};
-      const sliders=[...root.querySelectorAll('.esc-slider')];
-      let active=0;
-
-      function updateBoostUI(){
-        if(boostBtn){
-          boostBtn.setAttribute('aria-pressed',isBoosted?'true':'false');
-          boostBtn.classList.toggle('is-boosted',isBoosted);
-        }
-        if(boostState){
-          boostState.textContent=isBoosted?'Acelerado 2x (R$ 2,64 mi)':'Cenário Base (1x)';
-          boostState.classList.toggle('is-boosted',isBoosted);
-        }
-        if(card2027){
-          card2027.classList.toggle('is-boosted',isBoosted);
-          if(cardAnnual)cardAnnual.textContent=isBoosted?'R$ 2,64 mi':'R$ 1,32 mi';
-          if(cardRev)cardRev.textContent=isBoosted?'≈ 118':'≈ 59';
-          if(badge2027){
-            badge2027.textContent=isBoosted?'⚡ 2x com Aporte':'Projeção';
-            badge2027.className=isBoosted?'esc-badge boost':'esc-badge plan';
-          }
-          if(boostBanner){
-            boostBanner.style.display=isBoosted?'inline-flex':'none';
-          }
-        }
-      }
-
-      function render(changed){
-        const resellers=Number(rev.value),price=Number(ticket.value);
-        const mult=isBoosted?2:1;
-        const monthly=resellers*price*mult,annual=monthly*12,som=(resellers*mult)/somTotal*100;
-        if(out.rev)out.rev.textContent=nr(resellers*(isBoosted?2:1));
-        if(out.ticket)out.ticket.textContent=money(price)+'/mês';
-        if(out.monthly)out.monthly.textContent=monthly?(monthly<1000?money(monthly):money(Math.round(monthly/1000))+' mil'):'R$ 0';
-        if(out.annual)out.annual.textContent=annual>=1000000?'R$ '+nr(annual/1000000,2)+' mi':(annual?money(Math.round(annual/1000))+' mil':'R$ 0');
-        if(out.som)out.som.textContent=nr(som,1)+'%';
-        updateBoostUI();
-        if(changed)bump(changed);
-        if(isBoosted&&out.annual)bump(out.annual);
-      }
-
-      const setActive=index=>{
-        if(!sliders.length)return;
-        active=(index+sliders.length)%sliders.length;
-        sliders.forEach((slider,i)=>slider.classList.toggle('is-active',i===active));
-        if(out.step)out.step.textContent=(active+1)+' / '+sliders.length;
-        if(active===2&&!isBoosted){
-          setBoost(true);
-        }
-      };
-
-      function setBoost(state){
-        isBoosted=typeof state==='boolean'?state:!isBoosted;
-        render(out.annual);
-        if(out.monthly)bump(out.monthly);
-        if(out.som)bump(out.som);
-      }
-
-      if(boostBtn){
-        boostBtn.addEventListener('click',e=>{
-          e.preventDefault();
-          setActive(2);
-          setBoost(!isBoosted);
-        });
-      }
-
-      [rev,ticket].forEach((input,index)=>{
-        paint(input);
-        input.addEventListener('input',()=>{paint(input);render(input===rev?out.monthly:out.annual);});
-        input.addEventListener('focus',()=>setActive(index));
-      });
-      setActive(0);
-      render();
-
-      simApis.set(root,{
-        adjust(direction){
-          if(active===2){
-            setBoost(direction>0);
-            return;
-          }
-          const input=active===0?rev:ticket,step=active===0?1:50;
-          const min=Number(input.min),max=Number(input.max);
-          const next=Math.min(max,Math.max(min,Number(input.value)+direction*step));
-          if(next===Number(input.value))return;
-          input.value=String(next);paint(input);render(input===rev?out.monthly:out.annual);
-        },
-        cycle(){setActive(active+1);},
-        activateBoost(){
-          setActive(2);
-          setBoost(true);
-        },
-        hovered(node){return !node||root.contains(node);}
-      });
-    });
-  }
-
-  function activeSimulator(event){
-    const slide=slides[current];
-    if(!slide)return null;
-    const root=slide.querySelector('[data-simulator]');
-    const api=root&&simApis.get(root);
-    if(!api)return null;
-    if(!isFullscreen()&&!api.hovered(event.target))return null;
-    return api;
-  }
-  stage.addEventListener('wheel',event=>{
-    const api=activeSimulator(event);
-    if(!api||Math.abs(event.deltaY)<1)return;
-    event.preventDefault();
-    api.adjust(event.deltaY<0?1:-1);
-  },{passive:false});
-  stage.addEventListener('mousedown',event=>{
-    if(event.button!==1)return;
-    const api=activeSimulator(event);
-    if(!api)return;
-    event.preventDefault(); // evita o autoscroll do navegador ao arrastar o botão do meio
-  });
-
-  let middleClickCount=0;
-  let middleClickTimer=null;
-  stage.addEventListener('auxclick',event=>{
-    if(event.button!==1)return;
-    const api=activeSimulator(event);
-    if(!api)return;
-    event.preventDefault();
-    middleClickCount++;
-    clearTimeout(middleClickTimer);
-    middleClickTimer=setTimeout(()=>{middleClickCount=0;},1200);
-    if(middleClickCount>=3){
-      middleClickCount=0;
-      api.activateBoost();
-    }else{
-      api.cycle();
-    }
-  });
-  stage.addEventListener('contextmenu',event=>{
-    if(isFullscreen()&&activeSimulator(event))event.preventDefault();
-  });
-
   function initAllocCharts(){
     $$('[data-alloc-chart]').forEach(chart=>{
       const slices=chart.querySelectorAll('.donut-slice');
@@ -634,21 +464,18 @@
       const pctOut=chart.querySelector('[data-out="alloc-pct"]');
       const valOut=chart.querySelector('[data-out="alloc-val"]');
       const tagOut=chart.querySelector('[data-out="alloc-tag"]');
-      const data=[
-        {pct:'50%', val:'R$ 150 mil', tag:'Comercial'},
-        {pct:'30%', val:'R$ 90 mil', tag:'Enterprise'},
-        {pct:'20%', val:'R$ 60 mil', tag:'Founder'}
-      ];
+      const data=[...items].map(item=>({pct:item.dataset.pct,val:item.dataset.value,tag:item.dataset.tag}));
       function setSlice(index){
         const item=data[index]||data[0];
         slices.forEach((s,i)=>s.classList.toggle('is-active',i===index));
-        items.forEach((it,i)=>it.classList.toggle('is-active',i===index));
+        items.forEach((it,i)=>{it.classList.toggle('is-active',i===index);it.setAttribute('aria-pressed',String(i===index));});
         if(pctOut)pctOut.textContent=item.pct;
         if(valOut)valOut.textContent=item.val;
         if(tagOut)tagOut.textContent=item.tag;
       }
       items.forEach((item,index)=>{
         item.addEventListener('mouseenter',()=>setSlice(index));
+        item.addEventListener('focus',()=>setSlice(index));
         item.addEventListener('click',()=>setSlice(index));
       });
       slices.forEach((slice,index)=>{
@@ -693,7 +520,6 @@
     renumber();
     applyTextToDOM(content.text);
     applyStyles(content.styles);
-    initSimulators();
     initAllocCharts();
     start();
     readyResolve(content);
