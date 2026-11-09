@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-09T05:32:04.150Z",
+  "updatedAt": "2026-11-09T05:38:25.128Z",
   "order": [
     "resumo-capa",
     "resumo-origem",
@@ -15,8 +15,8 @@
     "resumo-concorrencia",
     "resumo-diferenciais",
     "resumo-escala",
-    "resumo-rodada",
     "resumo-investidor",
+    "resumo-rodada",
     "resumo-fechamento"
   ],
   "text": {},

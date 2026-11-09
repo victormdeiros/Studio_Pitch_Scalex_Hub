@@ -1,28 +1,34 @@
-import {brl} from '../financials.mjs';
 import {pitchPremises, premiseNotes, premiseSource} from '../pitch-premises.mjs';
 import {header, foot} from '../financial-components.mjs';
+import {scenarioRoute} from '../scenario-components.mjs';
 
 const {pre,post}=pitchPremises.ebitda2027;
 export default {
   id:'resumo-investidor',
-  title:'O aporte antecipa seis meses e amplia o EBITDA projetado.',
+  title:'Com investidor: seis meses antes.',
   theme:'dark',
-  number:'15',
+  number:'14',
   notes:[
     'TEMPO ALVO: 35 segundos',
-    'O aporte antecipa o plano em seis meses. Para 2027, o EBITDA estimado é de aproximadamente R$ 450 mil no pré-money, sem aporte, e R$ 750 mil no pós-money, com aporte. O pré-money é 40% menor que o pós-money. São cenários projetados, não valuations ou resultados realizados.',
-    ...premiseNotes.slice(1,4),
+    'Com R$ 300 mil de aporte, o plano é antecipado em seis meses. O cenário de 2027 estima EBITDA de aproximadamente R$ 750 mil, frente a R$ 450 mil em bootstrap. A valorização projetada de 40% e o payback aproximado de três anos são premissas informadas pela gestão. A valorização de 40% é uma premissa de valuation, não a variação percentual do EBITDA.',
+    ...premiseNotes.slice(1,5),
+    'A transição entre os dois cenários ilustra aceleração de execução. As linhas do diagrama não definem prazos absolutos nem uma curva de resultados realizados.',
     premiseSource
   ],
-  html:`<div class="fin-page fin-summary sx-investor">
-    ${header('O efeito do aporte','O aporte antecipa <span class="grad-text">seis meses.</span>')}
-    <div class="sx-impact-grid">
-      <section class="sx-ebitda-card"><p class="sx-chart-caption">EBITDA estimado · 2027 <span>Comparativo de cenários</span></p><div class="sx-ebitda-plot" role="img" aria-label="EBITDA estimado para 2027: pré-money, sem aporte, aproximadamente R$ 450 mil; pós-money, com aporte, aproximadamente R$ 750 mil. O pré-money é 40% menor que o pós-money.">
-        <div class="sx-ebitda-scenario"><span class="sx-ebitda-mode">Pré-money <em>Sem aporte</em></span><b>~${brl(pre/1000)} mil</b><div class="sx-ebitda-track"><i style="width:${pre/post*100}%"></i></div></div>
-        <div class="sx-ebitda-scenario is-funded"><span class="sx-ebitda-mode">Pós-money <em>Com aporte</em></span><b>~${brl(post/1000)} mil</b><div class="sx-ebitda-track"><i style="width:100%"></i></div></div>
-      </div><p class="sx-ebitda-insight">Pré-money: <b>40% menos EBITDA</b> que o pós-money.</p></section>
-      <aside class="sx-time-card"><span class="sx-card-label">Antecipação do plano</span><p class="sx-month-number">${pitchPremises.accelerationMonths}<span>meses</span></p><p class="sx-time-copy">de avanço na execução<br>com a entrada do investidor.</p></aside>
+  html:`<div class="fin-page scenario-page scenario-funded" data-acceleration-months="${pitchPremises.accelerationMonths}">
+    <div class="scenario-speed-field" aria-hidden="true">${Array.from({length:7},(_,i)=>`<i style="--lane:${i}"></i>`).join('')}</div>
+    ${header('Pós-money · com investidor','A mesma visão. <span class="grad-text">Seis meses antes.</span>')}
+    <div class="scenario-hero">
+      <p class="scenario-metric-label">EBITDA estimado · 2027</p>
+      <p class="scenario-amount">~R$ <span class="count" data-from="${pre/1000}" data-to="${post/1000}">${post/1000}</span><span class="scenario-unit">mil</span></p>
+      <p class="scenario-baseline">Bootstrap: ~R$ ${pre/1000} mil <span>→</span> com investidor: ~R$ ${post/1000} mil</p>
     </div>
-    ${foot('Projeções aproximadas e antecipação estimada informadas pela gestão. Pré e pós-money identificam cenários de EBITDA; não são valores de valuation.')}
+    ${scenarioRoute({funded:true,months:pitchPremises.accelerationMonths})}
+    <div class="scenario-outcomes">
+      <article class="scenario-gain"><b>${pitchPremises.accelerationMonths}<span>meses</span></b><p>de execução antecipada</p></article>
+      <article class="scenario-valuation"><b>+${pitchPremises.valuationUpliftPercent}<span>%</span></b><p>de valorização projetada</p><div class="valuation-index" role="img" aria-label="Valuation projetado: índice relativo de 100 para 140, aumento de 40%."><i style="--w:${100/(1+pitchPremises.valuationUpliftPercent/100)}%"></i><i style="--w:100%"></i></div></article>
+      <article class="scenario-payback"><b>~${pitchPremises.paybackMonths/12}<span>anos</span></b><p>de payback estimado</p></article>
+    </div>
+    ${foot('Cenários projetados pela gestão. Valorização de 40% refere-se ao valuation. Payback aproximado, condicionado à execução e aos resultados.')}
   </div>`
 };

@@ -144,12 +144,14 @@ As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financei
 
 O histórico de 2025 já existente na completa foi mantido como informação interna reportada, sem atribuir comprovação ao novo PDF. Os números de 2026 e de carteira ativa que não constam na revisão financeira não são reutilizados como projeções. O detalhamento de orçamento, unit economics, divergências e sensibilidade de retorno fica nas notas, acessíveis em Leitura e na exportação com notas.
 
-## Revisão dos slides 13–15 do resumo — premissas do fundador
+## Cenários do resumo — bootstrap e entrada do investidor
 
-O resumo usa `src/pitch-premises.mjs` para as premissas posteriores ao PDF, confirmadas na conversa: EBITDA estimado de 2027 de aproximadamente R$ 450 mil pré-money e R$ 750 mil pós-money; pré 40% menor que pós; antecipação de seis meses; payback conservador estimado de 30 meses. O prazo de payback é uma estimativa informada pela gestão, sem memória de cálculo anexada nesta revisão; não é atribuído à simulação de dividendos do PDF.
+A ordem final do resumo é: **slide 13, bootstrap → slide 14, efeito do investidor → slide 15, pedida**. O pitch mantém 16 slides e roteiro de sete minutos.
 
-O slide 13 destaca a virada de 2026 e apresenta 2025–2026 como faturamento informado (R$ 300 mil e R$ 200 mil), em painel e escala distintos da projeção de EBITDA de 2027. O slide 14 contém somente pedida, payback e destinação percentual. O slide 15 compara EBITDA pré/pós e mostra os seis meses de antecipação, sem valuations ou prazos absolutos inferidos. O roteiro do resumo continua com tempo alvo de sete minutos.
+As premissas posteriores ao PDF, informadas pelo fundador, ficam em `src/pitch-premises.mjs`: EBITDA estimado de 2027 de aproximadamente R$ 450 mil sem aporte e R$ 750 mil com investidor; seis meses de execução antecipada; valorização projetada de 40% no valuation; payback aproximado de três anos. A valorização é uma premissa independente da variação do EBITDA. Novos valuations absolutos e a memória de cálculo do payback não foram fornecidos nesta revisão; as estimativas não são atribuídas à simulação anterior de dividendos do PDF.
 
-Esta revisão dos três slides não recalcula as séries financeiras da apresentação completa nem extrapola a nova premissa para 2028–2031.
+O slide bootstrap destaca a meta de 2027 com recursos próprios, preserva os históricos de faturamento informado de 2025 e 2026 e a mensagem da virada para plataforma. O slide com investidor mantém o mesmo enquadramento e mostra o ritmo de execução acelerado. Os diagramas indicam etapas e antecipação; não representam uma série quantitativa de faturamento ou prazos absolutos. Não há cálculo de crescimento entre faturamento histórico e EBITDA projetado.
 
-No slide 13, a meta de EBITDA de 2027 é a perspectiva **pré-money / bootstrap**, de aproximadamente R$ 450 mil sem aporte. O comparativo com o pós-money de R$ 750 mil permanece no slide 15.
+A transição entre os dois cenários aplica uma arrancada de luz de 1,45 segundo. O cenário com investidor surge durante a passagem, com o contador de EBITDA partindo de 450 para chegar a 750. Há cancelamento ao reordenar, ao imprimir, ao ocultar a aba ou ao ativar movimento reduzido; a versão impressa exibe o conteúdo final e oculta a camada da transição. Com `prefers-reduced-motion`, os cenários mudam imediatamente.
+
+Esta revisão do resumo não recalcula as séries financeiras da apresentação completa nem extrapola as novas premissas para 2028–2031.

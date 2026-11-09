@@ -1919,3 +1919,79 @@
 .sx-month-number{font-size:128px;line-height:1;letter-spacing:-.08em;font-weight:700;color:#d8b4fe;margin:15px 0 0}
 .sx-month-number>span{display:block;font-size:32px;line-height:1.2;letter-spacing:-.03em;margin-top:1px}
 .sx-time-copy{font-size:14px;line-height:1.5;color:#b2c1db;margin:22px 0 0}
+
+/* Dois momentos do plano: bootstrap → aceleração com investidor. */
+.scenario-page .fin-head h2{font-size:47px;line-height:1.1}
+.scenario-hero{position:absolute;left:70px;top:235px;width:500px;z-index:2}
+.scenario-metric-label{font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#9eafd0;margin:0}
+.scenario-amount{display:flex;align-items:baseline;gap:13px;white-space:nowrap;font-size:78px;line-height:1.15;letter-spacing:-.06em;font-weight:700;color:#d4c6ff;margin:13px 0 0}
+.scenario-amount .count{font-size:105px;line-height:1;letter-spacing:-.065em}
+.scenario-unit{font-size:39px;letter-spacing:-.045em}
+.scenario-state{display:flex;align-items:center;gap:10px;font-size:14px;color:#b5c1dc;margin:24px 0 0;line-height:1.5}
+.scenario-state>i{display:block;width:6px;height:6px;border-radius:50%;background:#c084fc;box-shadow:0 0 14px #c084fc80}
+.scenario-route{position:absolute;left:625px;top:220px;width:585px;height:287px;padding:25px 21px 17px;border:1px solid #a78bfa26;border-radius:20px;background:linear-gradient(145deg,#15182d80,#10152640);z-index:2}
+.scenario-route-caption>span{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#a896d3;font-weight:700}
+.scenario-route-caption>b{display:block;font-size:20px;line-height:1.35;letter-spacing:-.03em;color:#d6dcef;margin-top:7px}
+.scenario-route-svg{display:block;width:100%;height:202px;overflow:visible;margin-top:5px}
+.route-track{fill:none;stroke:#bca3ff18;stroke-width:8;stroke-linecap:round}
+.route-live{fill:none;stroke-width:4;stroke-linecap:round;transform-box:fill-box;transform-origin:left center}
+.route-particles{fill:none;stroke:#f1eaff;stroke-width:2;stroke-linecap:round;stroke-dasharray:2 70;opacity:.75}
+.route-start,.route-middle{fill:#a78bfa;stroke:#171c33;stroke-width:3}
+.route-end{fill:#ddc4ff;stroke:#18162e;stroke-width:3}
+.route-halo{fill:#c084fc16;stroke:#c084fc50;stroke-width:1}
+.route-svg-label{fill:#9baac5;font-family:Manrope,Arial,sans-serif;font-size:12px}
+.route-svg-label.funded{fill:#a5f3fc}
+.slide.active .is-bootstrap .route-particles{animation:scenarioFlow 9s linear infinite}
+.slide.active .is-bootstrap .route-halo{animation:scenarioHalo 4s ease-in-out infinite}
+.scenario-history{position:absolute;left:70px;top:530px;width:500px;height:109px;display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.scenario-history article{padding:15px 17px;border:1px solid #ffffff12;border-radius:13px;background:#ffffff03;display:flex;flex-direction:column;justify-content:center}
+.scenario-history article>span{font-size:10px;line-height:1.4;color:#9cabc7}
+.scenario-history article>b{font-size:23px;line-height:1.2;letter-spacing:-.03em;color:#d9e1f3;margin-top:6px}
+.scenario-history article>small{font-size:9px;line-height:1.4;color:#8798b7;margin-top:4px}
+.scenario-history .is-pivot{border-color:#c084fc55;background:linear-gradient(140deg,#c084fc16,#c084fc05)}
+.scenario-history .is-pivot>span{color:#d3b5f4}
+.scenario-quote{position:absolute;left:625px;right:70px;top:535px;padding-left:19px;border-left:2px solid #c084fc66}
+.scenario-quote>span{font-size:9px;letter-spacing:.13em;font-weight:700;text-transform:uppercase;color:#b79ad9}
+.scenario-quote>p{font-size:26px;line-height:1.2;letter-spacing:-.035em;font-weight:700;margin:10px 0 0}
+.scenario-funded .scenario-amount{color:#a5f3fc}
+.scenario-baseline{font-size:11px;line-height:1.5;color:#8fa4c7;margin:22px 0 0}
+.scenario-baseline>span{margin:0 7px;color:#22d3ee}
+.scenario-funded .scenario-route{border-color:#22d3ee40;background:linear-gradient(150deg,#0b2841a0,#101e3b70)}
+.scenario-funded .scenario-route-caption>span{color:#68d7e9}
+.scenario-funded .scenario-route-caption>b{color:#c9eff7}
+.scenario-funded .scenario-route-svg{height:196px;margin-top:11px}
+.route-ghost{fill:none;stroke:#8994b54d;stroke-width:3;stroke-dasharray:5 8}
+.route-ghost-end{fill:#687594;opacity:.7}
+.route-connector{fill:none;stroke:#7184a03b;stroke-width:1;stroke-dasharray:3 5}
+.is-funded .route-start,.is-funded .route-end{fill:#a5f3fc;stroke:#0f263e}
+.is-funded .route-halo{fill:#22d3ee18;stroke:#22d3ee70}
+.route-time-bracket{fill:none;stroke:#22d3ee88;stroke-width:1.5}
+.route-saving{fill:#a5f3fc;font-family:Manrope,Arial,sans-serif;font-size:14px;font-weight:700}
+.slide.active .is-funded .route-live{animation:scenarioLaunch 1s .1s cubic-bezier(.7,0,.2,1) backwards}
+.slide.active .is-funded .route-particles{animation:scenarioFlow .85s linear infinite}
+.slide.active .is-funded .route-halo{animation:scenarioHalo 1.7s ease-in-out infinite}
+.scenario-outcomes{position:absolute;left:70px;right:70px;top:530px;height:110px;display:grid;grid-template-columns:repeat(3,1fr);gap:17px;z-index:2}
+.scenario-outcomes>article{position:relative;min-width:0;padding:15px 22px;border:1px solid #ffffff18;border-radius:15px;background:linear-gradient(140deg,#101a30ed,#10162bea)}
+.scenario-outcomes b{display:block;font-size:43px;line-height:1.1;letter-spacing:-.055em;font-weight:700;color:#d7c3ff}
+.scenario-outcomes b>span{font-size:24px;letter-spacing:-.03em;margin-left:7px}
+.scenario-outcomes p{font-size:12px;line-height:1.5;color:#9fb1d0;margin:7px 0 0}
+.scenario-outcomes .scenario-gain{border-color:#22d3ee44;background:linear-gradient(140deg,#0d293bed,#101b30ea)}
+.scenario-outcomes .scenario-gain b{color:#a5f3fc}
+.valuation-index{position:absolute;right:22px;top:27px;width:74px;display:flex;flex-direction:column;gap:4px}
+.valuation-index>i{display:block;height:5px;width:var(--w);border-radius:4px;background:#c084fc88}
+.valuation-index>i:last-child{background:#e9d5ff}
+.scenario-speed-field{position:absolute;inset:180px 0 140px;pointer-events:none;overflow:hidden;opacity:.35}
+.scenario-speed-field>i{position:absolute;top:calc(18px + var(--lane)*49px);left:-450px;width:300px;height:1px;background:linear-gradient(90deg,transparent,#22d3ee77,transparent);opacity:0;transform:rotate(-7deg)}
+.slide.active .scenario-speed-field>i{animation:scenarioSpeed 2.3s calc(var(--lane)*.13s) 2 cubic-bezier(.7,.01,.9,.45)}
+@keyframes scenarioFlow{to{stroke-dashoffset:-288}}
+@keyframes scenarioHalo{50%{stroke-opacity:.25;fill-opacity:.3}}
+@keyframes scenarioLaunch{from{transform:scaleX(.05);opacity:.2}to{transform:scaleX(1);opacity:1}}
+@keyframes scenarioSpeed{0%{transform:translateX(0) rotate(-7deg);opacity:0}30%{opacity:.7}100%{transform:translateX(1900px) rotate(-7deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  .scenario-page *,.scenario-page *::before,.scenario-page *::after{animation:none!important}
+  .scenario-speed-field{display:none}
+}
+@media print{
+  .scenario-speed-field{display:none!important}
+  .scenario-route-svg .route-live{transform:none!important;opacity:1!important}
+}

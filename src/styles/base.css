@@ -229,3 +229,24 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .reading-content .reading-slide :is(.s2-quote .q,.display,.h2,.s6-takeaway,.s1-manifesto p){font-size:18px!important;line-height:1.4!important;color:#eef3ff!important;margin:10px 0!important}
 .reading-content .reading-slide span{position:static!important}
 .reading-content .reading-slide span + span::before{content:" · ";color:#6f7d98}
+
+/* Ponte bootstrap → investidor: arrancada de luz, seguida da meta antecipada. */
+.acceleration-layer{position:absolute;left:0;top:0;width:1280px;height:720px;transform:scale(var(--scale,1));transform-origin:top left;z-index:18;pointer-events:none;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease;background:radial-gradient(ellipse at 70% 48%,#063447bf,#070c1bea 65%)}
+.acceleration-layer.open{opacity:1;visibility:visible}
+.acceleration-layer.closing{opacity:0}
+.acceleration-streaks{position:absolute;inset:0;overflow:hidden}
+.acceleration-streaks>i{position:absolute;top:calc(50px + var(--lane)*58px);left:-700px;width:670px;height:2px;border-radius:50%;background:linear-gradient(90deg,transparent,#b5f3ffbb 65%,#f0fdff,transparent);box-shadow:0 0 18px #22d3ee55;opacity:0}
+.acceleration-layer.open .acceleration-streaks>i{animation:accelerationStreak .85s calc(var(--lane)*18ms) 1 cubic-bezier(.65,.01,.95,.3)}
+.acceleration-message{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;color:#e1faff;opacity:0}
+.acceleration-message>span{font-size:11px;letter-spacing:.27em;text-transform:uppercase;color:#8de1ef;font-weight:700}
+.acceleration-message>b{font-size:82px;line-height:1.1;letter-spacing:-.06em;font-weight:700;text-shadow:0 0 50px #22d3ee44}
+.acceleration-layer.open .acceleration-message{animation:accelerationMessage 1.1s .12s both}
+.acceleration-pulse{position:absolute;inset:0;background:radial-gradient(ellipse at 66% 50%,#67e8f9b3,transparent 65%);opacity:0}
+.acceleration-layer.open .acceleration-pulse{animation:accelerationPulse .7s .2s both}
+.scenario-accelerating .scenario-bootstrap .scenario-hero{animation:bootstrapDeparture .7s cubic-bezier(.7,.02,.9,.4) both}
+@keyframes accelerationStreak{0%{transform:translateX(0) scaleX(.15);opacity:0}20%{opacity:.8}100%{transform:translateX(2200px) scaleX(1.9);opacity:0}}
+@keyframes accelerationMessage{0%{opacity:0;transform:translateX(-50px);filter:blur(8px)}25%,72%{opacity:1;transform:none;filter:none}100%{opacity:0;transform:translateX(65px);filter:blur(5px)}}
+@keyframes accelerationPulse{0%,100%{opacity:0}45%{opacity:.18}}
+@keyframes bootstrapDeparture{to{opacity:0;transform:translateX(-140px);filter:blur(10px)}}
+@media print{.acceleration-layer{display:none!important}}
+@media(prefers-reduced-motion:reduce){.acceleration-layer{display:none!important}.scenario-accelerating .scenario-bootstrap .scenario-hero{animation:none!important}}

@@ -30,8 +30,8 @@ const sequencia=[
   concorrencia,
   diferenciais,
   escala,
-  rodada,
   investidor,
+  rodada,
   fechamento
 ];
 
@@ -49,9 +49,9 @@ const roteiro = {
   'resumo-mercado':[35,'O mercado direto reúne 422 mil fornecedores potenciais no Brasil; 259 mil nos CNAEs prioritários. Começamos pelo Nordeste. O SOM de 6,4 mil parceiros até 2029 é um cenário estratégico, não uma carteira contratada.'],
   'resumo-concorrencia':[25,'HighLevel e Zaia validam a categoria de plataformas para agências. Seus indicadores têm bases diferentes. Nossa proposta combina operação centralizada, marca própria e múltiplos workspaces.'],
   'resumo-diferenciais':[35,'A combinação é o diferencial: marca própria, multiworkspace e stack integrado para quem revende. O parceiro concentra sua energia na expertise e na distribuição; a ScaleX fornece a base tecnológica.'],
-  'resumo-escala':[35,'Em 2025, como agência, informamos R$ 300 mil de faturamento. Em 2026, com R$ 200 mil informados, priorizamos a consolidação da plataforma: um passo atrás para avançar vários à frente. Nossa meta pré-money para 2027 é EBITDA de aproximadamente R$ 450 mil, em bootstrap, sem aporte. Já temos uma perspectiva de crescimento com recursos próprios; o investimento acelera o plano. Faturamento histórico e EBITDA projetado são indicadores distintos.'],
-  'resumo-rodada':[40,'A pedida é R$ 300 mil por 10% da ScaleX Hub. O payback conservador estimado é de dois anos e seis meses. O investimento vai para operação, 62,7%; comercial e marketing, 25,7%; e adequação enterprise, 11,7%. São as três frentes para viabilizar o próximo passo.'],
-  'resumo-investidor':[35,'O aporte antecipa o plano em seis meses. O EBITDA estimado de 2027 é de aproximadamente R$ 450 mil no pré-money e R$ 750 mil no pós-money. Sem aporte, o EBITDA é 40% menor que o cenário com aporte. Esses valores são projeções de resultado operacional, não valuations.'],
+  'resumo-escala':[35,'Em bootstrap, nossa meta de EBITDA para 2027 é de aproximadamente R$ 450 mil, sem aporte. Já temos uma perspectiva com recursos próprios. Em 2026, consolidamos a plataforma: um passo atrás para avançar vários à frente. O próximo slide mostra o que muda com a entrada do investidor.'],
+  'resumo-investidor':[35,'R$ 300 mil de aporte antecipam o plano em seis meses. O EBITDA estimado para 2027 passa de aproximadamente R$ 450 mil no bootstrap para R$ 750 mil com investidor. A gestão projeta valorização de 40% no valuation e payback aproximado de três anos. São projeções, condicionadas à execução.'],
+  'resumo-rodada':[40,'A pedida é R$ 300 mil por 10% da ScaleX Hub. O payback estimado é de aproximadamente três anos. O investimento vai para operação, 62,7%; comercial e marketing, 25,7%; e adequação enterprise, 11,7%. São as três frentes para acelerar o plano.'],
   'resumo-fechamento':[10,'R$ 300 mil por 10% para acelerar a execução. A infraestrutura das agências de IA vai ter dono. Vamos juntos?']
 };
 export const slides=sequencia.map(slide=>{

@@ -8,6 +8,7 @@
   const contentPath=deckRoot.dataset.content||'content.json';
   let slides=$$('.slide'), current=0, scale=1, toastTimer, touchStart=null, countToken=0;
   let transitioning=false, sweepTimer=null, mergeTimers=[], impactTimers=[];
+  let accelerationTimers=[], pendingAcceleration=null;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 
   /* Conteúdo publicado: ordem dos slides e textos, em content.json. */
@@ -40,14 +41,15 @@
   const fmt=(value,decimals)=>new Intl.NumberFormat('pt-BR',{minimumFractionDigits:decimals,maximumFractionDigits:decimals}).format(value);
   function countUp(slide){
     const nodes=[...slide.querySelectorAll('.count')];
-    if(!nodes.length||reduced.matches)return;
+    if(!nodes.length)return;
     const token=++countToken;
-    nodes.forEach(n=>{n.textContent=fmt(0,parseInt(n.dataset.decimals||'0',10));});
+    if(reduced.matches){nodes.forEach(n=>{n.textContent=fmt(parseFloat(n.dataset.to)||0,parseInt(n.dataset.decimals||'0',10));});return;}
+    nodes.forEach(n=>{n.textContent=fmt(parseFloat(n.dataset.from)||0,parseInt(n.dataset.decimals||'0',10));});
     const start=performance.now()+260,duration=1050;
     function frame(now){
       if(token!==countToken)return;
       const t=Math.min(1,Math.max(0,(now-start)/duration)),e=1-Math.pow(1-t,3);
-      nodes.forEach(n=>{const to=parseFloat(n.dataset.to)||0;n.textContent=fmt(to*e,parseInt(n.dataset.decimals||'0',10));});
+      nodes.forEach(n=>{const to=parseFloat(n.dataset.to)||0,from=parseFloat(n.dataset.from)||0;n.textContent=fmt(from+(to-from)*e,parseInt(n.dataset.decimals||'0',10));});
       if(t<1)requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
@@ -75,6 +77,39 @@
     sweep.classList.add(dir==='prev'?'play-prev':'play-next');
     clearTimeout(sweepTimer);
     sweepTimer=setTimeout(()=>sweep.classList.remove('play-next','play-prev'),1050);
+  }
+
+  function resetAcceleration(){
+    accelerationTimers.forEach(clearTimeout);
+    accelerationTimers=[];
+    pendingAcceleration=null;
+    stage.classList.remove('scenario-accelerating');
+    const layer=$('#acceleration-layer');
+    if(layer)layer.classList.remove('open','closing');
+  }
+
+  function accelerationTransition(target,writeHash){
+    const layer=$('#acceleration-layer');
+    if(!layer){applySlide(target,writeHash);return;}
+    resetAcceleration();
+    transitioning=true;
+    pendingAcceleration={target,writeHash};
+    stage.dataset.dir='next';
+    const months=slides[target].querySelector('[data-acceleration-months]');
+    layer.querySelector('[data-acceleration-label]').textContent=(months?months.dataset.accelerationMonths:'6')+' meses antes';
+    stage.classList.add('scenario-accelerating');
+    void layer.offsetWidth;
+    layer.classList.add('open');
+    accelerationTimers.push(setTimeout(()=>applySlide(target,writeHash),650));
+    accelerationTimers.push(setTimeout(()=>layer.classList.add('closing'),1050));
+    accelerationTimers.push(setTimeout(()=>{resetAcceleration();transitioning=false;},1450));
+  }
+
+  function completeAcceleration(){
+    const next=pendingAcceleration;
+    if(!next)return;
+    cancelTransition();
+    applySlide(next.target,next.writeHash);
   }
 
   function mergeTransition(target,writeHash){
@@ -154,6 +189,7 @@
     if(transitioning)return;
     if(target===current){applySlide(target,writeHash);return;}
     const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
+    if(!reduced.matches&&from==='resumo-escala'&&to==='resumo-investidor'){accelerationTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-1'&&to==='slide-publico'){coverTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-infra'&&to==='slide-concorrencia'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
@@ -162,9 +198,12 @@
   }
 
   function finalCounts(){
+    countToken++;
     $$('.count').forEach(n=>{n.textContent=fmt(parseFloat(n.dataset.to)||0,parseInt(n.dataset.decimals||'0',10));});
   }
-  addEventListener('beforeprint',finalCounts);
+  addEventListener('beforeprint',()=>{completeAcceleration();finalCounts();});
+  reduced.addEventListener('change',()=>{if(reduced.matches){completeAcceleration();finalCounts();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)completeAcceleration();});
 
   /* Exportação em PDF: usa a impressão do navegador com os slides em 16:9.
      Opcionalmente insere uma página de notas depois de cada slide com roteiro. */
@@ -368,6 +407,7 @@
     });
   }
   function cancelTransition(){
+    resetAcceleration();
     mergeTimers.forEach(clearTimeout);impactTimers.forEach(clearTimeout);
     mergeTimers=[];impactTimers=[];
     const merge=$('#merge-layer');
