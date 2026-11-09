@@ -3,7 +3,7 @@
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
 - **`/`** — apresentação completa, com 20 slides, para o investidor ver com calma.
-- **`/resumo/`** — pitch resumido de 7 minutos, com 16 slides na direção de arte da apresentação completa.
+- **`/resumo/`** — pitch resumido de 7 minutos, com 17 slides na direção de arte da apresentação completa.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json` (na completa) ou `resumo/content.json` (no resumo), no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
@@ -132,12 +132,12 @@ A abertura foi desdobrada em capa, um slide sobre os dois públicos (revendedore
 
 ## Revisão financeira — PDF corrigido
 
-As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo mantém 16 e concentra as informações financeiras nos slides 13–15. O roteiro falado soma 420 segundos (7 minutos); notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
+As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo tem 17 e concentra as informações financeiras nos slides 13–16. O roteiro falado soma 420 segundos (7 minutos); notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
 
 - Rodada proposta: R$ 300 mil por 10% pós-investimento; valuation implícito de R$ 2,7 mi pré e R$ 3,0 mi pós. As referências diferentes da planilha estão documentadas nas notas.
 - Seis meses: R$ 243,6 mil recorrentes e R$ 56,4 mil pontuais. Operação R$ 188 mil; comercial e marketing R$ 77 mil; enterprise R$ 35 mil. Founder full-time integra operação; não é uma quarta frente. Não há contingência no orçamento.
 - Projeções bootstrap: EBITDA de 2027 de R$ 355.625,10 pela base trimestral. A série anual pré-money registra R$ 408.968,80, base distinta e pendente de conciliação; o pós-money anual é R$ 497.875,10. A série cresce cerca de 20% a.a., apesar da premissa declarada de 15%.
-- “FAT BOM” não é apresentado como receita ou MRR; periodicidades de ticket e churn permanecem pendentes. Valores do PDF foram preservados sem recalcular margens sobre bases indefinidas.
+- “FAT BOM” é usado no resumo como faturamento trimestral de planejamento, conforme solicitado; não é classificado como MRR. Periodicidades de ticket e churn permanecem pendentes. Valores do PDF foram preservados sem recalcular margens sobre bases indefinidas.
 - Aquisição: 31 vendas outbound e 26 inbound projetadas em Q4/26–Q4/27. Vendas brutas não equivalem à carteira ativa. CAC/LTV monetário pendentes; custos dos funis não são somados novamente ao aporte.
 - Prazo da meta: 15 → 6 meses, redução de 60%. A promessa de dobrar faturamento e o simulador antigo foram substituídos por projeções do PDF.
 - Dividendos: simulação-base com payback em 2033, sujeita às hipóteses do PDF. 2032–2033 são extrapolações; não há promessa de retorno ou política de payout aprovada.
@@ -146,11 +146,13 @@ O histórico de 2025 já existente na completa foi mantido como informação int
 
 ## Cenários do resumo — bootstrap e entrada do investidor
 
-A ordem final do resumo é: **slide 13, bootstrap → slide 14, efeito do investidor → slide 15, pedida**. O pitch mantém 16 slides e roteiro de sete minutos.
+A ordem final do resumo é: **slide 13, bootstrap → slide 14, efeito do investidor e pedida → slide 15, destinação e movimentos pós-aporte → slide 16, smart money → slide 17, fechamento**. O pitch mantém 17 slides e roteiro de sete minutos.
+
+O slide 13 combina a meta de EBITDA de 2027 com o faturamento trimestral projetado de 2027 (Q1 a Q4), os valores por trimestre e o crescimento sobre o trimestre anterior. O slide 14 mantém o mesmo enquadramento do bootstrap, mostra a aceleração de seis meses, o EBITDA de R$ 450 mil para R$ 750 mil, a valorização projetada de 40%, o payback estimado em três anos e a pedida de R$ 300 mil por 10% do equity. O slide 15 concentra a destinação do aporte e as três ações pós-investimento: closer dedicado, adequação jurídica para enterprise e antecipação do founder full time, prevista para o Q2 de 2027. O slide 16 detalha as cinco frentes de smart money esperadas.
 
 As premissas posteriores ao PDF, informadas pelo fundador, ficam em `src/pitch-premises.mjs`: EBITDA estimado de 2027 de aproximadamente R$ 450 mil sem aporte e R$ 750 mil com investidor; seis meses de execução antecipada; valorização projetada de 40% no valuation; payback aproximado de três anos. A valorização é uma premissa independente da variação do EBITDA. Novos valuations absolutos e a memória de cálculo do payback não foram fornecidos nesta revisão; as estimativas não são atribuídas à simulação anterior de dividendos do PDF.
 
-O slide bootstrap destaca a meta de 2027 com recursos próprios, preserva os históricos de faturamento informado de 2025 e 2026 e a mensagem da virada para plataforma. O slide com investidor mantém o mesmo enquadramento e mostra o ritmo de execução acelerado. Os diagramas indicam etapas e antecipação; não representam uma série quantitativa de faturamento ou prazos absolutos. Não há cálculo de crescimento entre faturamento histórico e EBITDA projetado.
+O slide bootstrap destaca a meta de 2027 com recursos próprios, preserva os históricos de faturamento informado de 2025 e 2026 e a mensagem da virada para plataforma. O gráfico de faturamento trimestral usa a coluna FAT BOM do modelo como planejamento: Q1/27 R$ 52,4 mil, Q2/27 R$ 159,0 mil, Q3/27 R$ 351,5 mil e Q4/27 R$ 586,4 mil, com crescimento de 203%, 121% e 67% sobre o trimestre anterior. O slide com investidor mantém o mesmo enquadramento e mostra o ritmo de execução acelerado. Os diagramas indicam etapas e antecipação; não representam uma série quantitativa de faturamento ou prazos absolutos. Não há cálculo de crescimento entre faturamento histórico e EBITDA projetado.
 
 A transição entre os dois cenários aplica uma arrancada de luz de 1,45 segundo. O cenário com investidor surge durante a passagem, com o contador de EBITDA partindo de 450 para chegar a 750. Há cancelamento ao reordenar, ao imprimir, ao ocultar a aba ou ao ativar movimento reduzido; a versão impressa exibe o conteúdo final e oculta a camada da transição. Com `prefers-reduced-motion`, os cenários mudam imediatamente.
 

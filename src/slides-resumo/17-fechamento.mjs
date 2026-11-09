@@ -1,4 +1,4 @@
-// Slide 14 do pitch: fechamento do PPTX (slide 15), com QR Code do resumo.
+// Slide 17 do pitch resumido: fechamento do PPTX, com QR Code do resumo.
 import base from '../slides/17-fechamento.mjs';
 
 const contact = `

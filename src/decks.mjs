@@ -23,7 +23,7 @@ export const decks=[
     switchLabel:'Completa',
     switchHref:'../index.html',
     title:'ScaleX Hub — Pitch resumido',
-    description:'Pitch resumido de 7 minutos para investidores da ScaleX Hub, 2026. 16 slides na direção de arte da apresentação completa.',
+    description:'Pitch resumido de 7 minutos para investidores da ScaleX Hub, 2026. 17 slides na direção de arte da apresentação completa.',
     slides:resumo,
     editable:true,
     contentPath:'content.json',
