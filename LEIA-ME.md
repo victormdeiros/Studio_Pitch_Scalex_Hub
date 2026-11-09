@@ -22,7 +22,7 @@ O link público abre em uma tela de senha, com duas credenciais independentes:
 
 As duas rotas usam a mesma senha de apresentação. A liberação fica salva no navegador e vale para as duas. A liberação do estúdio vale para a sessão da aba. Use **?lock** no fim da URL ou **Bloquear apresentação** (na ajuda) para voltar à tela de senha.
 
-Os QR Codes em `qr/` usam links com `?acesso=...` que abrem a apresentação sem pedir senha. Os links são estáticos e não expiram; o token fica em `src/gate.js` (`ACCESS_KEY`). Para revogar, troque o token e gere novos QR Codes.
+Os QR Codes em `qr/` usam links com `?acesso=...` que abrem a apresentação sem pedir senha. Os links são estáticos e não expiram; o token fica em `src/gate.js` (`ACCESS_KEY`). Para revogar, troque o token e gere novos QR Codes. O fechamento das duas apresentações traz o QR Code da rodada (`assets/brand/qr-invest3.png`), que aponta para `https://invest3.scalexhub.ai/`.
 
 As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma senha, gere o novo hash e substitua a constante correspondente. Como o GitHub Pages é estático, isso é uma **trava de interface**, não criptografia: o conteúdo continua no HTML e no repositório público. Para sigilo real, use um host com autenticação.
 

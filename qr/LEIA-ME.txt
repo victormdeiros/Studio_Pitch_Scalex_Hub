@@ -16,3 +16,7 @@ Arquivos para impressão:
 
 Os dois links são permanentes, abrem sem senha e não expiram.
 O código de acesso fica em src/gate.js (ACCESS_KEY).
+
+QR da rodada (Invest3):
+https://invest3.scalexhub.ai/
+- assets/brand/qr-invest3.png ... usado no fechamento das duas apresentações

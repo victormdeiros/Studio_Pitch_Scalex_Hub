@@ -19,5 +19,9 @@ export default {
       <span class="cta rv" style="--d:3">Vamos juntos?</span>
     </div>
     <div class="s11-ring" aria-hidden="true"></div>
-    <figure class="s11-mark rv-soft" style="--d:4" aria-hidden="true"><img src="assets/brand/simbolo-colorido-1024.png" alt=""></figure>`
+    <figure class="s11-mark rv-soft" style="--d:4" aria-hidden="true"><img src="assets/brand/simbolo-colorido-1024.png" alt=""></figure>
+    <div class="s11-contact rv" style="--d:4">
+      <img src="assets/brand/qr-invest3.png" alt="QR Code do Invest3 ScaleX Hub">
+      <div><b>Acesse a rodada</b><span>invest3.scalexhub.ai</span></div>
+    </div>`
 };
