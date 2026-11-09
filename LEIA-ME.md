@@ -151,3 +151,5 @@ O resumo usa `src/pitch-premises.mjs` para as premissas posteriores ao PDF, conf
 O slide 13 destaca a virada de 2026 e apresenta 2025–2026 como faturamento informado (R$ 300 mil e R$ 200 mil), em painel e escala distintos da projeção de EBITDA de 2027. O slide 14 contém somente pedida, payback e destinação percentual. O slide 15 compara EBITDA pré/pós e mostra os seis meses de antecipação, sem valuations ou prazos absolutos inferidos. O roteiro do resumo continua com tempo alvo de sete minutos.
 
 Esta revisão dos três slides não recalcula as séries financeiras da apresentação completa nem extrapola a nova premissa para 2028–2031.
+
+No slide 13, a meta de EBITDA de 2027 é a perspectiva **pré-money / bootstrap**, de aproximadamente R$ 450 mil sem aporte. O comparativo com o pós-money de R$ 750 mil permanece no slide 15.
