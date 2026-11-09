@@ -1,9 +1,27 @@
-import {allocationNotes, valuationNotes, returnNotes, source} from '../financials.mjs';
-import {header, foot, metric, allocationChart} from '../financial-components.mjs';
+import {allocations, allocationNotes, round, nr} from '../financials.mjs';
+import {pitchPremises, premiseNotes, premiseSource} from '../pitch-premises.mjs';
+import {header, foot} from '../financial-components.mjs';
+
 export default {
-  id:'resumo-rodada', title:'R$ 300 mil por 10%: seis meses de execução.', theme:'dark', number:'14',
-  notes:['TEMPO ALVO: 40 segundos', 'A proposta é R$ 300 mil por 10%, para seis meses. São R$ 188 mil em operação, R$ 77 mil em comercial e marketing e R$ 35 mil em adequação enterprise. O valuation implícito é R$ 2,7 milhões pré e R$ 3 milhões pós. O retorno por dividendos é apenas uma simulação com cenário-base em 2033, sem garantia.', ...allocationNotes, ...valuationNotes, ...returnNotes, source],
-  html:`<div class="fin-page fin-summary">${header('A rodada · proposta','R$ 300 mil por 10%. <span class="grad-text">Seis meses de execução.</span>')}
-  <div class="fin-body fin-budget-body"><section class="fin-card fin-summary-terms"><div class="fin-two">${metric('R$ 2,7 mi','Pré-money implícito')}${metric('R$ 3,0 mi','Pós-money implícito')}</div><div class="fin-budget-equation"><b>R$ 40,6 mil/mês</b><span>× 6 meses + R$ 56,4 mil pontuais</span></div><div class="fin-return-note"><b>Dividendos: cenário-base em 2033</b><p>Retorno ilustrativo; hipóteses e sensibilidade nas notas.</p></div></section>${allocationChart()}</div>
-  ${foot('Fonte: PDF corrigido, pp. 1–2 e 6–7. Valuations implícitos nos termos propostos. Retorno depende de lucro, caixa e aprovação de dividendos; não é garantia.')}</div>`
+  id:'resumo-rodada',
+  title:'R$ 300 mil por 10%. Payback conservador estimado em 2 anos e 6 meses.',
+  theme:'dark',
+  number:'14',
+  notes:[
+    'TEMPO ALVO: 40 segundos',
+    'A pedida é R$ 300 mil por 10% da ScaleX Hub. O payback conservador estimado informado pela gestão é de dois anos e seis meses. A destinação é 62,7% para operação, 25,7% para comercial e marketing e 11,7% para adequação enterprise.',
+    'O slide apresenta apenas pedida, prazo estimado de payback e percentuais de destinação. Valuations e despesas detalhadas foram retirados para dar objetividade.',
+    ...allocationNotes,
+    ...premiseNotes.slice(3,4),
+    premiseSource
+  ],
+  html:`<div class="fin-page fin-summary sx-round">
+    ${header('A rodada','Capital para <span class="grad-text">o próximo passo.</span>')}
+    <div class="sx-round-main">
+      <section class="sx-ask-card"><span class="sx-card-label">A pedida</span><p class="sx-ask-amount">R$ 300 mil</p><p class="sx-ask-equity">por <b>10%</b> da ScaleX Hub</p></section>
+      <section class="sx-payback-card"><span class="sx-card-label">Payback estimado · conservador</span><p class="sx-payback-period">${Math.floor(pitchPremises.paybackMonths/12)} anos <span>e ${pitchPremises.paybackMonths%12} meses</span></p></section>
+    </div>
+    <section class="sx-allocation"><h3>Destinação do investimento</h3><div class="sx-allocation-bar" role="img" aria-label="Operação: 62,7%. Comercial e marketing: 25,7%. Adequação enterprise: 11,7%.">${allocations.map((a,i)=>`<i class="sx-alloc-${i}" style="flex:${a.value}"></i>`).join('')}</div><div class="sx-allocation-labels">${allocations.map((a,i)=>`<div class="sx-alloc-${i}"><b>${nr(a.value/round.investment*100,1)}%</b><span>${a.name}</span></div>`).join('')}</div></section>
+    ${foot('Payback estimado informado pela gestão, sujeito à execução e aos resultados. Percentuais de alocação arredondados.')}
+  </div>`
 };

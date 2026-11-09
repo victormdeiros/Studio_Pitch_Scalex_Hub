@@ -1853,3 +1853,69 @@
 #slide-9 .fin-hero{margin-top:18px;font-size:96px}
 .fin-funnel>div{display:grid;grid-template-columns:1fr auto;row-gap:6px}
 .fin-funnel i{grid-column:1/-1;min-width:2px}
+
+/* Resumo 13–15 · narrativa e premissas confirmadas pelo fundador. */
+.sx-journey-graph{position:absolute;left:70px;right:70px;top:215px;height:320px;display:grid;grid-template-columns:1.45fr 1fr;gap:22px}
+.sx-history-panel,.sx-future-panel,.sx-ask-card,.sx-payback-card,.sx-allocation,.sx-ebitda-card,.sx-time-card{min-width:0;border:1px solid #ffffff16;border-radius:18px;background:linear-gradient(145deg,#101c34,#0a1226)}
+.sx-history-panel,.sx-future-panel{padding:23px 25px;display:flex;flex-direction:column}
+.sx-chart-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;font-size:13px;line-height:1.4;font-weight:700;color:#dce6fa}
+.sx-chart-caption>span{font-size:10px;font-weight:400;color:#8c9fbd;white-space:nowrap}
+.sx-history-plot,.sx-future-plot{display:flex;flex:1;min-height:0;gap:22px;margin-top:15px}
+.sx-journey-year{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:27px 18px 0}
+.sx-journey-column{display:flex;align-items:flex-end;justify-content:center;flex:1;min-height:0;width:100%;border-bottom:1px solid #ffffff24}
+.sx-journey-bar{position:relative;width:82px;height:var(--height);border-radius:7px 7px 0 0;background:linear-gradient(0deg,#394e73,#6f87b0)}
+.sx-journey-bar>b{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%);font-size:19px;letter-spacing:-.03em;white-space:nowrap;color:#e2eaff}
+.sx-journey-date{font-size:24px;letter-spacing:-.04em;line-height:1.2;margin-top:10px;color:#cad6ec}
+.sx-journey-stage{font-size:11px;line-height:1.4;color:#93a7ca;margin-top:4px}
+.sx-journey-year.is-pivot{background:linear-gradient(180deg,#a855f720,#8b5cf60b);border:1px solid #c084fc55;border-radius:13px;box-shadow:0 0 35px #8b5cf612}
+.sx-pivot-tag{position:absolute;top:9px;left:50%;transform:translateX(-50%);color:#e9d5ff;font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;white-space:nowrap}
+.is-pivot .sx-journey-bar{background:linear-gradient(0deg,#7751b9,#c084fc)}
+.is-pivot .sx-journey-date{color:#e9d5ff}
+.sx-future-panel{border-color:#22d3ee33;background:linear-gradient(145deg,#0c1b32,#0c152b)}
+.sx-future-plot{max-width:260px;width:100%;align-self:center}
+.is-future .sx-journey-bar{width:100px;background:linear-gradient(0deg,#197caa,#22d3ee)}
+.is-future .sx-journey-date{color:#a5f3fc}
+.sx-pivot-quote{position:absolute;left:70px;right:70px;top:562px;padding:0 0 0 21px;border-left:3px solid #c084fc}
+.sx-pivot-quote>span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.15em;font-weight:700;color:#bfa4e9}
+.sx-pivot-quote>p{font-size:30px;line-height:1.2;letter-spacing:-.04em;font-weight:700;margin:11px 0 0}
+.sx-round-main{position:absolute;left:70px;right:70px;top:225px;height:225px;display:grid;grid-template-columns:1.08fr 1fr;gap:23px}
+.sx-ask-card,.sx-payback-card{padding:30px 32px;display:flex;flex-direction:column;justify-content:center}
+.sx-card-label{display:block;font-size:11px;line-height:1.4;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:#b7c7e4}
+.sx-ask-amount{font-size:67px;line-height:1.1;font-weight:700;letter-spacing:-.055em;color:#f0f4ff;margin:13px 0 0}
+.sx-ask-equity{font-size:23px;line-height:1.4;letter-spacing:-.02em;color:#a9bad7;margin:7px 0 0}
+.sx-ask-equity>b{color:#c4b5fd}
+.sx-payback-card{border-color:#22d3ee44;background:linear-gradient(145deg,#0c2637,#0c182c)}
+.sx-payback-card .sx-card-label{color:#83dce7}
+.sx-payback-period{font-size:56px;line-height:1.1;letter-spacing:-.045em;font-weight:700;margin:14px 0 0;color:#a5f3fc}
+.sx-payback-period>span{display:block;font-size:34px;line-height:1.2;margin-top:6px}
+.sx-allocation{position:absolute;left:70px;right:70px;top:475px;bottom:88px;padding:20px 28px}
+.sx-allocation h3{font-size:14px;font-weight:600;margin:0 0 15px;color:#c6d4eb}
+.sx-allocation-bar{height:13px;display:flex;overflow:hidden;border-radius:7px;gap:3px}
+.sx-allocation-bar>i{display:block}
+.sx-allocation-bar .sx-alloc-0{background:#8b79ed}
+.sx-allocation-bar .sx-alloc-1{background:#c084fc}
+.sx-allocation-bar .sx-alloc-2{background:#22d3ee}
+.sx-allocation-labels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:14px}
+.sx-allocation-labels>div{display:flex;gap:12px;align-items:center}
+.sx-allocation-labels b{font-size:27px;line-height:1;letter-spacing:-.04em;color:#b9afff}
+.sx-allocation-labels .sx-alloc-1 b{color:#d8b4fe}
+.sx-allocation-labels .sx-alloc-2 b{color:#a5f3fc}
+.sx-allocation-labels span{font-size:12px;line-height:1.3;color:#bac9e2}
+.sx-impact-grid{position:absolute;left:70px;right:70px;top:225px;bottom:92px;display:grid;grid-template-columns:1.8fr 1fr;gap:23px}
+.sx-ebitda-card{padding:28px 30px;display:flex;flex-direction:column}
+.sx-ebitda-plot{margin-top:32px;display:flex;flex-direction:column;gap:29px}
+.sx-ebitda-scenario{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.sx-ebitda-mode{font-size:18px;font-weight:700;color:#d3c5f6}
+.sx-ebitda-mode>em{display:block;font-size:11px;font-style:normal;font-weight:400;color:#93a7ca;margin-top:4px}
+.sx-ebitda-scenario>b{font-size:30px;letter-spacing:-.04em;color:#d3c5f6}
+.sx-ebitda-track{grid-column:1/-1;height:20px;background:#ffffff06;border-radius:5px;overflow:hidden}
+.sx-ebitda-track>i{display:block;height:100%;background:linear-gradient(90deg,#615185,#a998d6);border-radius:5px}
+.is-funded .sx-ebitda-track>i{background:linear-gradient(90deg,#187fa9,#22d3ee)}
+.is-funded .sx-ebitda-mode,.is-funded>b{color:#a5f3fc}
+.sx-ebitda-insight{margin:29px 0 0;padding-top:17px;border-top:1px solid #ffffff16;color:#9fb1d0;font-size:14px;line-height:1.5}
+.sx-ebitda-insight>b{color:#dbeafe}
+.sx-time-card{padding:33px 28px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;border-color:#c084fc44;background:linear-gradient(150deg,#24173e,#0e1530)}
+.sx-time-card .sx-card-label{font-size:10px;color:#c4b5fd}
+.sx-month-number{font-size:128px;line-height:1;letter-spacing:-.08em;font-weight:700;color:#d8b4fe;margin:15px 0 0}
+.sx-month-number>span{display:block;font-size:32px;line-height:1.2;letter-spacing:-.03em;margin-top:1px}
+.sx-time-copy{font-size:14px;line-height:1.5;color:#b2c1db;margin:22px 0 0}

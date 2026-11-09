@@ -1,9 +1,28 @@
-import {acquisitionNotes, source} from '../financials.mjs';
-import {header, foot, metric, timingChart} from '../financial-components.mjs';
+import {brl} from '../financials.mjs';
+import {pitchPremises, premiseNotes, premiseSource} from '../pitch-premises.mjs';
+import {header, foot} from '../financial-components.mjs';
+
+const {pre,post}=pitchPremises.ebitda2027;
 export default {
-  id:'resumo-investidor', title:'O capital antecipa a execução e ativa a distribuição.', theme:'dark', number:'15',
-  notes:['TEMPO ALVO: 35 segundos', 'O prazo da meta passa de 15 para seis meses: nove meses a menos e redução projetada de 60%. O modelo comercial projeta 57 vendas brutas de Q4/26 a Q4/27: 31 outbound e 26 inbound. São projeções, não vendas realizadas nem quantidade de parceiros ativos. Buscamos rede enterprise, canais e experiência em SaaS B2B.', ...acquisitionNotes, 'Os 40% citados na planilha representam 6/15 do prazo original, e não a redução de prazo. A projeção de dobrar faturamento foi retirada por não ter suporte no PDF revisado.', source],
-  html:`<div class="fin-page fin-summary">${header('Capital e rede · execução','Antecipar a execução. <span class="grad-text">Ativar a distribuição.</span>')}
-  <div class="fin-body fin-round-body"><section class="fin-card"><span class="fin-tag">Prazo projetado da meta</span>${timingChart()}<div class="fin-smart-chips"><span>Acesso enterprise</span><span>Canais</span><span>SaaS B2B e governança</span></div></section><section class="fin-card"><span class="fin-tag">Aquisição projetada · Q4/26–Q4/27</span><h3>57 vendas <span class="grad-text">em dois canais.</span></h3><div class="fin-channel-line"><span>Outbound</span><b>4.900 leads → 31 vendas</b><i style="--width:100%"></i></div><div class="fin-channel-line"><span>Inbound</span><b>470 leads → 26 vendas</b><i style="--width:${26/31*100}%"></i></div><p class="fin-chart-note">Vendas brutas projetadas; não equivalem a parceiros ativos.</p></section></div>
-  ${foot('Fonte: PDF corrigido, pp. 3 e 5. Redução de prazo é premissa de execução. CAC e LTV monetário pendentes; custos dos funis não são adicionais ao aporte sem conciliação.')}</div>`
+  id:'resumo-investidor',
+  title:'O aporte antecipa seis meses e amplia o EBITDA projetado.',
+  theme:'dark',
+  number:'15',
+  notes:[
+    'TEMPO ALVO: 35 segundos',
+    'O aporte antecipa o plano em seis meses. Para 2027, o EBITDA estimado é de aproximadamente R$ 450 mil no pré-money, sem aporte, e R$ 750 mil no pós-money, com aporte. O pré-money é 40% menor que o pós-money. São cenários projetados, não valuations ou resultados realizados.',
+    ...premiseNotes.slice(1,4),
+    premiseSource
+  ],
+  html:`<div class="fin-page fin-summary sx-investor">
+    ${header('O efeito do aporte','O aporte antecipa <span class="grad-text">seis meses.</span>')}
+    <div class="sx-impact-grid">
+      <section class="sx-ebitda-card"><p class="sx-chart-caption">EBITDA estimado · 2027 <span>Comparativo de cenários</span></p><div class="sx-ebitda-plot" role="img" aria-label="EBITDA estimado para 2027: pré-money, sem aporte, aproximadamente R$ 450 mil; pós-money, com aporte, aproximadamente R$ 750 mil. O pré-money é 40% menor que o pós-money.">
+        <div class="sx-ebitda-scenario"><span class="sx-ebitda-mode">Pré-money <em>Sem aporte</em></span><b>~${brl(pre/1000)} mil</b><div class="sx-ebitda-track"><i style="width:${pre/post*100}%"></i></div></div>
+        <div class="sx-ebitda-scenario is-funded"><span class="sx-ebitda-mode">Pós-money <em>Com aporte</em></span><b>~${brl(post/1000)} mil</b><div class="sx-ebitda-track"><i style="width:100%"></i></div></div>
+      </div><p class="sx-ebitda-insight">Pré-money: <b>40% menos EBITDA</b> que o pós-money.</p></section>
+      <aside class="sx-time-card"><span class="sx-card-label">Antecipação do plano</span><p class="sx-month-number">${pitchPremises.accelerationMonths}<span>meses</span></p><p class="sx-time-copy">de avanço na execução<br>com a entrada do investidor.</p></aside>
+    </div>
+    ${foot('Projeções aproximadas e antecipação estimada informadas pela gestão. Pré e pós-money identificam cenários de EBITDA; não são valores de valuation.')}
+  </div>`
 };

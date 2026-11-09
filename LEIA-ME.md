@@ -143,3 +143,11 @@ As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financei
 - Dividendos: simulação-base com payback em 2033, sujeita às hipóteses do PDF. 2032–2033 são extrapolações; não há promessa de retorno ou política de payout aprovada.
 
 O histórico de 2025 já existente na completa foi mantido como informação interna reportada, sem atribuir comprovação ao novo PDF. Os números de 2026 e de carteira ativa que não constam na revisão financeira não são reutilizados como projeções. O detalhamento de orçamento, unit economics, divergências e sensibilidade de retorno fica nas notas, acessíveis em Leitura e na exportação com notas.
+
+## Revisão dos slides 13–15 do resumo — premissas do fundador
+
+O resumo usa `src/pitch-premises.mjs` para as premissas posteriores ao PDF, confirmadas na conversa: EBITDA estimado de 2027 de aproximadamente R$ 450 mil pré-money e R$ 750 mil pós-money; pré 40% menor que pós; antecipação de seis meses; payback conservador estimado de 30 meses. O prazo de payback é uma estimativa informada pela gestão, sem memória de cálculo anexada nesta revisão; não é atribuído à simulação de dividendos do PDF.
+
+O slide 13 destaca a virada de 2026 e apresenta 2025–2026 como faturamento informado (R$ 300 mil e R$ 200 mil), em painel e escala distintos da projeção de EBITDA de 2027. O slide 14 contém somente pedida, payback e destinação percentual. O slide 15 compara EBITDA pré/pós e mostra os seis meses de antecipação, sem valuations ou prazos absolutos inferidos. O roteiro do resumo continua com tempo alvo de sete minutos.
+
+Esta revisão dos três slides não recalcula as séries financeiras da apresentação completa nem extrapola a nova premissa para 2028–2031.
