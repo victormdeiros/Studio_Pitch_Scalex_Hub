@@ -9,7 +9,8 @@ export default {
     'O mercado está mapeado e sabemos onde começar. O dimensionamento foi desenvolvido com apoio de mentorias recebidas durante nosso processo de pré-aceleração, o que permitiu uma análise mais direcionada do mercado e das oportunidades. A ScaleX Hub é uma empresa incubada no Porto Digital, em Recife, e usa essa inserção no ecossistema de inovação como ponto estratégico para iniciar a expansão. Nosso recorte inicial é o Nordeste: um cenário de 6,4 mil parceiros até 2029, antes da expansão para outros mercados.',
     'TAM: 422,3 mil estabelecimentos de TI, agências e marketing direto no Brasil. SAM: 259,1 mil, nos cinco CNAEs prioritários. Base do Nordeste: 26,8 mil estabelecimentos nos nove estados. SOM 2029: 6,4 mil parceiros (base +20% × captura de 20%).',
     'TAM e SAM são fornecedores potenciais por atividade (CNAE), não vendedores comprovados de IA. SOM é cenário estratégico, não resultado observado nem carteira contratada. Fontes: Receita Federal/CNPJ, API PJ e Radar da Telecom (set/2026).',
-    'Mercado indireto, para perguntas: os parceiros podem levar a operação a 254,4 mil empresas finais no Nordeste até 2029 (varejo e alimentação, cenário). Só 17% das empresas pesquisadas no Brasil usam IA (Cetic.br 2025).'
+    'Só 17% das empresas pesquisadas no Brasil usam IA (Cetic.br 2025): a maior parte do mercado que precisa de automação de atendimento ainda não adotou a tecnologia.',
+    'Mercado indireto, para perguntas: os parceiros podem levar a operação a 254,4 mil empresas finais no Nordeste até 2029 (varejo e alimentação, cenário).'
   ],
   html:`
     <div class="rm rmk">
@@ -28,13 +29,18 @@ export default {
       <article class="rmk-som rv" style="--d:4">
         <span class="rmk-som-k">SOM · Nordeste · até 2029</span>
         <p class="rmk-som-n"><b>6,4 mil</b><span>parceiros</span></p>
-        <p class="rmk-som-d">A oportunidade que vamos endereçar primeiro.</p>
         <div class="rmk-proof">
           <span><svg class="ico" aria-hidden="true"><use href="#i-building"></use></svg><b>Porto Digital · Recife</b>Empresa incubada</span>
           <span><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><b>Pré-aceleração</b>Dimensionado com mentorias</span>
         </div>
       </article>
 
-      <p class="rm-foot rv" style="--d:6">SOM é cenário estratégico, não carteira contratada. TAM e SAM: fornecedores potenciais por atividade (CNAE). Fontes: Receita Federal/CNPJ, API PJ e Radar da Telecom (set/2026).</p>
+      <article class="rmk-ai rv" style="--d:5">
+        <b>17%</b>
+        <p>das empresas no Brasil usam IA.<span>O mercado de automação de atendimento ainda está aberto.</span></p>
+        <em>Cetic.br 2025</em>
+      </article>
+
+      <p class="rm-foot rv" style="--d:6">SOM é cenário estratégico, não carteira contratada. TAM e SAM: fornecedores potenciais por atividade (CNAE). Fontes: Receita Federal/CNPJ, API PJ e Radar da Telecom (set/2026); Cetic.br 2025.</p>
     </div>`
 };

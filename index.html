@@ -262,6 +262,61 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 @media print{.acceleration-layer{display:none!important}}
 @media(prefers-reduced-motion:reduce){.acceleration-layer{display:none!important}.scenario-accelerating .scenario-bootstrap .scenario-hero{animation:none!important}}
 
+/* Apresentar: escolha do modo, painel do apresentador com cronômetro e janela do projetor. */
+.present-options{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.present-option{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px;border:1px solid #ffffff1a;border-radius:16px;background:#ffffff05;text-align:left;color:var(--ui-text);font-size:13px;line-height:1.5}
+button.present-option:hover{border-color:#c084fc88;background:#c084fc12;transform:translateY(-2px)}
+.present-option b{font-size:17px;letter-spacing:-.01em;color:#fff}
+.present-option em{font-style:normal;color:#a9b8d1}
+.present-option.is-mirror{border-color:#22d3ee40;background:linear-gradient(150deg,#0b2233,#0b1528)}
+.present-option .primary{margin-top:auto;align-self:stretch}
+.present-screens{display:flex;gap:8px;margin-bottom:6px}
+.present-screens i{display:grid;place-items:center;width:62px;height:38px;border:1px solid #ffffff2e;border-radius:6px;background:linear-gradient(135deg,#6d7cff,#c084fc);font-style:normal;font-size:11px;font-weight:700;color:#a5f3fc;font-variant-numeric:tabular-nums}
+.present-screens.split i:first-child{background:#0a1528;border-color:#22d3ee66}
+.present-time{display:flex;align-items:center;justify-content:space-between;gap:12px;align-self:stretch;margin-top:6px;font-size:12px;color:#c4d1e7}
+.present-time span{display:flex;align-items:center;gap:8px}
+.present-time input{width:64px;padding:8px 10px;border:1px solid #ffffff2e;border-radius:10px;background:#04070e;color:#fff;font-size:16px;font-weight:700;text-align:center}
+.present-time i{font-style:normal;color:#8c9bb8}
+.presenter{position:fixed;top:52px;right:0;bottom:68px;width:380px;z-index:30;display:flex;flex-direction:column;gap:14px;padding:18px;border-left:1px solid #ffffff14;background:#060c1a;color:var(--ui-text)}
+.presenter[hidden]{display:none}
+body.presenting .workspace{right:380px}
+body.presenting #fullscreen-btn,body.presenting #edit-btn{display:none}
+.presenter-label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#8c9bb8}
+.presenter-timer{padding:18px;border:1px solid #22d3ee40;border-radius:18px;background:linear-gradient(150deg,#0b2233,#0b1528);text-align:center}
+.presenter-clock{display:block;margin-top:4px;font-size:88px;line-height:1;letter-spacing:-.05em;font-weight:700;font-variant-numeric:tabular-nums;color:#a5f3fc}
+.presenter-bar{display:block;height:6px;margin-top:14px;border-radius:999px;background:#ffffff12;overflow:hidden}
+.presenter-bar::after{content:'';display:block;height:100%;width:var(--p,0%);border-radius:inherit;background:linear-gradient(90deg,#6d7cff,#22d3ee);transition:width .25s linear}
+.presenter-limit{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;font-size:12px;color:#a9b8d1;font-variant-numeric:tabular-nums}
+.presenter-limit button{padding:5px 10px;font-size:11px}
+.presenter-actions{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-top:12px}
+.presenter-actions button{padding:11px 13px;font-size:14px;font-weight:700}
+.presenter[data-state=warn] .presenter-timer{border-color:#fbbf2480;background:linear-gradient(150deg,#33260b,#1b1508)}
+.presenter[data-state=warn] .presenter-clock{color:#fcd34d}
+.presenter[data-state=warn] .presenter-bar::after{background:#fbbf24}
+.presenter[data-state=over] .presenter-timer{border-color:#fb718599;background:linear-gradient(150deg,#3a0f1b,#1d0a10)}
+.presenter[data-state=over] .presenter-clock{color:#fb7185}
+.presenter[data-state=over] .presenter-bar::after{background:#fb7185}
+.presenter-now b{display:block;margin:4px 0 12px;font-size:16px;line-height:1.3;color:#fff}
+.presenter-now em{display:block;margin-top:4px;font-style:normal;font-size:13px;line-height:1.4;color:#a9b8d1}
+.presenter-notes{flex:1;min-height:0;overflow:auto;padding:14px 16px;border:1px solid #ffffff12;border-radius:14px;background:#ffffff04}
+.presenter-notes p{margin:0 0 10px;font-size:15px;line-height:1.55;color:#dbe5f7}
+.presenter-notes p:last-child{margin-bottom:0}
+.presenter-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.presenter-foot p{margin:0;font-size:11px;line-height:1.4;color:#8c9bb8}
+.presenter-foot div{display:flex;gap:8px;flex:none}
+.audience-hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;padding:12px 20px;border-color:#22d3ee66;background:#04121ef2;color:#a5f3fc;font-size:13px;font-weight:700;box-shadow:0 14px 40px #000a}
+.audience-hint:hover{transform:translateX(-50%) translateY(-1px)}
+.audience-hint[hidden]{display:none}
+@media(max-width:860px){
+  .present-options{grid-template-columns:1fr}
+  .presenter{top:auto;left:0;width:auto;height:48dvh;border-left:0;border-top:1px solid #ffffff14}
+  body.presenting .workspace{right:0;bottom:calc(68px + 48dvh)}
+  .presenter-clock{font-size:60px}
+}
+@media print{.presenter,.audience-hint{display:none!important}}
+.present-option .primary,.presenter .primary{background:linear-gradient(100deg,#3b5bff,#8b5cf6);border-color:#a78bfa66;color:#fff;font-weight:700}
+.present-option .primary:hover,.presenter .primary:hover{filter:brightness(1.1)}
+
 /* SCALEX / PITCH — sistema editorial-tech: tipografia grande, luz, rede e dados. */
 
 .slide{
@@ -2575,21 +2630,6 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .sx-base-page .sx-boot-quote{top:562px}
 .sx-base-page .sx-boot-quote>p{margin:0;font-size:23px}
 
-/* 14 · Rodada — a pedida */
-.sx-pedida .fin-head h2{font-size:46px}
-.sx-pedida .fin-lead{font-size:17px;color:#c4d1e7}
-.sx-pedida-ask{position:absolute;left:70px;top:236px;width:520px;height:300px;justify-content:flex-start;padding:26px 32px;z-index:2}
-.sx-pedida-ask .sx-ask-amount{font-size:74px;margin-top:8px}
-.sx-pedida-ask .sx-ask-equity{margin-top:2px}
-.sx-pedida-val{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:14px;margin-top:auto;padding-top:16px;border-top:1px solid #ffffff14}
-.sx-pedida-val span{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8fa4c7}
-.sx-pedida-val b{display:block;margin-top:4px;font-size:28px;line-height:1.1;letter-spacing:-.04em;color:#e2eaff;white-space:nowrap}
-.sx-pedida-val .is-post b{color:#a5f3fc}
-.sx-pedida-val i{padding-bottom:7px;font-style:normal;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7f93b4}
-.sx-pedida-goals{left:615px;top:236px;height:300px}
-.sx-pedida-goals .sx-action-copy>b{margin:0;font-size:19px}
-.sx-pedida-msg{position:absolute;left:70px;right:70px;top:562px;margin:0;padding-left:19px;border-left:2px solid #c084fc66;font-size:25px;line-height:1.25;letter-spacing:-.035em;font-weight:700;color:var(--ink)}
-
 /* 15 · Destinação — três frentes */
 .sx-fronts .sx-action{grid-template-columns:30px 1fr auto;padding:13px 22px 13px 18px}
 .sx-fronts .sx-action-copy>b{margin:0;font-size:18px}
@@ -2603,15 +2643,27 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
 .sx-action.c1::before{background:#c084fc}
 .sx-action.c2::before{background:#22d3ee}
 
-/* 16 · Post-money — três projeções */
-.scenario-outcomes.sx-proj{left:70px;right:auto;width:520px;top:220px;height:400px;grid-template-columns:1fr;grid-template-rows:repeat(3,1fr);gap:13px}
-.sx-proj>article{display:grid;grid-template-columns:204px 1fr;align-items:center;gap:14px;padding:0 26px}
-.sx-proj b{font-size:62px;line-height:1;white-space:nowrap}
-.sx-proj b>span{font-size:25px}
-.sx-proj p{margin:0;font-size:16px;line-height:1.3;font-weight:600;color:#dbe5f7}
-.sx-proj small{display:block;margin-top:5px;font-size:10.5px;line-height:1.4;color:#8fa4c7}
-.sx-proj-quote{top:532px}
-.sx-proj-quote>p{margin:0;font-size:23px}
+/* 16 · Com investidor — pedida, projeções e smart money */
+.sx-potential .scenario-route{top:214px;height:296px}
+.sx-ask2{position:absolute;left:70px;top:214px;width:520px;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 30px;border:1px solid #22d3ee44;border-radius:20px;background:linear-gradient(135deg,#0b2b3d99,#0d1a2f8c);z-index:2}
+.sx-ask2>span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#68d7e9}
+.sx-ask2>p{margin:6px 0 0;font-size:26px;line-height:1.1;letter-spacing:-.03em;color:#b9cbe3;white-space:nowrap}
+.sx-ask2 b{font-size:58px;letter-spacing:-.055em;color:#f0f8ff;margin-right:6px}
+.sx-ask2 em{font-style:normal;font-size:40px;font-weight:700;letter-spacing:-.045em;color:#a5f3fc}
+.sx-ask2 small{margin-top:8px;font-size:12px;color:#9fb1d0}
+.sx-ask2 small i{font-style:normal;margin:0 6px;color:#22d3ee}
+.scenario-outcomes.sx-proj2{left:70px;right:auto;width:520px;top:378px;height:132px;gap:12px}
+.sx-proj2>article{display:flex;flex-direction:column;justify-content:center;padding:0 18px}
+.sx-proj2 b{font-size:40px;line-height:1;white-space:nowrap}
+.sx-proj2 b>span{font-size:18px;margin-left:5px}
+.sx-proj2 p{margin:8px 0 0;font-size:12px;line-height:1.3;color:#b5c4de}
+.sx-smart2{position:absolute;left:70px;right:70px;top:526px;height:102px;display:flex;flex-direction:column;justify-content:center;padding:0 26px;border:1px solid #c084fc40;border-radius:18px;background:linear-gradient(120deg,#1a123680,#0e1730a0);z-index:2}
+.sx-smart2>span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#c4b5fd}
+.sx-smart2>div{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:10px}
+.sx-smart2 p{display:flex;align-items:center;gap:11px;margin:0;font-size:15px;line-height:1.25;letter-spacing:-.015em;font-weight:600;color:#eef3ff}
+.sx-smart2 .ico{flex:none;width:19px;height:19px;color:#c084fc}
+.slide.active .sx-ask2{animation:sxFundedHero .9s .32s var(--ease) backwards}
+.slide.active .sx-smart2{animation:reveal .8s .9s var(--ease) backwards}
 
 /* 17 · Encerramento — convite ao investidor */
 .s11-invite .display{font-size:50px}
@@ -2632,6 +2684,53 @@ body.fullscreen .app-footer:hover,body.fullscreen .app-footer:focus-within{opaci
   .slide.light .rtr-n b{color:#6d28d9!important;-webkit-text-fill-color:#6d28d9!important}
   .slide.light :is(.rmk-som-n b,.rtr-year.build .rtr-n b){color:#c4b5fd!important;-webkit-text-fill-color:#c4b5fd!important}
   .rme-dots i,.ri-m i::after{animation:none!important}
+}
+
+/* 02 · O que somos hoje */
+.rhj{position:absolute;inset:0;overflow:hidden}
+.rhj-glow{position:absolute;left:8%;top:18%;width:760px;height:460px;border-radius:50%;background:radial-gradient(circle,#6d7cff2e,#b06cff1c 48%,transparent 72%);filter:blur(24px)}
+.rhj-head{position:absolute;left:80px;top:62px;width:1120px}
+.rhj-title{margin:18px 0 0;max-width:1100px;font-size:57px;line-height:1.04;letter-spacing:-.055em;font-weight:700;color:var(--ink)}
+.rhj-sub{margin:26px 0 0;max-width:900px;font-size:23px;line-height:1.35;letter-spacing:-.02em;color:#b9c7de}
+.rhj-sub b{color:#fff}
+.rhj-gains{position:absolute;left:80px;right:80px;bottom:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rhj-gains article{position:relative;padding:22px 24px;border:1px solid #ffffff14;border-radius:18px;background:linear-gradient(160deg,#0c1830,#0a1024);box-shadow:0 24px 60px #0005;overflow:hidden}
+.rhj-gains article::before{content:'';position:absolute;left:24px;right:24px;top:0;height:1px;background:linear-gradient(90deg,transparent,#8ea2ff88,#c084fc88,transparent)}
+.rhj-gains .ico{width:20px;height:20px;color:#c084fc}
+.rhj-gains b{display:block;margin-top:14px;font-size:27px;line-height:1.05;letter-spacing:-.04em;color:#fff}
+.rhj-gains span{display:block;margin-top:4px;font-size:17px;letter-spacing:-.02em;color:#b9c7de}
+
+/* 05 · A virada — frase de impacto */
+.rvi{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.rvi-glow{position:absolute;left:24%;top:22%;width:720px;height:440px;border-radius:50%;background:radial-gradient(circle,#ff4d6d26,#b06cff24 46%,transparent 72%);filter:blur(26px)}
+.rvi-a{position:relative;margin:0;font-size:38px;line-height:1.15;letter-spacing:-.04em;font-weight:700;color:#aebdd6}
+.rvi-line{position:relative;display:block;width:90px;height:3px;margin:30px 0;border-radius:3px;background:var(--grad);box-shadow:0 0 22px #8b5cf6}
+.rvi-b{position:relative;margin:0;max-width:1020px;font-size:84px;line-height:.98;letter-spacing:-.06em;font-weight:700;color:var(--ink)}
+
+/* 12 · Mercado — SOM e adoção de IA */
+.rmk-som{height:288px;padding:30px 36px 28px}
+.rmk-som-n{margin-top:12px}
+.rmk-som-n b{font-size:92px}
+.rmk-ai{position:absolute;left:620px;right:70px;top:500px;height:120px;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:24px;padding:0 32px;border:1px solid #0a193614;border-radius:20px;background:#fff;box-shadow:0 20px 50px #4f46e510}
+.rmk-ai b{font-size:74px;line-height:1;letter-spacing:-.06em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rmk-ai p{margin:0;font-size:20px;line-height:1.2;letter-spacing:-.03em;font-weight:700;color:#0a1936}
+.rmk-ai p span{display:block;margin-top:5px;font-size:13px;letter-spacing:-.01em;font-weight:500;color:#6d7ea3}
+.rmk-ai em{position:absolute;right:20px;top:14px;font-style:normal;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#7c8cad}
+
+/* 14 · Tração — 2026 destaca MVP, validação e capital próprio */
+.rtr-year.build .rtr-n b{font-size:78px}
+.rtr-year.build .rtr-n b.rtr-todo{display:inline-block;padding:0 14px;border:2px dashed #c4b5fd88;border-radius:14px;font-size:54px;line-height:1.25}
+.rtr-year.build .rtr-d{font-size:16px}
+.rtr-s{margin:6px 0 0;font-size:10.5px;color:#9fa8d6}
+.rtr-msg{padding:28px 34px}
+.rtr-msg p{font-size:36px;line-height:1.1}
+.rtr-msg p::before{content:none}
+
+/* 18 · Encerramento */
+.s11-invite .display{font-size:52px}
+
+@media print{
+  .slide.light .rmk-ai b{background:none!important;color:#6d28d9!important;-webkit-text-fill-color:#6d28d9!important}
 }
 
 /* Estúdio: edição de ordem, textos e publicação no GitHub Pages. */
@@ -2945,7 +3044,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
       <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
-      <button id="fullscreen-btn" title="Tela cheia (F)">Tela cheia</button>
+      <button id="fullscreen-btn" title="Apresentar em tela cheia (F)">Tela cheia</button>
       <button id="pdf-btn" title="Exportar a apresentação em PDF (P)">PDF</button>
       <button id="help-btn" aria-label="Ajuda e atalhos">?</button>
     </div>
@@ -3783,6 +3882,28 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     <div id="progress" class="progress" aria-hidden="true"></div>
   </footer>
 
+  <aside id="presenter" class="presenter" aria-label="Painel do apresentador" data-state="ok" hidden>
+    <div class="presenter-timer">
+      <span id="presenter-clock-label" class="presenter-label">Tempo restante</span>
+      <b id="presenter-clock" class="presenter-clock" role="timer" aria-live="off">05:00</b>
+      <i id="presenter-bar" class="presenter-bar" aria-hidden="true"></i>
+      <div class="presenter-limit"><button type="button" id="presenter-minus" aria-label="Diminuir um minuto">−1 min</button><span id="presenter-limit">Limite 05:00</span><button type="button" id="presenter-plus" aria-label="Aumentar um minuto">+1 min</button></div>
+      <div class="presenter-actions"><button type="button" id="presenter-toggle" class="primary">Iniciar</button><button type="button" id="presenter-reset">Zerar</button></div>
+    </div>
+    <div class="presenter-now">
+      <span id="presenter-pos" class="presenter-label">Slide 1</span>
+      <b id="presenter-now"></b>
+      <span class="presenter-label">Próximo</span>
+      <em id="presenter-next"></em>
+    </div>
+    <div id="presenter-notes" class="presenter-notes" aria-label="Roteiro do slide"></div>
+    <div class="presenter-foot">
+      <p id="presenter-status">Janela do projetor aberta.</p>
+      <div><button type="button" id="presenter-reopen" hidden>Reabrir janela</button><button type="button" id="presenter-end">Encerrar</button></div>
+    </div>
+  </aside>
+  <button type="button" id="audience-hint" class="audience-hint" hidden>Arraste esta janela para o projetor e clique aqui para tela cheia</button>
+
   <aside id="studio" class="studio" aria-label="Estúdio de edição" aria-hidden="true">
     <header class="studio-top">
       <div><p class="studio-kicker">Estúdio</p><h2>Editar apresentação</h2></div>
@@ -3858,7 +3979,24 @@ html.gate-locked .edit-badge{visibility:hidden!important}
 
   <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
   <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Tela cheia</dt><dd>Escolha <b>Projetor duplicado</b> (a mesma imagem nas duas telas) ou <b>Projetor espelhado</b>: os slides abrem em uma janela para o projetor e esta tela mostra o cronômetro, com o tempo limite que você definir, e o roteiro. <b>T</b> inicia ou pausa o cronômetro.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="present-dialog" class="present-dialog" aria-labelledby="present-title">
+    <div class="dialog-top"><h2 id="present-title">Como você vai apresentar?</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+    <div class="present-options">
+      <button type="button" id="present-duplicate" class="present-option">
+        <span class="present-screens" aria-hidden="true"><i></i><i></i></span>
+        <b>Projetor duplicado</b>
+        <em>A mesma imagem nesta tela e no projetor. O slide abre em tela cheia.</em>
+      </button>
+      <div class="present-option is-mirror">
+        <span class="present-screens split" aria-hidden="true"><i>00:00</i><i></i></span>
+        <b>Projetor espelhado</b>
+        <em>Os slides vão para uma janela no projetor. Nesta tela ficam o cronômetro e o roteiro.</em>
+        <label class="present-time" for="present-minutes">Tempo limite<span><input id="present-minutes" type="text" inputmode="decimal" value="5" autocomplete="off" aria-describedby="present-unit"><i id="present-unit">minutos</i></span></label>
+        <button type="button" id="present-mirror" class="primary">Abrir no projetor</button>
+      </div>
+    </div>
+  </dialog>
   <dialog id="pdf-dialog" aria-labelledby="pdf-title">
     <div class="dialog-top"><h2 id="pdf-title">Exportar em PDF</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
     <p class="publish-note">Os <b><span id="pdf-count">20</span> slides</b> serão preparados um por página, em <b>16:9</b>, com fundos e cores. Na janela do navegador, escolha <b>Salvar como PDF</b> como destino.</p>
@@ -4218,8 +4356,9 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     const target=Math.max(0,Math.min(slides.length-1,Number(i)||0));
     if(transitioning)return;
     if(target===current){applySlide(target,writeHash);return;}
+    notifyPeer(target);
     const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
-    if(!reduced.matches&&from==='resumo-rodada'&&to==='resumo-investidor'){accelerationTransition(target,writeHash);return;}
+    if(!reduced.matches&&from==='resumo-escala'&&to==='resumo-investidor'){accelerationTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-1'&&to==='slide-publico'){coverTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-infra'&&to==='slide-concorrencia'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
@@ -4293,11 +4432,173 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     const root=document.documentElement;
     (root.requestFullscreen?root.requestFullscreen():Promise.reject()).catch(()=>document.body.classList.toggle('fullscreen'));
   }
-  document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('fullscreen',!!document.fullscreenElement);fit();});
+  document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('fullscreen',audienceMode||!!document.fullscreenElement);fit();});
+
+  /* Apresentar: projetor duplicado (tela cheia nesta janela) ou projetor espelhado
+     (slides em outra janela, no projetor; cronômetro e roteiro nesta tela). */
+  const audienceMode=new URLSearchParams(location.search).has('projetor');
+  const presentDialog=$('#present-dialog'), presenter=$('#presenter');
+  const TIMER_KEY='scalex.present.minutes';
+  let peer=audienceMode?window.opener:null, peerWatch=null, syncing=false, pendingSync=null;
+  const timer={limit:300,elapsed:0,running:false,last:0,tick:null};
+
+  function notifyPeer(index){
+    if(syncing||!peer||peer.closed)return;
+    try{peer.postMessage({scalex:'slide',index},'*');}catch(_){}
+  }
+  function syncTo(index){
+    pendingSync=index;
+    (function attempt(){
+      if(pendingSync===null)return;
+      if(transitioning){setTimeout(attempt,120);return;}
+      const target=pendingSync;pendingSync=null;
+      if(target===current)return;
+      syncing=true;try{go(target);}finally{syncing=false;}
+    })();
+  }
+  addEventListener('message',e=>{
+    const data=e.data;
+    if(!data||!peer||e.source!==peer)return;
+    if(data.scalex==='slide')syncTo(Number(data.index)||0);
+    else if(data.scalex==='hello'&&!audienceMode)notifyPeer(current);
+    else if(data.scalex==='end'&&audienceMode)window.close();
+  });
+
+  function clock(seconds){
+    const s=seconds>=0?Math.ceil(seconds):Math.floor(-seconds);
+    return (seconds<0?'+':'')+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  }
+  function timerElapsed(){return timer.elapsed+(timer.running?(performance.now()-timer.last)/1000:0);}
+  function renderTimer(){
+    const elapsed=timerElapsed(), left=timer.limit-elapsed;
+    $('#presenter-clock').textContent=clock(left);
+    $('#presenter-clock-label').textContent=left<0?'Tempo excedido':'Tempo restante';
+    presenter.dataset.state=left<0?'over':left<=Math.min(60,timer.limit*.2)?'warn':'ok';
+    $('#presenter-bar').style.setProperty('--p',Math.min(100,elapsed/timer.limit*100)+'%');
+    $('#presenter-limit').textContent='Limite '+clock(timer.limit);
+    $('#presenter-toggle').textContent=timer.running?'Pausar':elapsed>0?'Continuar':'Iniciar';
+  }
+  function startTimer(){
+    if(timer.running)return;
+    timer.running=true;timer.last=performance.now();
+    timer.tick=setInterval(renderTimer,250);renderTimer();
+  }
+  function pauseTimer(){
+    if(!timer.running)return;
+    timer.elapsed=timerElapsed();timer.running=false;clearInterval(timer.tick);renderTimer();
+  }
+  function resetTimer(limit){
+    pauseTimer();timer.elapsed=0;
+    if(limit)timer.limit=limit;
+    renderTimer();
+  }
+  function adjustLimit(delta){
+    timer.limit=Math.max(60,Math.min(180*60,timer.limit+delta));
+    try{localStorage.setItem(TIMER_KEY,String(timer.limit/60));}catch(_){}
+    renderTimer();
+  }
+
+  function speechOf(slide){
+    const notes=slide&&slide.querySelector('.speaker-notes');
+    if(!notes)return [];
+    const out=[];
+    for(const p of notes.content.querySelectorAll('p')){
+      const text=p.textContent.trim();
+      if(/^APOIO PARA PERGUNTAS/.test(text)||/^Fonte:/.test(text))break;
+      if(!text||/^TEMPO ALVO/.test(text)||/^ROTEIRO FALADO/.test(text)||text==='ABERTURA')continue;
+      out.push(text);
+    }
+    return out;
+  }
+  function updatePresenter(){
+    if(!document.body.classList.contains('presenting'))return;
+    $('#presenter-pos').textContent='Slide '+(current+1)+' de '+slides.length;
+    $('#presenter-now').textContent=titleOf(slides[current]);
+    const next=slides[current+1];
+    $('#presenter-next').textContent=next?titleOf(next):'Fim da apresentação';
+    const notes=$('#presenter-notes');notes.replaceChildren();
+    speechOf(slides[current]).forEach(text=>{const p=document.createElement('p');p.textContent=text;notes.append(p);});
+    notes.scrollTop=0;
+  }
+  function watchPeer(){
+    clearInterval(peerWatch);
+    peerWatch=setInterval(()=>{
+      const closed=!peer||peer.closed;
+      $('#presenter-status').textContent=closed?'Janela do projetor fechada.':'Janela do projetor aberta. Arraste-a para o projetor e clique nela para tela cheia.';
+      $('#presenter-reopen').hidden=!closed;
+    },800);
+  }
+  function openAudience(){
+    const url=location.href.split(/[?#]/)[0]+'?projetor=1#slide-'+(current+1);
+    const left=(screen.availLeft||0)+screen.availWidth;
+    peer=window.open(url,'scalex-projetor','popup=yes,width=1280,height=720,left='+left+',top=0');
+    if(!peer){toast('Permita pop-ups neste site para abrir a janela do projetor.');return false;}
+    // Com permissão de gerenciamento de janelas, a janela já abre ocupando a outra tela.
+    if(window.getScreenDetails){
+      window.getScreenDetails().then(details=>{
+        const other=details.screens.find(s=>s!==details.currentScreen);
+        if(other&&peer&&!peer.closed){peer.moveTo(other.availLeft,other.availTop);peer.resizeTo(other.availWidth,other.availHeight);}
+      }).catch(()=>{});
+    }
+    return true;
+  }
+  function presentMinutes(){
+    const value=parseFloat(String($('#present-minutes').value).replace(',','.'));
+    return Math.max(1,Math.min(180,value||5));
+  }
+  function startPresenter(){
+    const minutes=presentMinutes();
+    try{localStorage.setItem(TIMER_KEY,String(minutes));}catch(_){}
+    presentDialog.close();
+    if(!openAudience())return;
+    resetTimer(minutes*60);
+    document.body.classList.add('presenting');
+    presenter.hidden=false;
+    updatePresenter();watchPeer();fit();
+  }
+  function stopPresenter(){
+    clearInterval(peerWatch);pauseTimer();
+    try{if(peer&&!peer.closed){peer.postMessage({scalex:'end'},'*');peer.close();}}catch(_){}
+    peer=null;
+    document.body.classList.remove('presenting');
+    presenter.hidden=true;
+    fit();
+  }
+  function openPresent(){
+    if(audienceMode||document.fullscreenElement||document.body.classList.contains('fullscreen')){toggleFullscreen();return;}
+    if(document.body.classList.contains('presenting'))return;
+    if(document.body.classList.contains('studio-open')){toast('Saia do estúdio para apresentar.');return;}
+    $$('dialog[open]').forEach(d=>d.close());
+    let saved=5;try{saved=parseFloat(localStorage.getItem(TIMER_KEY))||5;}catch(_){}
+    $('#present-minutes').value=String(saved).replace('.',',');
+    presentDialog.showModal();
+  }
+  $('#present-duplicate').addEventListener('click',()=>{presentDialog.close();toggleFullscreen();});
+  $('#present-mirror').addEventListener('click',startPresenter);
+  $('#present-minutes').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();startPresenter();}});
+  $('#presenter-toggle').addEventListener('click',()=>timer.running?pauseTimer():startTimer());
+  $('#presenter-reset').addEventListener('click',()=>resetTimer());
+  $('#presenter-minus').addEventListener('click',()=>adjustLimit(-60));
+  $('#presenter-plus').addEventListener('click',()=>adjustLimit(60));
+  $('#presenter-end').addEventListener('click',stopPresenter);
+  $('#presenter-reopen').addEventListener('click',openAudience);
+  document.addEventListener('scalex:slide',e=>{
+    if(!document.body.classList.contains('presenting'))return;
+    updatePresenter();
+    // O cronômetro começa sozinho quando a apresentação sai do primeiro slide.
+    if(!timer.running&&timerElapsed()===0&&e.detail.index>0)startTimer();
+  });
+  addEventListener('pagehide',()=>{if(!audienceMode&&peer&&!peer.closed){try{peer.close();}catch(_){}}});
+  if(audienceMode){
+    document.body.classList.add('fullscreen','audience');
+    const hint=$('#audience-hint');hint.hidden=false;
+    hint.addEventListener('click',toggleFullscreen);
+    document.addEventListener('fullscreenchange',()=>{hint.hidden=!!document.fullscreenElement;});
+  }
 
   $('#prev-btn').addEventListener('click',()=>go(current-1));$('#next-btn').addEventListener('click',()=>go(current+1));
   $('#slide-picker').addEventListener('change',e=>go(e.target.value));
-  $('#fullscreen-btn').addEventListener('click',toggleFullscreen);
+  $('#fullscreen-btn').addEventListener('click',openPresent);
   $('#pdf-btn').addEventListener('click',openPdf);
   $('#pdf-run').addEventListener('click',exportPdf);
   $('#overview-btn').addEventListener('click',()=>$('#overview-dialog').showModal());
@@ -4311,7 +4612,8 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(current-1);}
     else if(e.key==='Home'){e.preventDefault();go(0);}
     else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
-    else if(e.key==='f'||e.key==='F'){toggleFullscreen();}
+    else if(e.key==='f'||e.key==='F'){openPresent();}
+    else if((e.key==='t'||e.key==='T')&&document.body.classList.contains('presenting')){timer.running?pauseTimer():startTimer();}
     else if(e.key==='g'||e.key==='G'){$('#overview-dialog').showModal();}
     else if(e.key==='?'){$('#help-dialog').showModal();}
     else if(e.key==='p'||e.key==='P'){openPdf();}
@@ -4523,6 +4825,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     const initial=location.hash.match(/^#slide-(\d+)$/);
     go(initial?Number(initial[1])-1:0,false);
     fit();
+    if(audienceMode&&peer){try{peer.postMessage({scalex:'hello'},'*');}catch(_){}}
     // Usado pela exportação automatizada (npm run pdf -- --notes).
     if(new URLSearchParams(location.search).has('notes'))buildPdfNotes();
   }

@@ -83,7 +83,7 @@
       <button id="edit-btn" title="Editar a ordem e os textos (E)" aria-pressed="false">Editar</button>
       <button id="overview-btn" title="Ver todos os slides (G)">Slides</button>
       <button id="reading-btn" title="Ler os textos deste slide">Leitura</button>
-      <button id="fullscreen-btn" title="Tela cheia (F)">Tela cheia</button>
+      <button id="fullscreen-btn" title="Apresentar em tela cheia (F)">Tela cheia</button>
       <button id="pdf-btn" title="Exportar a apresentação em PDF (P)">PDF</button>
       <button id="help-btn" aria-label="Ajuda e atalhos">?</button>
     </div>
@@ -134,6 +134,28 @@
     <span class="hint">← → navegar &nbsp; F tela cheia &nbsp; G slides</span>
     <div id="progress" class="progress" aria-hidden="true"></div>
   </footer>
+
+  <aside id="presenter" class="presenter" aria-label="Painel do apresentador" data-state="ok" hidden>
+    <div class="presenter-timer">
+      <span id="presenter-clock-label" class="presenter-label">Tempo restante</span>
+      <b id="presenter-clock" class="presenter-clock" role="timer" aria-live="off">05:00</b>
+      <i id="presenter-bar" class="presenter-bar" aria-hidden="true"></i>
+      <div class="presenter-limit"><button type="button" id="presenter-minus" aria-label="Diminuir um minuto">−1 min</button><span id="presenter-limit">Limite 05:00</span><button type="button" id="presenter-plus" aria-label="Aumentar um minuto">+1 min</button></div>
+      <div class="presenter-actions"><button type="button" id="presenter-toggle" class="primary">Iniciar</button><button type="button" id="presenter-reset">Zerar</button></div>
+    </div>
+    <div class="presenter-now">
+      <span id="presenter-pos" class="presenter-label">Slide 1</span>
+      <b id="presenter-now"></b>
+      <span class="presenter-label">Próximo</span>
+      <em id="presenter-next"></em>
+    </div>
+    <div id="presenter-notes" class="presenter-notes" aria-label="Roteiro do slide"></div>
+    <div class="presenter-foot">
+      <p id="presenter-status">Janela do projetor aberta.</p>
+      <div><button type="button" id="presenter-reopen" hidden>Reabrir janela</button><button type="button" id="presenter-end">Encerrar</button></div>
+    </div>
+  </aside>
+  <button type="button" id="audience-hint" class="audience-hint" hidden>Arraste esta janela para o projetor e clique aqui para tela cheia</button>
 
   <aside id="studio" class="studio" aria-label="Estúdio de edição" aria-hidden="true">
     <header class="studio-top">
@@ -210,7 +232,24 @@
 
   <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
   <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Tela cheia</dt><dd>Escolha <b>Projetor duplicado</b> (a mesma imagem nas duas telas) ou <b>Projetor espelhado</b>: os slides abrem em uma janela para o projetor e esta tela mostra o cronômetro, com o tempo limite que você definir, e o roteiro. <b>T</b> inicia ou pausa o cronômetro.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="present-dialog" class="present-dialog" aria-labelledby="present-title">
+    <div class="dialog-top"><h2 id="present-title">Como você vai apresentar?</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+    <div class="present-options">
+      <button type="button" id="present-duplicate" class="present-option">
+        <span class="present-screens" aria-hidden="true"><i></i><i></i></span>
+        <b>Projetor duplicado</b>
+        <em>A mesma imagem nesta tela e no projetor. O slide abre em tela cheia.</em>
+      </button>
+      <div class="present-option is-mirror">
+        <span class="present-screens split" aria-hidden="true"><i>00:00</i><i></i></span>
+        <b>Projetor espelhado</b>
+        <em>Os slides vão para uma janela no projetor. Nesta tela ficam o cronômetro e o roteiro.</em>
+        <label class="present-time" for="present-minutes">Tempo limite<span><input id="present-minutes" type="text" inputmode="decimal" value="5" autocomplete="off" aria-describedby="present-unit"><i id="present-unit">minutos</i></span></label>
+        <button type="button" id="present-mirror" class="primary">Abrir no projetor</button>
+      </div>
+    </div>
+  </dialog>
   <dialog id="pdf-dialog" aria-labelledby="pdf-title">
     <div class="dialog-top"><h2 id="pdf-title">Exportar em PDF</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
     <p class="publish-note">Os <b><span id="pdf-count"><!-- SLIDE_COUNT --></span> slides</b> serão preparados um por página, em <b>16:9</b>, com fundos e cores. Na janela do navegador, escolha <b>Salvar como PDF</b> como destino.</p>

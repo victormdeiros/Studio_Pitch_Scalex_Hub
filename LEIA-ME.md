@@ -3,7 +3,7 @@
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
 - **`/`** — apresentação completa, com 20 slides, para o investidor ver com calma.
-- **`/resumo/`** — pitch resumido, com 17 slides de frases de impacto, na direção de arte da apresentação completa.
+- **`/resumo/`** — pitch resumido, com 18 slides de frases de impacto, na direção de arte da apresentação completa.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json` (na completa) ou `resumo/content.json` (no resumo), no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
@@ -31,7 +31,9 @@ As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma s
 - **← → / Page Up / Page Down / Espaço** navegam.
 - **Mouse em tela cheia:** botão direito ou roda para baixo avança; botão esquerdo ou roda para cima volta (os botões laterais também funcionam). Links, botões e a barra inferior continuam normais.
 - **Home / End** vão ao primeiro ou ao último slide.
-- **F** alterna tela cheia; **G** abre a visão geral; **?** abre a ajuda.
+- **F** ou **Tela cheia** abre a escolha do modo de apresentação; **G** abre a visão geral; **?** abre a ajuda.
+- **Projetor duplicado:** a mesma imagem nas duas telas; o slide abre em tela cheia.
+- **Projetor espelhado:** os slides abrem em outra janela, para arrastar ao projetor e colocar em tela cheia; a tela do apresentador mostra o cronômetro regressivo com o tempo limite definido, o slide atual, o próximo e o roteiro. O cronômetro começa ao sair do primeiro slide (**T** inicia ou pausa), fica âmbar no trecho final e vermelho ao estourar o tempo. As duas janelas navegam juntas. O navegador precisa permitir pop-ups do site.
 - **Leitura** mostra o conteúdo do slide em formato de artigo, com as notas do apresentador.
 - **PDF** (ou **P**) abre a exportação: um slide por página em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha **Salvar como PDF**.
 - **Uso do aporte** (nas duas versões): passe o mouse, toque ou use Tab e Enter nas três frentes para detalhar a alocação.
@@ -132,7 +134,7 @@ A abertura foi desdobrada em capa, um slide sobre os dois públicos (revendedore
 
 ## Revisão financeira — PDF corrigido
 
-As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo tem 17 e concentra as informações financeiras nos slides 12–16. O roteiro falado do resumo soma 300 segundos; notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
+As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo tem 18 e concentra as informações financeiras nos slides 14–17. O roteiro falado do resumo soma cerca de 300 segundos; notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
 
 - Rodada proposta: R$ 300 mil por 10% pós-investimento; valuation implícito de R$ 2,7 mi pré e R$ 3,0 mi pós. As referências diferentes da planilha estão documentadas nas notas.
 - Seis meses: R$ 243,6 mil recorrentes e R$ 56,4 mil pontuais. Operação R$ 188 mil; comercial e marketing R$ 77 mil; enterprise R$ 35 mil. Founder full-time integra operação; não é uma quarta frente. Não há contingência no orçamento.
@@ -149,25 +151,26 @@ O histórico de 2025 já existente na completa foi mantido como informação int
 O resumo segue a narrativa falada, um slide por pergunta, só com frases de impacto; a explicação fica nas notas (**Leitura**):
 
 1. Capa, com a apresentação do fundador.
-2. Origem: +70 empresas atendidas em 2024–2025 e o propósito de centralizar, automatizar e humanizar.
-3. O problema descoberto: escalávamos trabalho, não tecnologia.
-4. Problema 1: a complexidade da automação convencional.
-5. Problema 2: ferramentas fragmentadas, custos multiplicados.
-6. Solução 1: da complexidade ao simples ato de ativar.
-7. Solução 2: uma única plataforma, mais eficiência e adesão.
-8. Mudança estratégica: plataforma para quem implementa e revende automação.
-9. O parceiro como protagonista: empresas que revendem automação de atendimento.
-10. Mercado: TAM, SAM e SOM, com o SOM do Nordeste em destaque; Porto Digital e pré-aceleração.
-11. Concorrência: demanda validada e comparação por capacidade.
-12. Tração: 2024, 2025 e 2026, com realizado e estimado separados.
-13. Projeções: a base construída com capital próprio e o EBITDA projetado.
-14. Rodada: R$ 300 mil por 10%, pre-money e post-money, metas.
-15. Destinação: Comercial e Marketing, Operação e Adequação para entrada no mercado Enterprise.
-16. Post-money: seis meses de antecipação, +40% de valorização projetada e payback estimado de cerca de três anos.
-17. Encerramento: convite ao investidor.
+2. O que somos hoje.
+3. Origem: +70 empresas atendidas em 2024–2025 e o propósito de centralizar, automatizar e humanizar.
+4. O problema descoberto: escalávamos trabalho, não tecnologia.
+5. A virada: matamos um modelo de negócio para gerar um novo.
+6. Problema 1: a complexidade da automação convencional.
+7. Problema 2: ferramentas fragmentadas, custos multiplicados.
+8. Solução 1: da complexidade ao simples ato de ativar.
+9. Solução 2: uma única plataforma, mais eficiência e adesão.
+10. Mudança estratégica: plataforma para quem implementa e revende automação.
+11. O parceiro como protagonista: empresas que revendem automação de atendimento.
+12. Mercado: TAM, SAM e SOM, com o SOM do Nordeste em destaque; Porto Digital, pré-aceleração e os 17% de adoção de IA.
+13. Concorrência: demanda validada e comparação por capacidade.
+14. Tração: 2024, 2025 e 2026, com os 10 clientes que validaram o MVP.
+15. Projeções: a base construída com capital próprio e o EBITDA projetado.
+16. Capital para antecipar crescimento: a pedida (R$ 300 mil por 10%), as três projeções e o smart money esperado.
+17. Destinação: Comercial e Marketing, Operação e Adequação para entrada no mercado Enterprise.
+18. Encerramento: "vai ter dono. A pergunta é: quem?".
 
-Os slides de diferenciais e de smart money saíram da sequência: a comparação entrou no slide 11 e as frentes de capital estratégico ficaram nas notas do slide 14. A transição de arrancada acontece na passagem do slide 15 para o 16.
+A transição de arrancada acontece na passagem do slide 15 para o 16. A numeração dos slides segue a posição em `src/slides-resumo.mjs`.
 
 As premissas informadas pelo fundador ficam em `src/pitch-premises.mjs`; percentuais e valores da destinação vêm de `src/financials.mjs`, sem novas estimativas. A memória de cálculo do payback e a política de distribuição de dividendos não foram fornecidas; o slide 16 apresenta a estimativa como projeção da gestão.
 
-Esta revisão do resumo não altera a apresentação completa.
+Esta revisão do resumo não altera o conteúdo da apresentação completa.

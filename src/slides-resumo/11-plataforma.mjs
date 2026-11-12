@@ -5,7 +5,7 @@ export default {
   theme:'dark',
   number:'09',
   notes:[
-    'TEMPO ALVO: 20 segundos',
+    'TEMPO ALVO: 15 segundos',
     'Nosso parceiro são as empresas que revendem automação de atendimento. A plataforma potencializa a expertise do parceiro: ele oferece serviços cada vez mais completos, especializados e personalizados, sem precisar construir toda a infraestrutura tecnológica. Para o parceiro, isso significa ampliar o portfólio de soluções, reduzir o esforço técnico de implantação, atender mais clientes e fortalecer a própria proposta de valor. Assim cumprimos, em escala, o propósito que deu origem à ScaleX Hub: mais centralização, mais automação, maior adesão dos usuários e um atendimento humanizado, potencializado por IA.'
   ],
   html:`

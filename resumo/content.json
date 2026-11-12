@@ -3,8 +3,10 @@
   "updatedAt": "2026-11-09T22:45:41.616Z",
   "order": [
     "resumo-capa",
+    "resumo-hoje",
     "resumo-origem",
     "resumo-impacto",
+    "resumo-virada",
     "resumo-problema-fluxo",
     "resumo-problema-ferramentas",
     "resumo-solucao-fluxo",
@@ -15,9 +17,8 @@
     "resumo-concorrencia",
     "resumo-tracao",
     "resumo-escala",
-    "resumo-pedida",
-    "resumo-rodada",
     "resumo-investidor",
+    "resumo-rodada",
     "resumo-fechamento"
   ],
   "text": {},

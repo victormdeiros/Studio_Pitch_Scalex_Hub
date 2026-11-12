@@ -188,8 +188,9 @@
     const target=Math.max(0,Math.min(slides.length-1,Number(i)||0));
     if(transitioning)return;
     if(target===current){applySlide(target,writeHash);return;}
+    notifyPeer(target);
     const from=slides[current]?slides[current].id:null, to=slides[target]?slides[target].id:null;
-    if(!reduced.matches&&from==='resumo-rodada'&&to==='resumo-investidor'){accelerationTransition(target,writeHash);return;}
+    if(!reduced.matches&&from==='resumo-escala'&&to==='resumo-investidor'){accelerationTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-1'&&to==='slide-publico'){coverTransition(target,writeHash);return;}
     if(!reduced.matches&&from==='slide-infra'&&to==='slide-concorrencia'){mergeTransition(target,writeHash);return;}
     stage.dataset.dir=target>current?'next':'prev';
@@ -263,11 +264,173 @@
     const root=document.documentElement;
     (root.requestFullscreen?root.requestFullscreen():Promise.reject()).catch(()=>document.body.classList.toggle('fullscreen'));
   }
-  document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('fullscreen',!!document.fullscreenElement);fit();});
+  document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('fullscreen',audienceMode||!!document.fullscreenElement);fit();});
+
+  /* Apresentar: projetor duplicado (tela cheia nesta janela) ou projetor espelhado
+     (slides em outra janela, no projetor; cronômetro e roteiro nesta tela). */
+  const audienceMode=new URLSearchParams(location.search).has('projetor');
+  const presentDialog=$('#present-dialog'), presenter=$('#presenter');
+  const TIMER_KEY='scalex.present.minutes';
+  let peer=audienceMode?window.opener:null, peerWatch=null, syncing=false, pendingSync=null;
+  const timer={limit:300,elapsed:0,running:false,last:0,tick:null};
+
+  function notifyPeer(index){
+    if(syncing||!peer||peer.closed)return;
+    try{peer.postMessage({scalex:'slide',index},'*');}catch(_){}
+  }
+  function syncTo(index){
+    pendingSync=index;
+    (function attempt(){
+      if(pendingSync===null)return;
+      if(transitioning){setTimeout(attempt,120);return;}
+      const target=pendingSync;pendingSync=null;
+      if(target===current)return;
+      syncing=true;try{go(target);}finally{syncing=false;}
+    })();
+  }
+  addEventListener('message',e=>{
+    const data=e.data;
+    if(!data||!peer||e.source!==peer)return;
+    if(data.scalex==='slide')syncTo(Number(data.index)||0);
+    else if(data.scalex==='hello'&&!audienceMode)notifyPeer(current);
+    else if(data.scalex==='end'&&audienceMode)window.close();
+  });
+
+  function clock(seconds){
+    const s=seconds>=0?Math.ceil(seconds):Math.floor(-seconds);
+    return (seconds<0?'+':'')+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  }
+  function timerElapsed(){return timer.elapsed+(timer.running?(performance.now()-timer.last)/1000:0);}
+  function renderTimer(){
+    const elapsed=timerElapsed(), left=timer.limit-elapsed;
+    $('#presenter-clock').textContent=clock(left);
+    $('#presenter-clock-label').textContent=left<0?'Tempo excedido':'Tempo restante';
+    presenter.dataset.state=left<0?'over':left<=Math.min(60,timer.limit*.2)?'warn':'ok';
+    $('#presenter-bar').style.setProperty('--p',Math.min(100,elapsed/timer.limit*100)+'%');
+    $('#presenter-limit').textContent='Limite '+clock(timer.limit);
+    $('#presenter-toggle').textContent=timer.running?'Pausar':elapsed>0?'Continuar':'Iniciar';
+  }
+  function startTimer(){
+    if(timer.running)return;
+    timer.running=true;timer.last=performance.now();
+    timer.tick=setInterval(renderTimer,250);renderTimer();
+  }
+  function pauseTimer(){
+    if(!timer.running)return;
+    timer.elapsed=timerElapsed();timer.running=false;clearInterval(timer.tick);renderTimer();
+  }
+  function resetTimer(limit){
+    pauseTimer();timer.elapsed=0;
+    if(limit)timer.limit=limit;
+    renderTimer();
+  }
+  function adjustLimit(delta){
+    timer.limit=Math.max(60,Math.min(180*60,timer.limit+delta));
+    try{localStorage.setItem(TIMER_KEY,String(timer.limit/60));}catch(_){}
+    renderTimer();
+  }
+
+  function speechOf(slide){
+    const notes=slide&&slide.querySelector('.speaker-notes');
+    if(!notes)return [];
+    const out=[];
+    for(const p of notes.content.querySelectorAll('p')){
+      const text=p.textContent.trim();
+      if(/^APOIO PARA PERGUNTAS/.test(text)||/^Fonte:/.test(text))break;
+      if(!text||/^TEMPO ALVO/.test(text)||/^ROTEIRO FALADO/.test(text)||text==='ABERTURA')continue;
+      out.push(text);
+    }
+    return out;
+  }
+  function updatePresenter(){
+    if(!document.body.classList.contains('presenting'))return;
+    $('#presenter-pos').textContent='Slide '+(current+1)+' de '+slides.length;
+    $('#presenter-now').textContent=titleOf(slides[current]);
+    const next=slides[current+1];
+    $('#presenter-next').textContent=next?titleOf(next):'Fim da apresentação';
+    const notes=$('#presenter-notes');notes.replaceChildren();
+    speechOf(slides[current]).forEach(text=>{const p=document.createElement('p');p.textContent=text;notes.append(p);});
+    notes.scrollTop=0;
+  }
+  function watchPeer(){
+    clearInterval(peerWatch);
+    peerWatch=setInterval(()=>{
+      const closed=!peer||peer.closed;
+      $('#presenter-status').textContent=closed?'Janela do projetor fechada.':'Janela do projetor aberta. Arraste-a para o projetor e clique nela para tela cheia.';
+      $('#presenter-reopen').hidden=!closed;
+    },800);
+  }
+  function openAudience(){
+    const url=location.href.split(/[?#]/)[0]+'?projetor=1#slide-'+(current+1);
+    const left=(screen.availLeft||0)+screen.availWidth;
+    peer=window.open(url,'scalex-projetor','popup=yes,width=1280,height=720,left='+left+',top=0');
+    if(!peer){toast('Permita pop-ups neste site para abrir a janela do projetor.');return false;}
+    // Com permissão de gerenciamento de janelas, a janela já abre ocupando a outra tela.
+    if(window.getScreenDetails){
+      window.getScreenDetails().then(details=>{
+        const other=details.screens.find(s=>s!==details.currentScreen);
+        if(other&&peer&&!peer.closed){peer.moveTo(other.availLeft,other.availTop);peer.resizeTo(other.availWidth,other.availHeight);}
+      }).catch(()=>{});
+    }
+    return true;
+  }
+  function presentMinutes(){
+    const value=parseFloat(String($('#present-minutes').value).replace(',','.'));
+    return Math.max(1,Math.min(180,value||5));
+  }
+  function startPresenter(){
+    const minutes=presentMinutes();
+    try{localStorage.setItem(TIMER_KEY,String(minutes));}catch(_){}
+    presentDialog.close();
+    if(!openAudience())return;
+    resetTimer(minutes*60);
+    document.body.classList.add('presenting');
+    presenter.hidden=false;
+    updatePresenter();watchPeer();fit();
+  }
+  function stopPresenter(){
+    clearInterval(peerWatch);pauseTimer();
+    try{if(peer&&!peer.closed){peer.postMessage({scalex:'end'},'*');peer.close();}}catch(_){}
+    peer=null;
+    document.body.classList.remove('presenting');
+    presenter.hidden=true;
+    fit();
+  }
+  function openPresent(){
+    if(audienceMode||document.fullscreenElement||document.body.classList.contains('fullscreen')){toggleFullscreen();return;}
+    if(document.body.classList.contains('presenting'))return;
+    if(document.body.classList.contains('studio-open')){toast('Saia do estúdio para apresentar.');return;}
+    $$('dialog[open]').forEach(d=>d.close());
+    let saved=5;try{saved=parseFloat(localStorage.getItem(TIMER_KEY))||5;}catch(_){}
+    $('#present-minutes').value=String(saved).replace('.',',');
+    presentDialog.showModal();
+  }
+  $('#present-duplicate').addEventListener('click',()=>{presentDialog.close();toggleFullscreen();});
+  $('#present-mirror').addEventListener('click',startPresenter);
+  $('#present-minutes').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();startPresenter();}});
+  $('#presenter-toggle').addEventListener('click',()=>timer.running?pauseTimer():startTimer());
+  $('#presenter-reset').addEventListener('click',()=>resetTimer());
+  $('#presenter-minus').addEventListener('click',()=>adjustLimit(-60));
+  $('#presenter-plus').addEventListener('click',()=>adjustLimit(60));
+  $('#presenter-end').addEventListener('click',stopPresenter);
+  $('#presenter-reopen').addEventListener('click',openAudience);
+  document.addEventListener('scalex:slide',e=>{
+    if(!document.body.classList.contains('presenting'))return;
+    updatePresenter();
+    // O cronômetro começa sozinho quando a apresentação sai do primeiro slide.
+    if(!timer.running&&timerElapsed()===0&&e.detail.index>0)startTimer();
+  });
+  addEventListener('pagehide',()=>{if(!audienceMode&&peer&&!peer.closed){try{peer.close();}catch(_){}}});
+  if(audienceMode){
+    document.body.classList.add('fullscreen','audience');
+    const hint=$('#audience-hint');hint.hidden=false;
+    hint.addEventListener('click',toggleFullscreen);
+    document.addEventListener('fullscreenchange',()=>{hint.hidden=!!document.fullscreenElement;});
+  }
 
   $('#prev-btn').addEventListener('click',()=>go(current-1));$('#next-btn').addEventListener('click',()=>go(current+1));
   $('#slide-picker').addEventListener('change',e=>go(e.target.value));
-  $('#fullscreen-btn').addEventListener('click',toggleFullscreen);
+  $('#fullscreen-btn').addEventListener('click',openPresent);
   $('#pdf-btn').addEventListener('click',openPdf);
   $('#pdf-run').addEventListener('click',exportPdf);
   $('#overview-btn').addEventListener('click',()=>$('#overview-dialog').showModal());
@@ -281,7 +444,8 @@
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(current-1);}
     else if(e.key==='Home'){e.preventDefault();go(0);}
     else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
-    else if(e.key==='f'||e.key==='F'){toggleFullscreen();}
+    else if(e.key==='f'||e.key==='F'){openPresent();}
+    else if((e.key==='t'||e.key==='T')&&document.body.classList.contains('presenting')){timer.running?pauseTimer():startTimer();}
     else if(e.key==='g'||e.key==='G'){$('#overview-dialog').showModal();}
     else if(e.key==='?'){$('#help-dialog').showModal();}
     else if(e.key==='p'||e.key==='P'){openPdf();}
@@ -493,6 +657,7 @@
     const initial=location.hash.match(/^#slide-(\d+)$/);
     go(initial?Number(initial[1])-1:0,false);
     fit();
+    if(audienceMode&&peer){try{peer.postMessage({scalex:'hello'},'*');}catch(_){}}
     // Usado pela exportação automatizada (npm run pdf -- --notes).
     if(new URLSearchParams(location.search).has('notes'))buildPdfNotes();
   }

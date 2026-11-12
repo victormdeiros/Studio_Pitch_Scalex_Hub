@@ -15,7 +15,7 @@ export default {
   notes: [
     'TEMPO ALVO: 15 segundos',
     'Empresas já identificaram o potencial de oferecer infraestrutura de automação por meio de parceiros. Isso valida a demanda pelo modelo de negócio que estamos construindo. A oportunidade já foi identificada pelo mercado. Nossa estratégia é competir pela simplicidade, centralização e capacidade de escala.',
-    'Zaia: brasileira, agentes de IA, MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo; dado autodeclarado, não auditado. HighLevel: global, plataforma para agências, 2,2 milhões de negócios atendidos e cerca de US$ 4 bilhões em 2025 — volume transacionado pelos clientes, não receita da HighLevel. Os indicadores são de natureza diferente e não devem ser comparados entre si.',
+    'Zaia: brasileira, agentes de IA, MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo; dado autodeclarado, não auditado. HighLevel: global, plataforma para agências, US$ 4,2 bilhões em vendas movimentadas pela plataforma em 2025 — volume transacionado pelos clientes, não receita da HighLevel — e 2,2 milhões de negócios atendidos. Os indicadores são de natureza diferente e não devem ser comparados entre si.',
     'Comparação por categoria, a partir do posicionamento público das ferramentas: HighLevel cria planos e tem trilha comercial; Zaia tem implantação low code e IA humanizada. A ScaleX combina as quatro capacidades. Diferencial técnico: código 100% próprio. Concorrentes indiretos, peças do stack: Kommo, Pipedrive, HubSpot, ManyChat, Blip, Chatbase, n8n, Make e Zapier.',
     'Fontes: HighLevel, histórico institucional e site oficial (2025); Zaia, divulgação comercial (2025); Banco Central, PTAX de 23/10/2026. Dados verificados em 24/10/2026.'
   ],
@@ -35,8 +35,8 @@ export default {
         </article>
         <article class="cmp-card rv" style="--d:4">
           <div class="comp-top"><p class="comp-name">HighLevel</p><span class="comp-region">Global</span></div>
-          <p class="comp-metric">2,2 mi</p>
-          <p class="comp-sub">negócios atendidos · site oficial</p>
+          <p class="comp-metric">US$ 4,2 bi</p>
+          <p class="comp-sub">em vendas movimentadas pela plataforma em 2025 · 2,2 milhões de negócios atendidos</p>
         </article>
       </section>
 
