@@ -1,63 +1,54 @@
-// Slide 8 do pitch: concorrência — o conteúdo do PPTX (slide 9).
+// Slide 11 do pitch: a concorrência valida a demanda; a ScaleX compete por simplicidade, centralização e escala.
+const yes='<span class="cmp-y">✓</span>',no='<span class="cmp-n">—</span>',hub='<span class="cmp-h"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span>';
+const rows=[
+  ['Planos para revenda',yes,no],
+  ['Trilha comercial completa',yes,no],
+  ['Implantação sem desenvolvimento',no,yes],
+  ['IA automatizada e humanizada',no,yes]
+];
+
 export default {
   id: 'resumo-concorrencia',
   title: 'Os concorrentes diretos validam a demanda.',
   theme: 'dark',
   number: '11',
   notes: [
-    'TEMPO ALVO: 40 segundos',
-    'A concorrência direta valida a demanda. A Zaia é brasileira, tem MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo. A HighLevel é global e atende 2,2 milhões de negócios, com cerca de US$ 4 bilhões de faturamento em 2025. Os indicadores são de natureza diferente e não devem ser comparados diretamente. Os concorrentes indiretos são peças do stack: CRM e vendas, conversas e agentes, automação.'
+    'TEMPO ALVO: 15 segundos',
+    'Empresas já identificaram o potencial de oferecer infraestrutura de automação por meio de parceiros. Isso valida a demanda pelo modelo de negócio que estamos construindo. A oportunidade já foi identificada pelo mercado. Nossa estratégia é competir pela simplicidade, centralização e capacidade de escala.',
+    'Zaia: brasileira, agentes de IA, MRR autodeclarado de cerca de R$ 4,8 milhões por ano e centenas de agências revendendo; dado autodeclarado, não auditado. HighLevel: global, plataforma para agências, 2,2 milhões de negócios atendidos e cerca de US$ 4 bilhões em 2025 — volume transacionado pelos clientes, não receita da HighLevel. Os indicadores são de natureza diferente e não devem ser comparados entre si.',
+    'Comparação por categoria, a partir do posicionamento público das ferramentas: HighLevel cria planos e tem trilha comercial; Zaia tem implantação low code e IA humanizada. A ScaleX combina as quatro capacidades. Diferencial técnico: código 100% próprio. Concorrentes indiretos, peças do stack: Kommo, Pipedrive, HubSpot, ManyChat, Blip, Chatbase, n8n, Make e Zapier.',
+    'Fontes: HighLevel, histórico institucional e site oficial (2025); Zaia, divulgação comercial (2025); Banco Central, PTAX de 23/10/2026. Dados verificados em 24/10/2026.'
   ],
   html: `
-    <div class="comp">
+    <div class="comp cmp">
       <header class="comp-head">
         <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-trend"></use></svg>Concorrência · demanda validada</p>
         <h2 class="h2 rv" style="--d:1">Os concorrentes diretos <span class="grad-text">validam a demanda.</span></h2>
-        <p class="lead rv" style="--d:2">Indicadores públicos de natureza diferente. Não comparar faturamento ou participação.</p>
+        <p class="cmp-lead rv" style="--d:2">Já existe quem venda infraestrutura de automação por meio de parceiros.</p>
       </header>
 
-      <section class="comp-direct">
-        <p class="micro rv" style="--d:2"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>Concorrentes diretos · demanda comprovada</p>
-        <div class="comp-grid">
-          <article class="comp-item rv" style="--d:3">
-            <div class="comp-top"><p class="comp-name">Zaia</p><span class="comp-region">Brasil</span></div>
-            <p class="comp-desc">Agentes de IA</p>
-            <p class="comp-metric">~R$ 4,8 mi/ano</p>
-            <p class="comp-sub">MRR autodeclarado · centenas de agências revendendo</p>
-            <p class="comp-note">Autodeclarado, não auditado.</p>
-            <div class="comp-verify"><span class="warn">◐ autodeclarado</span></div>
-          </article>
-          <article class="comp-item rv" style="--d:4">
-            <div class="comp-top"><p class="comp-name">HighLevel</p><span class="comp-region">Global</span></div>
-            <p class="comp-desc">Plataforma para agências</p>
-            <p class="comp-metric">~US$ 4 bi</p>
-            <p class="comp-sub">faturamento em 2025 · 2,2 mi de negócios atendidos</p>
-            <p class="comp-note">Volume transacionado pelos clientes, não receita da HighLevel · site oficial.</p>
-            <div class="comp-verify"><span class="ok">✓ site oficial</span><span class="warn">◐ volume dos clientes</span></div>
-          </article>
-          <aside class="comp-open rv" style="--d:5">
-            <svg class="comp-globe" aria-hidden="true"><use href="#i-globe"></use></svg>
-            <p class="comp-open-title"><svg class="ico" aria-hidden="true"><use href="#i-globe"></use></svg>Leitura</p>
-            <p class="comp-open-note">A categoria existe. HighLevel e Zaia já vendem plataforma para agências. No Brasil, a escala está em construção.</p>
-            <p class="comp-open-note">A ScaleX entra com a camada que falta: white-label, multiworkspace e operação centralizada.</p>
-            <p class="comp-open-src">Categoria validada · escala em construção</p>
-          </aside>
-        </div>
+      <section class="cmp-cards">
+        <article class="cmp-card rv" style="--d:3">
+          <div class="comp-top"><p class="comp-name">Zaia</p><span class="comp-region">Brasil</span></div>
+          <p class="comp-metric">~R$ 4,8 mi/ano</p>
+          <p class="comp-sub">MRR autodeclarado · centenas de agências revendendo</p>
+        </article>
+        <article class="cmp-card rv" style="--d:4">
+          <div class="comp-top"><p class="comp-name">HighLevel</p><span class="comp-region">Global</span></div>
+          <p class="comp-metric">2,2 mi</p>
+          <p class="comp-sub">negócios atendidos · site oficial</p>
+        </article>
       </section>
 
-      <section class="comp-indirect">
-        <p class="micro rv" style="--d:6"><svg class="ico" aria-hidden="true"><use href="#i-workflow"></use></svg>Concorrentes indiretos · peças do stack</p>
-        <div class="comp-cats">
-          <div class="comp-cat rv" style="--d:7"><p><svg class="ico" aria-hidden="true"><use href="#i-database"></use></svg>CRM e vendas</p><div><span>Kommo</span><span>Pipedrive</span><span>HubSpot</span></div></div>
-          <div class="comp-cat rv" style="--d:8"><p><svg class="ico" aria-hidden="true"><use href="#i-message"></use></svg>Conversas e agentes</p><div><span>ManyChat</span><span>Blip</span><span>Chatbase</span></div></div>
-          <div class="comp-cat rv" style="--d:9"><p><svg class="ico" aria-hidden="true"><use href="#i-workflow"></use></svg>Automação</p><div><span>n8n</span><span>Make</span><span>Zapier</span></div></div>
-        </div>
+      <section class="cmp-table rv" style="--d:5" aria-label="Comparação por capacidade">
+        <div class="cmp-row cmp-th"><span></span><span>HighLevel</span><span>Zaia</span><span class="cmp-hubcol"><img src="assets/brand/simbolo-colorido-1024.png" alt="">ScaleX Hub</span></div>
+        ${rows.map(([name,a,b])=>`<div class="cmp-row"><span>${name}</span><span>${a}</span><span>${b}</span><span class="cmp-hubcol">${hub}</span></div>`).join('')}
       </section>
 
-      <div class="comp-gap rv" style="--d:9">
+      <div class="comp-gap rv" style="--d:6">
         <span class="q-line"></span>
-        <p>Os concorrentes diretos validam a demanda. <span>A ScaleX entrega a camada que falta.</span></p>
+        <p>A oportunidade já foi identificada. <span>Competimos por simplicidade, centralização e escala.</span></p>
       </div>
-      <p class="comp-foot rv" style="--d:10">Fontes: HighLevel, histórico institucional e site oficial (2025); Zaia, divulgação comercial (2025); Banco Central, PTAX de 23/10/2026. Dados verificados em 24/10/2026. Indicadores de natureza diferente: não comparar faturamento ou participação.</p>
+      <p class="comp-foot rv" style="--d:7">Comparação por categoria, a partir do posicionamento público. Indicadores de natureza diferente, não comparáveis entre si. Fontes: HighLevel, site oficial (2025); Zaia, divulgação comercial (2025).</p>
     </div>`
 };

@@ -3,7 +3,7 @@
 Apresentações em código, com identidade ScaleX Hub e direção de arte autoral. O site tem duas rotas:
 
 - **`/`** — apresentação completa, com 20 slides, para o investidor ver com calma.
-- **`/resumo/`** — pitch resumido de 7 minutos, com 17 slides na direção de arte da apresentação completa.
+- **`/resumo/`** — pitch resumido, com 17 slides de frases de impacto, na direção de arte da apresentação completa.
 
 Reordene slides, edite textos e ajuste cores e posições direto no navegador; o resultado é publicado em `content.json` (na completa) ou `resumo/content.json` (no resumo), no próprio repositório, e o GitHub Pages atualiza as duas rotas.
 
@@ -11,7 +11,7 @@ Reordene slides, edite textos e ajuste cores e posições direto no navegador; o
 
 Extraia o ZIP e abra **index.html** no Chrome, Edge, Firefox ou Safari. A versão resumida fica em **resumo/index.html**. As apresentações estão prontas, com imagens e fontes incorporadas. Funcionam sem internet, sem instalação e sem servidor.
 
-Use as setas para navegar, **F** para tela cheia e **G** para ver todos os slides. No celular, deslize entre slides ou abra **Leitura**. O índice **Slides** permite saltar para qualquer página e a ajuda **?** explica os controles. O botão no topo alterna entre **Resumo · 7 min** e **Completa**.
+Use as setas para navegar, **F** para tela cheia e **G** para ver todos os slides. No celular, deslize entre slides ou abra **Leitura**. O índice **Slides** permite saltar para qualquer página e a ajuda **?** explica os controles. O botão no topo alterna entre **Resumo** e **Completa**.
 
 ## Acesso e senhas
 
@@ -132,7 +132,7 @@ A abertura foi desdobrada em capa, um slide sobre os dois públicos (revendedore
 
 ## Revisão financeira — PDF corrigido
 
-As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo tem 17 e concentra as informações financeiras nos slides 13–16. O roteiro falado soma 420 segundos (7 minutos); notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
+As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financeira. Os dados compartilhados ficam em `src/financials.mjs` e os gráficos em `src/financial-components.mjs`. A completa tem 20 slides; o resumo tem 17 e concentra as informações financeiras nos slides 12–16. O roteiro falado do resumo soma 300 segundos; notas de conferência e apoio para perguntas ficam separadas, fora desse tempo.
 
 - Rodada proposta: R$ 300 mil por 10% pós-investimento; valuation implícito de R$ 2,7 mi pré e R$ 3,0 mi pós. As referências diferentes da planilha estão documentadas nas notas.
 - Seis meses: R$ 243,6 mil recorrentes e R$ 56,4 mil pontuais. Operação R$ 188 mil; comercial e marketing R$ 77 mil; enterprise R$ 35 mil. Founder full-time integra operação; não é uma quarta frente. Não há contingência no orçamento.
@@ -144,16 +144,30 @@ As duas versões usam `ScaleX_Hub_Pitch_Corrigido.pdf` como referência financei
 
 O histórico de 2025 já existente na completa foi mantido como informação interna reportada, sem atribuir comprovação ao novo PDF. Os números de 2026 e de carteira ativa que não constam na revisão financeira não são reutilizados como projeções. O detalhamento de orçamento, unit economics, divergências e sensibilidade de retorno fica nas notas, acessíveis em Leitura e na exportação com notas.
 
-## Cenários do resumo — bootstrap e entrada do investidor
+## Roteiro do resumo — reestruturação do pitch
 
-A ordem final do resumo é: **slide 13, bootstrap → slide 14, efeito do investidor e pedida → slide 15, destinação e movimentos pós-aporte → slide 16, smart money → slide 17, fechamento**. O pitch mantém 17 slides e roteiro de sete minutos.
+O resumo segue a narrativa falada, um slide por pergunta, só com frases de impacto; a explicação fica nas notas (**Leitura**):
 
-O slide 13 combina a meta de EBITDA de 2027 com o faturamento trimestral projetado de 2027 (Q1 a Q4), os valores por trimestre e o crescimento sobre o trimestre anterior. O slide 14 mantém o mesmo enquadramento do bootstrap, mostra a aceleração de seis meses, o EBITDA de R$ 450 mil para R$ 750 mil, a valorização projetada de 40%, o payback estimado em três anos e a pedida de R$ 300 mil por 10% do equity. O slide 15 concentra a destinação do aporte e as três ações pós-investimento: closer dedicado, adequação jurídica para enterprise e antecipação do founder full time, prevista para o Q2 de 2027. O slide 16 detalha as cinco frentes de smart money esperadas.
+1. Capa, com a apresentação do fundador.
+2. Origem: +70 empresas atendidas em 2024–2025 e o propósito de centralizar, automatizar e humanizar.
+3. O problema descoberto: escalávamos trabalho, não tecnologia.
+4. Problema 1: a complexidade da automação convencional.
+5. Problema 2: ferramentas fragmentadas, custos multiplicados.
+6. Solução 1: da complexidade ao simples ato de ativar.
+7. Solução 2: uma única plataforma, mais eficiência e adesão.
+8. Mudança estratégica: plataforma para quem implementa e revende automação.
+9. O parceiro como protagonista: empresas que revendem automação de atendimento.
+10. Mercado: TAM, SAM e SOM, com o SOM do Nordeste em destaque; Porto Digital e pré-aceleração.
+11. Concorrência: demanda validada e comparação por capacidade.
+12. Tração: 2024, 2025 e 2026, com realizado e estimado separados.
+13. Projeções: a base construída com capital próprio e o EBITDA projetado.
+14. Rodada: R$ 300 mil por 10%, pre-money e post-money, metas.
+15. Destinação: Comercial e Marketing, Operação e Adequação para entrada no mercado Enterprise.
+16. Post-money: seis meses de antecipação, +40% de valorização projetada e payback estimado de cerca de três anos.
+17. Encerramento: convite ao investidor.
 
-As premissas posteriores ao PDF, informadas pelo fundador, ficam em `src/pitch-premises.mjs`: EBITDA estimado de 2027 de aproximadamente R$ 450 mil sem aporte e R$ 750 mil com investidor; seis meses de execução antecipada; valorização projetada de 40% no valuation; payback aproximado de três anos. A valorização é uma premissa independente da variação do EBITDA. Novos valuations absolutos e a memória de cálculo do payback não foram fornecidos nesta revisão; as estimativas não são atribuídas à simulação anterior de dividendos do PDF.
+Os slides de diferenciais e de smart money saíram da sequência: a comparação entrou no slide 11 e as frentes de capital estratégico ficaram nas notas do slide 14. A transição de arrancada acontece na passagem do slide 15 para o 16.
 
-O slide bootstrap destaca a meta de 2027 com recursos próprios, preserva os históricos de faturamento informado de 2025 e 2026 e a mensagem da virada para plataforma. O gráfico de faturamento trimestral usa a coluna FAT BOM do modelo como planejamento: Q1/27 R$ 52,4 mil, Q2/27 R$ 159,0 mil, Q3/27 R$ 351,5 mil e Q4/27 R$ 586,4 mil, com crescimento de 203%, 121% e 67% sobre o trimestre anterior. O slide com investidor mantém o mesmo enquadramento e mostra o ritmo de execução acelerado. Os diagramas indicam etapas e antecipação; não representam uma série quantitativa de faturamento ou prazos absolutos. Não há cálculo de crescimento entre faturamento histórico e EBITDA projetado.
+As premissas informadas pelo fundador ficam em `src/pitch-premises.mjs`; percentuais e valores da destinação vêm de `src/financials.mjs`, sem novas estimativas. A memória de cálculo do payback e a política de distribuição de dividendos não foram fornecidas; o slide 16 apresenta a estimativa como projeção da gestão.
 
-A transição entre os dois cenários aplica uma arrancada de luz de 1,45 segundo. O cenário com investidor surge durante a passagem, com o contador de EBITDA partindo de 450 para chegar a 750. Há cancelamento ao reordenar, ao imprimir, ao ocultar a aba ou ao ativar movimento reduzido; a versão impressa exibe o conteúdo final e oculta a camada da transição. Com `prefers-reduced-motion`, os cenários mudam imediatamente.
-
-Esta revisão do resumo não recalcula as séries financeiras da apresentação completa nem extrapola as novas premissas para 2028–2031.
+Esta revisão do resumo não altera a apresentação completa.

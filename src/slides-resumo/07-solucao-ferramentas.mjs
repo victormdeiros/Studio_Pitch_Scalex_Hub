@@ -1,19 +1,19 @@
 // Slide 7 do pitch: a solução do problema 2 — as ferramentas convergem para uma plataforma.
 export default {
   id:'resumo-solucao-ferramentas',
-  title:'Solução 2: da dispersão a uma única plataforma.',
+  title:'Solução 2: uma única plataforma, mais eficiência e adesão.',
   theme:'dark',
   number:'07',
   notes:[
-    'TEMPO ALVO: 45 segundos',
-    'As mesmas dez ferramentas do problema convergem progressivamente para o centro. O que era um conjunto de logins, cobranças e pontos de falha se unifica no ScaleX Hub. Em vez de operar dez ferramentas desconectadas, o parceiro passa a operar um único ecossistema: white-label, multiworkspace e a operação inteira em um só lugar. O que antes exigia múltiplas ferramentas passa a ser centralizado.'
+    'TEMPO ALVO: 15 segundos',
+    'A ScaleX Hub integra automação, inteligência artificial, comunicação e gestão em uma experiência unificada. Os benefícios: menos dependência de ferramentas descentralizadas, adoção mais fácil pelos usuários, processos e informações centralizados, mais eficiência operacional e melhor experiência de atendimento. Não basta automatizar. A tecnologia precisa fazer parte da rotina das pessoas.'
   ],
   html:`
     <div class="rsp">
       <header class="rsp-head">
         <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>Solução 02</p>
-        <h2 class="rsp-title rv" style="--d:1">Da dispersão a <span class="grad-text">uma única plataforma.</span></h2>
-        <p class="rsp-sub rv" style="--d:2">As mesmas dez ferramentas. Um só ecossistema. A operação inteira conectada.</p>
+        <h2 class="rsp-title rv" style="--d:1">Uma única plataforma. <span class="grad-text">Mais eficiência e adesão.</span></h2>
+        <p class="rsp-sub rv" style="--d:2">Automação, IA, comunicação e gestão em uma experiência unificada.</p>
       </header>
 
       <div class="rsp-stage">
@@ -82,6 +82,6 @@ export default {
         <span class="rsp-ghost right rv" style="--d:8" aria-hidden="true">1 plataforma</span>
       </div>
 
-      <p class="rsp-takeaway rv" style="--d:8">O que antes exigia múltiplas ferramentas agora é <span>um único ecossistema.</span></p>
+      <p class="rsp-takeaway rv" style="--d:8">Não basta automatizar. <span>A tecnologia precisa fazer parte da rotina das pessoas.</span></p>
     </div>`
 };

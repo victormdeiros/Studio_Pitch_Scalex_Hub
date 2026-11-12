@@ -2155,3 +2155,217 @@
 #slide-9 .fin-list li{padding:6px 0}
 #slide-9 .fin-list b{font-size:15px;line-height:1.2}
 #slide-9 .fin-list span{font-size:11.5px;line-height:1.4;margin-top:3px}
+
+/* ===== Resumo · reestruturação do pitch (narrativa em 17 slides, frases de impacto) ===== */
+
+/* 01 · Capa — apresentação do fundador */
+.cover-badge{font-size:9.5px;padding:9px 15px;letter-spacing:.16em}
+
+/* 02 · Origem — experiência e propósito */
+.dor-grid.two{grid-template-columns:1fr 1fr}
+.dor-card.big{padding:24px 28px 22px}
+.dor-card.big .dor-n{font-size:9.5px;text-transform:uppercase}
+.dor-card.big h3{margin:16px 0 0;max-width:none;font-size:32px;line-height:1.08;letter-spacing:-.04em}
+.dor-card.big h3 b{font-size:62px;letter-spacing:-.06em;margin-right:6px}
+.dor-card.big p{margin-top:9px;max-width:none;font-size:13.5px}
+.dor-turn p{font-size:15px}
+
+/* 03 · O problema que descobrimos — esforço, custo e resultado */
+#resumo-impacto .ri-title{font-size:78px}
+#resumo-impacto .ri-sub{margin-top:20px;font-size:18px}
+#resumo-impacto .ri-cards{top:330px;bottom:auto}
+#resumo-impacto .ri-card p{max-width:none}
+.ri-meter{position:absolute;left:80px;right:80px;top:494px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;padding:24px 28px;border:1px solid #ffffff12;border-radius:16px;background:#ffffff04}
+.ri-m{display:grid;grid-template-columns:1fr auto;gap:11px 12px;align-items:baseline}
+.ri-m span{grid-area:1/1;font-size:14px;font-weight:600;letter-spacing:-.01em;color:#dbe5f7}
+.ri-m b{grid-area:1/2;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fb9aac}
+.ri-m i{grid-area:2/1/3/3;position:relative;height:12px;border-radius:999px;background:#ffffff0c;overflow:hidden}
+.ri-m i::after{content:'';position:absolute;left:0;top:0;bottom:0;width:var(--w);border-radius:inherit;background:linear-gradient(90deg,#fb7185,#ff4d6d);transform-origin:left}
+.ri-m.lo b{color:#8c9bb8}
+.ri-m.lo i::after{background:linear-gradient(90deg,#8ea2ff,#22d3ee)}
+.slide.active .ri-m i::after{animation:sxBarGrow .9s .5s var(--ease) backwards}
+
+/* 04–05 · Problemas — leitura rápida */
+.rpb-stats b{margin:0}
+.rpt-cost{font-size:9.5px;gap:30px}
+.rpt-cost .ico{width:14px;height:14px}
+.rpb-takeaway,.rpt-takeaway,.rsf-takeaway,.rsp-takeaway,.rpe-takeaway{font-size:19px}
+.rsf-sub,.rsp-sub{font-size:14.5px}
+
+/* 08 · Mudança estratégica — duas perguntas e a divisão de papéis */
+.rme{position:absolute;inset:0;overflow:hidden}
+.rme-head{position:absolute;left:70px;top:44px;width:1140px}
+.rme-title{margin:12px 0 0;font-size:46px;line-height:1.05;letter-spacing:-.05em;font-weight:700;color:var(--ink)}
+.rme-asks{position:absolute;left:70px;right:70px;top:172px;height:232px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rme-ask{position:relative;display:flex;flex-direction:column;padding:22px 26px;border:1px solid #ffffff14;border-radius:18px;background:linear-gradient(155deg,#0c1730,#0b1022);box-shadow:0 24px 60px #0005;overflow:hidden}
+.rme-q{font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#8c9bb8}
+.rme-ask h3{margin:10px 0 0;max-width:460px;font-size:23px;line-height:1.2;letter-spacing:-.03em;font-weight:600;color:#b9c7de}
+.rme-ask h3 b{color:#fff}
+.rme-dots{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;max-width:353px}
+.rme-dots i{width:11px;height:11px;border-radius:3px;background:#ffffff1f}
+.rme-ask em{position:absolute;right:26px;bottom:18px;font-style:normal;font-size:30px;line-height:1;font-weight:700;letter-spacing:-.04em;color:#7c8cad}
+.rme-ask.few{border-color:#8ea2ff55;background:linear-gradient(155deg,#101c3f,#1c1145);box-shadow:0 26px 70px #4f46e52e}
+.rme-ask.few .rme-q{color:#c4b5fd}
+.rme-ask.few .rme-dots i{width:24px;height:24px;border-radius:8px;background:var(--grad);box-shadow:0 0 18px #8b5cf688}
+.rme-ask.few em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.slide.active .rme-dots i{animation:reveal .5s calc(.5s + var(--i)*14ms) var(--ease) backwards}
+.rme-split{position:absolute;left:70px;right:70px;top:426px;height:146px;display:grid;grid-template-columns:1fr 64px 1fr;align-items:center}
+.rme-role{height:146px;display:flex;align-items:center;gap:22px;padding:0 30px;border:1px solid #ffffff14;border-radius:18px;background:#ffffff04}
+.rme-role.hub{border-color:#8ea2ff40;background:linear-gradient(160deg,#0c1830,#0a1226)}
+.rme-role.partner{border-color:#c084fc40;background:linear-gradient(160deg,#151238,#0c1730)}
+.rme-role img{width:64px;height:auto;flex:none;filter:drop-shadow(0 12px 30px #4b5cff66)}
+.rme-role>i{flex:none;width:64px;height:64px;border-radius:19px;display:grid;place-items:center;background:linear-gradient(145deg,#1b2a5c,#2c1560);border:1px solid #c084fc55;color:#e9d5ff}
+.rme-role>i .ico{width:28px;height:28px}
+.rme-role span{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#8c9bb8}
+.rme-role b{display:block;margin-top:6px;font-size:27px;line-height:1.1;letter-spacing:-.04em;color:#fff}
+.rme-role p{margin:6px 0 0;font-size:13px;line-height:1.4;color:var(--muted)}
+.rme-link{display:grid;place-items:center}
+.rme-link::before{content:'+';font-size:30px;line-height:1;font-weight:300;color:#8ea2ff}
+.rme-link span{display:none}
+.rme-takeaway{position:absolute;left:70px;right:70px;bottom:30px;margin:0;padding-top:16px;border-top:1px solid var(--line);font-size:27px;line-height:1.2;letter-spacing:-.035em;font-weight:700;color:var(--ink)}
+.rme-takeaway span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* 09 · O parceiro como protagonista */
+#resumo-plataforma .rpe-grid{top:176px;height:376px}
+#resumo-plataforma .rpe-vis{min-height:170px}
+#resumo-plataforma .rpe-pillar p{font-size:11.5px}
+.rpe-gains{position:absolute;left:70px;right:70px;top:568px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rpe-gains span{display:flex;align-items:center;justify-content:center;gap:8px;height:38px;border:1px solid #ffffff14;border-radius:999px;background:#ffffff05;font-size:12px;font-weight:600;color:#dbe5f7}
+.rpe-gains .ico{width:14px;height:14px;color:#c084fc}
+
+/* 10 · Mercado — SOM em destaque */
+.rmk .rm-title{font-size:46px}
+.rmk-funnel{position:absolute;left:70px;top:186px;width:500px;display:flex;flex-direction:column;gap:12px}
+.rmk-step{width:var(--w);display:flex;flex-direction:column;padding:15px 20px;border:1px solid #0a193614;border-radius:14px;background:#fff}
+.rmk-step span{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#3b5bff}
+.rmk-step b{margin-top:4px;font-size:34px;line-height:1.05;letter-spacing:-.045em;color:#0a1936}
+.rmk-step em{margin-top:3px;font-style:normal;font-size:11px;color:#6d7ea3}
+.rmk-arrow{margin:8px 0 0;font-size:15px;font-weight:700;letter-spacing:-.01em;color:#7c3aed}
+.rmk-arrow i{font-style:normal;margin-left:6px}
+.rmk-som{position:absolute;left:620px;right:70px;top:186px;height:436px;display:flex;flex-direction:column;padding:36px 38px 32px;border:1px solid #41318a;border-radius:22px;background:linear-gradient(125deg,#0c1734,#221145 60%,#0e1b3d);box-shadow:0 30px 80px #4f46e533}
+.rmk-som-k{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#c4b5fd}
+.rmk-som-n{display:flex;align-items:baseline;gap:14px;margin:16px 0 0;white-space:nowrap}
+.rmk-som-n b{font-size:104px;line-height:.95;letter-spacing:-.065em;background:linear-gradient(100deg,#c4b5fd,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rmk-som-n span{font-size:27px;font-weight:700;letter-spacing:-.03em;color:#e9e5ff}
+.rmk-som-d{margin:16px 0 0;font-size:18px;line-height:1.35;color:#c4cdfa}
+.rmk-proof{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:auto}
+.rmk-proof span{display:grid;grid-template-columns:20px 1fr;column-gap:11px;padding:14px 16px;border:1px solid #ffffff1f;border-radius:14px;background:#ffffff0a;font-size:11.5px;line-height:1.4;color:#c4cdfa}
+.rmk-proof .ico{grid-row:1/3;align-self:center;width:19px;height:19px;color:#c084fc}
+.rmk-proof b{display:block;font-size:14px;color:#fff}
+
+/* 11 · Concorrência — mensagem em destaque e comparação por capacidade */
+.cmp-lead{margin:12px 0 0;max-width:1040px;font-size:21px;line-height:1.3;letter-spacing:-.02em;font-weight:600;color:#dbe5f7}
+.cmp-cards{position:absolute;left:80px;top:214px;width:392px;height:330px;display:flex;flex-direction:column;gap:14px}
+.cmp-card{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 24px;border:1px solid var(--line);border-radius:16px;background:#ffffff04}
+.cmp-card .comp-metric{margin-top:12px;font-size:36px}
+.cmp-card .comp-sub{font-size:11px}
+.cmp-card .comp-region{font-size:7.5px}
+.cmp-table{position:absolute;left:500px;right:80px;top:214px;height:330px;display:grid;grid-template-rows:1.1fr repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#ffffff03}
+.cmp-row{display:grid;grid-template-columns:1fr 112px 112px 168px;align-items:stretch;border-top:1px solid #ffffff0f;font-size:15px;font-weight:600;letter-spacing:-.01em;color:#dbe5f7}
+.cmp-row>span{display:flex;align-items:center;padding:0 22px}
+.cmp-row>span:not(:first-child){justify-content:center;padding:0}
+.cmp-th{border-top:0;background:#ffffff05;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8c9bb8}
+.cmp-hubcol{gap:7px;border-left:1px solid #7c3aed66;background:linear-gradient(180deg,#7c3aed30,#6366f11c)}
+.cmp-th .cmp-hubcol{color:#fff}
+.cmp-th .cmp-hubcol img{width:16px;height:auto}
+.cmp-y{font-size:16px;color:#9fb1d0}
+.cmp-n{color:#56637e}
+.cmp-h{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7c3aed,#22d3ee);box-shadow:0 0 16px #7c3aed88}
+.cmp-h .ico{width:14px;height:14px;color:#fff}
+.cmp .comp-gap{bottom:54px}
+.cmp .comp-gap p{font-size:23px;line-height:1.25;letter-spacing:-.03em}
+.cmp .comp-gap .q-line{margin-top:14px}
+
+/* 12 · Tração — fatos e estimativas separados */
+.rtr{position:absolute;inset:0;overflow:hidden}
+.rtr-head{position:absolute;left:70px;top:44px;width:1140px}
+.rtr-title{margin:12px 0 0;font-size:46px;line-height:1.05;letter-spacing:-.05em;font-weight:700;color:var(--ink)}
+.rtr-years{position:absolute;left:70px;right:70px;top:182px;height:282px;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:18px}
+.rtr-year{display:flex;flex-direction:column;min-width:0;padding:24px 26px;border:1px solid #0a193614;border-radius:18px;background:#fff;box-shadow:0 20px 50px #4f46e510}
+.rtr-top{display:flex;align-items:center;justify-content:space-between}
+.rtr-top b{font-size:24px;letter-spacing:-.03em;color:#0a1936}
+.rtr-tag{padding:5px 10px;border-radius:999px;background:#d1fae5;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#0f9f6e}
+.rtr-tag.est{background:#ffffff1f;color:#e9d5ff}
+.rtr-n{margin:auto 0 0}
+.rtr-n b{display:block;font-size:78px;line-height:.95;letter-spacing:-.06em;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rtr-n span{display:block;margin-top:8px;font-size:15px;font-weight:600;color:#33415f}
+.rtr-d{margin:9px 0 0;font-size:13px;line-height:1.4;color:#6d7ea3}
+.rtr-d strong{color:#0a1936}
+.rtr-year.build{border-color:#41318a;background:linear-gradient(125deg,#0c1734,#221145 60%,#0e1b3d);box-shadow:0 24px 60px #4f46e52e}
+.rtr-year.build .rtr-top b{color:#fff}
+.rtr-year.build .rtr-n b{font-size:60px;background:linear-gradient(100deg,#c4b5fd,#67e8f9);-webkit-background-clip:text;background-clip:text}
+.rtr-year.build .rtr-n span{color:#e9e5ff}
+.rtr-year.build .rtr-d{color:#c4cdfa}
+.rtr-year.build .rtr-d strong{color:#fff}
+.rtr-msg{position:absolute;left:70px;right:70px;top:490px;display:flex;align-items:center;gap:28px;padding:24px 32px;border:1px solid #0a193614;border-radius:18px;background:#fff}
+.rtr-msg b{font-size:72px;line-height:1;letter-spacing:-.06em;color:#0a1936}
+.rtr-msg p{margin:0;font-size:29px;line-height:1.15;letter-spacing:-.04em;font-weight:700;color:#0a1936}
+.rtr-msg p::before{content:'empresas atendidas';display:block;margin-bottom:6px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7c8cad}
+.rtr-foot{position:absolute;left:70px;right:70px;bottom:28px;margin:0;font-size:10px;line-height:1.4;color:#7c8cad}
+
+/* 13 · Projeções — a base construída */
+.sx-base{position:absolute;left:70px;top:385px;width:430px;z-index:2}
+.sx-base ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.sx-base li{display:flex;align-items:center;gap:11px;padding:11px 14px;border:1px solid #ffffff12;border-radius:12px;background:#ffffff04;font-size:13px;line-height:1.3;color:#dbe5f7}
+.sx-base .ico{flex:none;width:15px;height:15px;color:#22d3ee}
+.sx-base-page .sx-boot-quote{top:562px}
+.sx-base-page .sx-boot-quote>p{margin:0;font-size:23px}
+
+/* 14 · Rodada — a pedida */
+.sx-pedida .fin-head h2{font-size:46px}
+.sx-pedida .fin-lead{font-size:17px;color:#c4d1e7}
+.sx-pedida-ask{position:absolute;left:70px;top:236px;width:520px;height:300px;justify-content:flex-start;padding:26px 32px;z-index:2}
+.sx-pedida-ask .sx-ask-amount{font-size:74px;margin-top:8px}
+.sx-pedida-ask .sx-ask-equity{margin-top:2px}
+.sx-pedida-val{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:14px;margin-top:auto;padding-top:16px;border-top:1px solid #ffffff14}
+.sx-pedida-val span{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8fa4c7}
+.sx-pedida-val b{display:block;margin-top:4px;font-size:28px;line-height:1.1;letter-spacing:-.04em;color:#e2eaff;white-space:nowrap}
+.sx-pedida-val .is-post b{color:#a5f3fc}
+.sx-pedida-val i{padding-bottom:7px;font-style:normal;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7f93b4}
+.sx-pedida-goals{left:615px;top:236px;height:300px}
+.sx-pedida-goals .sx-action-copy>b{margin:0;font-size:19px}
+.sx-pedida-msg{position:absolute;left:70px;right:70px;top:562px;margin:0;padding-left:19px;border-left:2px solid #c084fc66;font-size:25px;line-height:1.25;letter-spacing:-.035em;font-weight:700;color:var(--ink)}
+
+/* 15 · Destinação — três frentes */
+.sx-fronts .sx-action{grid-template-columns:30px 1fr auto;padding:13px 22px 13px 18px}
+.sx-fronts .sx-action-copy>b{margin:0;font-size:18px}
+.sx-front-items{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0!important}
+.sx-front-items span{padding:5px 10px;border:1px solid #ffffff16;border-radius:999px;background:#ffffff05;font-size:10.5px;line-height:1.2;color:#c9d8f0;white-space:nowrap}
+.sx-front-pct{font-style:normal;text-align:right;font-size:27px;line-height:1.05;font-weight:700;letter-spacing:-.04em;color:#cfc2ff;white-space:nowrap}
+.sx-front-pct small{display:block;margin-top:3px;font-size:10.5px;font-weight:500;letter-spacing:0;color:#9fb1d0}
+.sx-action.c1 .sx-front-pct{color:#e3c8ff}
+.sx-action.c2 .sx-front-pct{color:#a5f3fc}
+.sx-action.c0::before{background:#8b79ed}
+.sx-action.c1::before{background:#c084fc}
+.sx-action.c2::before{background:#22d3ee}
+
+/* 16 · Post-money — três projeções */
+.scenario-outcomes.sx-proj{left:70px;right:auto;width:520px;top:220px;height:400px;grid-template-columns:1fr;grid-template-rows:repeat(3,1fr);gap:13px}
+.sx-proj>article{display:grid;grid-template-columns:204px 1fr;align-items:center;gap:14px;padding:0 26px}
+.sx-proj b{font-size:62px;line-height:1;white-space:nowrap}
+.sx-proj b>span{font-size:25px}
+.sx-proj p{margin:0;font-size:16px;line-height:1.3;font-weight:600;color:#dbe5f7}
+.sx-proj small{display:block;margin-top:5px;font-size:10.5px;line-height:1.4;color:#8fa4c7}
+.sx-proj-quote{top:532px}
+.sx-proj-quote>p{margin:0;font-size:23px}
+
+/* 17 · Encerramento — convite ao investidor */
+.s11-invite .display{font-size:50px}
+.s11-motto{margin:26px 0 0;font-size:23px;line-height:1.3;letter-spacing:-.02em;color:#c4d1e7}
+.s11-motto b{color:#fff}
+
+/* Ajustes de ocupação: mercado e concorrência */
+.rmk-funnel{top:196px;gap:13px}
+.rmk-step{padding:19px 22px}
+.rmk-step b{font-size:40px}
+.rmk-step em{font-size:12px}
+.rmk-som{top:196px;height:424px}
+.cmp-cards,.cmp-table{height:356px}
+
+/* Impressão: gradientes de texto das cenas novas em cor sólida */
+@media print{
+  .slide :is(.rme-takeaway span,.rme-ask.few em,.rmk-som-n b,.rtr-n b,.sx-plan-copy b em){background:none!important;color:#a78bfa!important;-webkit-text-fill-color:#a78bfa!important}
+  .slide.light .rtr-n b{color:#6d28d9!important;-webkit-text-fill-color:#6d28d9!important}
+  .slide.light :is(.rmk-som-n b,.rtr-year.build .rtr-n b){color:#c4b5fd!important;-webkit-text-fill-color:#c4b5fd!important}
+  .rme-dots i,.ri-m i::after{animation:none!important}
+}

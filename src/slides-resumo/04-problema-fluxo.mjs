@@ -1,25 +1,25 @@
-// Slide 3 do pitch: o problema da complexidade das automações, no Flow Builder.
+// Slide 4 do pitch: o problema da complexidade das automações, no Flow Builder.
 export default {
   id:'resumo-problema-fluxo',
-  title:'Problema 1: a complexidade das automações.',
+  title:'Problema 1: a complexidade da automação convencional.',
   theme:'dark',
-  number:'03',
+  number:'04',
   notes:[
-    'TEMPO ALVO: 40 segundos',
-    'A estrutura convencional para criar automações com IA ainda depende de workflows compostos por múltiplos blocos, conexões e processos. Quanto maior a complexidade, mais difícil se torna manter, corrigir e replicar essas automações. Um fluxo que parece simples no desenho vira uma dependência operacional: cada cliente novo pede uma cópia, cada mudança de API pede uma correção e cada nó sem dono vira um ponto de falha.'
+    'TEMPO ALVO: 15 segundos',
+    'Onde perdíamos mais tempo? Mesmo com inteligência artificial, automatizar ainda exige tempo para construir, integrar, aprender e manter. A estrutura tradicional exige configurar e conectar diversos processos, aprender diferentes ferramentas e fluxos, corrigir falhas e fazer manutenções — e repetir grande parte desse trabalho a cada novo cliente. Perdíamos tempo construindo automações quando deveríamos estar resolvendo as dores dos clientes.'
   ],
   html:`
     <div class="rpb">
       <header class="rpb-head">
-        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-workflow"></use></svg>Problema 01 — Identificado</p>
-        <h2 class="rpb-title rv" style="--d:1">Problema 1: <span class="grad-text">a complexidade das automações.</span></h2>
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-workflow"></use></svg>Problema 01 — Onde perdíamos mais tempo?</p>
+        <h2 class="rpb-title rv" style="--d:1">A complexidade da <span class="grad-text">automação convencional.</span></h2>
       </header>
 
       <div class="rpb-board rv" style="--d:2">
         <div class="rpb-bar">
           <span class="rpb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="rpb-btitle">Flow builder · cliente X</span>
-          <span class="rpb-stats"><b>18</b> nós <span>·</span> <b>27</b> conexões <span>·</span> <b class="bad">4</b> pontos de falha</span>
+          <span class="rpb-btitle">Workflow convencional · cliente X</span>
+          <span class="rpb-stats"><b>construir</b><span>·</span><b>integrar</b><span>·</span><b>aprender</b><span>·</span><b class="bad">manter</b></span>
         </div>
 
         <div class="rpb-canvas">
@@ -96,10 +96,10 @@ export default {
           <div class="rpb-node rv" style="--d:6;left:855px;top:288px"><span class="rpb-ico"><svg class="ico" aria-hidden="true"><use href="#i-megaphone"></use></svg></span><div><b>Notificar</b><em>time</em></div></div>
 
           <div class="rpb-alert rv" style="--d:6" aria-hidden="true"><i></i>API alterada<small>3 nós afetados</small></div>
-          <div class="rpb-replicate rv" style="--d:7" aria-hidden="true"><svg class="ico"><use href="#i-layers"></use></svg><span><b>× 12</b> clientes</span><small>replicar do zero</small></div>
+          <div class="rpb-replicate rv" style="--d:7" aria-hidden="true"><svg class="ico"><use href="#i-layers"></use></svg><span><b>a cada</b> cliente</span><small>repetir o trabalho</small></div>
         </div>
       </div>
 
-      <p class="rpb-takeaway rv" style="--d:7">Manter, corrigir e replicar deixou de ser operação. <span>Virou reconstrução.</span></p>
+      <p class="rpb-takeaway rv" style="--d:7">Perdíamos tempo construindo automações. <span>Deveríamos estar resolvendo as dores dos clientes.</span></p>
     </div>`
 };

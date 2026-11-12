@@ -5,39 +5,34 @@ export default {
   theme:'dark',
   number:'02',
   notes:[
-    'TEMPO ALVO: 40 segundos',
-    'Antes de ser plataforma, fomos agência (Hub ConverseIA). Foram dois anos vendendo automação de atendimento humanizada com agentes de IA. Na prática, a IA atendia onde o cliente já estava — WhatsApp, Instagram e site — com contexto, tom natural, memória da conversa e passagem para o time humano quando necessário. E executava nas ferramentas que o cliente já usava: CRM, agenda e ERP. Tentamos centralizar, executar com velocidade e escalar. Cada cliente novo exigia um workspace novo, com cerca de 10 ferramentas diferentes: 10 acessos, 10 cobranças e 10 pontos de falha. Foi aí que a conta não fechou. Antes de construir a solução, nós éramos o cliente.'
+    'TEMPO ALVO: 20 segundos',
+    'Entre 2024 e 2025, automatizamos o atendimento de mais de 70 empresas. O propósito: usar inteligência artificial para centralizar, automatizar e humanizar o atendimento e o relacionamento com clientes — integrando canais de comunicação, redes sociais, ferramentas de gestão, métricas e processos em uma experiência centralizada, intuitiva e realmente utilizada pelas equipes. Depois de dois anos, foi aí que a conta não fechou.',
+    'Apoio: a operação anterior era a agência Hub ConverseIA. As 70 empresas são clientes de serviço dessa operação (cerca de 20 em 2024 e 50 em 2025), não clientes pagantes da plataforma SaaS.'
   ],
   html:`
     <div class="dor">
       <header class="dor-head">
-        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-route"></use></svg>01 — A dor do mercado</p>
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-route"></use></svg>Nossa origem</p>
         <h2 class="dor-title rv" style="--d:1">Nascemos de <span class="grad-text">uma dor real.</span></h2>
       </header>
 
-      <div class="dor-grid">
-        <article class="dor-card rv" style="--d:2">
-          <span class="dor-n">01</span>
+      <div class="dor-grid two">
+        <article class="dor-card big rv" style="--d:2">
+          <span class="dor-n">01 · Nossa experiência</span>
           <span class="dor-ico"><svg class="ico" aria-hidden="true"><use href="#i-briefcase"></use></svg></span>
-          <h3>Agência Hub ConverseIA</h3>
-          <p>Dois anos vendendo automação de atendimento para empresas.</p>
+          <h3><b class="grad-text">+70</b> empresas</h3>
+          <p>Atendimento automatizado entre 2024 e 2025.</p>
         </article>
-        <article class="dor-card rv" style="--d:3">
-          <span class="dor-n">02</span>
+        <article class="dor-card big rv" style="--d:3">
+          <span class="dor-n">02 · Nosso propósito</span>
           <span class="dor-ico"><svg class="ico" aria-hidden="true"><use href="#i-bot"></use></svg></span>
-          <h3>O propósito era claro</h3>
-          <p>Levar atendimento humanizado com agentes de IA para a operação.</p>
-        </article>
-        <article class="dor-card rv" style="--d:4">
-          <span class="dor-n">03</span>
-          <span class="dor-ico"><svg class="ico" aria-hidden="true"><use href="#i-trend"></use></svg></span>
-          <h3>Tentamos centralizar, executar e escalar</h3>
-          <p>Cada cliente novo pedia um workspace novo. O trabalho crescia junto.</p>
+          <h3>Centralizar, automatizar <span class="grad-text">e humanizar.</span></h3>
+          <p>IA no atendimento e no relacionamento com clientes.</p>
         </article>
       </div>
 
       <section class="dor-ev rv" style="--d:5" aria-label="Como o propósito funcionava na prática">
-        <p class="dor-ev-cap"><svg class="ico" aria-hidden="true"><use href="#i-route"></use></svg>O propósito na prática</p>
+        <p class="dor-ev-cap"><svg class="ico" aria-hidden="true"><use href="#i-route"></use></svg>Canais, gestão e métricas em um só lugar</p>
         <div class="dor-ev-row">
           <div class="dor-ev-side">
             <span class="dor-ev-lbl">Canais</span>
@@ -47,18 +42,18 @@ export default {
               <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-globe"></use></svg>Site</span>
             </div>
           </div>
-          <span class="dor-ev-wire" aria-hidden="true"><i><b>conversa</b></i></span>
+          <span class="dor-ev-wire" aria-hidden="true"><i><b>centraliza</b></i></span>
           <div class="dor-ev-core">
             <span class="dor-ev-orb"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg></span>
-            <div class="dor-ev-copy"><b>IA humanizada</b><small>contexto · tom natural · memória · handoff</small></div>
+            <div class="dor-ev-copy"><b>IA humanizada</b><small>uma experiência só</small></div>
           </div>
-          <span class="dor-ev-wire" aria-hidden="true"><i><b>executa</b></i></span>
+          <span class="dor-ev-wire" aria-hidden="true"><i><b>automatiza</b></i></span>
           <div class="dor-ev-side right">
-            <span class="dor-ev-lbl">Ferramentas</span>
+            <span class="dor-ev-lbl">Gestão</span>
             <div class="dor-ev-chips">
               <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-database"></use></svg>CRM</span>
               <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Agenda</span>
-              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>ERP</span>
+              <span class="dorchip"><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg>Métricas</span>
             </div>
           </div>
         </div>
@@ -66,7 +61,7 @@ export default {
 
       <div class="dor-turn rv" style="--d:6">
         <span class="dor-line"></span>
-        <p>Foi aí que <span class="grad-text">a conta não fechou.</span></p>
+        <p>Depois de dois anos, foi aí que <span class="grad-text">a conta não fechou.</span></p>
         <span class="dor-line"></span>
       </div>
     </div>`

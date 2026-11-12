@@ -5,15 +5,15 @@ export default {
   theme:'dark',
   number:'06',
   notes:[
-    'TEMPO ALVO: 45 segundos',
-    'A solução não é construir um fluxo melhor. É eliminar a necessidade de construir o fluxo. Os mesmos blocos do Flow Builder se reorganizam, convergem para um único elemento e se transformam no ScaleX Hub. O que era um diagrama de nós vira uma interface simples, com recursos de IA que o parceiro ativa e desativa. Em vez de construir automações bloco por bloco, o parceiro passa a ativar recursos de IA de maneira simples, rápida e replicável.'
+    'TEMPO ALVO: 15 segundos',
+    'Substituímos a necessidade de construir e conectar inúmeros processos pela experiência de configurar e ativar soluções em uma plataforma centralizada. O resultado esperado: menor tempo de implantação, menor curva de aprendizado, mais facilidade para replicar soluções e mais tempo para resolver as necessidades reais dos clientes. Menos tempo construindo automações. Mais tempo entregando soluções.'
   ],
   html:`
     <div class="rsf">
       <header class="rsf-head">
         <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg>Solução 01</p>
         <h2 class="rsf-title rv" style="--d:1">Da complexidade ao <span class="grad-text">simples ato de ativar.</span></h2>
-        <p class="rsf-sub rv" style="--d:2">Os mesmos blocos. Um único elemento. Nenhum fluxo para reconstruir.</p>
+        <p class="rsf-sub rv" style="--d:2">Implantação mais rápida. Menor curva de aprendizado. Fácil de replicar.</p>
       </header>
 
       <div class="rsf-stage">
@@ -105,10 +105,10 @@ export default {
           <div class="rsf-ui-foot"><svg class="ico"><use href="#i-check"></use></svg>Aplicar a todos os clientes<b>1 clique</b></div>
         </div>
 
-        <span class="rsf-ghost left rv" style="--d:5" aria-hidden="true">18 nós</span>
-        <span class="rsf-ghost right rv" style="--d:8" aria-hidden="true">1 ativação</span>
+        <span class="rsf-ghost left rv" style="--d:5" aria-hidden="true">workflow complexo</span>
+        <span class="rsf-ghost right rv" style="--d:8" aria-hidden="true">ativação simples</span>
       </div>
 
-      <p class="rsf-takeaway rv" style="--d:8">Em vez de construir automações bloco por bloco, o parceiro <span>ativa recursos de IA.</span></p>
+      <p class="rsf-takeaway rv" style="--d:8">Menos tempo construindo automações. <span>Mais tempo entregando soluções.</span></p>
     </div>`
 };

@@ -1,25 +1,25 @@
-// Slide 4 do pitch: o problema das ferramentas descentralizadas.
+// Slide 5 do pitch: o problema das ferramentas descentralizadas.
 export default {
   id:'resumo-problema-ferramentas',
-  title:'Problema 2: ferramentas descentralizadas.',
+  title:'Problema 2: ferramentas fragmentadas, custos multiplicados.',
   theme:'dark',
-  number:'04',
+  number:'05',
   notes:[
-    'TEMPO ALVO: 40 segundos',
-    'A operação depende de diversas ferramentas desconectadas: CRM, automação, dashboards, prospecção, páginas, omnichannel, gestão de grupos, agentes de IA, assistentes e tracking. São dez ferramentas, dez acessos, dez cobranças e dez pontos de falha. Isso aumenta a fragmentação, a complexidade de gestão e o esforço operacional. Cada ferramenta tem seu login, seu dado e sua própria forma de quebrar.'
+    'TEMPO ALVO: 15 segundos',
+    'Onde o cliente perdia mais dinheiro? Para operar uma única jornada de atendimento, as empresas precisavam contratar e utilizar diversas ferramentas. As consequências: múltiplas assinaturas de software, informações e processos descentralizados, baixa adesão dos colaboradores e desperdício de investimento em ferramentas pouco utilizadas. O problema não era apenas contratar ferramentas. Era fazer com que as pessoas realmente as utilizassem.'
   ],
   html:`
     <div class="rpt">
       <header class="rpt-head">
-        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-grid"></use></svg>Problema 02 — Identificado</p>
-        <h2 class="rpt-title rv" style="--d:1">Problema 2: <span class="grad-text">ferramentas descentralizadas.</span></h2>
+        <p class="kicker rv" style="--d:0"><span class="k-line"></span><svg class="ico" aria-hidden="true"><use href="#i-grid"></use></svg>Problema 02 — Onde o cliente perdia mais dinheiro?</p>
+        <h2 class="rpt-title rv" style="--d:1">Ferramentas fragmentadas, <span class="grad-text">custos multiplicados.</span></h2>
       </header>
 
       <div class="rpt-board rv" style="--d:2">
         <div class="rpt-bar">
           <span class="rpt-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="rpt-btitle">Operação · ferramentas soltas</span>
-          <span class="rpt-stats"><b>10</b> acessos <span>·</span> <b>10</b> cobranças <span>·</span> <b class="bad">10</b> pontos de falha</span>
+          <span class="rpt-btitle">Uma jornada de atendimento · dez ferramentas</span>
+          <span class="rpt-stats"><b>10</b> assinaturas <span>·</span> <b>10</b> logins <span>·</span> <b class="bad">baixa</b> adesão</span>
         </div>
 
         <div class="rpt-canvas">
@@ -85,12 +85,12 @@ export default {
       </div>
 
       <div class="rpt-cost rv" style="--d:8">
-        <span><svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg><b>10</b> acessos</span>
-        <span><svg class="ico" aria-hidden="true"><use href="#i-banknote"></use></svg><b>10</b> cobranças</span>
-        <span><svg class="ico" aria-hidden="true"><use href="#i-trend-down"></use></svg><b>10</b> pontos de falha</span>
-        <em>Nenhuma operação em um só lugar.</em>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-banknote"></use></svg>Múltiplas assinaturas</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-grid"></use></svg>Dados descentralizados</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg>Baixa adesão</span>
+        <span><svg class="ico" aria-hidden="true"><use href="#i-trend-down"></use></svg>Investimento desperdiçado</span>
       </div>
 
-      <p class="rpt-takeaway rv" style="--d:9">A operação não está em um lugar. <span>Está em dez.</span></p>
+      <p class="rpt-takeaway rv" style="--d:9">O problema não era apenas contratar ferramentas. <span>Era fazer com que as pessoas realmente as utilizassem.</span></p>
     </div>`
 };
