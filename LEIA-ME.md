@@ -33,7 +33,7 @@ As senhas são definidas como hashes SHA-256 em `src/gate.js`. Para trocar uma s
 - **Home / End** vão ao primeiro ou ao último slide.
 - **F** ou **Tela cheia** abre a escolha do modo de apresentação; **G** abre a visão geral; **?** abre a ajuda.
 - **Projetor duplicado:** a mesma imagem nas duas telas; o slide abre em tela cheia.
-- **Projetor espelhado:** os slides abrem em outra janela, para arrastar ao projetor e colocar em tela cheia; a tela do apresentador mostra o cronômetro regressivo com o tempo limite definido, o slide atual, o próximo e o roteiro. O cronômetro começa ao sair do primeiro slide (**T** inicia ou pausa), fica âmbar no trecho final e vermelho ao estourar o tempo. As duas janelas navegam juntas. O navegador precisa permitir pop-ups do site.
+- **Projetor espelhado:** os slides abrem em outra janela, para arrastar ao projetor e colocar em tela cheia; a tela do apresentador mostra o cronômetro regressivo com o tempo limite definido, o slide atual, o próximo e a fala em letras grandes (a roda do mouse rola a fala com o cursor em qualquer ponto da tela; **A−/A+** ajustam o tamanho). O cronômetro começa ao sair do primeiro slide (**T** inicia ou pausa), fica âmbar no trecho final e vermelho ao estourar o tempo. As duas janelas navegam juntas. O navegador precisa permitir pop-ups do site.
 - **Leitura** mostra o conteúdo do slide em formato de artigo, com as notas do apresentador.
 - **PDF** (ou **P**) abre a exportação: um slide por página em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha **Salvar como PDF**.
 - **Uso do aporte** (nas duas versões): passe o mouse, toque ou use Tab e Enter nas três frentes para detalhar a alocação.

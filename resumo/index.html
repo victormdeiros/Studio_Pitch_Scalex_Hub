@@ -277,19 +277,19 @@ button.present-option:hover{border-color:#c084fc88;background:#c084fc12;transfor
 .present-time span{display:flex;align-items:center;gap:8px}
 .present-time input{width:64px;padding:8px 10px;border:1px solid #ffffff2e;border-radius:10px;background:#04070e;color:#fff;font-size:16px;font-weight:700;text-align:center}
 .present-time i{font-style:normal;color:#8c9bb8}
-.presenter{position:fixed;top:52px;right:0;bottom:68px;width:380px;z-index:30;display:flex;flex-direction:column;gap:14px;padding:18px;border-left:1px solid #ffffff14;background:#060c1a;color:var(--ui-text)}
+.presenter{--pw:clamp(380px,60vw,1180px);position:fixed;top:52px;right:0;bottom:68px;width:var(--pw);z-index:30;display:grid;grid-template-columns:minmax(260px,1fr) 1.25fr;grid-template-rows:auto minmax(0,1fr) auto;align-items:stretch;gap:14px;padding:18px;border-left:1px solid #ffffff14;background:#060c1a;color:var(--ui-text)}
 .presenter[hidden]{display:none}
-body.presenting .workspace{right:380px}
+body.presenting .workspace{right:clamp(380px,60vw,1180px)}
 body.presenting #fullscreen-btn,body.presenting #edit-btn{display:none}
 .presenter-label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#8c9bb8}
-.presenter-timer{padding:18px;border:1px solid #22d3ee40;border-radius:18px;background:linear-gradient(150deg,#0b2233,#0b1528);text-align:center}
+.presenter-timer{padding:12px 18px 14px;border:1px solid #22d3ee40;border-radius:18px;background:linear-gradient(150deg,#0b2233,#0b1528);text-align:center}
 .presenter-clock{display:block;margin-top:4px;font-size:88px;line-height:1;letter-spacing:-.05em;font-weight:700;font-variant-numeric:tabular-nums;color:#a5f3fc}
-.presenter-bar{display:block;height:6px;margin-top:14px;border-radius:999px;background:#ffffff12;overflow:hidden}
+.presenter-bar{display:block;height:6px;margin-top:10px;border-radius:999px;background:#ffffff12;overflow:hidden}
 .presenter-bar::after{content:'';display:block;height:100%;width:var(--p,0%);border-radius:inherit;background:linear-gradient(90deg,#6d7cff,#22d3ee);transition:width .25s linear}
-.presenter-limit{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;font-size:12px;color:#a9b8d1;font-variant-numeric:tabular-nums}
+.presenter-limit{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;font-size:12px;color:#a9b8d1;font-variant-numeric:tabular-nums}
 .presenter-limit button{padding:5px 10px;font-size:11px}
-.presenter-actions{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-top:12px}
-.presenter-actions button{padding:11px 13px;font-size:14px;font-weight:700}
+.presenter-actions{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-top:8px}
+.presenter-actions button{padding:8px 13px;font-size:14px;font-weight:700}
 .presenter[data-state=warn] .presenter-timer{border-color:#fbbf2480;background:linear-gradient(150deg,#33260b,#1b1508)}
 .presenter[data-state=warn] .presenter-clock{color:#fcd34d}
 .presenter[data-state=warn] .presenter-bar::after{background:#fbbf24}
@@ -298,10 +298,21 @@ body.presenting #fullscreen-btn,body.presenting #edit-btn{display:none}
 .presenter[data-state=over] .presenter-bar::after{background:#fb7185}
 .presenter-now b{display:block;margin:4px 0 12px;font-size:16px;line-height:1.3;color:#fff}
 .presenter-now em{display:block;margin-top:4px;font-style:normal;font-size:13px;line-height:1.4;color:#a9b8d1}
-.presenter-notes{flex:1;min-height:0;overflow:auto;padding:14px 16px;border:1px solid #ffffff12;border-radius:14px;background:#ffffff04}
-.presenter-notes p{margin:0 0 10px;font-size:15px;line-height:1.55;color:#dbe5f7}
-.presenter-notes p:last-child{margin-bottom:0}
-.presenter-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.presenter-now{align-self:center;min-width:0}
+.presenter-script{grid-column:1/-1;position:relative;display:flex;flex-direction:column;min-height:0;border:1px solid #ffffff1f;border-radius:18px;background:#02060f;overflow:hidden}
+.presenter-script-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px 10px 20px;border-bottom:1px solid #ffffff12}
+.presenter-script-head div{display:flex;gap:6px}
+.presenter-script-head button{min-width:42px;padding:5px 10px;font-size:13px;font-weight:700}
+.presenter-notes{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:22px 30px 40vh}
+.presenter-notes::-webkit-scrollbar{display:none}
+.presenter-notes:focus-visible{outline:2px solid #22d3ee66;outline-offset:-2px}
+.presenter-notes p{margin:0 0 .75em;font-size:var(--notes-size,34px);line-height:1.5;font-weight:600;letter-spacing:-.005em;color:#fff;text-wrap:pretty}
+.presenter-notes p.empty{color:#8c9bb8;font-weight:500}
+.presenter-script::after{content:'▼';position:absolute;left:0;right:0;bottom:4px;padding:44px 0 10px;text-align:center;font-size:14px;color:#a5f3fc;background:linear-gradient(#02060f00,#02060f 70%);pointer-events:none;opacity:0;transition:opacity .2s}
+.presenter[data-more="1"] .presenter-script::after{opacity:1}
+.presenter-notes-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:#ffffff12}
+.presenter-notes-bar::after{content:'';display:block;height:100%;width:var(--p,0%);background:linear-gradient(90deg,#6d7cff,#22d3ee);transition:width .15s linear}
+.presenter-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .presenter-foot p{margin:0;font-size:11px;line-height:1.4;color:#8c9bb8}
 .presenter-foot div{display:flex;gap:8px;flex:none}
 .audience-hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;padding:12px 20px;border-color:#22d3ee66;background:#04121ef2;color:#a5f3fc;font-size:13px;font-weight:700;box-shadow:0 14px 40px #000a}
@@ -309,9 +320,10 @@ body.presenting #fullscreen-btn,body.presenting #edit-btn{display:none}
 .audience-hint[hidden]{display:none}
 @media(max-width:860px){
   .present-options{grid-template-columns:1fr}
-  .presenter{top:auto;left:0;width:auto;height:48dvh;border-left:0;border-top:1px solid #ffffff14}
-  body.presenting .workspace{right:0;bottom:calc(68px + 48dvh)}
-  .presenter-clock{font-size:60px}
+  .presenter{top:auto;left:0;width:auto;height:60dvh;grid-template-columns:1fr 1fr;border-left:0;border-top:1px solid #ffffff14}
+  body.presenting .workspace{right:0;bottom:calc(68px + 60dvh)}
+  .presenter-clock{font-size:44px}
+  .presenter-notes p{font-size:min(var(--notes-size,34px),24px)}
 }
 @media print{.presenter,.audience-hint{display:none!important}}
 .present-option .primary,.presenter .primary{background:linear-gradient(100deg,#3b5bff,#8b5cf6);border-color:#a78bfa66;color:#fff;font-weight:700}
@@ -3959,7 +3971,11 @@ html.gate-locked .edit-badge{visibility:hidden!important}
       <span class="presenter-label">Próximo</span>
       <em id="presenter-next"></em>
     </div>
-    <div id="presenter-notes" class="presenter-notes" aria-label="Roteiro do slide"></div>
+    <div class="presenter-script">
+      <div class="presenter-script-head"><span class="presenter-label">Fala · role a roda do mouse para avançar</span><div><button type="button" id="presenter-smaller" aria-label="Diminuir o texto da fala">A−</button><button type="button" id="presenter-larger" aria-label="Aumentar o texto da fala">A+</button></div></div>
+      <div id="presenter-notes" class="presenter-notes" aria-label="Roteiro do slide" tabindex="0"></div>
+      <i id="presenter-notes-bar" class="presenter-notes-bar" aria-hidden="true"></i>
+    </div>
     <div class="presenter-foot">
       <p id="presenter-status">Janela do projetor aberta.</p>
       <div><button type="button" id="presenter-reopen" hidden>Reabrir janela</button><button type="button" id="presenter-end">Encerrar</button></div>
@@ -4042,7 +4058,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
 
   <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
   <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Tela cheia</dt><dd>Escolha <b>Projetor duplicado</b> (a mesma imagem nas duas telas) ou <b>Projetor espelhado</b>: os slides abrem em uma janela para o projetor e esta tela mostra o cronômetro, com o tempo limite que você definir, e o roteiro. <b>T</b> inicia ou pausa o cronômetro.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Tela cheia</dt><dd>Escolha <b>Projetor duplicado</b> (a mesma imagem nas duas telas) ou <b>Projetor espelhado</b>: os slides abrem em uma janela para o projetor e esta tela mostra o cronômetro, com o tempo limite que você definir, e a fala em letras grandes; a roda do mouse rola a fala, com o cursor em qualquer lugar da tela, e <b>A−/A+</b> ajustam o tamanho do texto. <b>T</b> inicia ou pausa o cronômetro.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
   <dialog id="present-dialog" class="present-dialog" aria-labelledby="present-title">
     <div class="dialog-top"><h2 id="present-title">Como você vai apresentar?</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
     <div class="present-options">
@@ -4581,7 +4597,32 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     $('#presenter-next').textContent=next?titleOf(next):'Fim da apresentação';
     const notes=$('#presenter-notes');notes.replaceChildren();
     speechOf(slides[current]).forEach(text=>{const p=document.createElement('p');p.textContent=text;notes.append(p);});
-    notes.scrollTop=0;
+    if(!notes.childElementCount){const p=document.createElement('p');p.className='empty';p.textContent='Sem fala para este slide.';notes.append(p);}
+    notes.scrollTop=0;notesTarget=0;renderNotesProgress();
+  }
+  /* Roteiro em modo teleprompter: a roda do mouse rola a fala, onde quer que o cursor esteja. */
+  const NOTES_SIZE_KEY='scalex-presenter-notes-size';
+  let notesTarget=0, notesSize=34;
+  try{notesSize=Math.max(20,Math.min(64,parseInt(localStorage.getItem(NOTES_SIZE_KEY),10)||34));}catch(_){}
+  function setNotesSize(size){
+    notesSize=Math.max(20,Math.min(64,size));
+    presenter.style.setProperty('--notes-size',notesSize+'px');
+    try{localStorage.setItem(NOTES_SIZE_KEY,String(notesSize));}catch(_){}
+    renderNotesProgress();
+  }
+  function renderNotesProgress(){
+    const notes=$('#presenter-notes'), max=notes.scrollHeight-notes.clientHeight;
+    presenter.dataset.more=max>4&&notes.scrollTop<max-4?'1':'0';
+    $('#presenter-notes-bar').style.setProperty('--p',(max>4?Math.min(100,notes.scrollTop/max*100):100)+'%');
+  }
+  function scrollNotes(e){
+    const notes=$('#presenter-notes'), max=Math.max(0,notes.scrollHeight-notes.clientHeight);
+    let step=e.deltaMode===1?e.deltaY*notesSize*1.5:e.deltaMode===2?e.deltaY*notes.clientHeight:e.deltaY;
+    // Um "clique" da roda avança cerca de três linhas; o trackpad rola de forma contínua.
+    const notch=Math.abs(step)>=50;
+    if(notch)step=Math.sign(step)*notesSize*1.5*3;
+    notesTarget=Math.max(0,Math.min(max,(notch?notesTarget:notes.scrollTop)+step));
+    notes.scrollTo({top:notesTarget,behavior:notch?'smooth':'auto'});
   }
   function watchPeer(){
     clearInterval(peerWatch);
@@ -4644,6 +4685,11 @@ html.gate-locked .edit-badge{visibility:hidden!important}
   $('#presenter-minus').addEventListener('click',()=>adjustLimit(-60));
   $('#presenter-plus').addEventListener('click',()=>adjustLimit(60));
   $('#presenter-end').addEventListener('click',stopPresenter);
+  $('#presenter-smaller').addEventListener('click',()=>setNotesSize(notesSize-4));
+  $('#presenter-larger').addEventListener('click',()=>setNotesSize(notesSize+4));
+  $('#presenter-notes').addEventListener('scroll',renderNotesProgress,{passive:true});
+  addEventListener('resize',renderNotesProgress);
+  setNotesSize(notesSize);
   $('#presenter-reopen').addEventListener('click',openAudience);
   document.addEventListener('scalex:slide',e=>{
     if(!document.body.classList.contains('presenting'))return;
@@ -4707,6 +4753,10 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     e.preventDefault();go(current+(e.button===4?1:-1));
   });
   document.addEventListener('wheel',e=>{
+    if(document.body.classList.contains('presenting')){
+      if(e.ctrlKey||document.querySelector('dialog[open]'))return;
+      e.preventDefault();scrollNotes(e);return;
+    }
     if(!mouseNavActive(e)||Math.abs(e.deltaY)<8||e.ctrlKey)return;
     e.preventDefault();
     const now=performance.now();if(now<wheelLock)return;

@@ -350,7 +350,32 @@
     $('#presenter-next').textContent=next?titleOf(next):'Fim da apresentação';
     const notes=$('#presenter-notes');notes.replaceChildren();
     speechOf(slides[current]).forEach(text=>{const p=document.createElement('p');p.textContent=text;notes.append(p);});
-    notes.scrollTop=0;
+    if(!notes.childElementCount){const p=document.createElement('p');p.className='empty';p.textContent='Sem fala para este slide.';notes.append(p);}
+    notes.scrollTop=0;notesTarget=0;renderNotesProgress();
+  }
+  /* Roteiro em modo teleprompter: a roda do mouse rola a fala, onde quer que o cursor esteja. */
+  const NOTES_SIZE_KEY='scalex-presenter-notes-size';
+  let notesTarget=0, notesSize=34;
+  try{notesSize=Math.max(20,Math.min(64,parseInt(localStorage.getItem(NOTES_SIZE_KEY),10)||34));}catch(_){}
+  function setNotesSize(size){
+    notesSize=Math.max(20,Math.min(64,size));
+    presenter.style.setProperty('--notes-size',notesSize+'px');
+    try{localStorage.setItem(NOTES_SIZE_KEY,String(notesSize));}catch(_){}
+    renderNotesProgress();
+  }
+  function renderNotesProgress(){
+    const notes=$('#presenter-notes'), max=notes.scrollHeight-notes.clientHeight;
+    presenter.dataset.more=max>4&&notes.scrollTop<max-4?'1':'0';
+    $('#presenter-notes-bar').style.setProperty('--p',(max>4?Math.min(100,notes.scrollTop/max*100):100)+'%');
+  }
+  function scrollNotes(e){
+    const notes=$('#presenter-notes'), max=Math.max(0,notes.scrollHeight-notes.clientHeight);
+    let step=e.deltaMode===1?e.deltaY*notesSize*1.5:e.deltaMode===2?e.deltaY*notes.clientHeight:e.deltaY;
+    // Um "clique" da roda avança cerca de três linhas; o trackpad rola de forma contínua.
+    const notch=Math.abs(step)>=50;
+    if(notch)step=Math.sign(step)*notesSize*1.5*3;
+    notesTarget=Math.max(0,Math.min(max,(notch?notesTarget:notes.scrollTop)+step));
+    notes.scrollTo({top:notesTarget,behavior:notch?'smooth':'auto'});
   }
   function watchPeer(){
     clearInterval(peerWatch);
@@ -413,6 +438,11 @@
   $('#presenter-minus').addEventListener('click',()=>adjustLimit(-60));
   $('#presenter-plus').addEventListener('click',()=>adjustLimit(60));
   $('#presenter-end').addEventListener('click',stopPresenter);
+  $('#presenter-smaller').addEventListener('click',()=>setNotesSize(notesSize-4));
+  $('#presenter-larger').addEventListener('click',()=>setNotesSize(notesSize+4));
+  $('#presenter-notes').addEventListener('scroll',renderNotesProgress,{passive:true});
+  addEventListener('resize',renderNotesProgress);
+  setNotesSize(notesSize);
   $('#presenter-reopen').addEventListener('click',openAudience);
   document.addEventListener('scalex:slide',e=>{
     if(!document.body.classList.contains('presenting'))return;
@@ -476,6 +506,10 @@
     e.preventDefault();go(current+(e.button===4?1:-1));
   });
   document.addEventListener('wheel',e=>{
+    if(document.body.classList.contains('presenting')){
+      if(e.ctrlKey||document.querySelector('dialog[open]'))return;
+      e.preventDefault();scrollNotes(e);return;
+    }
     if(!mouseNavActive(e)||Math.abs(e.deltaY)<8||e.ctrlKey)return;
     e.preventDefault();
     const now=performance.now();if(now<wheelLock)return;
