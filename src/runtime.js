@@ -293,6 +293,7 @@
     if(!data||!peer||e.source!==peer)return;
     if(data.scalex==='slide')syncTo(Number(data.index)||0);
     else if(data.scalex==='hello'&&!audienceMode)notifyPeer(current);
+    else if(data.scalex==='wheel'&&!audienceMode&&document.body.classList.contains('presenting'))scrollNotes({deltaY:Number(data.deltaY)||0,deltaMode:Number(data.deltaMode)||0});
     else if(data.scalex==='end'&&audienceMode)window.close();
   });
 
@@ -509,6 +510,13 @@
     if(document.body.classList.contains('presenting')){
       if(e.ctrlKey||document.querySelector('dialog[open]'))return;
       e.preventDefault();scrollNotes(e);return;
+    }
+    // Na janela do projetor a roda não troca de slide: ela rola a fala na tela do apresentador.
+    if(audienceMode){
+      if(e.ctrlKey)return;
+      e.preventDefault();
+      try{if(peer&&!peer.closed)peer.postMessage({scalex:'wheel',deltaY:e.deltaY,deltaMode:e.deltaMode},'*');}catch(_){}
+      return;
     }
     if(!mouseNavActive(e)||Math.abs(e.deltaY)<8||e.ctrlKey)return;
     e.preventDefault();

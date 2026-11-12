@@ -3995,7 +3995,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
 
   <dialog id="overview-dialog" aria-labelledby="overview-title"><div class="dialog-top"><h2 id="overview-title">Os slides</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
   <dialog id="reading-dialog" aria-labelledby="reading-title"><div class="dialog-top"><h2 id="reading-title">Leitura do slide</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="reading-content" class="reading-content"></div></dialog>
-  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Tela cheia</dt><dd>Escolha <b>Projetor duplicado</b> (a mesma imagem nas duas telas) ou <b>Projetor espelhado</b>: os slides abrem em uma janela para o projetor e esta tela mostra o cronômetro, com o tempo limite que você definir, e a fala em letras grandes; a roda do mouse rola a fala, com o cursor em qualquer lugar da tela, e <b>A−/A+</b> ajustam o tamanho do texto. <b>T</b> inicia ou pausa o cronômetro.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><h2 id="help-title">Como usar</h2><button data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div><dl class="help-grid"><dt>← → / Page Up / Page Down / Espaço</dt><dd>Navegar entre os slides.</dd><dt>Mouse (tela cheia)</dt><dd>Botão direito ou rolar para baixo avança; botão esquerdo ou rolar para cima volta. Os botões laterais do mouse também funcionam.</dd><dt>Home / End</dt><dd>Ir ao primeiro ou ao último slide.</dd><dt>F / G / ?</dt><dd>Tela cheia, visão geral dos slides ou esta ajuda.</dd><dt>Tela cheia</dt><dd>Escolha <b>Projetor duplicado</b> (a mesma imagem nas duas telas) ou <b>Projetor espelhado</b>: os slides abrem em uma janela para o projetor e esta tela mostra o cronômetro, com o tempo limite que você definir, e a fala em letras grandes; a roda do mouse rola a fala, com o cursor em qualquer lugar, inclusive sobre a janela do projetor, e <b>A−/A+</b> ajustam o tamanho do texto. <b>T</b> inicia ou pausa o cronômetro.</dd><dt>Celular</dt><dd>Deslize para mudar de slide. “Leitura” mostra os textos em tamanho confortável.</dd><dt>Leitura</dt><dd>Mostra o conteúdo do slide em formato de artigo, incluindo as notas do apresentador quando existirem.</dd><dt>P · PDF</dt><dd>Abre a exportação: os slides, um por página, em 16:9, com opção de incluir as notas do apresentador. Na janela do navegador, escolha “Salvar como PDF”.</dd><dt>Interações</dt><dd>Passe o mouse sobre cards, listas e o gráfico: os elementos respondem com realce sutil.</dd><dt data-editor-only>E · Editar</dt><dd data-editor-only>Abre o Estúdio: arraste os slides para mudar a ordem, clique nos textos para editar e publique no GitHub Pages. A edição pede a senha do estúdio.</dd></dl><p class="publish-note" style="margin-top:18px"><button type="button" id="lock-app" class="link-btn">Bloquear apresentação</button> Volta para a tela de senha.</p></dialog>
   <dialog id="present-dialog" class="present-dialog" aria-labelledby="present-title">
     <div class="dialog-top"><h2 id="present-title">Como você vai apresentar?</h2><button type="button" data-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
     <div class="present-options">
@@ -4477,6 +4477,7 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     if(!data||!peer||e.source!==peer)return;
     if(data.scalex==='slide')syncTo(Number(data.index)||0);
     else if(data.scalex==='hello'&&!audienceMode)notifyPeer(current);
+    else if(data.scalex==='wheel'&&!audienceMode&&document.body.classList.contains('presenting'))scrollNotes({deltaY:Number(data.deltaY)||0,deltaMode:Number(data.deltaMode)||0});
     else if(data.scalex==='end'&&audienceMode)window.close();
   });
 
@@ -4693,6 +4694,13 @@ html.gate-locked .edit-badge{visibility:hidden!important}
     if(document.body.classList.contains('presenting')){
       if(e.ctrlKey||document.querySelector('dialog[open]'))return;
       e.preventDefault();scrollNotes(e);return;
+    }
+    // Na janela do projetor a roda não troca de slide: ela rola a fala na tela do apresentador.
+    if(audienceMode){
+      if(e.ctrlKey)return;
+      e.preventDefault();
+      try{if(peer&&!peer.closed)peer.postMessage({scalex:'wheel',deltaY:e.deltaY,deltaMode:e.deltaMode},'*');}catch(_){}
+      return;
     }
     if(!mouseNavActive(e)||Math.abs(e.deltaY)<8||e.ctrlKey)return;
     e.preventDefault();
